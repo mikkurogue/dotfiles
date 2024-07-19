@@ -1,0 +1,10 @@
+    "custom/updates": {
+      "exec": "checkupdates | wc -l",
+      "format": "󰮯 {} pending updates",
+      "return-type": "json",
+      "rotate": ${r_deg
+      },
+      "on-click": "hyprctl dispatch exec 'systemupdate.sh up'",
+      "interval": 3600, // once every hour
+      "tooltip": true,
+    },
