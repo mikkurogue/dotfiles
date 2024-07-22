@@ -177,11 +177,11 @@
     "interval": 86400, // once every day
     "tooltip": true,
   },
-  "custom/github": {
-    "format": "{} ",
+   "custom/github": {
+    "format": "{}",
     "return-type": "json",
     "interval": 60,
-    "exec": "$HOME/.config/waybar/github.sh",
+    "exec": "~/.config/waybar/scripts/github.sh",
     "on-click": "xdg-open https://github.com/notifications",
   },
 }
