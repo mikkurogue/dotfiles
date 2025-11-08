@@ -27,7 +27,7 @@ fi
 # Core Hyprland Setup
 echo ""
 echo "Installing core Hyprland components..."
-yay -S --needed --noconfirm hyprland hypridle hyprlock hyprpaper waybar mako walker noctalia-shell
+yay -S --needed --noconfirm hyprland hypridle hyprlock hyprpaper walker noctalia-shell
 
 # Shell & Terminal
 echo ""
@@ -58,7 +58,7 @@ yay -S --needed --noconfirm btop fastfetch
 # Screenshots & Color Picker
 echo ""
 echo "Installing screenshot tools..."
-yay -S --needed --noconfirm hyprshot hyprpicker grim slurp
+yay -S --needed --noconfirm grim slurp
 
 # Other utilities
 echo ""
@@ -126,9 +126,7 @@ else
 fi
 
 echo ""
-echo "=================================="
 echo "Installation complete!"
-echo "=================================="
 echo ""
 echo "Next steps:"
 echo "1. Log out and log back in for shell changes to take effect"
