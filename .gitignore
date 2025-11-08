@@ -20,3 +20,6 @@ Thumbs.db
 # Backup files
 *.bak
 *.backup
+
+# zsh syntax highligher let people do it themselves
+zsh/
