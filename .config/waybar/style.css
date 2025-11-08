@@ -1,4 +1,6 @@
-@import "../omarchy/current/theme/waybar.css";
+/* Tokyo Night Theme Colors */
+@define-color foreground #cdd6f4;
+@define-color background #1a1b26;
 
 * {
   background-color: transparent;

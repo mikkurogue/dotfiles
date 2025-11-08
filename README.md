@@ -8,9 +8,14 @@ My personal configuration files for Hyprland desktop environment.
 - **nvim** - Neovim configuration
 - **hypr** - Hyprland window manager configuration
 - **ghostty** - Ghostty terminal emulator configuration
+- **starship.toml** - Starship prompt configuration
 - **zsh** - Zsh shell configuration and plugins
   - `.zshrc` - Zsh configuration file
   - `zsh-syntax-highlighting` - Syntax highlighting plugin
+
+## Theme
+
+All configurations are hardcoded with the **Tokyo Night** color scheme for consistency across Hyprland, Waybar, and Hyprlock.
 
 ## Installation
 
@@ -20,6 +25,7 @@ git clone <your-repo-url> ~/dotfiles
 
 # Create symlinks (backup your existing configs first!)
 ln -sf ~/dotfiles/.zshrc ~/.zshrc
+ln -sf ~/dotfiles/starship.toml ~/.config/starship.toml
 ln -sf ~/dotfiles/.config/waybar ~/.config/waybar
 ln -sf ~/dotfiles/.config/nvim ~/.config/nvim
 ln -sf ~/dotfiles/.config/hypr ~/.config/hypr
