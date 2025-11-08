@@ -56,6 +56,16 @@ echo "Setting up fish configuration..."
 backup_if_exists "$HOME/.config/fish"
 ln -sf "$DOTFILES_DIR/.config/fish" "$HOME/.config/fish"
 
+# Backup and symlink mako
+echo "Setting up mako configuration..."
+backup_if_exists "$HOME/.config/mako"
+ln -sf "$DOTFILES_DIR/.config/mako" "$HOME/.config/mako"
+
+# Backup and symlink noctalia
+echo "Setting up noctalia configuration..."
+backup_if_exists "$HOME/.config/noctalia"
+ln -sf "$DOTFILES_DIR/.config/noctalia" "$HOME/.config/noctalia"
+
 # Setup zsh plugins directory
 echo "Setting up zsh plugins..."
 mkdir -p "$HOME/.zsh"

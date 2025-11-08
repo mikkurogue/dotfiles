@@ -1,11 +1,9 @@
-theme = Catppuccin Mocha
 # Font
 font-family = "CaskaydiaMono Nerd Font"
 font-style = Regular
 font-size =  14
 
 # Window
-window-theme = ghostty
 window-padding-x = 14
 window-padding-y = 14
 confirm-close-surface=false
@@ -28,3 +26,4 @@ shell-integration-features = ssh-env
 # Shaders
 
 custom-shader = shaders/cursor_smear.glsl
+theme = noctalia

@@ -82,6 +82,10 @@ require("onedarkpro").setup({
   theme = "onedark",
 })
 
+require("catppuccin").setup({
+  theme = "mocha"
+})
+
 local schemes = {
   "catppuccin",
   "tokyonight",
@@ -98,7 +102,7 @@ local schemes = {
 }
 
 -- set colorscheme
-v.cmd("colorscheme " .. schemes[2])
+v.cmd("colorscheme " .. schemes[1])
 
 require("configuration.todo-comments")
 require("configuration.mini")
