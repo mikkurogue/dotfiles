@@ -51,6 +51,11 @@ echo "Setting up ghostty configuration..."
 backup_if_exists "$HOME/.config/ghostty"
 ln -sf "$DOTFILES_DIR/.config/ghostty" "$HOME/.config/ghostty"
 
+# Backup and symlink fish
+echo "Setting up fish configuration..."
+backup_if_exists "$HOME/.config/fish"
+ln -sf "$DOTFILES_DIR/.config/fish" "$HOME/.config/fish"
+
 # Setup zsh plugins directory
 echo "Setting up zsh plugins..."
 mkdir -p "$HOME/.zsh"
@@ -79,3 +84,5 @@ echo "Your configuration files have been symlinked."
 echo "Backups of existing configs are saved with .backup extension."
 echo ""
 echo "To apply zsh changes, run: source ~/.zshrc"
+echo "To switch to fish shell, run: fish"
+echo "To change default shell to fish, run: chsh -s \$(which fish)"

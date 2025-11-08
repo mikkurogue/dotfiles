@@ -1,0 +1,30 @@
+# Mako notification daemon configuration
+
+# Timeout in milliseconds (5000 = 5 seconds)
+default-timeout=5000
+
+# Critical notifications timeout (0 = never timeout)
+[urgency=high]
+default-timeout=0
+
+# Font
+font=monospace 11
+
+# Colors (adjust to match your theme)
+background-color=#1e1e2e
+text-color=#cdd6f4
+border-color=#89b4fa
+border-size=2
+border-radius=10
+
+# Position (top-right corner)
+anchor=top-right
+margin=20
+
+# Dimensions
+width=350
+height=150
+padding=15
+
+# Grouping
+group-by=app-name

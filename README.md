@@ -12,6 +12,9 @@ My personal configuration files for Hyprland desktop environment.
 - **zsh** - Zsh shell configuration and plugins
   - `.zshrc` - Zsh configuration file
   - `zsh-syntax-highlighting` - Syntax highlighting plugin
+- **fish** - Fish shell configuration (feature parity with Zsh)
+  - `config.fish` - Fish configuration file
+  - `functions/cd.fish` - Custom cd function with zoxide integration
 
 ## Theme
 
@@ -50,6 +53,28 @@ ln -sf ~/dotfiles/.config/waybar ~/.config/waybar
 ln -sf ~/dotfiles/.config/nvim ~/.config/nvim
 ln -sf ~/dotfiles/.config/hypr ~/.config/hypr
 ln -sf ~/dotfiles/.config/ghostty ~/.config/ghostty
+ln -sf ~/dotfiles/.config/fish ~/.config/fish
+```
+
+## Shell Options
+
+This dotfiles repository supports both **Zsh** and **Fish** shells with feature parity.
+
+### Switching Between Shells
+
+To try Fish temporarily:
+```bash
+fish
+```
+
+To switch default shell to Fish:
+```bash
+chsh -s $(which fish)
+```
+
+To switch back to Zsh:
+```bash
+chsh -s $(which zsh)
 ```
 
 See `DEPENDENCIES.md` for a complete list of required packages.

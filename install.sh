@@ -27,12 +27,12 @@ fi
 # Core Hyprland Setup
 echo ""
 echo "Installing core Hyprland components..."
-yay -S --needed --noconfirm hyprland hypridle hyprlock hyprpaper waybar mako walker
+yay -S --needed --noconfirm hyprland hypridle hyprlock hyprpaper waybar mako walker noctalia-shell
 
 # Shell & Terminal
 echo ""
 echo "Installing shell and terminal..."
-yay -S --needed --noconfirm zsh starship ghostty-git
+yay -S --needed --noconfirm zsh fish starship #ghostty-git
 yay -S --needed --noconfirm zsh-autosuggestions zsh-syntax-highlighting
 
 # Audio & Media
@@ -43,12 +43,12 @@ yay -S --needed --noconfirm pipewire wireplumber playerctl
 # System Utilities
 echo ""
 echo "Installing system utilities..."
-yay -S --needed --noconfirm brightnessctl fcitx5 polkit-gnome thunar jq elephant zoxide
+yay -S --needed --noconfirm brightnessctl fcitx5 polkit-gnome thunar jq elephant zoxide elephant-desktopapplications
 
 # Development Tools
 echo ""
 echo "Installing development tools..."
-yay -S --needed --noconfirm neovim-nightly-bin git github-cli nodejs npm rustup 
+yay -S --needed --noconfirm neovim-nightly-bin git github-cli nodejs npm  
 
 # Monitoring & Info
 echo ""
