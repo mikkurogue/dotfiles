@@ -43,12 +43,12 @@ yay -S --needed --noconfirm pipewire wireplumber playerctl
 # System Utilities
 echo ""
 echo "Installing system utilities..."
-yay -S --needed --noconfirm brightnessctl fcitx5 polkit-gnome thunar jq
+yay -S --needed --noconfirm brightnessctl fcitx5 polkit-gnome thunar jq elephant zoxide
 
 # Development Tools
 echo ""
 echo "Installing development tools..."
-yay -S --needed --noconfirm neovim git github-cli nodejs npm
+yay -S --needed --noconfirm neovim-nightly-bin git github-cli nodejs npm rustup 
 
 # Monitoring & Info
 echo ""

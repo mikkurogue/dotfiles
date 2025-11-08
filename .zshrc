@@ -43,7 +43,7 @@ export PATH=$PATH:/usr/local/go/bin
 # . "$HOME/.cargo/env"
 export PATH="$HOME/.cargo/bin:$PATH"
 
-alias ls="fview -u=m -r"
+#alias ls="fview -u=m -r"
 source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/fzf-tab/fzf-tab.plugin.zsh
