@@ -1,0 +1,90 @@
+{
+  "plugins": {
+    "blink.cmp": {
+      "rev": "2408f14"
+    },
+    "catppuccin": {
+      "rev": "234fc04"
+    },
+    "conform.nvim": {
+      "rev": "26c02e1"
+    },
+    "copilot.lua": {
+      "rev": "389cfc5"
+    },
+    "darkmatter-nvim": [],
+    "fff.nvim": {
+      "rev": "65aeacf"
+    },
+    "fidget.nvim": {
+      "rev": "e32b672"
+    },
+    "firesky.nvim": [],
+    "gitsigns.nvim": {
+      "rev": "20ad441"
+    },
+    "gruvbox.nvim": [],
+    "kanagawa.nvim": {
+      "rev": "aef7f5c"
+    },
+    "lazygit.nvim": [],
+    "lualine.nvim": [],
+    "matteblack.nvim": {
+      "rev": "a8a039f"
+    },
+    "mini.files": {
+      "rev": "dce9a4e"
+    },
+    "mini.icons": {
+      "rev": "ff2e4f1"
+    },
+    "mini.pairs": {
+      "rev": "b316e68"
+    },
+    "mini.tabline": {
+      "rev": "caf2361"
+    },
+    "nightfox.nvim": [],
+    "noice.nvim": {
+      "rev": "7bfd942"
+    },
+    "nordic.nvim": [],
+    "nui.nvim": [],
+    "nvim-lspconfig": {
+      "rev": "2010fc6"
+    },
+    "nvim-notify": [],
+    "nvim-treesitter": [],
+    "nvim-web-devicons": {
+      "rev": "8dcb311"
+    },
+    "oil.nvim": {
+      "rev": "7e1cd77"
+    },
+    "onedarkpro.nvim": [],
+    "persistence.nvim": {
+      "rev": "b20b2a7"
+    },
+    "plenary.nvim": [],
+    "rose-pine": [],
+    "suit.nvim": [],
+    "telescope.nvim": {
+      "rev": "84b9ba0"
+    },
+    "tiny-inline-diagnostic.nvim": {
+      "rev": "d4d1718"
+    },
+    "todo-comments.nvim": {
+      "rev": "411503d"
+    },
+    "toggleterm.nvim": [],
+    "tokyonight.nvim": {
+      "rev": "b13cfc1"
+    },
+    "trouble.nvim": {
+      "rev": "bd67efe"
+    },
+    "void.nvim": [],
+    "zig.vim": []
+  }
+}

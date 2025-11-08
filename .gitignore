@@ -1,0 +1,22 @@
+# Vim/Neovim
+*.swp
+*.swo
+*~
+.netrwhist
+
+# Compiled files
+*.pyc
+*.o
+*.so
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor directories
+.vscode/
+.idea/
+
+# Backup files
+*.bak
+*.backup
