@@ -6,16 +6,21 @@ default-timeout=5000
 # Critical notifications timeout (0 = never timeout)
 [urgency=high]
 default-timeout=0
+border-color=#dddddd
+background-color=#191919
 
 # Font
 font=monospace 11
 
-# Colors (adjust to match your theme)
-background-color=#1e1e2e
-text-color=#cdd6f4
-border-color=#89b4fa
+# Colors (matching noctalia-shell theme)
+background-color=#111111
+text-color=#828282
+border-color=#3c3c3c
 border-size=2
 border-radius=10
+
+# Progress bar color
+progress-color=#aaaaaa
 
 # Position (top-right corner)
 anchor=top-right
