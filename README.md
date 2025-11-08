@@ -50,3 +50,4 @@ ln -sf ~/dotfiles/.config/ghostty ~/.config/ghostty
 
 - Make sure to review and adjust paths in configuration files after installation
 - Some scripts may require additional dependencies
+- **Omarchy defaults**: The `omarchy-defaults/` directory contains copies of Omarchy's default configurations. See `.config/hypr/README-OMARCHY.md` for details about replacing omarchy-specific commands if you don't have Omarchy installed.
