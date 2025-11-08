@@ -1,6 +1,6 @@
-# Omarchy Defaults
+# Hyprland Defaults
 
-The `omarchy-defaults/` directory contains copies of the default configuration files from Omarchy.
+The `defaults/` directory contains copies of the default configuration files from Omarchy.
 
 These files have been copied locally to make this dotfiles repository standalone and independent of the Omarchy installation.
 

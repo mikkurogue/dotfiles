@@ -19,6 +19,26 @@ All configurations are hardcoded with the **Tokyo Night** color scheme for consi
 
 ## Installation
 
+### Quick Install (Fresh Arch System)
+
+```bash
+# Clone the repository
+git clone <your-repo-url> ~/dotfiles
+cd ~/dotfiles
+
+# Install all dependencies (requires yay or will install it)
+./install.sh
+
+# Setup dotfiles (create symlinks)
+./setup.sh
+
+# Log out and log back in for shell changes to take effect
+```
+
+### Manual Installation
+
+If you prefer to install components manually:
+
 ```bash
 # Clone the repository
 git clone <your-repo-url> ~/dotfiles
@@ -31,6 +51,8 @@ ln -sf ~/dotfiles/.config/nvim ~/.config/nvim
 ln -sf ~/dotfiles/.config/hypr ~/.config/hypr
 ln -sf ~/dotfiles/.config/ghostty ~/.config/ghostty
 ```
+
+See `DEPENDENCIES.md` for a complete list of required packages.
 
 ## Special Scripts
 
@@ -50,4 +72,4 @@ ln -sf ~/dotfiles/.config/ghostty ~/.config/ghostty
 
 - Make sure to review and adjust paths in configuration files after installation
 - Some scripts may require additional dependencies
-- **Omarchy defaults**: The `omarchy-defaults/` directory contains copies of Omarchy's default configurations. See `.config/hypr/README-OMARCHY.md` for details about replacing omarchy-specific commands if you don't have Omarchy installed.
+- **Omarchy defaults**: The `defaults/` directory contains copies of Omarchy's default configurations. See `.config/hypr/defaults/README.md` for details about replacing omarchy-specific commands if you don't have Omarchy installed.
