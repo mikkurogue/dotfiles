@@ -7,6 +7,7 @@ My personal configuration files for Hyprland desktop environment.
 - **waybar** - Status bar configuration
 - **nvim** - Neovim configuration
 - **hypr** - Hyprland window manager configuration
+- **ghostty** - Ghostty terminal emulator configuration
 - **zsh** - Zsh shell configuration and plugins
   - `.zshrc` - Zsh configuration file
   - `zsh-syntax-highlighting` - Syntax highlighting plugin
@@ -22,6 +23,7 @@ ln -sf ~/dotfiles/.zshrc ~/.zshrc
 ln -sf ~/dotfiles/.config/waybar ~/.config/waybar
 ln -sf ~/dotfiles/.config/nvim ~/.config/nvim
 ln -sf ~/dotfiles/.config/hypr ~/.config/hypr
+ln -sf ~/dotfiles/.config/ghostty ~/.config/ghostty
 ```
 
 ## Special Scripts
