@@ -71,9 +71,9 @@
                 },
                 {
                     "characterCount": 5,
-                    "hideUnoccupied": true,
+                    "hideUnoccupied": false,
                     "id": "Workspace",
-                    "labelMode": "name"
+                    "labelMode": "index"
                 }
             ],
             "right": [
@@ -88,7 +88,8 @@
                     "favorites": [
                         "Faugus Launcher",
                         "Discord",
-                        "steam"
+                        "steam",
+                        "battlenet"
                     ],
                     "id": "Tray"
                 },
