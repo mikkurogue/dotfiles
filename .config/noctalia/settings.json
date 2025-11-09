@@ -250,7 +250,7 @@
     "nightLight": {
         "autoSchedule": true,
         "dayTemp": "6500",
-        "enabled": false,
+        "enabled": true,
         "forced": false,
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
@@ -315,7 +315,7 @@
         "wezterm": false
     },
     "ui": {
-        "fontDefault": "Roboto Black",
+        "fontDefault": "CaskaydiaCove Nerd Font Mono",
         "fontDefaultScale": 1,
         "fontFixed": "CaskaydiaCove Nerd Font Mono",
         "fontFixedScale": 1,
@@ -334,7 +334,7 @@
             {
                 "directory": "/home/mikku/Pictures/Wallpapers",
                 "name": "DP-3",
-                "wallpaper": "/home/mikku/Pictures/Wallpapers/wallpaper.jpg"
+                "wallpaper": "/home/mikku/Pictures/Wallpapers/blossom.png"
             }
         ],
         "overviewEnabled": false,

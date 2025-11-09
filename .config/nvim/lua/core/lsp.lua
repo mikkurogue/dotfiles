@@ -29,7 +29,17 @@ local function on_lsp_exit(code, signal, client_id)
   end
 end
 
-v.lsp.enable({ "lua_ls", "biome", "rust_analyzer", "vtsls", "gopls", "zls" }, {
+local lsps = {
+  'rust_analyzer',
+  'gopls',
+  'tsserver',
+  'lua_ls',
+  'biome',
+  'zls',
+  'ocamllsp'
+}
+
+v.lsp.enable(lsps, {
   capabilities = capabilities,
   on_exit = on_lsp_exit,
 })
