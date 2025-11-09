@@ -6,17 +6,17 @@
         "enableClipboardHistory": false,
         "pinnedExecs": [
         ],
-        "position": "center",
+        "position": "follow_bar",
         "sortByMostUsed": true,
-        "terminalCommand": "xterm -e",
+        "terminalCommand": "ghostty -e",
         "useApp2Unit": false
     },
     "audio": {
-        "cavaFrameRate": 60,
+        "cavaFrameRate": 240,
         "mprisBlacklist": [
         ],
         "preferredPlayer": "",
-        "visualizerType": "linear",
+        "visualizerType": "wave",
         "volumeOverdrive": false,
         "volumeStep": 5
     },
@@ -199,7 +199,7 @@
     "dock": {
         "backgroundOpacity": 0.78,
         "colorizeIcons": true,
-        "displayMode": "auto_hide",
+        "displayMode": "exclusive",
         "enabled": false,
         "floatingRatio": 1,
         "monitors": [

@@ -27,7 +27,7 @@ fi
 # Core Hyprland Setup
 echo ""
 echo "Installing core Hyprland components..."
-yay -S --needed --noconfirm hyprland hypridle hyprlock hyprpaper walker noctalia-shell
+yay -S --needed --noconfirm hyprland hypridle hyprlock hyprpaper walker noctalia-shell wlsunset
 
 # Shell & Terminal
 echo ""
