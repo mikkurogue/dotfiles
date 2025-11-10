@@ -89,7 +89,8 @@
                         "Faugus Launcher",
                         "Discord",
                         "steam",
-                        "battlenet"
+                        "battlenet",
+                        "Microsoft Teams"
                     ],
                     "id": "Tray"
                 },
@@ -307,7 +308,7 @@
         "ghostty": true,
         "gtk": true,
         "kcolorscheme": true,
-        "kitty": false,
+        "kitty": true,
         "pywalfox": false,
         "qt": true,
         "vicinae": false,
@@ -334,7 +335,7 @@
             {
                 "directory": "/home/mikku/Pictures/Wallpapers",
                 "name": "DP-3",
-                "wallpaper": "/home/mikku/Pictures/Wallpapers/blossom.png"
+                "wallpaper": "/home/mikku/Pictures/Wallpapers/itachi.jpg"
             }
         ],
         "overviewEnabled": false,

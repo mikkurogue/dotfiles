@@ -117,12 +117,12 @@ echo "Installing Zig..."
 yay -S --needed --noconfirm zig
 
 # Change default shell to zsh
-if [ "$SHELL" != "$(which zsh)" ]; then
+if [ "$SHELL" != "$(which fish)" ]; then
     echo ""
-    echo "Changing default shell to zsh..."
-    chsh -s $(which zsh)
+    echo "Changing default shell to fish..."
+    chsh -s $(which fish)
 else
-    echo "Default shell is already zsh, skipping..."
+    echo "Default shell is already fish, skipping..."
 fi
 
 echo ""
