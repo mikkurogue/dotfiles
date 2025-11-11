@@ -25,12 +25,12 @@
         "backgroundOpacity": 0,
         "density": "default",
         "exclusive": true,
-        "floating": false,
-        "marginHorizontal": 0.25,
-        "marginVertical": 0.25,
+        "floating": true,
+        "marginHorizontal": 0.2,
+        "marginVertical": 0.2,
         "monitors": [
         ],
-        "outerCorners": true,
+        "outerCorners": false,
         "position": "top",
         "showCapsule": true,
         "widgets": {
@@ -72,10 +72,10 @@
                     "visualizerType": "wave"
                 },
                 {
-                    "characterCount": 5,
+                    "characterCount": 10,
                     "hideUnoccupied": false,
                     "id": "Workspace",
-                    "labelMode": "index"
+                    "labelMode": "name"
                 }
             ],
             "right": [
