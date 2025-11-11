@@ -16,6 +16,7 @@
         "mprisBlacklist": [
         ],
         "preferredPlayer": "",
+        "visualizerQuality": "high",
         "visualizerType": "wave",
         "volumeOverdrive": false,
         "volumeStep": 5
@@ -53,6 +54,7 @@
             ],
             "left": [
                 {
+                    "colorizeDistroLogo": false,
                     "customIconPath": "",
                     "icon": "noctalia",
                     "id": "ControlCenter",
@@ -260,7 +262,6 @@
     "notifications": {
         "backgroundOpacity": 1,
         "criticalUrgencyDuration": 15,
-        "doNotDisturb": false,
         "enabled": true,
         "location": "top_right",
         "lowUrgencyDuration": 3,
@@ -290,7 +291,7 @@
         "videoCodec": "h264",
         "videoSource": "portal"
     },
-    "settingsVersion": 20,
+    "settingsVersion": 21,
     "setupCompleted": true,
     "templates": {
         "alacritty": false,
@@ -311,6 +312,7 @@
         "kitty": true,
         "pywalfox": false,
         "qt": true,
+        "spicetify": false,
         "vicinae": false,
         "walker": false,
         "wezterm": false
