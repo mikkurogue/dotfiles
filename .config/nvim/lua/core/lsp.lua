@@ -32,7 +32,7 @@ end
 local lsps = {
   'rust_analyzer',
   'gopls',
-  'tsserver',
+  'vtsls',
   'lua_ls',
   'biome',
   'zls',
@@ -69,4 +69,3 @@ function _G.LspStatus()
   end
   return table.concat(names, ', ')
 end
-

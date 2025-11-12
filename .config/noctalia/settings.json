@@ -3,10 +3,10 @@
         "backgroundOpacity": 1,
         "customLaunchPrefix": "",
         "customLaunchPrefixEnabled": false,
-        "enableClipboardHistory": false,
+        "enableClipboardHistory": true,
         "pinnedExecs": [
         ],
-        "position": "follow_bar",
+        "position": "center",
         "sortByMostUsed": true,
         "terminalCommand": "ghostty -e",
         "useApp2Unit": false
@@ -27,7 +27,7 @@
         "exclusive": true,
         "floating": true,
         "marginHorizontal": 0.2,
-        "marginVertical": 0.2,
+        "marginVertical": 0,
         "monitors": [
         ],
         "outerCorners": false,
@@ -84,17 +84,13 @@
                 },
                 {
                     "blacklist": [
+                        "fcitx"
                     ],
                     "colorizeIcons": false,
-                    "drawerEnabled": true,
-                    "favorites": [
-                        "Faugus Launcher",
-                        "Discord",
-                        "steam",
-                        "battlenet",
-                        "Microsoft Teams"
-                    ],
-                    "id": "Tray"
+                    "drawerEnabled": false,
+                    "id": "Tray",
+                    "pinned": [
+                    ]
                 },
                 {
                     "hideWhenZero": true,
@@ -262,6 +258,7 @@
     "notifications": {
         "backgroundOpacity": 1,
         "criticalUrgencyDuration": 15,
+        "enableKeyboardLayoutToast": false,
         "enabled": true,
         "location": "top_right",
         "lowUrgencyDuration": 3,
@@ -273,12 +270,11 @@
     },
     "osd": {
         "autoHideMs": 2000,
-        "enabled": true,
+        "enabled": false,
         "location": "top_right",
         "monitors": [
-            "DP-3"
         ],
-        "overlayLayer": true
+        "overlayLayer": false
     },
     "screenRecorder": {
         "audioCodec": "opus",
