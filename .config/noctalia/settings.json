@@ -1,6 +1,5 @@
 {
     "appLauncher": {
-        "backgroundOpacity": 1,
         "customLaunchPrefix": "",
         "customLaunchPrefixEnabled": false,
         "enableClipboardHistory": true,
@@ -249,7 +248,7 @@
     "nightLight": {
         "autoSchedule": true,
         "dayTemp": "6500",
-        "enabled": true,
+        "enabled": false,
         "forced": false,
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
@@ -287,7 +286,35 @@
         "videoCodec": "h264",
         "videoSource": "portal"
     },
-    "settingsVersion": 21,
+    "sessionMenu": {
+        "countdownDuration": 10000,
+        "enableCountdown": true,
+        "position": "center",
+        "powerOptions": [
+            {
+                "action": "lock",
+                "enabled": true
+            },
+            {
+                "action": "suspend",
+                "enabled": true
+            },
+            {
+                "action": "reboot",
+                "enabled": true
+            },
+            {
+                "action": "logout",
+                "enabled": true
+            },
+            {
+                "action": "shutdown",
+                "enabled": true
+            }
+        ],
+        "showHeader": true
+    },
+    "settingsVersion": 22,
     "setupCompleted": true,
     "templates": {
         "alacritty": false,
@@ -318,6 +345,7 @@
         "fontDefaultScale": 1,
         "fontFixed": "CaskaydiaCove Nerd Font Mono",
         "fontFixedScale": 1,
+        "panelBackgroundOpacity": 1,
         "panelsAttachedToBar": true,
         "settingsPanelAttachToBar": false,
         "tooltipsEnabled": true
@@ -329,6 +357,7 @@
         "enabled": true,
         "fillColor": "#000000",
         "fillMode": "crop",
+        "hideWallpaperFilenames": false,
         "monitors": [
             {
                 "directory": "/home/mikku/Pictures/Wallpapers",
