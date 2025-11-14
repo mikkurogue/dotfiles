@@ -92,7 +92,7 @@
                     "textCollapse": "",
                     "textCommand": "nmcli -t -f DEVICE,STATE device status | grep '^enp3s0' | cut -d: -f2 | awk '{if ($1==\"connected\") print \"Connected\"; else print \"Disconnected\"}'",
                     "textIntervalMs": 3000,
-                    "textStream": false
+                    "textStream": true
                 },
                 {
                     "displayMode": "onhover",
@@ -263,7 +263,7 @@
         "weatherEnabled": true
     },
     "network": {
-        "wifiEnabled": true
+        "wifiEnabled": false
     },
     "nightLight": {
         "autoSchedule": true,
