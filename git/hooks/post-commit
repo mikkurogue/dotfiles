@@ -1,4 +1,5 @@
 #!/bin/bash
 # Notify on successful commit
+repo_name=$(basename "$(git rev-parse --show-toplevel)")
 last_commit=$(git log -1 --pretty=format:'%h %s')
-notify-send "Git Commit" "$last_commit" || true
+notify-send "$repo_name" "$last_commit" || true
