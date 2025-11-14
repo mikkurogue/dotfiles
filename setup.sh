@@ -31,6 +31,11 @@ mkdir -p "$HOME/.config"
 backup_if_exists "$HOME/.config/starship.toml"
 ln -sf "$DOTFILES_DIR/starship.toml" "$HOME/.config/starship.toml"
 
+# Backup and symlink git config directory
+echo "Setting up git configuration..."
+backup_if_exists "$HOME/.config/git"
+ln -sf "$DOTFILES_DIR/git" "$HOME/.config/git"
+
 # Backup and symlink waybar
 echo "Setting up waybar configuration..."
 backup_if_exists "$HOME/.config/waybar"
