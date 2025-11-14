@@ -25,7 +25,7 @@
         "density": "default",
         "exclusive": true,
         "floating": true,
-        "marginHorizontal": 0.2,
+        "marginHorizontal": 0,
         "marginVertical": 0,
         "monitors": [
         ],
@@ -78,6 +78,26 @@
                 }
             ],
             "right": [
+                {
+                    "hideTextInVerticalBar": false,
+                    "icon": "wifi",
+                    "id": "CustomButton",
+                    "leftClickExec": "",
+                    "leftClickUpdateText": false,
+                    "middleClickExec": "",
+                    "middleClickUpdateText": false,
+                    "parseJson": false,
+                    "rightClickExec": "",
+                    "rightClickUpdateText": false,
+                    "textCollapse": "",
+                    "textCommand": "nmcli -t -f DEVICE,STATE device status | grep '^enp3s0' | cut -d: -f2 | awk '{if ($1==\"connected\") print \"Connected\"; else print \"Disconnected\"}'",
+                    "textIntervalMs": 3000,
+                    "textStream": false
+                },
+                {
+                    "displayMode": "onhover",
+                    "id": "WiFi"
+                },
                 {
                     "id": "ScreenRecorder"
                 },
