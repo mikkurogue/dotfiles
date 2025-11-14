@@ -1,0 +1,4 @@
+#!/bin/bash
+# Notify on successful commit
+last_commit=$(git log -1 --pretty=format:'%h %s')
+notify-send "Git Commit" "$last_commit" || true
