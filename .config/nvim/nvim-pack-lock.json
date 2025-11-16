@@ -152,6 +152,10 @@
       "rev": "bd67efe",
       "src": "https://github.com/folke/trouble.nvim"
     },
+    "ts-error-translator.nvim": {
+      "rev": "17ec46d",
+      "src": "https://github.com/dmmulroy/ts-error-translator.nvim"
+    },
     "void.nvim": {
       "rev": "c8a565e",
       "src": "https://github.com/vyrx-dev/void.nvim"

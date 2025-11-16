@@ -33,6 +33,7 @@ v.pack.add({
   { src = "https://github.com/MunifTanjim/nui.nvim" },
   { src = "https://github.com/rcarriga/nvim-notify" },
   { src = "https://github.com/doums/suit.nvim" },
+  { src = "https://github.com/dmmulroy/ts-error-translator.nvim" }
 })
 require("notify").setup({
   background_colour = "#000000",
@@ -56,6 +57,13 @@ v.pack.add({
 
 
 require("configuration.fff")
+require("ts-error-translator").setup({
+  auto_attach = true,
+  servers = {
+    "ts_ls",
+    "vtsls"
+  }
+})
 
 v.api.nvim_create_autocmd("PackChanged", {
   callback = function(ev)
