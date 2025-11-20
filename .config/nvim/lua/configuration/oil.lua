@@ -1,3 +1,5 @@
+local v = vim
+
 require("oil").setup({
   default_file_explorer = true,
   keymaps = {
@@ -29,6 +31,21 @@ require("oil").setup({
     border = "rounded",
     max_width = 0.5,
     max_height = 0.5,
+    win_options = {
+      winblend = 0,
+      winhighlight = "NormalFloat:Normal,FloatBorder:Normal"
+    },
   },
   open = "float",
+})
+
+-- Apply colorscheme settings to oil.nvim buffers
+
+
+v.api.nvim_create_autocmd("FileType", {
+  pattern = "oil",
+  callback = function()
+    v.opt_local.fillchars = { eob = " " }
+  end,
+
 })

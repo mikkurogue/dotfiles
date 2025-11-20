@@ -96,6 +96,9 @@
       "rev": "8701bec",
       "src": "https://github.com/rcarriga/nvim-notify"
     },
+    "nvim-plugin": {
+      "src": "/home/mikku/work/ts-analyzer/nvim-plugin"
+    },
     "nvim-treesitter": {
       "rev": "42fc28ba",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
@@ -111,6 +114,10 @@
     "onedarkpro.nvim": {
       "rev": "eeac884",
       "src": "https://github.com/olimorris/onedarkpro.nvim"
+    },
+    "osmium": {
+      "rev": "7c95313ae3f403dd717a8377dcbf490648c4a7f9",
+      "src": "https://github.com/IroncladDev/osmium"
     },
     "persistence.nvim": {
       "rev": "b20b2a7",
@@ -151,6 +158,10 @@
     "trouble.nvim": {
       "rev": "bd67efe",
       "src": "https://github.com/folke/trouble.nvim"
+    },
+    "ts-analyzer": {
+      "rev": "843a594cb6465cc4cc7f6cd2728e28a7a1ac6685",
+      "src": "https://github.com/mikkurogue/ts-analyzer"
     },
     "ts-error-translator.nvim": {
       "rev": "17ec46d",
