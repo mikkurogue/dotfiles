@@ -106,10 +106,6 @@ local schemes = {
   "osmium",
 }
 
-require("osmium").setup({
-  transparent_bg = false,     -- whether to use a transparent background
-  show_end_of_buffer = false, -- whether to show the end of buffer
-})
 
 -- set colorscheme
 v.cmd("colorscheme " .. schemes[13])
@@ -127,6 +123,15 @@ require("configuration.gitsigns")
 require("configuration.toggleterm")
 require("configuration.fidget")
 require("configuration.lualine")
+
+require("osmium").setup({
+  integrations = {
+    gitsigns = true,
+    telescope = true,
+  },
+  transparent_bg = false,     -- whether to use a transparent background
+  show_end_of_buffer = false, -- whether to show the end of buffer
+})
 
 require("configuration.telescope")
 require("configuration.tiny-inline-diagnostic")

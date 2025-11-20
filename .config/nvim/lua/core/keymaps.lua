@@ -49,6 +49,7 @@ v.keymap.set("n", "<leader>xx", function()
   { desc = "Toggle Trouble diagnostics" }
 )
 
+v.keymap.set("n", "<leader>gb", ":Gitsigns blame_line<CR>", { desc = "Show git blame line" })
 
 -- lsp keymaps
 v.keymap.set("n", "gd", v.lsp.buf.definition)
