@@ -34,8 +34,10 @@ v.pack.add({
   { src = "https://github.com/rcarriga/nvim-notify" },
   { src = "https://github.com/doums/suit.nvim" },
   { src = "https://github.com/dmmulroy/ts-error-translator.nvim" },
-  { src = "https://github.com/mikkurogue/ts-analyzer" }
+  { src = "https://github.com/mikkurogue/ts-analyzer" },
+  { src = "https://github.com/APZelos/blamer.nvim" }
 })
+
 require("notify").setup({
   background_colour = "#000000",
 })

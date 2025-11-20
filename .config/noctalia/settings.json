@@ -351,7 +351,7 @@
         "alacritty": false,
         "code": false,
         "discord": false,
-        "enableUserTemplates": false,
+        "enableUserTemplates": true,
         "foot": false,
         "fuzzel": false,
         "ghostty": true,

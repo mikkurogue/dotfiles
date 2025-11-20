@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "blamer.nvim": {
+      "rev": "e0d43c11697300eb68f00d69df8b87deb0bf52dc",
+      "src": "https://github.com/APZelos/blamer.nvim"
+    },
     "blink.cmp": {
       "rev": "2408f14",
       "src": "https://github.com/saghen/blink.cmp"
