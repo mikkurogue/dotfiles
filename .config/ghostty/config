@@ -26,4 +26,4 @@ shell-integration-features = ssh-env
 # Shaders
 
 custom-shader = shaders/cursor_smear.glsl
-theme = osmium
+theme = noctalia

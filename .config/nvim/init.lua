@@ -1,6 +1,9 @@
 -- Basic vim settings
 require("core.opts")
 
+-- Add local ts-analyzer plugins to runtimepath
+vim.opt.runtimepath:append("/home/mikku/work/ts-analyzer")
+
 local v = vim
 
 -- Plugins with native package manager
@@ -21,6 +24,7 @@ v.pack.add({
   { src = "https://github.com/dmtrKovalenko/fff.nvim" },
   { src = "https://github.com/nvim-mini/mini.icons" },
   { src = "https://github.com/stevearc/oil.nvim" },
+  { src = "https://github.com/benomahony/oil-git.nvim" },
   { src = "https://github.com/nvim-mini/mini.tabline" },
   { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
   { src = "https://github.com/akinsho/toggleterm.nvim" },
@@ -34,8 +38,7 @@ v.pack.add({
   { src = "https://github.com/rcarriga/nvim-notify" },
   { src = "https://github.com/doums/suit.nvim" },
   { src = "https://github.com/dmmulroy/ts-error-translator.nvim" },
-  { src = "https://github.com/mikkurogue/ts-analyzer" },
-  { src = "https://github.com/APZelos/blamer.nvim" }
+  -- { src = "https://github.com/mikkurogue/ts-analyzer"}
 })
 
 require("notify").setup({
@@ -64,16 +67,50 @@ require("configuration.fff")
 v.api.nvim_create_autocmd("PackChanged", {
   callback = function(ev)
     local spec = ev.data.spec
+
     if spec and spec.name == "fff.nvim" and ev.data.kind == "install" or ev.data.kind == "update" then
       local fff_path = v.fn.stdpath("data") .. "/site/pack/core/opt/fff.nvim"
       v.fn.jobstart({ "cargo", "build", "--release" }, {
         cwd = fff_path,
         on_exit = function(_, code)
           if code == 0 then
-            v.notify("Cargo build finished successfully in " .. fff_path,
+            v.notify("[fff] Cargo build finished successfully in " .. fff_path,
               v.log.levels.INFO)
           else
-            v.notify("Cargo build failed with exit code " .. code, v.log.levels
+            v.notify("[fff] Cargo build failed with exit code " .. code, v.log.levels
+              .ERROR)
+          end
+        end,
+      })
+    end
+
+    -- Build ts-analyzer when installed from GitHub
+    if spec and spec.name == "ts-analyzer" and ev.data.kind == "install" or ev.data.kind == "update" then
+      local ts_analyzer_path = v.fn.stdpath("data") .. "/site/pack/core/opt/ts-analyzer"
+      v.fn.jobstart({ "cargo", "build", "--release" }, {
+        cwd = ts_analyzer_path,
+        on_exit = function(_, code)
+          if code == 0 then
+            v.notify("[ts-analyzer] Cargo build finished successfully in " .. ts_analyzer_path,
+              v.log.levels.INFO)
+          else
+            v.notify("[ts-analyzer] Cargo build failed with exit code " .. code, v.log.levels
+              .ERROR)
+          end
+        end,
+      })
+    end
+
+    if spec and spec.name == "blink.cmp" and ev.data.kind == "install" or ev.data.kind == "update" then
+      local blink_cmp_path = v.fn.stdpath("data") .. "/site/pack/core/opt/blink.cmp"
+      v.fn.jobstart({ "cargo", "build", "--release" }, {
+        cwd = blink_cmp_path,
+        on_exit = function(_, code)
+          if code == 0 then
+            v.notify("[blink.cmp] Cargo build finished successfully in " .. blink_cmp_path,
+              v.log.levels.INFO)
+          else
+            v.notify("[blink.cmp] Cargo build failed with exit code " .. code, v.log.levels
               .ERROR)
           end
         end,
@@ -128,6 +165,7 @@ require("osmium").setup({
   integrations = {
     gitsigns = true,
     telescope = true,
+    -- oil = true,
   },
   transparent_bg = false,     -- whether to use a transparent background
   show_end_of_buffer = false, -- whether to show the end of buffer
@@ -136,13 +174,14 @@ require("osmium").setup({
 require("configuration.telescope")
 require("configuration.tiny-inline-diagnostic")
 
-require("ts-analyzer").setup({
-  attach = true,
-  servers = {
-    "ts_ls",
-    "vtsls"
-  }
-})
+-- Use ts-analyzer-virt instead of ts-analyzer for virtual text diagnostics
+-- require("ts-analyzer-virt").setup({
+--   attach = true,
+--   servers = {
+--     "ts_ls",
+--     "vtsls"
+--   }
+-- })
 require("configuration.noice")
 require("configuration.suit")
 

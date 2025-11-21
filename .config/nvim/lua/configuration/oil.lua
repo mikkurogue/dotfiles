@@ -33,19 +33,17 @@ require("oil").setup({
     max_height = 0.5,
     win_options = {
       winblend = 0,
-      winhighlight = "NormalFloat:Normal,FloatBorder:Normal"
+      winhighlight = "NormalFloat:Normal"
     },
   },
   open = "float",
 })
 
--- Apply colorscheme settings to oil.nvim buffers
-
+require("oil-git").setup()
 
 v.api.nvim_create_autocmd("FileType", {
   pattern = "oil",
   callback = function()
     v.opt_local.fillchars = { eob = " " }
   end,
-
 })

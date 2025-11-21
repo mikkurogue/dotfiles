@@ -5,24 +5,28 @@
       "src": "https://github.com/APZelos/blamer.nvim"
     },
     "blink.cmp": {
-      "rev": "2408f14",
+      "rev": "73ea297bc665c936b51797d5a55599536ffee0d8",
       "src": "https://github.com/saghen/blink.cmp"
     },
     "catppuccin": {
-      "rev": "234fc04",
+      "rev": "da33755d00e09bff2473978910168ff9ea5dc453",
       "src": "https://github.com/catppuccin/nvim"
     },
     "conform.nvim": {
-      "rev": "26c02e1",
+      "rev": "1bf8b5b9caee51507aa51eaed3da5b0f2595c6b9",
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "copilot.lua": {
-      "rev": "389cfc5",
+      "rev": "4383e05a47493d7ff77b058c0548129eb38ec7fb",
       "src": "https://github.com/zbirenbaum/copilot.lua"
     },
     "darkmatter-nvim": {
       "rev": "5663ddc",
       "src": "https://github.com/stevedylandev/darkmatter-nvim"
+    },
+    "diagflow.nvim": {
+      "rev": "b13321b517ff64bf42eeac2214085d3c76d83a0d",
+      "src": "https://github.com/dgagn/diagflow.nvim"
     },
     "fff.nvim": {
       "rev": "65aeacf",
@@ -37,7 +41,7 @@
       "src": "https://github.com/bjarneo/firesky.nvim"
     },
     "gitsigns.nvim": {
-      "rev": "20ad441",
+      "rev": "cdafc320f03f2572c40ab93a4eecb733d4016d07",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "gruvbox.nvim": {
@@ -61,7 +65,7 @@
       "src": "https://github.com/tahayvr/matteblack.nvim"
     },
     "mini.files": {
-      "rev": "dce9a4e",
+      "rev": "26baa6215c2e5c40ba7fe82685d827fe8e5c68c8",
       "src": "https://github.com/echasnovski/mini.files"
     },
     "mini.icons": {
@@ -93,15 +97,12 @@
       "src": "https://github.com/MunifTanjim/nui.nvim"
     },
     "nvim-lspconfig": {
-      "rev": "2010fc6",
+      "rev": "e0fae251f8459940331960106d4bd9457cec23de",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-notify": {
       "rev": "8701bec",
       "src": "https://github.com/rcarriga/nvim-notify"
-    },
-    "nvim-plugin": {
-      "src": "/home/mikku/work/ts-analyzer/nvim-plugin"
     },
     "nvim-treesitter": {
       "rev": "42fc28ba",
@@ -110,6 +111,10 @@
     "nvim-web-devicons": {
       "rev": "8dcb311",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
+    },
+    "oil-git.nvim": {
+      "rev": "d1f27a5982df35b70fb842aa6bbfac10735c7265",
+      "src": "https://github.com/benomahony/oil-git.nvim"
     },
     "oil.nvim": {
       "rev": "7e1cd77",
@@ -120,7 +125,7 @@
       "src": "https://github.com/olimorris/onedarkpro.nvim"
     },
     "osmium": {
-      "rev": "7c95313ae3f403dd717a8377dcbf490648c4a7f9",
+      "rev": "d60c484f2f7dbedef2c81782d8614c46b4278e58",
       "src": "https://github.com/IroncladDev/osmium"
     },
     "persistence.nvim": {
@@ -132,7 +137,7 @@
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "rose-pine": {
-      "rev": "eb3ff49",
+      "rev": "cf2a288696b03d0934da713d66c6d71557b5c997",
       "src": "https://github.com/rose-pine/neovim"
     },
     "suit.nvim": {
@@ -140,15 +145,15 @@
       "src": "https://github.com/doums/suit.nvim"
     },
     "telescope.nvim": {
-      "rev": "84b9ba0",
+      "rev": "83a3a713d6b2d2a408491a1b959e55a7fa8678e8",
       "src": "https://github.com/nvim-telescope/telescope.nvim"
     },
     "tiny-inline-diagnostic.nvim": {
-      "rev": "d4d1718",
+      "rev": "71f998696a4d63a1fa42a6c70d5931a2001e485b",
       "src": "https://github.com/rachartier/tiny-inline-diagnostic.nvim"
     },
     "todo-comments.nvim": {
-      "rev": "411503d",
+      "rev": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668",
       "src": "https://github.com/folke/todo-comments.nvim"
     },
     "toggleterm.nvim": {
@@ -156,16 +161,12 @@
       "src": "https://github.com/akinsho/toggleterm.nvim"
     },
     "tokyonight.nvim": {
-      "rev": "b13cfc1",
+      "rev": "5da1b76e64daf4c5d410f06bcb6b9cb640da7dfd",
       "src": "https://github.com/folke/tokyonight.nvim"
     },
     "trouble.nvim": {
       "rev": "bd67efe",
       "src": "https://github.com/folke/trouble.nvim"
-    },
-    "ts-analyzer": {
-      "rev": "843a594cb6465cc4cc7f6cd2728e28a7a1ac6685",
-      "src": "https://github.com/mikkurogue/ts-analyzer"
     },
     "ts-error-translator.nvim": {
       "rev": "17ec46d",
@@ -176,7 +177,7 @@
       "src": "https://github.com/vyrx-dev/void.nvim"
     },
     "zig.vim": {
-      "rev": "0c10086",
+      "rev": "1a1112eec20e28c832a06ddb1d0060f6ce652372",
       "src": "https://github.com/ziglang/zig.vim"
     }
   }
