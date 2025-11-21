@@ -37,6 +37,7 @@ v.pack.add({
   { src = "https://github.com/MunifTanjim/nui.nvim" },
   { src = "https://github.com/rcarriga/nvim-notify" },
   { src = "https://github.com/doums/suit.nvim" },
+  { src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
   { src = "https://github.com/dmmulroy/ts-error-translator.nvim" },
   -- { src = "https://github.com/mikkurogue/ts-analyzer"}
 })
@@ -119,6 +120,8 @@ v.api.nvim_create_autocmd("PackChanged", {
   end,
 })
 
+require("ibl").setup()
+
 require("onedarkpro").setup({
   theme = "onedark",
 })
@@ -165,6 +168,7 @@ require("osmium").setup({
   integrations = {
     gitsigns = true,
     telescope = true,
+    indent_blankline = true,
     -- oil = true,
   },
   transparent_bg = false,     -- whether to use a transparent background

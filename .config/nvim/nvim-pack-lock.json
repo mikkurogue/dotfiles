@@ -48,6 +48,10 @@
       "rev": "5e0a460",
       "src": "https://github.com/ellisonleao/gruvbox.nvim"
     },
+    "indent-blankline.nvim": {
+      "rev": "005b56001b2cb30bfa61b7986bc50657816ba4ba",
+      "src": "https://github.com/lukas-reineke/indent-blankline.nvim"
+    },
     "kanagawa.nvim": {
       "rev": "aef7f5c",
       "src": "https://github.com/rebelot/kanagawa.nvim"
