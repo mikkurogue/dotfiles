@@ -39,8 +39,6 @@ require("oil").setup({
   open = "float",
 })
 
-require("oil-git").setup()
-
 v.api.nvim_create_autocmd("FileType", {
   pattern = "oil",
   callback = function()

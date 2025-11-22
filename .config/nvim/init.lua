@@ -2,7 +2,7 @@
 require("core.opts")
 
 -- Add local ts-analyzer plugins to runtimepath
-vim.opt.runtimepath:append("/home/mikku/work/ts-analyzer")
+-- vim.opt.runtimepath:append("/home/mikku/work/ts-analyzer")
 
 local v = vim
 
@@ -24,7 +24,6 @@ v.pack.add({
   { src = "https://github.com/dmtrKovalenko/fff.nvim" },
   { src = "https://github.com/nvim-mini/mini.icons" },
   { src = "https://github.com/stevearc/oil.nvim" },
-  { src = "https://github.com/benomahony/oil-git.nvim" },
   { src = "https://github.com/nvim-mini/mini.tabline" },
   { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
   { src = "https://github.com/akinsho/toggleterm.nvim" },

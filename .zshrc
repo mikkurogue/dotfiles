@@ -39,6 +39,8 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
+alias ls="eza -l --no-permissions --icons --color=always --sort=created --group-directories-first"
+
 export PATH=$PATH:/usr/local/go/bin
 # . "$HOME/.cargo/env"
 export PATH="$HOME/.cargo/bin:$PATH"
