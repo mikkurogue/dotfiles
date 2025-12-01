@@ -13,7 +13,7 @@
         "viewMode": "list"
     },
     "audio": {
-        "cavaFrameRate": 240,
+        "cavaFrameRate": 144,
         "externalMixer": "pwvucontrol || pavucontrol",
         "mprisBlacklist": [
         ],
@@ -82,7 +82,7 @@
                     "showProgressRing": true,
                     "showVisualizer": true,
                     "useFixedWidth": false,
-                    "visualizerType": "wave"
+                    "visualizerType": "mirrored"
                 },
                 {
                     "id": "Spacer",
@@ -150,6 +150,26 @@
         "brightnessStep": 5,
         "enableDdcSupport": false,
         "enforceMinimum": true
+    },
+    "calendar": {
+        "cards": [
+            {
+                "enabled": true,
+                "id": "banner-card"
+            },
+            {
+                "enabled": true,
+                "id": "calendar-card"
+            },
+            {
+                "enabled": true,
+                "id": "timer-card"
+            },
+            {
+                "enabled": true,
+                "id": "weather-card"
+            }
+        ]
     },
     "changelog": {
         "lastSeenVersion": ""
@@ -300,6 +320,8 @@
         "autoHideMs": 2000,
         "backgroundOpacity": 1,
         "enabled": false,
+        "enabledTypes": [
+        ],
         "location": "top_right",
         "monitors": [
         ],
@@ -323,29 +345,38 @@
         "powerOptions": [
             {
                 "action": "lock",
+                "countdownEnabled": false,
                 "enabled": true
             },
             {
                 "action": "suspend",
-                "enabled": true
+                "countdownEnabled": true,
+                "enabled": false
             },
             {
                 "action": "reboot",
+                "countdownEnabled": true,
                 "enabled": true
             },
             {
                 "action": "logout",
+                "countdownEnabled": true,
                 "enabled": true
             },
             {
                 "action": "shutdown",
+                "countdownEnabled": true,
                 "enabled": true
+            },
+            {
+                "action": "hibernate",
+                "countdownEnabled": true,
+                "enabled": false
             }
         ],
         "showHeader": true
     },
-    "settingsVersion": 23,
-    "setupCompleted": true,
+    "settingsVersion": 25,
     "systemMonitor": {
         "cpuCriticalThreshold": 90,
         "cpuWarningThreshold": 80,
