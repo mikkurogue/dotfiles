@@ -29,14 +29,17 @@ local function on_lsp_exit(code, signal, client_id)
   end
 end
 
+
+
 local lsps = {
   'rust_analyzer',
   'gopls',
-  'ts_ls',
+  -- 'ts_ls',
   'lua_ls',
   'biome',
   'zls',
-  'ocamllsp'
+  'ocamllsp',
+  'tsgo'
 }
 
 v.lsp.enable(lsps, {

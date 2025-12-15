@@ -38,6 +38,7 @@ v.pack.add({
   { src = "https://github.com/doums/suit.nvim" },
   { src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
   { src = "https://github.com/dmmulroy/ts-error-translator.nvim" },
+  { src = "https://github.com/vyfor/cord.nvim" }
   -- { src = "https://github.com/mikkurogue/ts-analyzer"}
 })
 
@@ -59,7 +60,8 @@ v.pack.add({
   { src = "https://github.com/bjarneo/firesky.nvim" },
   { src = "https://github.com/vyrx-dev/void.nvim" },
   { src = "https://github.com/IroncladDev/osmium" },
-  { src = "https://github.com/olimorris/onedarkpro.nvim" }
+  { src = "https://github.com/olimorris/onedarkpro.nvim" },
+  { src = "https://github.com/Mofiqul/adwaita.nvim" }
 })
 
 require("configuration.fff")
@@ -119,6 +121,25 @@ v.api.nvim_create_autocmd("PackChanged", {
   end,
 })
 
+v.api.nvim_create_autocmd('PackChanged', {
+  callback = function(opts)
+    if opts.data.spec.name == 'cord.nvim' and opts.data.kind == 'update' then
+      v.cmd 'Cord update'
+    end
+  end
+})
+
+require("cord").setup({
+  display = {
+    theme = "catppuccin",
+    flavor = "dark",
+  },
+  idle = {
+    enabled = false,
+  }
+})
+
+
 require("ibl").setup()
 
 require("onedarkpro").setup({
@@ -143,6 +164,7 @@ local schemes = {
   "matteblack",
   "darkmatter",
   "osmium",
+  "adwaita",
 }
 
 
