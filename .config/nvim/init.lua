@@ -38,7 +38,8 @@ v.pack.add({
   { src = "https://github.com/doums/suit.nvim" },
   { src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
   { src = "https://github.com/dmmulroy/ts-error-translator.nvim" },
-  { src = "https://github.com/vyfor/cord.nvim" }
+  { src = "https://github.com/vyfor/cord.nvim" },
+  { src = "https://github.com/saghen/blink.pairs" }
   -- { src = "https://github.com/mikkurogue/ts-analyzer"}
 })
 
@@ -138,6 +139,8 @@ require("cord").setup({
     enabled = false,
   }
 })
+
+-- require("blink.pairs").setup()
 
 
 require("ibl").setup()
