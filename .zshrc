@@ -41,6 +41,8 @@ alias ....='cd ../../..'
 
 alias ls="eza -l --no-permissions --icons --color=always --sort=created --group-directories-first"
 alias cat="bat"
+alias hx="helix"
+
 
 export PATH=$PATH:/usr/local/go/bin
 # . "$HOME/.cargo/env"
