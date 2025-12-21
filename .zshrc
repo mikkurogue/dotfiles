@@ -26,7 +26,7 @@ if command -v zoxide &>/dev/null; then
     local new=$PWD
     if [[ "$old" != "$new" ]]; then
       # show arrow and current path
-      printf "\U000F17A9 "
+      printf "  \U000F17A9 "
       print -P "%F{cyan}${new/#$HOME/~}%f"
     fi
   }
