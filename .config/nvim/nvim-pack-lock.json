@@ -5,7 +5,7 @@
       "src": "https://github.com/Mofiqul/adwaita.nvim"
     },
     "blink.cmp": {
-      "rev": "b14922e5c4b30efe0857256989b72eaf1f14109f",
+      "rev": "37ce860d8eeeee92d60b9a72db21e369d97e6a75",
       "src": "https://github.com/saghen/blink.cmp"
     },
     "blink.pairs": {
@@ -17,7 +17,7 @@
       "src": "https://github.com/catppuccin/nvim"
     },
     "conform.nvim": {
-      "rev": "9b8fa5e0b78168f68bee9bf886dc20f287c61e02",
+      "rev": "328c2f1dda56f933d3337a1316e1020ba30ba6aa",
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "copilot.lua": {
@@ -25,7 +25,7 @@
       "src": "https://github.com/zbirenbaum/copilot.lua"
     },
     "cord.nvim": {
-      "rev": "1af0ff6826b10f9ae8b01c63d16a90b8b31e7c48",
+      "rev": "7483e9ce335d22a9e52f83804134d621094b5fe7",
       "src": "https://github.com/vyfor/cord.nvim"
     },
     "darkmatter-nvim": {
@@ -33,11 +33,11 @@
       "src": "https://github.com/stevedylandev/darkmatter-nvim"
     },
     "fff.nvim": {
-      "rev": "abfa5d0ef7629867f2546b16e50cdeacbea471fc",
+      "rev": "f6af8353c3cb02ddde1588f24f27ff8b3a4037cf",
       "src": "https://github.com/dmtrKovalenko/fff.nvim"
     },
     "fidget.nvim": {
-      "rev": "e32b672d8fd343f9d6a76944fedb8c61d7d8111a",
+      "rev": "64463022a1f2ff1318ab22a2ea4125ed9313a483",
       "src": "https://github.com/j-hui/fidget.nvim"
     },
     "firesky.nvim": {
@@ -61,7 +61,7 @@
       "src": "https://github.com/rebelot/kanagawa.nvim"
     },
     "lazygit.nvim": {
-      "rev": "2305deed25bc61b866d5d39189e9105a45cf1cfb",
+      "rev": "a04ad0dbc725134edbee3a5eea29290976695357",
       "src": "https://github.com/kdheepak/lazygit.nvim"
     },
     "lsp-lens.nvim": {

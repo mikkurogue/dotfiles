@@ -34,12 +34,14 @@ end
 local lsps = {
   'rust_analyzer',
   'gopls',
-  -- 'ts_ls',
+  'ts_ls',
   'lua_ls',
   'biome',
   'zls',
   'ocamllsp',
-  'tsgo'
+  -- 'tsgo',
+  'zlint',
+  'tailwindcss',
 }
 
 v.lsp.enable(lsps, {
@@ -63,6 +65,7 @@ function _G.LspStatus()
     lua_ls = '',
     biome = '󰐅',
     zls = '',
+    tailwindcss = '󱏿',
   }
 
   local names = {}

@@ -1,35 +1,47 @@
-"$schema" = 'https://starship.rs/config-schema.json'
-
+# Put custom.scm right after directory
 format = """
-[](green)\
 $os\
 $username\
-[](bg:blue fg:green)\
+$hostname\
 $directory\
-[](bg:peach fg:blue)\
-$git_branch\
-$git_status\
-[](fg:yellow bg:green)\
-$c\
-$rust\
-$golang\
-$nodejs\
-$php\
-$java\
-$kotlin\
-$haskell\
-$python\
-[](fg:green bg:sapphire)\
-[ ](fg:lavender)\
-$cmd_duration\
+${custom.scm}\
+$all\
 $line_break\
 $character"""
 
 palette = 'osmium'
 
+[buf]
+disabled = true
+
+[username]
+style_user = "blue bold"
+style_root = "red bold"
+format = "[$user]($style)"
+disabled = false
+show_always =true 
+
+[hostname]
+ssh_only = false 
+format = "[@$hostname](bold yellow) "
+disabled = false
+
+[character]
+error_symbol = "[󱞩 ](bold red)"
+success_symbol = "[󱞩 ](bold green)"
+
+[line_break]
+disabled = false
+
+[directory]
+truncate_to_repo = false
+style = "cyan bold"
+format = "[$path]($style)[$read_only]($read_only_style) "
+
 [os]
 disabled = false
-style = "bg:green fg:crust"
+style = "blue bold"
+format = "[$symbol]($style) "
 
 [os.symbols]
 Windows = ""
@@ -45,7 +57,6 @@ Fedora = "󰣛"
 Alpine = ""
 Amazon = ""
 Android = ""
-AOSC = ""
 Arch = "󰣇"
 Artix = "󰣇"
 CentOS = ""
@@ -53,115 +64,49 @@ Debian = "󰣚"
 Redhat = "󱄛"
 RedHatEnterprise = "󱄛"
 
-[username]
-show_always = true
-style_user = "bg:green fg:crust"
-style_root = "bg:green fg:crust"
-format = '[ $user]($style)'
-
-[directory]
-style = "bg:blue fg:crust"
-format = "[ $path ]($style)"
-truncation_length = 3
-truncation_symbol = "…/"
-
-[directory.substitutions]
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = "󰝚 "
-"Pictures" = " "
-"Developer" = "󰲋 "
+[dotnet]
+detect_files = ["global.json", "Directory.Build.props", "Directory.Build.targets", "Packages.props"]
 
 [git_branch]
-symbol = ""
-style = "bg:yellow"
-format = '[[ $symbol $branch ](fg:crust bg:yellow)]($style)'
+disabled = true
+symbol = " "
+truncation_length = 18
 
 [git_status]
-style = "bg:yellow"
-format = '[[($all_status$ahead_behind )](fg:crust bg:yellow)]($style)'
-
-[nodejs]
-symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
-
-[c]
-symbol = " "
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
-
-[rust]
-symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
-
-[golang]
-symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
-
-[php]
-symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
-
-[java]
-symbol = " "
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
-
-[kotlin]
-symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
-
-[haskell]
-symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
-
-[python]
-symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version)(\(#$virtualenv\)) ](fg:crust bg:green)]($style)'
-
-[docker_context]
-symbol = ""
-style = "bg:sapphire"
-format = '[[ $symbol( $context) ](fg:crust bg:sapphire)]($style)'
-
-[conda]
-symbol = "  "
-style = "fg:crust bg:sapphire"
-format = '[$symbol$environment ]($style)'
-ignore_base = false
-
-[time]
-disabled = false
-time_format = "%R"
-style = "bg:lavender"
-format = '[[  $time ](fg:crust bg:lavender)]($style)'
-
-[line_break]
 disabled = true
 
-[character]
-disabled = false
-success_symbol = '[❯](bold fg:green)'
-error_symbol = '[❯](bold fg:red)'
-vimcmd_symbol = '[❮](bold fg:green)'
-vimcmd_replace_one_symbol = '[❮](bold fg:lavender)'
-vimcmd_replace_symbol = '[❮](bold fg:lavender)'
-vimcmd_visual_symbol = '[❮](bold fg:yellow)'
+[git_commit]
+disabled = true
 
-[cmd_duration]
-show_milliseconds = true
-format = " in $duration "
-style = "bg:lavender"
-disabled = false
-show_notifications = true
-min_time_to_notify = 45000
+[custom.scm]
+command = "jj-starship"
+when = "jj-starship detect"
+format = "$output "
+unsafe_no_escape = true
+
+[rust]
+symbol = "󱘗 "
+
+[golang]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[nix_shell]
+symbol = " "
+
+[nodejs]
+symbol = " "
+
+[bun]
+symbol = " "
+
+[deno]
+symbol = " "
+
+[package]
+disabled = true
 
 [palettes.osmium]
 # Based on osmium-colors theme
