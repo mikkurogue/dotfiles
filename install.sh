@@ -29,6 +29,14 @@ echo ""
 echo "Installing core Hyprland components..."
 yay -S --needed --noconfirm hyprland hypridle hyprlock hyprpaper walker noctalia-shell wlsunset
 
+echo ""
+echo "Installing Wayland utilities..."
+yay -S --needed --noconfirm waybar
+
+echo ""
+echo "Installing niri"
+yay -S --needed --noconfirm niri
+
 # Shell & Terminal
 echo ""
 echo "Installing shell and terminal..."
@@ -49,6 +57,7 @@ yay -S --needed --noconfirm brightnessctl fcitx5 polkit-gnome thunar jq elephant
 echo ""
 echo "Installing development tools..."
 yay -S --needed --noconfirm neovim-nightly-bin git github-cli nodejs npm  
+pacman -S jujutsu
 
 # Monitoring & Info
 echo ""
@@ -115,6 +124,9 @@ fi
 echo ""
 echo "Installing Zig..."
 yay -S --needed --noconfirm zig
+
+echo ""
+cargo install jj-starship
 
 # Change default shell to zsh
 if [ "$SHELL" != "$(which fish)" ]; then
