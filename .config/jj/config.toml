@@ -1,0 +1,34 @@
+# Default personal profile
+[user]
+name = "mikkurogue"
+email = "michael.lindemans@outlook.com"
+
+[ui]
+editor = "nvim"
+diff-editor = ":builtin"
+diff-formatter = ":git"
+graph.style = "curved"
+
+[template-aliases]
+# Display commit IDs as shortest unique 8-char prefix
+'format_short_id(id)' = 'id.shortest(8)'
+
+[signing]
+# Only sign commits authored by you
+behavior = "own"
+# Use SSH keys for commit signing
+# update to use correct ssh keys for gh
+# backend = "ssh"
+# key = "~/.ssh/id_rsa.pub" # gotta clean up ssh keys at some point
+
+[git]
+# Keep jj and git repos in same directory for interop
+colocate = true
+# Sign commits when pushing to remote
+sign-on-push = true
+
+[aliases]
+s = "status"
+cl = ["git", "push", "-c", "@-"]
+rebase-all = ["rebase", "-s", "all:roots(trunk()..mutable())", "-d", "trunk()"]
+#:schema https://docs.jj-vcs.dev/latest/config-schema.json
