@@ -1,0 +1,192 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+[](green)\
+$os\
+$username\
+[](bg:blue fg:green)\
+$directory\
+[](bg:peach fg:blue)\
+$git_branch\
+$git_status\
+[](fg:yellow bg:green)\
+$c\
+$rust\
+$golang\
+$nodejs\
+$php\
+$java\
+$kotlin\
+$haskell\
+$python\
+[](fg:green bg:sapphire)\
+[ ](fg:lavender)\
+$cmd_duration\
+$line_break\
+$character"""
+
+palette = 'osmium'
+
+[os]
+disabled = false
+style = "bg:green fg:crust"
+
+[os.symbols]
+Windows = ""
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+AOSC = ""
+Arch = "󰣇"
+Artix = "󰣇"
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+
+[username]
+show_always = true
+style_user = "bg:green fg:crust"
+style_root = "bg:green fg:crust"
+format = '[ $user]($style)'
+
+[directory]
+style = "bg:blue fg:crust"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚 "
+"Pictures" = " "
+"Developer" = "󰲋 "
+
+[git_branch]
+symbol = ""
+style = "bg:yellow"
+format = '[[ $symbol $branch ](fg:crust bg:yellow)]($style)'
+
+[git_status]
+style = "bg:yellow"
+format = '[[($all_status$ahead_behind )](fg:crust bg:yellow)]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+
+[c]
+symbol = " "
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+
+[golang]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+
+[php]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+
+[java]
+symbol = " "
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+
+[kotlin]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+
+[haskell]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+
+[python]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol( $version)(\(#$virtualenv\)) ](fg:crust bg:green)]($style)'
+
+[docker_context]
+symbol = ""
+style = "bg:sapphire"
+format = '[[ $symbol( $context) ](fg:crust bg:sapphire)]($style)'
+
+[conda]
+symbol = "  "
+style = "fg:crust bg:sapphire"
+format = '[$symbol$environment ]($style)'
+ignore_base = false
+
+[time]
+disabled = false
+time_format = "%R"
+style = "bg:lavender"
+format = '[[  $time ](fg:crust bg:lavender)]($style)'
+
+[line_break]
+disabled = true
+
+[character]
+disabled = false
+success_symbol = '[❯](bold fg:green)'
+error_symbol = '[❯](bold fg:red)'
+vimcmd_symbol = '[❮](bold fg:green)'
+vimcmd_replace_one_symbol = '[❮](bold fg:lavender)'
+vimcmd_replace_symbol = '[❮](bold fg:lavender)'
+vimcmd_visual_symbol = '[❮](bold fg:yellow)'
+
+[cmd_duration]
+show_milliseconds = true
+format = " in $duration "
+style = "bg:lavender"
+disabled = false
+show_notifications = true
+min_time_to_notify = 45000
+
+[custom.jj]
+command = "jj-starship"
+when = "jj-starship detect"
+
+[palettes.osmium]
+# Based on osmium-colors theme
+red = "#E55376"
+green = "#C9DE96"
+yellow = "#E9D39C"
+blue = "#9ABFE8"
+purple = "#B0A8EB"
+pink = "#D9A1E8"
+peach = "#E9D39C"
+lavender = "#B0A8EB"
+sapphire = "#8CAAD1"
+text = "#C8D5F1"
+subtext1 = "#949BB9"
+subtext0 = "#747A9C"
+overlay2 = "#747A9C"
+overlay1 = "#747A9C"
+overlay0 = "#353553"
+surface2 = "#353553"
+surface1 = "#1F1D2D"
+surface0 = "#1F1D2D"
+base = "#14131E"
+mantle = "#14131E"
+crust = "#14131E"
