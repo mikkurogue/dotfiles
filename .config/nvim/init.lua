@@ -62,7 +62,8 @@ v.pack.add({
   { src = "https://github.com/vyrx-dev/void.nvim" },
   { src = "https://github.com/IroncladDev/osmium" },
   { src = "https://github.com/olimorris/onedarkpro.nvim" },
-  { src = "https://github.com/Mofiqul/adwaita.nvim" }
+  { src = "https://github.com/Mofiqul/adwaita.nvim" },
+  { src = "https://github.com/nasccped/rustheme.nvim" }
 })
 
 require("configuration.fff")
@@ -149,30 +150,22 @@ require("onedarkpro").setup({
   theme = "onedark",
 })
 
-require("catppuccin").setup({
-  theme = "mocha"
-})
+require("catppuccin").setup()
 
 local schemes = {
-  "catppuccin",
+  "catppuccin-mocha",
   "tokyonight",
   "onedark",
-  "void",
-  "firesky",
-  "rose-pine",
   "kanagawa",
   "nordic",
-  "nightfox",
   "gruvbox",
-  "matteblack",
-  "darkmatter",
   "osmium",
-  "adwaita",
+  "rustheme",
 }
 
 
 -- set colorscheme
-v.cmd("colorscheme " .. schemes[13])
+v.cmd("colorscheme " .. schemes[7])
 
 require("configuration.todo-comments")
 require("configuration.mini")

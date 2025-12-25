@@ -4,7 +4,7 @@ $os\
 $username\
 $hostname\
 $directory\
-${custom.scm}\
+${custom.jj}\
 $all\
 $line_break\
 $character"""
@@ -80,11 +80,11 @@ disabled = true
 [git_commit]
 disabled = true
 
-[custom.scm]
+[custom.jj]
 command = "jj-starship"
-when = "jj-starship detect"
+detect_folders = [".jj", ".git"]
+shell = ["sh"]
 format = "$output "
-unsafe_no_escape = true
 
 [rust]
 symbol = "󱘗 "

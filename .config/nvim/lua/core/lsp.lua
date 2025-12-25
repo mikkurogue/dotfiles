@@ -34,7 +34,8 @@ end
 local lsps = {
   'rust_analyzer',
   'gopls',
-  'ts_ls',
+  -- 'ts_ls',
+  'vtsls',
   'lua_ls',
   'biome',
   'zls',

@@ -2,18 +2,18 @@
 font-family = "CaskaydiaMono Nerd Font"
 # font-family = "Adwaita Mono"
 font-style = Regular
-font-size =  14
+font-size =  16
 
 # Window
-window-padding-x = 14
 window-padding-y = 14
+window-padding-x = 14
 confirm-close-surface=false
 resize-overlay = never
 gtk-toolbar-style = flat
 
 # Cursor styling
 cursor-style = "block"
-cursor-style-blink = false
+cursor-style-blink = true 
 shell-integration-features = no-cursor
 
 # Keyboard bindings
@@ -27,6 +27,6 @@ keybind = performable:ctrl+v=paste_from_clipboard
 shell-integration-features = ssh-env
 
 # Shaders
-
 custom-shader = shaders/cursor_smear.glsl
 theme = noctalia
+
