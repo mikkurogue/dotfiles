@@ -68,15 +68,25 @@ echo "Setting up fish configuration..."
 backup_if_exists "$HOME/.config/fish" "$DOTFILES_DIR/.config/fish"
 ln -sf "$DOTFILES_DIR/.config/fish" "$HOME/.config/fish"
 
-# Backup and symlink mako
-echo "Setting up mako configuration..."
-backup_if_exists "$HOME/.config/mako" "$DOTFILES_DIR/.config/mako"
-ln -sf "$DOTFILES_DIR/.config/mako" "$HOME/.config/mako"
-
 # Backup and symlink noctalia
 echo "Setting up noctalia configuration..."
 backup_if_exists "$HOME/.config/noctalia" "$DOTFILES_DIR/.config/noctalia"
 ln -sf "$DOTFILES_DIR/.config/noctalia" "$HOME/.config/noctalia"
+
+# Backup and symlink niri
+echo "Setting up niri configuration..."
+backup_if_exists "$HOME/.config/niri" "$DOTFILES_DIR/.config/niri"
+ln -sf "$DOTFILES_DIR/.config/niri" "$HOME/.config/niri"
+
+# Backup and symlink jujutsu
+echo "Setting up jujutsu configuration..."
+backup_if_exists "$HOME/.config/jj" "$DOTFILES_DIR/.config/jj"
+ln -sf "$DOTFILES_DIR/.config/jj" "$HOME/.config/jj"
+
+# Backup and symlink fastfetch
+echo "Setting up fastfetch configuration..."
+backup_if_exists "$HOME/.config/fastfetch" "$DOTFILES_DIR/.config/fastfetch"
+ln -sf "$DOTFILES_DIR/.config/fastfetch" "$HOME/.config/fastfetch"
 
 # Setup zsh plugins directory
 echo "Setting up zsh plugins..."
