@@ -95,10 +95,6 @@ echo "Installing System Utilities"
 echo "========================================"
 yay -S --needed --noconfirm \
     brightnessctl \
-    fcitx5 \
-    fcitx5-configtool \
-    fcitx5-gtk \
-    fcitx5-qt \
     polkit-gnome \
     dunst \
     dolphin \
