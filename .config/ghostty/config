@@ -2,14 +2,15 @@
 font-family = "CaskaydiaMono Nerd Font"
 # font-family = "Adwaita Mono"
 font-style = Regular
-font-size =  16
+font-size = 14 
 
 # Window
-window-padding-y = 14
-window-padding-x = 14
+window-padding-y = 10
+window-padding-x = 10
+window-decoration = none
 confirm-close-surface=false
 resize-overlay = never
-gtk-toolbar-style = flat
+# gtk-toolbar-style = flat
 
 # Cursor styling
 cursor-style = "block"
