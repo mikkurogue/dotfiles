@@ -1,5 +1,12 @@
+
+theme = osmium 
+
 # Font
-font-family = "CaskaydiaMono Nerd Font"
+font-family = "ZedMono NFM Extd"
+font-feature = -dlig
+font-feature = -calt
+font-feature = -liga
+#font-family = "CaskaydiaMono Nerd Font"
 # font-family = "Adwaita Mono"
 font-style = Regular
 font-size = 14 
@@ -29,5 +36,4 @@ shell-integration-features = ssh-env
 
 # Shaders
 custom-shader = shaders/cursor_smear.glsl
-theme = noctalia
 
