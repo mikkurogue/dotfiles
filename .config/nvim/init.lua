@@ -27,7 +27,10 @@ v.pack.add({
   { src = "https://github.com/nvim-mini/mini.tabline" },
   { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
   { src = "https://github.com/akinsho/toggleterm.nvim" },
-  { src = "https://github.com/lewis6991/gitsigns.nvim" },
+  { src = "https://github.com/algmyr/vclib.nvim" },
+  { src = "https://github.com/algmyr/vcsigns.nvim" },
+  { src = "https://github.com/julienvincent/hunk.nvim" },
+  { src = "https://github.com/sindrets/diffview.nvim" },
   { src = "https://github.com/j-hui/fidget.nvim",                     name = "fidget.nvim" },
   { src = "https://github.com/folke/persistence.nvim",                event = "BufReadPre" },
   { src = "https://github.com/ziglang/zig.vim" },
@@ -176,7 +179,9 @@ require("core.lsp")
 require("configuration.blink-cmp")
 require("configuration.conform")
 require("configuration.treesitter")
-require("configuration.gitsigns")
+require("configuration.vcsigns")
+require("configuration.hunk")
+require("configuration.diffview")
 require("configuration.toggleterm")
 require("configuration.fidget")
 require("configuration.lualine")
