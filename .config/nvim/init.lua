@@ -141,7 +141,7 @@ require("cord").setup({
   },
   idle = {
     enabled = false,
-  }
+  },
 })
 
 -- require("blink.pairs").setup()
@@ -153,10 +153,23 @@ require("onedarkpro").setup({
   theme = "onedark",
 })
 
-require("catppuccin").setup()
+require("catppuccin").setup({
+  flavour = "mocha",
+  integrations = {
+    telescope = true,
+    fidget = true,
+    noice = true,
+    mini = true,
+    lualine = true,
+    indent_blankline = {
+      enabled = true,
+      colored_indent_levels = true,
+    },
+  },
+})
 
 local schemes = {
-  "catppuccin-mocha",
+  "catppuccin",
   "tokyonight",
   "onedark",
   "kanagawa",
@@ -168,7 +181,7 @@ local schemes = {
 
 
 -- set colorscheme
-v.cmd("colorscheme " .. schemes[7])
+v.cmd("colorscheme " .. schemes[1])
 
 require("configuration.todo-comments")
 require("configuration.mini")
