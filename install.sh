@@ -153,9 +153,9 @@ echo "========================================"
 yay -S --needed --noconfirm \
     ttf-cascadia-code-nerd \
     ttf-cascadia-mono-nerd \
+    ttf-zed-mono-nerd \
     noto-fonts \
     noto-fonts-emoji \
-    ttf-liberation
 
 # === Gaming (Wine & Steam) ===
 echo ""
