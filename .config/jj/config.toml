@@ -1,1 +1,84 @@
-/home/mikku/.config/jj/config.toml
+#:schema https://docs.jj-vcs.dev/latest/config-schema.json
+
+# Default personal profile
+[user]
+name = "mikkurogue"
+email = "michael.lindemans@outlook.com"
+
+[ui]
+editor = "nvim"
+diff-editor = ["nvim", "-c", "DiffEditor $left $right $output"]
+diff-formatter = ":git"
+graph.style = "curved"
+default-command = "log"
+
+[signing]
+# Only sign commits authored by you
+behavior = "own"
+# Use SSH keys for commit signing
+# update to use correct ssh keys for gh
+# backend = "ssh"
+# key = "~/.ssh/id_rsa.pub" # gotta clean up ssh keys at some point
+
+[git]
+# Keep jj and git repos in same directory for interop
+colocate = true
+# Sign commits when pushing to remote
+sign-on-push = true
+
+[template-aliases]
+# Show relative timestamps like "2 hours ago" instead of full dates
+'format_timestamp(timestamp)' = 'timestamp.ago()'
+
+# Display commit IDs as shortest unique 8-char prefix
+'format_short_id(id)' = 'id.shortest(8)'
+
+[aliases]
+bm = ["bookmark"]
+gf = ["git", "fetch"]
+gp = ["git", "push"]
+rbo = ["rebase", "-d", "closest_bookmark(@)"]
+d = ["describe"]
+
+# Advance a bookmark to your latest pushable change
+# Usage: jj tug [bookmark_name]
+# - jj tug        → moves closest_bookmark(@) to closest_pushable(@)
+# - jj tug main   → moves 'main' to closest_pushable(@)
+tug = ["util", "exec", "--", "sh", "-c", """
+  if [ -n "$1" ]; then
+    jj bookmark move "$1" --to 'closest_pushable(@)'
+  else
+    jj bookmark move --from 'closest_bookmark(@)' --to 'closest_pushable(@)'
+  fi
+""", "sh"]
+
+# Show your entire connected stack
+stack = ["log", "-r", "stack()"]
+
+[revset-aliases]
+# Find commits authored by you
+'mine()' = 'author(mikkurogue)'
+
+# Your commits that aren't immutable (trunk/tags/remote branches)
+# Shows all your mutable work across the repo
+'wip()' = 'mine() ~ immutable()'
+
+# Your commits not yet merged into trunk
+# Shows your unmerged/unpushed work
+'open()' = 'mine() ~ ::trunk()'
+
+# Find the nearest bookmark in ancestry from a revision
+# Used by tug alias to find which bookmark to advance
+'closest_bookmark(to)' = 'heads(::to & bookmarks())'
+
+# Find the nearest "pushable" commit - non-empty with a description
+# Skips empty WIP commits when advancing bookmarks
+'closest_pushable(to)' = 'heads(::to & mutable() & ~description(exact:"") & (~empty() | merges()))'
+
+# Show current branch from @ to its leaf commits
+'current()' = '@:: & mutable()'
+
+# Show your entire stack - all mutable commits connected to @
+# reachable() finds commits reachable in any direction (ancestors + descendants)
+# within the mutable() set (excludes immutable trunk/tags)
+'stack()' = 'reachable(@, mutable())'
