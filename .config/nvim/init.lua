@@ -156,15 +156,24 @@ require("onedarkpro").setup({
 require("catppuccin").setup({
   flavour = "mocha",
   integrations = {
-    telescope = true,
+    diffview = true,
     fidget = true,
+    harpoon = true,
+    mason = true,
+    native_lsp = { enabled = true },
     noice = true,
-    mini = true,
-    lualine = true,
-    indent_blankline = {
+    notify = true,
+    symbols_outline = true,
+    snacks = {
       enabled = true,
-      colored_indent_levels = true,
+      indent_scope_color = "mauve",
     },
+    render_markdown = true,
+    telescope = true,
+    treesitter = true,
+    treesitter_context = true,
+    ufo = true,
+    which_key = true,
   },
 })
 
