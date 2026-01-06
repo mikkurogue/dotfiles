@@ -19,6 +19,7 @@ set -gx PATH $PATH /usr/local/go/bin
 set -gx PATH $HOME/.cargo/bin $PATH
 
 alias ls="eza -l --no-permissions --icons --color=always --sort=created --group-directories-first"
+alias cat="bat --paging=never"
 
 
 # BEGIN opam configuration
