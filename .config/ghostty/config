@@ -2,10 +2,11 @@
 theme = osmium 
 
 # Font
-font-family = "ZedMono NFM Extd"
+font-family = "Hack-ZeroSlash"
 font-feature = -dlig
 font-feature = -calt
 font-feature = -liga
+font-feature = zero
 #font-family = "CaskaydiaMono Nerd Font"
 # font-family = "Adwaita Mono"
 font-style = Regular
