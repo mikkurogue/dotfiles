@@ -286,6 +286,36 @@ EOF
     echo "✓ environment.d configs created"
 fi
 
+# === Setup fstab for drive mounting ===
+echo ""
+echo "========================================"
+echo "Setting up drive mounting in fstab"
+echo "========================================"
+
+# Create mount points if they don't exist
+sudo mkdir -p /mnt/samsung870
+sudo mkdir -p /mnt/sda2
+
+# Backup fstab
+sudo cp /etc/fstab /etc/fstab.backup
+
+# Add entries if they don't already exist
+if ! grep -q "C0944D45944D3EE2" /etc/fstab; then
+    echo "UUID=C0944D45944D3EE2 /mnt/samsung870 ntfs-3g defaults,uid=1000,gid=1000,umask=022 0 0" | sudo tee -a /etc/fstab
+    echo "✓ Added Samsung 870 NTFS drive to fstab"
+else
+    echo "✓ Samsung 870 NTFS drive already in fstab"
+fi
+
+if ! grep -q "45ed6a1e-9e77-4f89-a618-6e806397f94a" /etc/fstab; then
+    echo "UUID=45ed6a1e-9e77-4f89-a618-6e806397f94a /mnt/sda2 btrfs defaults 0 0" | sudo tee -a /etc/fstab
+    echo "✓ Added sda2 btrfs drive to fstab"
+else
+    echo "✓ sda2 btrfs drive already in fstab"
+fi
+
+echo "✓ fstab configured for automatic drive mounting"
+
 # === Change default shell ===
 if [ "$SHELL" != "$(which fish)" ]; then
     echo ""
