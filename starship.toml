@@ -86,26 +86,41 @@ when = "jj-starship detect"
 shell = ["sh"]
 format = "$output "
 
-[rust]
-symbol = "󱘗 "
-
-[golang]
-symbol = " "
-
-[lua]
-symbol = " "
-
-[nix_shell]
-symbol = " "
+# ── Toolchains: icon + major.minor only ────────────────────────────────
 
 [nodejs]
 symbol = " "
+version_format = "${major}.${minor}"
+format = "[$symbol$version]($style) "
 
-[bun]
-symbol = " "
+[rust]
+symbol = "󱘗 "
+version_format = "${major}.${minor}"
+format = "[$symbol$version]($style) "
+
+[golang]
+symbol = " "
+version_format = "${major}.${minor}"
+format = "[$symbol$version]($style) "
+
+[lua]
+symbol = " "
+version_format = "${major}.${minor}"
+format = "[$symbol$version]($style) "
 
 [deno]
 symbol = " "
+version_format = "${major}.${minor}"
+format = "[$symbol$version]($style) "
+
+[bun]
+symbol = " "
+version_format = "${major}.${minor}"
+format = "[$symbol$version]($style) "
+
+[nix_shell]
+symbol = " "
+format = "[$symbol]($style)"
 
 [package]
 disabled = true
