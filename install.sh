@@ -71,7 +71,6 @@ yay -S --needed --noconfirm \
     wl-clip-persist \
     grim \
     slurp \
-    xembedsniproxy
 
 # === Audio & Media ===
 echo ""
@@ -81,8 +80,6 @@ echo "========================================"
 yay -S --needed --noconfirm \
     pipewire \
     pipewire-pulse \
-    pipewire-alsa \
-    pipewire-jack \
     wireplumber \
     playerctl \
     swayosd \
@@ -165,48 +162,49 @@ echo "Installing Gaming Components"
 echo "========================================"
 yay -S --needed --noconfirm \
     wine-staging \
-    mesa \
-    lib32-mesa \
-    vulkan-icd-loader \
-    lib32-vulkan-icd-loader \
-    xf86-video-amdgpu \
-    giflib \
-    lib32-giflib \
-    gnutls \
-    lib32-gnutls \
-    v4l-utils \
-    lib32-v4l-utils \
-    libpulse \
-    lib32-libpulse \
-    alsa-plugins \
-    lib32-alsa-plugins \
-    alsa-lib \
-    lib32-alsa-lib \
-    sqlite \
-    lib32-sqlite \
-    libxcomposite \
-    lib32-libxcomposite \
-    ocl-icd \
-    lib32-ocl-icd \
-    libva \
-    lib32-libva \
-    gtk3 \
-    lib32-gtk3 \
-    gst-plugins-base-libs \
-    lib32-gst-plugins-base-libs \
-    sdl2 \
-    lib32-sdl2 \
-    libva-mesa-driver \
-    lib32-libva-mesa-driver \
-    mesa-vdpau \
-    lib32-mesa-vdpau \
-    libva-vdpau-driver \
-    lib32-libva-vdpau-driver \
-    vulkan-radeon \
-    lib32-vulkan-radeon \
-    fuse2 \
+     fuse2 \
     steam \
     faugus-launcher-git
+#     mesa \
+#     lib32-mesa \
+#     vulkan-icd-loader \
+#     lib32-vulkan-icd-loader \
+#     xf86-video-amdgpu \
+#     giflib \
+#     lib32-giflib \
+#     gnutls \
+#     lib32-gnutls \
+#     v4l-utils \
+#     lib32-v4l-utils \
+#     libpulse \
+#     lib32-libpulse \
+#     alsa-plugins \
+#     lib32-alsa-plugins \
+#     alsa-lib \
+#     lib32-alsa-lib \
+#     sqlite \
+#     lib32-sqlite \
+#     libxcomposite \
+#     lib32-libxcomposite \
+#     ocl-icd \
+#     lib32-ocl-icd \
+#     libva \
+#     lib32-libva \
+#     gtk3 \
+#     lib32-gtk3 \
+#     gst-plugins-base-libs \
+#     lib32-gst-plugins-base-libs \
+#     sdl2 \
+#     lib32-sdl2 \
+#     libva-mesa-driver \
+#     lib32-libva-mesa-driver \
+#     mesa-vdpau \
+#     lib32-mesa-vdpau \
+#     libva-vdpau-driver \
+#     lib32-libva-vdpau-driver \
+#     vulkan-radeon \
+#     lib32-vulkan-radeon \
+
 
 # === Desktop Applications ===
 echo ""
@@ -225,17 +223,17 @@ echo "========================================"
 yay -S --needed --noconfirm \
     radeon-profile-git
 
-# === Rust & Cargo ===
-if ! command -v cargo &> /dev/null; then
-    echo ""
-    echo "========================================"
-    echo "Installing Rust & Cargo"
-    echo "========================================"
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-    source "$HOME/.cargo/env"
-else
-    echo "✓ Rust and Cargo already installed"
-fi
+# # === Rust & Cargo ===
+# if ! command -v cargo &> /dev/null; then
+#     echo ""
+#     echo "========================================"
+#     echo "Installing Rust & Cargo"
+#     echo "========================================"
+#     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s
+#     source "$HOME/.cargo/env"
+# else
+#     echo "✓ Rust and Cargo already installed"
+# fi
 
 # === Additional Development Tools ===
 echo ""

@@ -1,1 +1,90 @@
-/home/mikku/.config/waybar/config.jsonc
+{
+  "reload_style_on_change": true,
+  "layer": "bottom",
+  "position": "top",
+  "spacing": 8,
+  "height": 32,
+  "margin-top": 6,
+  "margin-left": 10,
+  "margin-right": 10,
+
+  "modules-left": ["hyprland/workspaces", "niri/workspaces"],
+  "modules-center": ["hyprland/window", "niri/window"],
+  "modules-right": ["pulseaudio", "network", "hyprland/language", "niri/language", "tray", "clock"],
+
+  "hyprland/window": {
+    "format": "{title}",
+    "max-length": 50,
+    "icon": true,
+   },
+
+  "niri/workspaces": {
+    "format": "{name}"
+  },
+
+  "niri/window": {
+    "format": "{title}",
+    "max-length": 50
+  },
+
+  "niri/language": {
+    "format": "{}"
+  },
+
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "format": "{icon}",
+    "icon": " ",
+    "active-only": false,
+    "all-outputs": true
+  },
+
+  "clock": {
+    "format": "{:%a %d %b  %H:%M}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "month",
+      "format": {
+        "months": "<span color='#cdd6f4'><b>{}</b></span>",
+        "days": "<span color='#cdd6f4'>{}</span>",
+        "weekdays": "<span color='#89b4fa'><b>{}</b></span>",
+        "today": "<span color='#f38ba8'><b><u>{}</u></b></span>"
+      }
+    }
+  },
+
+  "network": {
+    "format-ethernet": "󰈀",
+    "format-wifi": "󰖩 {essid}",
+    "format-disconnected": "󰖪",
+    "tooltip-format-ethernet": "󰈀 {ipaddr}/{cidr}",
+    "tooltip-format-wifi": "󰖩 {signalStrength}%"
+  },
+
+  "hyprland/language": {
+    "format": "{}",
+  },
+
+  "tray": {
+    "icon-size": 16,
+    "spacing": 10,
+    "show-passive-items": true,
+  },
+
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "󰖁 {volume}%",
+    "format-icons": {
+      "headphone": "󰋋",
+      "hands-free": "󰋎",
+      "headset": "󰋎",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""]
+    },
+    "scroll-step": 5,
+    "on-click": "pavucontrol",
+    "tooltip-format": "{desc}\n{volume}%"
+  }
+}

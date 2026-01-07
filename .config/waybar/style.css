@@ -1,1 +1,199 @@
-/home/mikku/.config/waybar/style.css
+/* Catppuccin Mocha - Minimalistic Theme */
+@define-color base   #1e1e2e;
+@define-color mantle #181825;
+@define-color crust  #11111b;
+
+@define-color text     #cdd6f4;
+@define-color subtext0 #a6adc8;
+@define-color subtext1 #bac2de;
+
+@define-color surface0 #313244;
+@define-color surface1 #45475a;
+@define-color surface2 #585b70;
+
+@define-color overlay0 #6c7086;
+@define-color overlay1 #7f849c;
+@define-color overlay2 #9399b2;
+
+@define-color blue      #89b4fa;
+@define-color lavender  #b4befe;
+@define-color sapphire  #74c7ec;
+@define-color sky       #89dceb;
+@define-color teal      #94e2d5;
+@define-color green     #a6e3a1;
+@define-color yellow    #f9e2af;
+@define-color peach     #fab387;
+@define-color maroon    #eba0ac;
+@define-color red       #f38ba8;
+@define-color mauve     #cba6f7;
+@define-color pink      #f5c2e7;
+@define-color flamingo  #f2cdcd;
+@define-color rosewater #f5e0dc;
+
+* {
+  font-family: "Hack Nerd Font", monospace;
+  font-size: 12px;
+  font-weight: 500;
+  min-height: 0;
+}
+
+window#waybar {
+  background: alpha(@base, 0.0);
+  color: @text;
+  border-radius: 0;
+}
+
+/* Workspaces */
+#workspaces {
+  background: @surface0;
+  border-radius: 14px;
+  padding: 4px 8px;
+}
+
+#workspaces button {
+  padding: 2px 12px;
+  color: @overlay0;
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#workspaces button.active {
+  color: @mauve;
+  background: @surface1;
+  font-size: 12px;
+}
+
+#workspaces button:hover {
+  background: @surface2;
+  color: @lavender;
+}
+
+#workspaces button.urgent {
+  color: @red;
+}
+
+/* Window title */
+#window {
+  background: @surface0;
+  border-radius: 14px;
+  padding: 6px 8px;
+  color: @text;
+  font-weight: 500;
+}
+
+#window.empty {
+  background: transparent;
+  padding: 0;
+}
+
+/* Clock */
+#clock {
+  background: @surface0;
+  border-radius: 14px;
+  padding: 4px 20px;
+  color: @mauve;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+/* System monitors */
+#cpu,
+#memory,
+#temperature {
+  background: @surface0;
+  border-radius: 14px;
+  padding: 6px 14px;
+}
+
+#cpu {
+  color: @blue;
+}
+
+#memory {
+  color: @green;
+}
+
+#temperature {
+  color: @peach;
+}
+
+#temperature.critical {
+  color: @red;
+}
+
+/* Cava visualizer */
+#custom-cava-internal {
+  background: @surface0;
+  border-radius: 14px;
+  padding: 6px 14px;
+  color: @sky;
+}
+
+/* Audio */
+#pulseaudio {
+  background: @surface0;
+  border-radius: 14px;
+  padding: 6px 14px;
+  color: @teal;
+}
+
+#pulseaudio.muted {
+  color: @overlay0;
+}
+
+/* Network */
+#network {
+  background: @surface0;
+  border-radius: 14px;
+  padding: 6px 14px;
+  color: @sapphire;
+}
+
+#network.disconnected {
+  color: @red;
+}
+
+/* Tray */
+#tray {
+  background: @surface0;
+  border-radius: 14px;
+  padding: 4px 12px;
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+}
+
+/* Power button */
+#custom-power {
+  background: @surface0;
+  border-radius: 14px;
+  padding: 6px 14px;
+  color: @red;
+  font-size: 12px;
+}
+
+#custom-power:hover {
+  background: @red;
+  color: @base;
+}
+
+/* Tooltips */
+tooltip {
+  background: @base;
+  border: 2px solid @surface0;
+  border-radius: 12px;
+  padding: 10px 14px;
+}
+
+tooltip label {
+  color: @text;
+  font-weight: 500;
+}
