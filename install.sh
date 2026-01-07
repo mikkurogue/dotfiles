@@ -34,17 +34,18 @@ echo "========================================"
 echo "Installing Window Managers & Wayland"
 echo "========================================"
 yay -S --needed --noconfirm \
-    hyprland \
-    hypridle \
-    hyprlock \
-    hyprpaper \
+    awww \
     niri \
-    walker \
     wofi \
-    noctalia-shell \
     wlsunset \
     xdg-desktop-portal-hyprland \
     xdg-desktop-portal-gtk
+    # noctalia-shell \
+    # hyprland \
+    # hypridle \
+    # hyprlock \
+    # hyprpaper \
+
 
 # === Shell & Terminal ===
 echo ""
@@ -104,7 +105,6 @@ yay -S --needed --noconfirm \
     fzf \
     ripgrep \
     fd \
-    bat \
     qt5ct \
     qt6ct \
     kvantum \
@@ -143,7 +143,9 @@ echo "Installing File Tools"
 echo "========================================"
 yay -S --needed --noconfirm \
     eza \
-    xclip
+    xclip \
+    bat \
+    tree
 
 # === Fonts ===
 echo ""
@@ -152,9 +154,7 @@ echo "Installing Fonts"
 echo "========================================"
 yay -S --needed --noconfirm \
     ttf-cascadia-code-nerd \
-    ttf-cascadia-mono-nerd \
     ttf-zed-mono-nerd \
-    noto-fonts \
     noto-fonts-emoji \
 
 # === Gaming (Wine & Steam) ===
