@@ -58,7 +58,7 @@ yay -S --needed --noconfirm \
     starship \
     ghostty-git \
     zsh-autosuggestions \
-    zsh-syntax-highlighting
+    zsh-syntax-highlighting \
 
 # === Wayland Utilities ===
 echo ""
@@ -110,6 +110,7 @@ yay -S --needed --noconfirm \
     kvantum \
     breeze-icons \
     adw-gtk3 \
+    ntfs-3g \
     adw-gtk-theme
 
 # === Development Tools ===
