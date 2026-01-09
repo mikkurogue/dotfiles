@@ -82,7 +82,7 @@ disabled = true
 disabled = true
 
 [custom.jj]
-command = "jj-starship --truncate-name 20 --bookmarks-display-limit 1"
+command = "jj-starship --truncate-name 20 --bookmarks-display-limit 10"
 when = "jj-starship detect"
 shell = ["sh"]
 format = "$output "

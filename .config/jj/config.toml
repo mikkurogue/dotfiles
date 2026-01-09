@@ -10,7 +10,8 @@ editor = "nvim"
 diff-editor = ["nvim", "-c", "DiffEditor $left $right $output"]
 diff-formatter = ":git"
 graph.style = "curved"
-default-command = "log"
+default-command = "l"
+should-sign-off = true
 
 [signing]
 # Only sign commits authored by you
@@ -26,10 +27,18 @@ colocate = true
 # Sign commits when pushing to remote
 sign-on-push = true
 
+[templates]
+log_node = '''
+if(self && !current_working_copy && !immutable && !conflict && in_branch(self),
+  "◇",
+  builtin_log_node
+)
+'''
+
 [template-aliases]
 # Show relative timestamps like "2 hours ago" instead of full dates
 'format_timestamp(timestamp)' = 'timestamp.ago()'
-
+"in_branch(commit)" = 'commit.contained_in("immutable_heads()..bookmarks()")'
 # Display commit IDs as shortest unique 8-char prefix
 'format_short_id(id)' = 'id.shortest(8)'
 
@@ -37,13 +46,17 @@ sign-on-push = true
 bm = ["bookmark"]
 gf = ["git", "fetch"]
 gp = ["git", "push"]
+n = ["new"]
 rbo = ["rebase", "-d", "closest_bookmark(@)"]
 d = ["describe"]
+c = ["commit"]
+bmt = ["bookmark", "track"] 
+l = ["log", "-r", "ancestors(reachable(@, mutable()), 2)"]
 
 # Advance a bookmark to your latest pushable change
 # Usage: jj tug [bookmark_name]
 # - jj tug        → moves closest_bookmark(@) to closest_pushable(@)
-# - jj tug main   → moves 'main' to closest_pushable(@)
+# - jj tug master   → moves 'master' to closest_pushable(@)
 tug = ["util", "exec", "--", "sh", "-c", """
   if [ -n "$1" ]; then
     jj bookmark move "$1" --to 'closest_pushable(@)'
@@ -82,3 +95,4 @@ stack = ["log", "-r", "stack()"]
 # reachable() finds commits reachable in any direction (ancestors + descendants)
 # within the mutable() set (excludes immutable trunk/tags)
 'stack()' = 'reachable(@, mutable())'
+

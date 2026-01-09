@@ -42,7 +42,8 @@ v.pack.add({
   { src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
   { src = "https://github.com/dmmulroy/ts-error-translator.nvim" },
   { src = "https://github.com/vyfor/cord.nvim" },
-  { src = "https://github.com/saghen/blink.pairs" }
+  { src = "https://github.com/saghen/blink.pairs" },
+  { src = "https://github.com/vuki656/package-info.nvim" }
   -- { src = "https://github.com/mikkurogue/ts-analyzer"}
 })
 
@@ -70,6 +71,8 @@ v.pack.add({
 })
 
 require("configuration.fff")
+
+require("package-info").setup()
 
 v.api.nvim_create_autocmd("PackChanged", {
   callback = function(ev)
