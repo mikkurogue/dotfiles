@@ -28,6 +28,20 @@ colocate = true
 sign-on-push = true
 
 [templates]
+log = '''
+separate(" ",
+  format_short_id(commit_id),
+  format_short_id(change_id),
+  author.name(),
+  format_timestamp(committer.timestamp()),
+  bookmarks,
+  if(!description,
+    "<no description>",
+    description.first_line()
+    )
+)
+'''
+
 log_node = '''
 if(self && !current_working_copy && !immutable && !conflict && in_branch(self),
   "◇",
