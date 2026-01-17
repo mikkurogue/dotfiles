@@ -65,7 +65,9 @@ rbo = ["rebase", "-d", "closest_bookmark(@)"]
 d = ["describe"]
 c = ["commit"]
 bmt = ["bookmark", "track"] 
-l = ["log", "-r", "ancestors(reachable(@, mutable()), 2)"]
+l = ["util", "exec", "--", "sh", "-c", """
+  jj log -r "ancestors(reachable(@, mutable()), ${1:-50})"
+""", "sh"]
 
 # Advance a bookmark to your latest pushable change
 # Usage: jj tug [bookmark_name]
