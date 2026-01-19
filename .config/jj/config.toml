@@ -66,7 +66,7 @@ d = ["describe"]
 c = ["commit"]
 bmt = ["bookmark", "track"] 
 l = ["util", "exec", "--", "sh", "-c", """
-  jj log -r "ancestors(reachable(@, mutable()), ${1:-50})"
+  jj log -r "ancestors(reachable(@, mutable()), ${1:-20})"
 """, "sh"]
 
 # Advance a bookmark to your latest pushable change
