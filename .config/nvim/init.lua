@@ -221,6 +221,7 @@ require("osmium").setup({
   show_end_of_buffer = false, -- whether to show the end of buffer
 })
 
+
 require("configuration.telescope")
 require("configuration.tiny-inline-diagnostic")
 
