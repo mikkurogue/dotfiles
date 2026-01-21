@@ -1,7 +1,3 @@
--- ============================================================================
--- VCS Functions (Preserve existing functionality)
--- ============================================================================
-
 local function truncate_branch_name(branch)
   if not branch or branch == "" then
     return ""
@@ -60,10 +56,6 @@ local function get_vcs_name()
   return vcs_cache.vcs_type or ""
 end
 
--- ============================================================================
--- New Utility Functions
--- ============================================================================
-
 -- Macro recording indicator
 local function get_macro_recording()
   local reg = vim.fn.reg_recording()
@@ -99,12 +91,12 @@ local function get_cursor_position()
   local col = vim.fn.col('.')
   local total = vim.fn.line('$')
   local percent = math.floor((line / total) * 100)
-  
+
   -- Create a visual percentage bar
   local bar_width = 8
   local filled = math.floor((percent / 100) * bar_width)
   local bar = string.rep('━', filled) .. string.rep('─', bar_width - filled)
-  
+
   return string.format(' %d:%d  %s %d%%%%  %d', line, col, bar, percent, total)
 end
 
@@ -127,9 +119,6 @@ local function get_mode_with_icon()
   return mode_map[mode] or '󰻀 ' .. mode
 end
 
--- ============================================================================
--- Lualine Setup with Enhanced Icons and Components
--- ============================================================================
 
 require('lualine').setup {
   options = {
@@ -161,7 +150,7 @@ require('lualine').setup {
         padding = { left = 1, right = 1 }
       }
     },
-    
+
     -- Section B: VCS info, diff, and diagnostics
     lualine_b = {
       {
@@ -172,9 +161,11 @@ require('lualine').setup {
       {
         'diff',
         symbols = {
-          added = ' ',
-          modified = ' ',
-          removed = ' '
+          added = ' ',
+          modified = ' ',
+          removed = ' ',
+          conflict = ' ',
+          renamed = ' '
         },
         source = function()
           local bufnr = vim.api.nvim_get_current_buf()
@@ -201,7 +192,7 @@ require('lualine').setup {
         separator = { right = '' },
       }
     },
-    
+
     -- Section C: Filename with enhanced symbols
     lualine_c = {
       {
@@ -217,7 +208,7 @@ require('lualine').setup {
         separator = { right = '|' },
       }
     },
-    
+
     -- Section X: Cool extra components
     lualine_x = {
       {
@@ -244,7 +235,7 @@ require('lualine').setup {
         separator = { left = '' },
       },
     },
-    
+
     -- Section Y: File info and VCS type
     lualine_y = {
       {
@@ -280,14 +271,14 @@ require('lualine').setup {
       },
       {
         get_vcs_name,
-        icon = '󰊢',
+        icon = '󰊢 ',
         cond = function()
           return get_vcs_name() ~= ''
         end,
         separator = { left = '' },
       }
     },
-    
+
     -- Section Z: Enhanced cursor position with percentage bar
     lualine_z = {
       {
@@ -297,7 +288,7 @@ require('lualine').setup {
       }
     }
   },
-  
+
   inactive_sections = {
     lualine_a = {},
     lualine_b = {},
@@ -306,8 +297,8 @@ require('lualine').setup {
         'filename',
         path = 1,
         symbols = {
-          modified = ' ',
-          readonly = ' ',
+          modified = ' ',
+          readonly = ' ',
         }
       }
     },
@@ -315,7 +306,7 @@ require('lualine').setup {
     lualine_y = {},
     lualine_z = {}
   },
-  
+
   tabline = {},
   winbar = {},
   inactive_winbar = {},
