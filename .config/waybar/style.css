@@ -56,14 +56,18 @@ window#waybar {
   background: transparent;
   border: none;
   border-radius: 10px;
-  font-size: 18px;
+  font-size: 16px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #workspaces button.active {
-  color: @mauve;
+  background: linear-gradient(135deg, alpha(@peach, 0.3), alpha(@green, 0.3));
   background: @surface1;
-  font-size: 12px;
+  color: @peach;
+  font-size: 18px;
+  box-shadow: 0 0 10px alpha(@peach, 0.3), 0 0 15px alpha(@green, 0.2);
+  text-shadow: 0 0 8px alpha(@peach, 0.5);
+  border: 1px solid alpha(@peach, 0.3);
 }
 
 #workspaces button:hover {
@@ -74,6 +78,8 @@ window#waybar {
 #workspaces button.urgent {
   color: @red;
 }
+
+
 
 /* Window title */
 #window {
@@ -177,7 +183,7 @@ window#waybar {
   border-radius: 14px;
   padding: 6px 14px;
   color: @red;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 #custom-power:hover {

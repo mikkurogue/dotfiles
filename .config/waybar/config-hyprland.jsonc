@@ -16,9 +16,11 @@
     "on-click": "activate",
     "format": "{icon}",
     "format-icons": {
-      "active": "",
-      "default": ""
+      "active": " ",
+      "default": "{name}"
     },
+    "all-outputs": true
+  },
     "all-outputs": true
   },
 
