@@ -68,6 +68,7 @@ bmt = ["bookmark", "track"]
 l = ["util", "exec", "--", "sh", "-c", """
   jj log -r "ancestors(reachable(@, mutable()), ${1:-20})"
 """, "sh"]
+mine = ["log", "-n", "5", "-r", "mine()"]
 
 # Advance a bookmark to your latest pushable change
 # Usage: jj tug [bookmark_name]
