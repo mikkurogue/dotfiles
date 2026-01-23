@@ -131,7 +131,8 @@ window#waybar {
 }
 
 /* Cava visualizer */
-#custom-cava-internal {
+#custom-cava-internal,
+#language {
   background: @surface0;
   border-radius: 14px;
   padding: 6px 14px;

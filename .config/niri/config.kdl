@@ -33,7 +33,7 @@ input {
     mouse {
         // off
         // natural-scroll
-        accel-speed -0.4
+        accel-speed 0.0
         accel-profile "flat"
         // scroll-method "no-scroll"
     }
@@ -253,10 +253,12 @@ environment {
     ELECTRON_OZONE_PLATFORM_HINT "wayland"
     OZONE_PLATFORM "wayland"
     XDG_SESSION_TYPE "wayland"
+    WINE_FULLSCREEN_INTEGER_SCALING "1"
     
     // Desktop session
     XDG_CURRENT_DESKTOP "niri"
     XDG_SESSION_DESKTOP "niri"
+
     
     // XCompose
     XCOMPOSEFILE "~/.XCompose"
@@ -274,6 +276,7 @@ spawn-at-startup "awww-daemon"
 spawn-at-startup "dunst"
 spawn-at-startup "swayosd-server"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+spawn-at-startup "systemctl" "--user" "set-environment" "WINE_FULLSCREEN_INTEGER_SCALING=1"
 spawn-at-startup "xembedsniproxy"
 spawn-at-startup "discord"
 spawn-sh-at-startup "steam -silent"
@@ -338,18 +341,18 @@ window-rule {
     match app-id=r#"^[Ss]team$"#
     open-on-output "DP-2"
 }
-//
-// // World of Warcraft - fullscreen
-// window-rule {
-//     match title=r#"^World of Warcraft$"#
-//     open-fullscreen true
-// }
-//
-// // Battle.net - tiled
-// window-rule {
-//     match title=r#"^Battle\.net$"#
-//     open-maximized false
-// }
+
+// World of Warcraft - fullscreen
+window-rule {
+    match title=r#"^World of Warcraft$"#
+    open-fullscreen true
+}
+
+// Battle.net - tiled
+window-rule {
+    match title=r#"^Battle\.net$"#
+    open-maximized false
+}
 
 // Prevent file managers from opening maximized
 window-rule {
@@ -658,8 +661,7 @@ binds {
     // a matching layout switch hotkey configured in xkb options above.
     // Having both at once on the same hotkey will break the switching,
     // since it will switch twice upon pressing the hotkey (once by xkb, once by niri).
-    // Mod+Space       { switch-layout "next"; }
-    // Mod+Shift+Space { switch-layout "prev"; }
+    Mod+Shift+Space hotkey-overlay-title="Switch layout" { switch-layout "next"; }
 
     // Print { screenshot; }
     // Ctrl+Print { screenshot-screen; }
