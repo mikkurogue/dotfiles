@@ -144,6 +144,10 @@
       "rev": "d60c484f2f7dbedef2c81782d8614c46b4278e58",
       "src": "https://github.com/IroncladDev/osmium"
     },
+    "package-info.nvim": {
+      "rev": "52e407af634cd5d3add0dc916c517865850113a4",
+      "src": "https://github.com/vuki656/package-info.nvim"
+    },
     "persistence.nvim": {
       "rev": "b20b2a7887bd39c1a356980b45e03250f3dce49c",
       "src": "https://github.com/folke/persistence.nvim"

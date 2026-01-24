@@ -193,7 +193,7 @@ local schemes = {
 
 
 -- set colorscheme
-v.cmd("colorscheme " .. schemes[1])
+v.cmd("colorscheme " .. schemes[7])
 
 require("configuration.todo-comments")
 require("configuration.mini")
@@ -203,7 +203,7 @@ require("core.lsp")
 -- require("core.lsp-breadcrumbs")
 require("configuration.blink-cmp")
 require("configuration.conform")
-require("configuration.treesitter")
+-- require("configuration.treesitter")
 require("configuration.vcsigns")
 require("configuration.hunk")
 require("configuration.diffview")
