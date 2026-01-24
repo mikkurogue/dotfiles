@@ -192,6 +192,29 @@ window#waybar {
   color: @base;
 }
 
+/* Notifications */
+#custom-notifications {
+  background: @surface0;
+  border-radius: 14px;
+  padding: 6px 14px;
+  color: @yellow;
+  font-size: 13px;
+}
+
+#custom-notifications.empty {
+  color: @overlay0;
+}
+
+#custom-notifications.active {
+  color: @yellow;
+  font-weight: 600;
+}
+
+#custom-notifications:hover {
+  background: @surface1;
+  color: @peach;
+}
+
 /* Tooltips */
 tooltip {
   background: @base;

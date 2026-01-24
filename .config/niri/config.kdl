@@ -271,6 +271,7 @@ environment {
     GDK_SCALE "1"
 }
 
+spawn-at-startup "kunai" "daemon"
 spawn-at-startup "waybar" "-c" "/home/mikku/.config/waybar/config-niri.jsonc"
 spawn-at-startup "awww-daemon"
 spawn-at-startup "dunst"
@@ -661,7 +662,7 @@ binds {
     // a matching layout switch hotkey configured in xkb options above.
     // Having both at once on the same hotkey will break the switching,
     // since it will switch twice upon pressing the hotkey (once by xkb, once by niri).
-    Mod+Shift+Space hotkey-overlay-title="Switch layout" { switch-layout "next"; }
+    Shift+Alt+L hotkey-overlay-title="Switch layout" { switch-layout "next"; }
 
     // Print { screenshot; }
     // Ctrl+Print { screenshot-screen; }
