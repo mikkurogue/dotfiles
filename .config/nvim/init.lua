@@ -200,10 +200,8 @@ require("configuration.mini")
 require("configuration.persistence")
 require("configuration.oil")
 require("core.lsp")
--- require("core.lsp-breadcrumbs")
 require("configuration.blink-cmp")
 require("configuration.conform")
--- require("configuration.treesitter")
 require("configuration.vcsigns")
 require("configuration.hunk")
 require("configuration.diffview")
@@ -216,9 +214,10 @@ require("osmium").setup({
     gitsigns = true,
     telescope = true,
     indent_blankline = true,
+    fff = true,
     -- oil = true,
   },
-  transparent_bg = false,     -- whether to use a transparent background
+  transparent_bg = true,     -- whether to use a transparent background
   show_end_of_buffer = false, -- whether to show the end of buffer
 })
 
