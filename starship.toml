@@ -7,7 +7,7 @@ $directory\
 ${custom.jj}\
 $all\
 $line_break\
-$character"""
+[  ]()$character"""
 
 palette = 'osmium'
 
