@@ -193,9 +193,9 @@ require('lualine').setup {
       {
         'diagnostics',
         symbols = {
-          error = ' ',
-          warn = ' ',
-          info = ' ',
+          error = ' ',
+          warn = '󰀦 ',
+          info = '󰋼 ',
           hint = '󰌵 '
         },
         separator = { right = '' },
@@ -208,13 +208,13 @@ require('lualine').setup {
         'filename',
         path = 0, -- Just filename, no path
         symbols = {
-          modified = ' ',
-          readonly = ' ',
+          modified = ' ',
+          readonly = ' ',
           unnamed = '󰡯 ',
-          newfile = ' '
+          newfile = ' '
         },
         file_status = true,
-        separator = { right = '' },
+        separator = { right = '|' },
       }
     },
     

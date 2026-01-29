@@ -82,6 +82,11 @@ tug = ["util", "exec", "--", "sh", "-c", """
   fi
 """, "sh"]
 
+# git yolo from josh manders but in jj
+yolo = ["util", "exec", "--", "sh", "-c", """
+  jj describe -m "$(curl -sL https://whatthecommit.com/index.txt)"
+""", "sh"]
+
 # Show your entire connected stack
 stack = ["log", "-r", "stack()"]
 
