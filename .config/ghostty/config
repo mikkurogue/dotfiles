@@ -1,5 +1,6 @@
 
-theme = osmium 
+# theme = osmium 
+theme = Atom One Dark 
 
 # Font
 font-family = "Hack-ZeroSlash"

@@ -343,6 +343,12 @@ window-rule {
     open-on-output "DP-2"
 }
 
+// Steam games (Proton) - open fullscreen
+window-rule {
+    match app-id=r#"^steam_app_"#
+    open-fullscreen true
+}
+
 // World of Warcraft - fullscreen
 window-rule {
     match title=r#"^World of Warcraft$"#
