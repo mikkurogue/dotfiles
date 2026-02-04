@@ -396,6 +396,7 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T hotkey-overlay-title="Terminal" { spawn "ghostty"; }
+    Mod+Z hotkey-overlay-title="Open Zed" { spawn "zeditor"; }
     Mod+F hotkey-overlay-title="Browser" { spawn "firefox"; }
     Mod+Shift+Alt+F hotkey-overlay-title="Browser (private)" { spawn "firefox" "--private"; }
     Mod+E hotkey-overlay-title="File Manager" { spawn "thunar"; }
