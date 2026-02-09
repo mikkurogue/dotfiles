@@ -43,7 +43,8 @@ v.pack.add({
   { src = "https://github.com/dmmulroy/ts-error-translator.nvim" },
   { src = "https://github.com/vyfor/cord.nvim" },
   { src = "https://github.com/saghen/blink.pairs" },
-  { src = "https://github.com/vuki656/package-info.nvim" }
+  { src = "https://github.com/vuki656/package-info.nvim" },
+  { src = "https://github.com/goolord/alpha-nvim" },
   -- { src = "https://github.com/mikkurogue/ts-analyzer"}
 })
 
@@ -95,21 +96,21 @@ v.api.nvim_create_autocmd("PackChanged", {
     end
 
     -- Build ts-analyzer when installed from GitHub
-    if spec and spec.name == "ts-analyzer" and ev.data.kind == "install" or ev.data.kind == "update" then
-      local ts_analyzer_path = v.fn.stdpath("data") .. "/site/pack/core/opt/ts-analyzer"
-      v.fn.jobstart({ "cargo", "build", "--release" }, {
-        cwd = ts_analyzer_path,
-        on_exit = function(_, code)
-          if code == 0 then
-            v.notify("[ts-analyzer] Cargo build finished successfully in " .. ts_analyzer_path,
-              v.log.levels.INFO)
-          else
-            v.notify("[ts-analyzer] Cargo build failed with exit code " .. code, v.log.levels
-              .ERROR)
-          end
-        end,
-      })
-    end
+    -- if spec and spec.name == "ts-analyzer" and ev.data.kind == "install" or ev.data.kind == "update" then
+    --   local ts_analyzer_path = v.fn.stdpath("data") .. "/site/pack/core/opt/ts-analyzer"
+    --   v.fn.jobstart({ "cargo", "build", "--release" }, {
+    --     cwd = ts_analyzer_path,
+    --     on_exit = function(_, code)
+    --       if code == 0 then
+    --         v.notify("[ts-analyzer] Cargo build finished successfully in " .. ts_analyzer_path,
+    --           v.log.levels.INFO)
+    --       else
+    --         v.notify("[ts-analyzer] Cargo build failed with exit code " .. code, v.log.levels
+    --           .ERROR)
+    --       end
+    --     end,
+    --   })
+    -- end
 
     if spec and spec.name == "blink.cmp" and ev.data.kind == "install" or ev.data.kind == "update" then
       local blink_cmp_path = v.fn.stdpath("data") .. "/site/pack/core/opt/blink.cmp"
@@ -235,6 +236,7 @@ require("configuration.tiny-inline-diagnostic")
 -- })
 require("configuration.noice")
 require("configuration.suit")
+require("configuration.alpha")
 
 -- get current git branch
 function _G.GitBranch()
