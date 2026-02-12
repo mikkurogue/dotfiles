@@ -1,1 +1,60 @@
 # Global git config here
+
+[alias]
+	branch-stat = "!f() { \
+		if [ -z \"$1\" ] || [ -z \"$2\" ]; then \
+			echo \"Usage: git branch-stat <base> <target>\"; \
+			echo \"Example: git branch-stat develop feature-branch\"; \
+			exit 1; \
+		fi; \
+		BASE=\"$1\"; \
+		TARGET=\"$2\"; \
+		GREEN='\\033[32m'; \
+		RED='\\033[31m'; \
+		BOLD='\\033[1m'; \
+		CYAN='\\033[36m'; \
+		RESET='\\033[0m'; \
+		echo \"\"; \
+		printf \"${BOLD}Branch diff:${RESET} ${CYAN}%s${RESET} → ${CYAN}%s${RESET}\\n\\n\" \"$BASE\" \"$TARGET\"; \
+		printf \"${BOLD}%-55s %8s %10s %10s${RESET}\\n\" \"File\" \"Net\" \"+Added\" \"-Deleted\"; \
+		printf '─%.0s' {1..85}; echo ''; \
+		git diff --numstat \"$BASE\"...\"$TARGET\" | \
+		awk -v green=\"$GREEN\" -v red=\"$RED\" -v reset=\"$RESET\" '\
+		{ \
+			added=$1; deleted=$2; file=$3; net=added-deleted; \
+			total_added+=added; total_deleted+=deleted; total_net+=net; files++; \
+			n=split(file,parts,\"/\"); basename=parts[n]; \
+			if (net > 0) { net_color=green; net_str=sprintf(\"+%d\", net); } \
+			else if (net < 0) { net_color=red; net_str=sprintf(\"%d\", net); } \
+			else { net_str=\"±0\"; net_color=reset; } \
+			del_str = (deleted == 0) ? \"0\" : sprintf(\"-%d\", deleted); \
+			data[NR]=sprintf(\"%-55s %s%8s%s %s%+10d%s %s%10s%s\", \
+				(length(basename)>50 ? substr(file,1,52)\"...\" : basename), \
+				net_color, net_str, reset, \
+				green, added, reset, \
+				red, del_str, reset); \
+			sort_key[NR]=net; \
+		} \
+		END { \
+			for (i=1; i<=NR; i++) { \
+				for (j=i+1; j<=NR; j++) { \
+					if (sort_key[j] > sort_key[i]) { \
+						tmp=data[i]; data[i]=data[j]; data[j]=tmp; \
+						tmp=sort_key[i]; sort_key[i]=sort_key[j]; sort_key[j]=tmp; \
+					} \
+				} \
+			} \
+			for (i=1; i<=NR; i++) print data[i]; \
+			for (i=1; i<=85; i++) printf \"─\"; print \"\"; \
+			if (total_net > 0) { tnet_color=green; tnet_str=sprintf(\"+%d\", total_net); } \
+			else if (total_net < 0) { tnet_color=red; tnet_str=sprintf(\"%d\", total_net); } \
+			else { tnet_str=\"±0\"; tnet_color=reset; } \
+			tdel_str = (total_deleted == 0) ? \"0\" : sprintf(\"-%d\", total_deleted); \
+			printf \"\\033[1m%-55s %s%8s%s %s%+10d%s %s%10s%s\\033[0m\\n\", \
+				sprintf(\"TOTAL (%d files)\", files), \
+				tnet_color, tnet_str, reset, \
+				green, total_added, reset, \
+				red, tdel_str, reset; \
+		}'; \
+		echo \"\"; \
+	}; f"

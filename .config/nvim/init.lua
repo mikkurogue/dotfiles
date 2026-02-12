@@ -12,6 +12,7 @@ v.pack.add({
   { src = "https://github.com/nvim-lualine/lualine.nvim" },
   { src = "https://github.com/nvim-tree/nvim-web-devicons" },
   { src = "https://github.com/neovim/nvim-lspconfig" },
+  { src = "https://github.com/williamboman/mason.nvim" },
   { src = "https://github.com/saghen/blink.cmp", },
   { src = "https://github.com/zbirenbaum/copilot.lua" },
   { src = "https://github.com/kdheepak/lazygit.nvim" },

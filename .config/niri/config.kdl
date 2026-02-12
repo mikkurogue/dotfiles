@@ -272,6 +272,7 @@ environment {
 }
 
 spawn-at-startup "kunai" "daemon"
+spawn-at-startup "vicinae" "server"
 spawn-at-startup "waybar" "-c" "/home/mikku/.config/waybar/config-niri.jsonc"
 spawn-at-startup "awww-daemon"
 spawn-at-startup "dunst"
@@ -401,7 +402,8 @@ binds {
     Mod+Shift+Alt+F hotkey-overlay-title="Browser (private)" { spawn "firefox" "--private"; }
     Mod+E hotkey-overlay-title="File Manager" { spawn "thunar"; }
     Mod+S hotkey-overlay-title="Screenshot section" { spawn-sh "grim -g \"$(slurp -d)\" - | wl-copy"; }
-    Mod+Space hotkey-overlay-title="Application selector" { spawn-sh "wofi --show drun"; }
+    // Mod+Space hotkey-overlay-title="Application selector" { spawn-sh "wofi --show drun"; }
+    Mod+Space hotkey-overlay-title="Vicinae launcher" { spawn "vicinae" "toggle"; }
 
     Ctrl+Alt+W hotkey-overlay-title="Restart waybar" { spawn-sh "killall waybar || waybar -c ~/.config/waybar/config-niri.jsonc"; }
     
