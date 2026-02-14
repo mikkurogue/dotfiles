@@ -4,6 +4,10 @@
       "rev": "93f3bed009f7fc4c57f8d710880b6cab9e0b0d15",
       "src": "https://github.com/Mofiqul/adwaita.nvim"
     },
+    "alpha-nvim": {
+      "rev": "a9d8fb72213c8b461e791409e7feabb74eb6ce73",
+      "src": "https://github.com/goolord/alpha-nvim"
+    },
     "blink.cmp": {
       "rev": "b137f63d89d0285ca76eed12e1923220e0aff8c1",
       "src": "https://github.com/saghen/blink.cmp"
@@ -79,6 +83,14 @@
     "lualine.nvim": {
       "rev": "47f91c416daef12db467145e16bed5bbfe00add8",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
+    },
+    "mason-lspconfig.nvim": {
+      "rev": "21c2a84ce368e99b18f52ab348c4c02c32c02fcf",
+      "src": "https://github.com/williamboman/mason-lspconfig.nvim"
+    },
+    "mason.nvim": {
+      "rev": "44d1e90e1f66e077268191e3ee9d2ac97cc18e65",
+      "src": "https://github.com/williamboman/mason.nvim"
     },
     "matteblack.nvim": {
       "rev": "a8a039f5d6189b28d76fa0221e64965efec7e996",
