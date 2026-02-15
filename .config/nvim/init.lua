@@ -46,6 +46,15 @@ v.pack.add({
   { src = "https://github.com/vuki656/package-info.nvim" },
   { src = "https://github.com/goolord/alpha-nvim" },
   -- { src = "https://github.com/mikkurogue/ts-analyzer"}
+
+  -- Debugging (DAP)
+  { src = "https://github.com/mfussenegger/nvim-dap" },
+  { src = "https://github.com/rcarriga/nvim-dap-ui" },
+  { src = "https://github.com/theHamsta/nvim-dap-virtual-text" },
+  { src = "https://github.com/nvim-neotest/nvim-nio" }, -- required by nvim-dap-ui
+
+  -- Which-key for keybind helper
+  { src = "https://github.com/folke/which-key.nvim" },
 })
 
 require("notify").setup({
@@ -165,6 +174,8 @@ require("catppuccin").setup({
     harpoon = true,
     mason = true,
     native_lsp = { enabled = true },
+    dap = true,
+    dap_ui = true,
     noice = true,
     notify = true,
     symbols_outline = true,
@@ -237,6 +248,8 @@ require("configuration.tiny-inline-diagnostic")
 require("configuration.noice")
 require("configuration.suit")
 require("configuration.alpha")
+require("configuration.which-key")
+require("configuration.dap")
 
 -- get current git branch
 function _G.GitBranch()
