@@ -2,18 +2,20 @@ local alpha = require("alpha")
 local dashboard = require("alpha.themes.dashboard")
 
 -- ASCII header
-dashboard.section.header.val = {
-  [[                                                                   ]],
-  [[ ███▄▄▄▄      ▄████████  ▄██████▄   ▄█    █▄   ▄█    ▄▄▄▄███▄▄▄▄   ]],
-  [[ ███▀▀▀██▄   ███    ███ ███    ███ ███    ███ ███  ▄██▀▀▀███▀▀▀██▄ ]],
-  [[ ███   ███   ███    █▀  ███    ███ ███    ███ ███▌ ███   ███   ███ ]],
-  [[ ███   ███  ▄███▄▄▄     ███    ███ ███    ███ ███▌ ███   ███   ███ ]],
-  [[ ███   ███ ▀▀███▀▀▀     ███    ███ ███    ███ ███▌ ███   ███   ███ ]],
-  [[ ███   ███   ███    █▄  ███    ███ ███    ███ ███  ███   ███   ███ ]],
-  [[ ███   ███   ███    ███ ███    ███ ███    ███ ███  ███   ███   ███ ]],
-  [[  ▀█   █▀    ██████████  ▀██████▀   ▀██████▀  █▀    ▀█   ███   █▀  ]],
-  [[                                                                   ]],
-}
+-- dashboard.section.header.val = {
+--   [[                                                                   ]],
+--   [[ ███▄▄▄▄      ▄████████  ▄██████▄   ▄█    █▄   ▄█    ▄▄▄▄███▄▄▄▄   ]],
+--   [[ ███▀▀▀██▄   ███    ███ ███    ███ ███    ███ ███  ▄██▀▀▀███▀▀▀██▄ ]],
+--   [[ ███   ███   ███    █▀  ███    ███ ███    ███ ███▌ ███   ███   ███ ]],
+--   [[ ███   ███  ▄███▄▄▄     ███    ███ ███    ███ ███▌ ███   ███   ███ ]],
+--   [[ ███   ███ ▀▀███▀▀▀     ███    ███ ███    ███ ███▌ ███   ███   ███ ]],
+--   [[ ███   ███   ███    █▄  ███    ███ ███    ███ ███  ███   ███   ███ ]],
+--   [[ ███   ███   ███    ███ ███    ███ ███    ███ ███  ███   ███   ███ ]],
+--   [[  ▀█   █▀    ██████████  ▀██████▀   ▀██████▀  █▀    ▀█   ███   █▀  ]],
+--   [[                                                                   ]],
+-- }
+
+dashboard.section.header = require("configuration.rinnegan").header
 
 -- Action buttons
 dashboard.section.buttons.val = {
@@ -34,7 +36,6 @@ dashboard.config.layout = {
   dashboard.section.footer,
 }
 
--- Optional: Footer (can show version or leave empty)
-dashboard.section.footer.val = ""
+dashboard.section.footer.val = os.date("%Y-%m-%d %H:%M:%S")
 
 alpha.setup(dashboard.config)
