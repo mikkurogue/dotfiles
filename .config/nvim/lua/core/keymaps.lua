@@ -23,13 +23,8 @@ v.keymap.set("n", "<leader>fb", function()
 end, { desc = "Find buffers" })
 
 v.keymap.set("n", "<leader>fw", function()
-  require("telescope.builtin").live_grep()
-end, { desc = "Live grep with ripgrep" })
-
-v.keymap.set("n", "<leader>ff", function()
-  require("telescope.builtin").find_files()
-end, { desc = "Find files" })
-
+  require("fff").live_grep()
+end, { desc = "Live grep with fff" })
 v.keymap.set("n", "<leader>ff", function()
   require('fff').find_files()
 end, { desc = "Find files" })
