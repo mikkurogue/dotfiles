@@ -26,10 +26,10 @@ local function get_vcs_info()
     local bookmark = vim.fn.system("jj log -r @ --no-graph -T 'bookmarks'"):gsub("%s+$", "")
     if bookmark == "" then
       local change_id = vim.fn.system("jj log -r @ --no-graph -T 'change_id.shortest(8)'"):gsub("%s+$", "")
-      vcs_cache = { result = "󱗆 " .. change_id, cwd = cwd, vcs_type = "jj" }
+      vcs_cache = { result = " " .. change_id, cwd = cwd, vcs_type = "jj" }
     else
       local first = bookmark:match("^(%S+)") or bookmark
-      vcs_cache = { result = "󱗆 " .. truncate_branch_name(first), cwd = cwd, vcs_type = "jj" }
+      vcs_cache = { result = " " .. truncate_branch_name(first), cwd = cwd, vcs_type = "jj" }
     end
     return vcs_cache.result
   end
@@ -37,7 +37,7 @@ local function get_vcs_info()
   -- Fallback: git branch
   local branch = vim.fn.system("git branch --show-current 2>/dev/null"):gsub("%s+$", "")
   if vim.v.shell_error == 0 and branch ~= "" then
-    vcs_cache = { result = " " .. truncate_branch_name(branch), cwd = cwd, vcs_type = "git" }
+    vcs_cache = { result = " " .. truncate_branch_name(branch), cwd = cwd, vcs_type = "git" }
     return vcs_cache.result
   end
 
@@ -51,16 +51,11 @@ vim.api.nvim_create_autocmd({ "DirChanged", "BufEnter", "FocusGained" }, {
   end,
 })
 
-local function get_vcs_name()
-  get_vcs_info() -- Ensure cache is populated
-  return vcs_cache.vcs_type or ""
-end
-
 -- Macro recording indicator
 local function get_macro_recording()
   local reg = vim.fn.reg_recording()
   if reg ~= '' then
-    return '⏺ @' .. reg
+    return ' @' .. reg
   end
   return ''
 end
@@ -71,7 +66,7 @@ local function get_search_count()
   local ok, result = pcall(vim.fn.searchcount, { recompute = 1, maxcount = -1 })
   if not ok or result.current == nil then return '' end
   if result.total > 0 then
-    return string.format(' %d/%d', result.current, result.total)
+    return ' ' .. result.current .. '/' .. result.total
   end
   return ''
 end
@@ -80,92 +75,131 @@ end
 local function get_treesitter_status()
   local b = vim.api.nvim_get_current_buf()
   if vim.treesitter.highlighter.active[b] then
-    return ''
+    return ' '
   end
   return ''
 end
 
--- Enhanced cursor position with visual percentage bar
+-- Scrollbar indicator using cool Unicode blocks
+local function get_scrollbar()
+  local chars = { '▁', '▂', '▃', '▄', '▅', '▆', '▇', '█' }
+  local line = vim.fn.line('.')
+  local total = vim.fn.line('$')
+  local idx = math.ceil(line / total * #chars)
+  return chars[idx] or chars[1]
+end
+
+-- Enhanced cursor position - cleaner format
 local function get_cursor_position()
   local line = vim.fn.line('.')
   local col = vim.fn.col('.')
   local total = vim.fn.line('$')
   local percent = math.floor((line / total) * 100)
-
-  -- Create a visual percentage bar
-  local bar_width = 8
-  local filled = math.floor((percent / 100) * bar_width)
-  local bar = string.rep('━', filled) .. string.rep('─', bar_width - filled)
-
-  return string.format(' %d:%d  %s %d%%%%  %d', line, col, bar, percent, total)
+  return string.format('%d:%d %s %d%%%%', line, col, get_scrollbar(), percent)
 end
 
--- Mode with icons
-local function get_mode_with_icon()
+-- Mode config with labels and dynamic colors
+local mode_config = {
+  ['n']     = { icon = '', label = 'NORMAL', color = { bg = '#98c379', fg = '#282c34', gui = 'bold' } },
+  ['i']     = { icon = '', label = 'INSERT', color = { bg = '#61afef', fg = '#282c34', gui = 'bold' } },
+  ['v']     = { icon = ' ', label = 'VISUAL', color = { bg = '#c678dd', fg = '#282c34', gui = 'bold' } },
+  ['V']     = { icon = ' ', label = 'V-LINE', color = { bg = '#c678dd', fg = '#282c34', gui = 'bold' } },
+  ['\22']   = { icon = ' ', label = 'V-BLOCK', color = { bg = '#c678dd', fg = '#282c34', gui = 'bold' } },
+  ['c']     = { icon = ' ', label = 'COMMAND', color = { bg = '#e5c07b', fg = '#282c34', gui = 'bold' } },
+  ['t']     = { icon = ' ', label = 'TERMINAL', color = { bg = '#56b6c2', fg = '#282c34', gui = 'bold' } },
+  ['R']     = { icon = '󰛔', label = 'REPLACE', color = { bg = '#e06c75', fg = '#282c34', gui = 'bold' } },
+  ['s']     = { icon = '', label = 'SELECT', color = { bg = '#d19a66', fg = '#282c34', gui = 'bold' } },
+  ['S']     = { icon = '', label = 'S-LINE', color = { bg = '#d19a66', fg = '#282c34', gui = 'bold' } },
+  ['\19']   = { icon = '', label = 'S-BLOCK', color = { bg = '#d19a66', fg = '#282c34', gui = 'bold' } },
+}
+
+local function get_mode_icon()
   local mode = vim.fn.mode()
-  local mode_map = {
-    ['n'] = ' NORMAL',
-    ['i'] = ' INSERT',
-    ['v'] = '󰈈 VISUAL',
-    ['V'] = '󰈈 V-LINE',
-    ['\22'] = '󰩬 V-BLOCK',  -- Ctrl-V
-    ['c'] = ' COMMAND',
-    ['t'] = ' TERMINAL',
-    ['R'] = '󰛔 REPLACE',
-    ['s'] = ' SELECT',
-    ['S'] = ' S-LINE',
-    ['\19'] = ' S-BLOCK',  -- Ctrl-S
-  }
-  return mode_map[mode] or '󰻀 ' .. mode
+  local cfg = mode_config[mode] or { icon = '', label = mode, color = { bg = '#5c6370', fg = '#282c34', gui = 'bold' } }
+  return cfg.icon .. ' ' .. cfg.label
 end
 
+local function get_mode_color()
+  local mode = vim.fn.mode()
+  local cfg = mode_config[mode] or { color = { bg = '#5c6370', fg = '#282c34', gui = 'bold' } }
+  return cfg.color
+end
+
+-- Pill separators (rounded) for powerline look
+local pill_left = ''
+local pill_right = ''
+
+-- Colors for OneDark theme
+local colors = {
+  bg = '#282c34',
+  bg_dark = '#21252b',
+  bg_light = '#2c323c',
+  fg = '#abb2bf',
+  red = '#e06c75',
+  green = '#98c379',
+  yellow = '#e5c07b',
+  blue = '#61afef',
+  purple = '#c678dd',
+  cyan = '#56b6c2',
+  orange = '#d19a66',
+  gray = '#5c6370',
+}
 
 require('lualine').setup {
   options = {
     icons_enabled = true,
     theme = 'auto',
-    -- Powerline separators
-    component_separators = { left = '', right = '' },
-    section_separators = { left = '', right = '' },
+    -- Rounded pill separators for that cool powerline look
+    component_separators = '',
+    section_separators = { left = pill_right, right = pill_left },
     disabled_filetypes = {
       statusline = {},
       winbar = {},
     },
     ignore_focus = {},
     always_divide_middle = true,
-    globalstatus = true,  -- Match your laststatus = 3 setting
-    -- Faster refresh rate for more responsive updates
+    globalstatus = true,
     refresh = {
-      statusline = 500,
-      tabline = 500,
-      winbar = 500,
+      statusline = 100,
+      tabline = 100,
+      winbar = 100,
     }
   },
   sections = {
-    -- Section A: Mode with icons
+    -- Section A: Mode pill (dynamic color based on mode)
     lualine_a = {
       {
-        get_mode_with_icon,
-        separator = { right = '' },
-        padding = { left = 1, right = 1 }
+        get_mode_icon,
+        color = get_mode_color,
+        separator = { left = pill_left, right = pill_right },
+        padding = { left = 1, right = 1 },
       }
     },
 
-    -- Section B: VCS info, diff, and diagnostics
+    -- Section B: VCS branch in a pill
     lualine_b = {
       {
         get_vcs_info,
         icon = '',
-        separator = { right = '' },
+        color = { bg = colors.bg_light, fg = colors.fg, gui = 'bold' },
+        separator = { left = pill_left, right = pill_right },
+        padding = { left = 1, right = 1 },
       },
+    },
+
+    -- Section C: Diff + Diagnostics + Filename (floating style)
+    lualine_c = {
       {
         'diff',
         symbols = {
-          added = ' ',
-          modified = ' ',
-          removed = ' ',
-          conflict = ' ',
-          renamed = ' '
+          added = '+',
+          modified = '~',
+          removed = '-',
+        },
+        diff_color = {
+          added = { fg = colors.green },
+          modified = { fg = colors.yellow },
+          removed = { fg = colors.red },
         },
         source = function()
           local bufnr = vim.api.nvim_get_current_buf()
@@ -179,112 +213,99 @@ require('lualine').setup {
           end
           return nil
         end,
-        separator = { right = '' },
+        padding = { left = 1, right = 0 },
       },
       {
         'diagnostics',
         symbols = {
-          error = ' ',
-          warn = '󰀦 ',
-          info = '󰋼 ',
-          hint = '󰌵 '
+          error = ' ',
+          warn = ' ',
+          info = ' ',
+          hint = ' ',
         },
-        separator = { right = '' },
-      }
-    },
-
-    -- Section C: Filename with enhanced symbols
-    lualine_c = {
+        diagnostics_color = {
+          error = { fg = colors.red },
+          warn = { fg = colors.yellow },
+          info = { fg = colors.blue },
+          hint = { fg = colors.cyan },
+        },
+        padding = { left = 1, right = 1 },
+      },
       {
         'filename',
-        path = 0, -- Just filename, no path
+        path = 1,  -- Relative path
         symbols = {
-          modified = ' ',
-          readonly = ' ',
-          unnamed = '󰡯 ',
-          newfile = ' '
+          modified = ' ',
+          readonly = ' ',
+          unnamed = '[No Name]',
+          newfile = '[New]',
         },
+        color = { fg = colors.fg, gui = 'italic' },
         file_status = true,
-        separator = { right = '|' },
-      }
+        padding = { left = 0, right = 1 },
+      },
     },
 
-    -- Section X: Cool extra components
+    -- Section X: LSP, Treesitter, Search, Macro
     lualine_x = {
       {
         get_macro_recording,
-        color = { fg = '#e06c75', gui = 'bold' },
-        separator = { left = '' },
+        color = { fg = colors.red, gui = 'bold' },
+        cond = function()
+          return vim.fn.reg_recording() ~= ''
+        end,
+        padding = { left = 1, right = 1 },
       },
       {
         get_search_count,
-        color = { fg = '#61afef' },
-        separator = { left = '' },
+        color = { fg = colors.cyan },
+        cond = function()
+          return vim.v.hlsearch == 1
+        end,
+        padding = { left = 1, right = 1 },
       },
       {
         get_treesitter_status,
-        color = { fg = '#98c379' },
-        separator = { left = '' },
+        color = { fg = colors.green },
+        cond = function()
+          local b = vim.api.nvim_get_current_buf()
+          return vim.treesitter.highlighter.active[b] ~= nil
+        end,
+        padding = { left = 1, right = 1 },
       },
       {
         function()
-          return _G.LspStatus()
+          return _G.LspStatus and _G.LspStatus() or ''
         end,
-        icon = '',
-        color = { gui = 'bold' },
-        separator = { left = '' },
+        icon = ' ',
+        color = { fg = colors.blue },
+        cond = function()
+          return _G.LspStatus and _G.LspStatus() ~= ''
+        end,
+        padding = { left = 1, right = 1 },
       },
     },
 
-    -- Section Y: File info and VCS type
+    -- Section Y: Filetype pill
     lualine_y = {
-      {
-        'encoding',
-        fmt = function(str)
-          if str == 'utf-8' then
-            return ' ' .. str:upper()
-          else
-            return ' ' .. str:upper()
-          end
-        end,
-        cond = function()
-          return vim.bo.fileencoding ~= 'utf-8'
-        end,
-        separator = { left = '' },
-      },
-      {
-        'fileformat',
-        icons_enabled = true,
-        symbols = {
-          unix = ' ',
-          dos = ' ',
-          mac = ' '
-        },
-        separator = { left = '' },
-      },
       {
         'filetype',
         colored = true,
         icon_only = false,
-        icon = { align = 'right' },
-        separator = { left = '' },
+        icon = { align = 'left' },
+        color = { bg = colors.bg_light, fg = colors.fg },
+        separator = { left = pill_left, right = pill_right },
+        padding = { left = 1, right = 1 },
       },
-      {
-        get_vcs_name,
-        icon = '󰊢 ',
-        cond = function()
-          return get_vcs_name() ~= ''
-        end,
-        separator = { left = '' },
-      }
     },
 
-    -- Section Z: Enhanced cursor position with percentage bar
+    -- Section Z: Position pill with scrollbar
     lualine_z = {
       {
         get_cursor_position,
-        separator = { left = '' },
-        padding = { left = 1, right = 1 }
+        color = { bg = colors.blue, fg = colors.bg, gui = 'bold' },
+        separator = { left = pill_left, right = pill_right },
+        padding = { left = 1, right = 1 },
       }
     }
   },
@@ -297,12 +318,18 @@ require('lualine').setup {
         'filename',
         path = 1,
         symbols = {
-          modified = ' ',
-          readonly = ' ',
-        }
+          modified = ' ',
+          readonly = ' ',
+        },
+        color = { fg = colors.gray },
       }
     },
-    lualine_x = { 'location' },
+    lualine_x = {
+      {
+        'location',
+        color = { fg = colors.gray },
+      }
+    },
     lualine_y = {},
     lualine_z = {}
   },
@@ -310,5 +337,5 @@ require('lualine').setup {
   tabline = {},
   winbar = {},
   inactive_winbar = {},
-  extensions = {}
+  extensions = { 'quickfix', 'fugitive', 'nvim-dap-ui', 'oil' }
 }
