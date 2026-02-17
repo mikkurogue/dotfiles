@@ -233,7 +233,7 @@ require('lualine').setup {
       },
       {
         'filename',
-        path = 1,  -- Relative path
+        path = 0,  -- Relative path
         symbols = {
           modified = ' ',
           readonly = ' ',
