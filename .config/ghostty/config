@@ -3,7 +3,8 @@
 theme = Atom One Dark 
 
 # Font
-font-family = "Hack-ZeroSlash"
+# font-family = "Hack-ZeroSlash"
+font-family =  AdwaitaMono Nerd Font Mono
 font-feature = -dlig
 font-feature = -calt
 font-feature = -liga
