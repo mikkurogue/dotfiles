@@ -1,0 +1,27 @@
+[general]
+bars = 24
+framerate = 60
+autosens = 1
+sensitivity = 150
+
+[input]
+method = pulse
+source = auto
+
+[output]
+method = raw
+raw_target = /dev/stdout
+data_format = ascii
+ascii_max_range = 8
+channels = mono
+
+[smoothing]
+; Maximum smoothing for fluid wave motion
+noise_reduction = 95
+; Waves smoothing for fluid motion
+waves = 1
+; Monstercat style smoothing (makes it flow like water)
+monstercat = 1
+
+[color]
+gradient = 0

@@ -10,7 +10,7 @@
 
   "modules-left": ["niri/workspaces", "niri/window"],
   "modules-center": ["clock"],
-  "modules-right": ["custom/cava-internal", "niri/language", "cpu", "memory", "temperature", "pulseaudio", "network", "custom/notifications", "tray", "custom/power"],
+  "modules-right": ["custom/cava", "niri/language", "cpu", "memory", "temperature", "pulseaudio", "network", "custom/notifications", "tray", "custom/power"],
 
   "niri/workspaces": {
     "format": "{icon}",
@@ -98,9 +98,9 @@
     "show-passive-items": true
   },
 
-  "custom/cava-internal": {
+  "custom/cava": {
     "exec": "~/.config/waybar/scripts/cava.sh",
-    "format": "󰝚 {}",
+    "format": "{}",
     "tooltip": false
   },
 

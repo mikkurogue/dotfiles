@@ -131,7 +131,17 @@ window#waybar {
 }
 
 /* Cava visualizer */
-#custom-cava-internal,
+#custom-cava {
+  background: @surface0;
+  border-radius: 14px;
+  padding: 6px 12px;
+  color: @mauve;
+  font-size: 16px;
+  letter-spacing: -3px;
+  min-width: 180px;
+}
+
+/* Language */
 #language {
   background: @surface0;
   border-radius: 14px;

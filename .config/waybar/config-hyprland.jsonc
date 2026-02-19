@@ -10,7 +10,7 @@
 
   "modules-left": ["hyprland/workspaces", "hyprland/window"],
   "modules-center": ["clock"],
-  "modules-right": ["custom/cava-internal", "cpu", "memory", "temperature", "pulseaudio", "network", "tray", "custom/power"],
+  "modules-right": ["custom/cava", "cpu", "memory", "temperature", "pulseaudio", "network", "tray", "custom/power"],
 
   "hyprland/workspaces": {
     "on-click": "activate",
@@ -103,9 +103,9 @@
     "show-passive-items": true
   },
 
-  "custom/cava-internal": {
+  "custom/cava": {
     "exec": "~/.config/waybar/scripts/cava.sh",
-    "format": "󰝚 {}",
+    "format": "{}",
     "tooltip": false
   },
 
