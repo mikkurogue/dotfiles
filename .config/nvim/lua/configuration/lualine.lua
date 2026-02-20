@@ -100,8 +100,8 @@ end
 
 -- Mode config with labels and dynamic colors
 local mode_config = {
-  ['n']     = { icon = '', label = 'NORMAL', color = { bg = '#98c379', fg = '#282c34', gui = 'bold' } },
-  ['i']     = { icon = '', label = 'INSERT', color = { bg = '#61afef', fg = '#282c34', gui = 'bold' } },
+  ['n']     = { icon = '', label = 'NORMAL', color = { bg = '#61afef', fg = '#282c34', gui = 'bold' } },
+  ['i']     = { icon = '', label = 'INSERT', color = { bg = '#98c379', fg = '#282c34', gui = 'bold' } },
   ['v']     = { icon = ' ', label = 'VISUAL', color = { bg = '#c678dd', fg = '#282c34', gui = 'bold' } },
   ['V']     = { icon = ' ', label = 'V-LINE', color = { bg = '#c678dd', fg = '#282c34', gui = 'bold' } },
   ['\22']   = { icon = ' ', label = 'V-BLOCK', color = { bg = '#c678dd', fg = '#282c34', gui = 'bold' } },
@@ -126,8 +126,8 @@ local function get_mode_color()
 end
 
 -- Pill separators (rounded) for powerline look
-local pill_left = ''
-local pill_right = ''
+local pill_left = '' 
+local pill_right = ''
 
 -- Colors for OneDark theme
 local colors = {
@@ -171,7 +171,7 @@ require('lualine').setup {
       {
         get_mode_icon,
         color = get_mode_color,
-        separator = { left = pill_left, right = pill_right },
+        separator = { left = '', right = pill_right },
         padding = { left = 1, right = 1 },
       }
     },
@@ -242,7 +242,7 @@ require('lualine').setup {
         },
         color = { fg = colors.fg, gui = 'italic' },
         file_status = true,
-        padding = { left = 0, right = 1 },
+        padding = { left = 2, right = 1 },
       },
     },
 
@@ -266,11 +266,12 @@ require('lualine').setup {
       },
       {
         get_treesitter_status,
-        color = { fg = colors.green },
+        color = { fg = colors.green, bg = colors.bg_dark },
         cond = function()
           local b = vim.api.nvim_get_current_buf()
           return vim.treesitter.highlighter.active[b] ~= nil
         end,
+        separator = { left = pill_left, right = '' },
         padding = { left = 1, right = 1 },
       },
       {
@@ -278,7 +279,8 @@ require('lualine').setup {
           return _G.LspStatus and _G.LspStatus() or ''
         end,
         icon = ' ',
-        color = { fg = colors.blue },
+        color = { fg = colors.blue, bg = colors.gray },
+        separator = { left = pill_left, right = '' },
         cond = function()
           return _G.LspStatus and _G.LspStatus() ~= ''
         end,
@@ -294,7 +296,7 @@ require('lualine').setup {
         icon_only = false,
         icon = { align = 'left' },
         color = { bg = colors.bg_light, fg = colors.fg },
-        separator = { left = pill_left, right = pill_right },
+        separator = { left = pill_left, right = '' },
         padding = { left = 1, right = 1 },
       },
     },
@@ -304,7 +306,7 @@ require('lualine').setup {
       {
         get_cursor_position,
         color = { bg = colors.blue, fg = colors.bg, gui = 'bold' },
-        separator = { left = pill_left, right = pill_right },
+        separator = { left = pill_left, right = '' },
         padding = { left = 1, right = 1 },
       }
     }
