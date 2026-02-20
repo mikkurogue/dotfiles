@@ -1,45 +1,45 @@
-/* Catppuccin Mocha - Minimalistic Theme */
-@define-color base   #1e1e2e;
-@define-color mantle #181825;
-@define-color crust  #11111b;
+/* OneDark Pro Theme */
+@define-color base   #282c34;
+@define-color mantle #21252b;
+@define-color crust  #1b1f23;
 
-@define-color text     #cdd6f4;
-@define-color subtext0 #a6adc8;
-@define-color subtext1 #bac2de;
+@define-color text     #abb2bf;
+@define-color subtext0 #848b98;
+@define-color subtext1 #9da5b4;
 
-@define-color surface0 #313244;
-@define-color surface1 #45475a;
-@define-color surface2 #585b70;
+@define-color surface0 #323842;
+@define-color surface1 #3e4451;
+@define-color surface2 #4b5263;
 
-@define-color overlay0 #6c7086;
-@define-color overlay1 #7f849c;
-@define-color overlay2 #9399b2;
+@define-color overlay0 #5c6370;
+@define-color overlay1 #636d83;
+@define-color overlay2 #7f848e;
 
-@define-color blue      #89b4fa;
-@define-color lavender  #b4befe;
-@define-color sapphire  #74c7ec;
-@define-color sky       #89dceb;
-@define-color teal      #94e2d5;
-@define-color green     #a6e3a1;
-@define-color yellow    #f9e2af;
-@define-color peach     #fab387;
-@define-color maroon    #eba0ac;
-@define-color red       #f38ba8;
-@define-color mauve     #cba6f7;
-@define-color pink      #f5c2e7;
-@define-color flamingo  #f2cdcd;
-@define-color rosewater #f5e0dc;
+@define-color blue      #61afef;
+@define-color lavender  #c678dd;
+@define-color sapphire  #56b6c2;
+@define-color sky       #56b6c2;
+@define-color teal      #56b6c2;
+@define-color green     #98c379;
+@define-color yellow    #e5c07b;
+@define-color peach     #d19a66;
+@define-color maroon    #be5046;
+@define-color red       #e06c75;
+@define-color mauve     #c678dd;
+@define-color pink      #c678dd;
+@define-color flamingo  #e06c75;
+@define-color rosewater #e5c07b;
 
 * {
-  font-family: "Hack Nerd Font", monospace;
-  font-size: 12px;
-  font-weight: 500;
+  font-family: "CaskaydiaCove Nerd Font Mono", monospace;
+  font-size: 16px;
+  font-weight: 700;
   min-height: 0;
 }
 
 window#waybar {
   background: alpha(@base, 0.0);
-  color: @text;
+  color: @blue;
   border-radius: 0;
 }
 
@@ -56,23 +56,23 @@ window#waybar {
   background: transparent;
   border: none;
   border-radius: 10px;
-  font-size: 16px;
+  font-size: 18px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #workspaces button.active {
-  background: linear-gradient(135deg, alpha(@peach, 0.3), alpha(@green, 0.3));
+  background: linear-gradient(135deg, alpha(@blue, 0.3), alpha(@blue, 0.2));
   background: @surface1;
-  color: @peach;
-  font-size: 18px;
-  box-shadow: 0 0 10px alpha(@peach, 0.3), 0 0 15px alpha(@green, 0.2);
-  text-shadow: 0 0 8px alpha(@peach, 0.5);
-  border: 1px solid alpha(@peach, 0.3);
+  color: @blue;
+  font-size: 20px;
+  box-shadow: 0 0 10px alpha(@blue, 0.3), 0 0 15px alpha(@blue, 0.2);
+  text-shadow: 0 0 8px alpha(@blue, 0.5);
+  border: 1px solid alpha(@blue, 0.3);
 }
 
 #workspaces button:hover {
   background: @surface2;
-  color: @lavender;
+  color: @blue;
 }
 
 #workspaces button.urgent {
@@ -86,7 +86,7 @@ window#waybar {
   background: @surface0;
   border-radius: 14px;
   padding: 6px 8px;
-  color: @text;
+  color: @blue;
   font-weight: 500;
 }
 
@@ -100,9 +100,9 @@ window#waybar {
   background: @surface0;
   border-radius: 14px;
   padding: 4px 20px;
-  color: @mauve;
-  font-weight: 600;
-  font-size: 12px;
+  color: @blue;
+  font-weight: 700;
+  font-size: 16px;
 }
 
 /* System monitors */
@@ -119,11 +119,11 @@ window#waybar {
 }
 
 #memory {
-  color: @green;
+  color: @blue;
 }
 
 #temperature {
-  color: @peach;
+  color: @blue;
 }
 
 #temperature.critical {
@@ -135,8 +135,8 @@ window#waybar {
   background: @surface0;
   border-radius: 14px;
   padding: 6px 12px;
-  color: @mauve;
-  font-size: 16px;
+  color: @blue;
+  font-size: 18px;
   letter-spacing: -3px;
   min-width: 180px;
 }
@@ -146,7 +146,7 @@ window#waybar {
   background: @surface0;
   border-radius: 14px;
   padding: 6px 14px;
-  color: @sky;
+  color: @blue;
 }
 
 /* Audio */
@@ -154,7 +154,7 @@ window#waybar {
   background: @surface0;
   border-radius: 14px;
   padding: 6px 14px;
-  color: @teal;
+  color: @blue;
 }
 
 #pulseaudio.muted {
@@ -166,7 +166,8 @@ window#waybar {
   background: @surface0;
   border-radius: 14px;
   padding: 6px 14px;
-  color: @sapphire;
+  color: @blue;
+  font-size: 22px;
 }
 
 #network.disconnected {
@@ -194,7 +195,7 @@ window#waybar {
   border-radius: 14px;
   padding: 6px 14px;
   color: @red;
-  font-size: 16px;
+  font-size: 22px;
 }
 
 #custom-power:hover {
@@ -207,8 +208,8 @@ window#waybar {
   background: @surface0;
   border-radius: 14px;
   padding: 6px 14px;
-  color: @yellow;
-  font-size: 13px;
+  color: @blue;
+  font-size: 22px;
 }
 
 #custom-notifications.empty {
@@ -216,13 +217,13 @@ window#waybar {
 }
 
 #custom-notifications.active {
-  color: @yellow;
-  font-weight: 600;
+  color: @blue;
+  font-weight: 700;
 }
 
 #custom-notifications:hover {
   background: @surface1;
-  color: @peach;
+  color: @blue;
 }
 
 /* Tooltips */
@@ -234,6 +235,6 @@ tooltip {
 }
 
 tooltip label {
-  color: @text;
+  color: @blue;
   font-weight: 500;
 }

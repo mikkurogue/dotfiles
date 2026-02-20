@@ -24,4 +24,6 @@ waves = 1
 monstercat = 1
 
 [color]
+; OneDark Pro blue
+foreground = '#61afef'
 gradient = 0

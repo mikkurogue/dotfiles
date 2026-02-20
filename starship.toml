@@ -9,7 +9,7 @@ $all\
 $line_break\
 [  ]()$character"""
 
-palette = 'osmium'
+palette = 'onedark'
 
 [buf]
 disabled = true
@@ -126,26 +126,27 @@ format = "[$symbol]($style)"
 [package]
 disabled = true
 
-[palettes.osmium]
-# Based on osmium-colors theme
-red = "#E55376"
-green = "#C9DE96"
-yellow = "#E9D39C"
-blue = "#9ABFE8"
-purple = "#B0A8EB"
-pink = "#D9A1E8"
-peach = "#E9D39C"
-lavender = "#B0A8EB"
-sapphire = "#8CAAD1"
-text = "#C8D5F1"
-subtext1 = "#949BB9"
-subtext0 = "#747A9C"
-overlay2 = "#747A9C"
-overlay1 = "#747A9C"
-overlay0 = "#353553"
-surface2 = "#353553"
-surface1 = "#1F1D2D"
-surface0 = "#1F1D2D"
-base = "#14131E"
-mantle = "#14131E"
-crust = "#14131E"
+[palettes.onedark]
+# OneDark Pro theme
+red = "#e06c75"
+green = "#98c379"
+yellow = "#e5c07b"
+blue = "#61afef"
+purple = "#c678dd"
+pink = "#c678dd"
+peach = "#d19a66"
+lavender = "#c678dd"
+sapphire = "#56b6c2"
+cyan = "#56b6c2"
+text = "#abb2bf"
+subtext1 = "#9da5b4"
+subtext0 = "#848b98"
+overlay2 = "#7f848e"
+overlay1 = "#636d83"
+overlay0 = "#5c6370"
+surface2 = "#4b5263"
+surface1 = "#3e4451"
+surface0 = "#323842"
+base = "#282c34"
+mantle = "#21252b"
+crust = "#1b1f23"
