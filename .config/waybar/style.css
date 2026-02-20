@@ -40,31 +40,39 @@
 window#waybar {
   background: alpha(@base, 0.0);
   color: @blue;
-  border-radius: 0;
+  border-radius: 20px;
 }
 
 /* Workspaces */
 #workspaces {
   background: @surface0;
-  border-radius: 14px;
+  border-radius: 20px;
   padding: 4px 8px;
+  font-size: 22px;
 }
 
 #workspaces button {
-  padding: 2px 12px;
+  padding: 2px 8px;
   color: @overlay0;
   background: transparent;
   border: none;
-  border-radius: 10px;
-  font-size: 18px;
+  border-radius: 20px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 22px;
+}
+
+#workspaces button label {
+  font-size: 22px;
+}
+
+#workspaces button image {
+  -gtk-icon-transform: scale(1.4);
 }
 
 #workspaces button.active {
   background: linear-gradient(135deg, alpha(@blue, 0.3), alpha(@blue, 0.2));
   background: @surface1;
   color: @blue;
-  font-size: 20px;
   box-shadow: 0 0 10px alpha(@blue, 0.3), 0 0 15px alpha(@blue, 0.2);
   text-shadow: 0 0 8px alpha(@blue, 0.5);
   border: 1px solid alpha(@blue, 0.3);
@@ -84,7 +92,7 @@ window#waybar {
 /* Window title */
 #window {
   background: @surface0;
-  border-radius: 14px;
+  border-radius: 20px;
   padding: 6px 8px;
   color: @blue;
   font-weight: 500;
@@ -98,7 +106,7 @@ window#waybar {
 /* Clock */
 #clock {
   background: @surface0;
-  border-radius: 14px;
+  border-radius: 20px;
   padding: 4px 20px;
   color: @blue;
   font-weight: 700;
@@ -110,7 +118,7 @@ window#waybar {
 #memory,
 #temperature {
   background: @surface0;
-  border-radius: 14px;
+  border-radius: 20px;
   padding: 6px 14px;
 }
 
@@ -133,7 +141,7 @@ window#waybar {
 /* Cava visualizer */
 #custom-cava {
   background: @surface0;
-  border-radius: 14px;
+  border-radius: 20px;
   padding: 6px 12px;
   color: @blue;
   font-size: 18px;
@@ -144,7 +152,7 @@ window#waybar {
 /* Language */
 #language {
   background: @surface0;
-  border-radius: 14px;
+  border-radius: 20px;
   padding: 6px 14px;
   color: @blue;
 }
@@ -152,7 +160,7 @@ window#waybar {
 /* Audio */
 #pulseaudio {
   background: @surface0;
-  border-radius: 14px;
+  border-radius: 20px;
   padding: 6px 14px;
   color: @blue;
 }
@@ -164,7 +172,7 @@ window#waybar {
 /* Network */
 #network {
   background: @surface0;
-  border-radius: 14px;
+  border-radius: 20px;
   padding: 6px 14px;
   color: @blue;
   font-size: 22px;
@@ -177,7 +185,7 @@ window#waybar {
 /* Tray */
 #tray {
   background: @surface0;
-  border-radius: 14px;
+  border-radius: 20px;
   padding: 4px 12px;
 }
 
@@ -192,7 +200,7 @@ window#waybar {
 /* Power button */
 #custom-power {
   background: @surface0;
-  border-radius: 14px;
+  border-radius: 20px;
   padding: 6px 14px;
   color: @red;
   font-size: 22px;
@@ -206,7 +214,7 @@ window#waybar {
 /* Notifications */
 #custom-notifications {
   background: @surface0;
-  border-radius: 14px;
+  border-radius: 20px;
   padding: 6px 14px;
   color: @blue;
   font-size: 22px;
@@ -230,7 +238,7 @@ window#waybar {
 tooltip {
   background: @base;
   border: 2px solid @surface0;
-  border-radius: 12px;
+  border-radius: 20px;
   padding: 10px 14px;
 }
 
