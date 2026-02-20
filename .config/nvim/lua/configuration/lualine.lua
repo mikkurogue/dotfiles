@@ -100,17 +100,17 @@ end
 
 -- Mode config with labels and dynamic colors
 local mode_config = {
-  ['n']     = { icon = '', label = 'NORMAL', color = { bg = '#61afef', fg = '#282c34', gui = 'bold' } },
-  ['i']     = { icon = '', label = 'INSERT', color = { bg = '#98c379', fg = '#282c34', gui = 'bold' } },
-  ['v']     = { icon = ' ', label = 'VISUAL', color = { bg = '#c678dd', fg = '#282c34', gui = 'bold' } },
-  ['V']     = { icon = ' ', label = 'V-LINE', color = { bg = '#c678dd', fg = '#282c34', gui = 'bold' } },
-  ['\22']   = { icon = ' ', label = 'V-BLOCK', color = { bg = '#c678dd', fg = '#282c34', gui = 'bold' } },
-  ['c']     = { icon = ' ', label = 'COMMAND', color = { bg = '#e5c07b', fg = '#282c34', gui = 'bold' } },
-  ['t']     = { icon = ' ', label = 'TERMINAL', color = { bg = '#56b6c2', fg = '#282c34', gui = 'bold' } },
-  ['R']     = { icon = '󰛔', label = 'REPLACE', color = { bg = '#e06c75', fg = '#282c34', gui = 'bold' } },
-  ['s']     = { icon = '', label = 'SELECT', color = { bg = '#d19a66', fg = '#282c34', gui = 'bold' } },
-  ['S']     = { icon = '', label = 'S-LINE', color = { bg = '#d19a66', fg = '#282c34', gui = 'bold' } },
-  ['\19']   = { icon = '', label = 'S-BLOCK', color = { bg = '#d19a66', fg = '#282c34', gui = 'bold' } },
+  ['n']     = { icon = '', label = 'NORMAL', color = { bg = '#61afef', fg = '#282c34', gui = 'italic' } },
+  ['i']     = { icon = '', label = 'INSERT', color = { bg = '#98c379', fg = '#282c34', gui = 'italic' } },
+  ['v']     = { icon = ' ', label = 'VISUAL', color = { bg = '#c678dd', fg = '#282c34', gui = 'italic' } },
+  ['V']     = { icon = ' ', label = 'V-LINE', color = { bg = '#c678dd', fg = '#282c34', gui = 'italic' } },
+  ['\22']   = { icon = ' ', label = 'V-BLOCK', color = { bg = '#c678dd', fg = '#282c34', gui = 'italic' } },
+  ['c']     = { icon = ' ', label = 'COMMAND', color = { bg = '#e5c07b', fg = '#282c34', gui = 'italic' } },
+  ['t']     = { icon = ' ', label = 'TERMINAL', color = { bg = '#56b6c2', fg = '#282c34', gui = 'italic' } },
+  ['R']     = { icon = '󰛔', label = 'REPLACE', color = { bg = '#e06c75', fg = '#282c34', gui = 'italic' } },
+  ['s']     = { icon = '', label = 'SELECT', color = { bg = '#d19a66', fg = '#282c34', gui = 'italic' } },
+  ['S']     = { icon = '', label = 'S-LINE', color = { bg = '#d19a66', fg = '#282c34', gui = 'italic' } },
+  ['\19']   = { icon = '', label = 'S-BLOCK', color = { bg = '#d19a66', fg = '#282c34', gui = 'italic' } },
 }
 
 local function get_mode_icon()
@@ -131,10 +131,12 @@ local pill_right = ''
 
 -- Colors for OneDark theme
 local colors = {
+  good_blue = '#61afef',
   bg = '#282c34',
   bg_dark = '#21252b',
   bg_light = '#2c323c',
   fg = '#abb2bf',
+  good_fg = '#282c34',
   red = '#e06c75',
   green = '#98c379',
   yellow = '#e5c07b',
@@ -240,7 +242,8 @@ require('lualine').setup {
           unnamed = '[No Name]',
           newfile = '[New]',
         },
-        color = { fg = colors.fg, gui = 'italic' },
+        separator = { left = '', right = pill_right },
+        color = { fg = colors.good_fg, gui = 'italic', bg = colors.good_blue },
         file_status = true,
         padding = { left = 2, right = 1 },
       },
