@@ -149,12 +149,16 @@ v.api.nvim_create_autocmd('PackChanged', {
 
 require("cord").setup({
   display = {
-    theme = "catppuccin",
+    theme = "atom",
     flavor = "dark",
   },
   idle = {
     enabled = false,
   },
+  text = {
+    workspace = "Neovim btw"
+  }
+  
 })
 
 -- require("blink.pairs").setup()

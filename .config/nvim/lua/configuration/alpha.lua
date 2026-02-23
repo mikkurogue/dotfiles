@@ -16,6 +16,7 @@ local dashboard = require("alpha.themes.dashboard")
 -- }
 
 dashboard.section.header = require("configuration.rinnegan").header
+-- dashboard.section.header = require("configuration.mangekyo").header
 
 -- Action buttons
 dashboard.section.buttons.val = {
