@@ -34,14 +34,10 @@ end
 local lsps = {
   'rust_analyzer',
   'gopls',
-  -- 'ts_ls',
   'vtsls',
   'lua_ls',
   'biome',
   'zls',
-  'ocamllsp',
-  -- 'tsgo',
-  'zlint',
   'tailwindcss',
 }
 
