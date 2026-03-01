@@ -281,7 +281,7 @@ spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-at-startup "systemctl" "--user" "set-environment" "WINE_FULLSCREEN_INTEGER_SCALING=1"
 spawn-at-startup "xembedsniproxy"
 spawn-at-startup "discord"
-spawn-sh-at-startup "steam -silent"
+// spawn-sh-at-startup "steam -silent"
 spawn-sh-at-startup "faugus-launcher -silent"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
@@ -354,12 +354,14 @@ window-rule {
 window-rule {
     match title=r#"^World of Warcraft$"#
     open-fullscreen true
+    open-on-output "DP-2"
 }
 
 // Battle.net - tiled
 window-rule {
-    match title=r#"^Battle\.net$"#
-    open-maximized false
+    match app-id=r#"steam_app_0"#
+    match title=r#"^battle\.net$"#
+    open-maximized true 
 }
 
 // Prevent file managers from opening maximized
