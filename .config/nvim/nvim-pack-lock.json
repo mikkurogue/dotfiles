@@ -92,6 +92,10 @@
       "rev": "bba66a1351ff1f1bd078c8a1b00b8d12b3ed0017",
       "src": "https://github.com/swaits/lazyjj.nvim"
     },
+    "lsp-lens.nvim": {
+      "rev": "48bb1a7e271424c15f3d588d54adc9b7c319d977",
+      "src": "https://github.com/VidocqH/lsp-lens.nvim"
+    },
     "lspsaga.nvim": {
       "rev": "8efe00d6aed9db6449969f889170f1a7e43101a1",
       "src": "https://github.com/nvimdev/lspsaga.nvim"
@@ -99,6 +103,14 @@
     "lualine.nvim": {
       "rev": "47f91c416daef12db467145e16bed5bbfe00add8",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
+    },
+    "mason-lspconfig.nvim": {
+      "rev": "a324581a3c83fdacdb9804b79de1cbe00ce18550",
+      "src": "https://github.com/williamboman/mason-lspconfig.nvim"
+    },
+    "mason.nvim": {
+      "rev": "44d1e90e1f66e077268191e3ee9d2ac97cc18e65",
+      "src": "https://github.com/williamboman/mason.nvim"
     },
     "matteblack.nvim": {
       "rev": "a8a039f5d6189b28d76fa0221e64965efec7e996",
@@ -169,7 +181,7 @@
       "src": "https://github.com/rcarriga/nvim-notify"
     },
     "nvim-treesitter": {
-      "rev": "ca35dc5184327f9e19b70932190a256235acecb1",
+      "rev": "cb2cb74f3c3cbbcc17e79cada2060165d616d849",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-web-devicons": {

@@ -21,6 +21,8 @@ set -gx PATH $HOME/.cargo/bin $PATH
 alias ls="eza -l --no-permissions --icons --color=always --sort=created --group-directories-first"
 alias cat="bat --paging=never"
 
+alias sudo="sudo-rs"
+
 
 # BEGIN opam configuration
 # This is useful if you're using opam as it adds:

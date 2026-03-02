@@ -332,10 +332,11 @@ window-rule {
     open-floating true
 }
 
-// Open Discord on DP-3 monitor (workspace 6)
+// Open Discord on DP-3 monitor, full width tiled
 window-rule {
     match app-id=r#"discord$"#
     open-on-output "DP-3"
+    default-column-width { proportion 1.0; }
 }
 
 // Open Steam silently
@@ -344,10 +345,18 @@ window-rule {
     open-on-output "DP-2"
 }
 
-// Steam games (Proton) - open fullscreen
+// Steam games (Proton) - open fullscreen (except Battle.net launcher which is steam_app_0)
 window-rule {
     match app-id=r#"^steam_app_"#
+    exclude app-id=r#"^steam_app_0$"#
     open-fullscreen true
+}
+
+// Battle.net - tiled full width
+window-rule {
+    match app-id=r#"^steam_app_0$"#
+    open-fullscreen false
+    default-column-width { proportion 1.0; }
 }
 
 // World of Warcraft - fullscreen
@@ -355,13 +364,6 @@ window-rule {
     match title=r#"^World of Warcraft$"#
     open-fullscreen true
     open-on-output "DP-2"
-}
-
-// Battle.net - tiled
-window-rule {
-    match app-id=r#"steam_app_0"#
-    match title=r#"^battle\.net$"#
-    open-maximized true 
 }
 
 // Prevent file managers from opening maximized
