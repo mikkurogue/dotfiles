@@ -89,19 +89,20 @@ v.api.nvim_create_autocmd("PackChanged", {
     local spec = ev.data.spec
 
     if spec and spec.name == "fff.nvim" and ev.data.kind == "install" or ev.data.kind == "update" then
-      local fff_path = v.fn.stdpath("data") .. "/site/pack/core/opt/fff.nvim"
-      v.fn.jobstart({ "cargo", "build", "--release" }, {
-        cwd = fff_path,
-        on_exit = function(_, code)
-          if code == 0 then
-            v.notify("[fff] Cargo build finished successfully in " .. fff_path,
-              v.log.levels.INFO)
-          else
-            v.notify("[fff] Cargo build failed with exit code " .. code, v.log.levels
-              .ERROR)
-          end
-        end,
-      })
+      reuire('fff.download').download_or_build_binary()
+      -- local fff_path = v.fn.stdpath("data") .. "/site/pack/core/opt/fff.nvim"
+      -- v.fn.jobstart({ "cargo", "build", "--release" }, {
+      --   cwd = fff_path,
+      --   on_exit = function(_, code)
+      --     if code == 0 then
+      --       v.notify("[fff] Cargo build finished successfully in " .. fff_path,
+      --         v.log.levels.INFO)
+      --     else
+      --       v.notify("[fff] Cargo build failed with exit code " .. code, v.log.levels
+      --         .ERROR)
+      --     end
+      --   end,
+      -- })
     end
 
     -- Build ts-analyzer when installed from GitHub

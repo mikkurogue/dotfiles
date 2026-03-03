@@ -23,8 +23,11 @@ v.keymap.set("n", "<leader>fb", function()
 end, { desc = "Find buffers" })
 
 v.keymap.set("n", "<leader>fw", function()
-  require("fff").live_grep()
+  require("fff").live_grep({
+    grep = { 'fuzzy'}
+  })
 end, { desc = "Live grep with fff" })
+
 v.keymap.set("n", "<leader>ff", function()
   require('fff').find_files()
 end, { desc = "Find files" })
