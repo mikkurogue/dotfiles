@@ -1,192 +1,121 @@
-/* OneDark Pro Theme */
-@define-color base   #282c34;
-@define-color mantle #21252b;
-@define-color crust  #1b1f23;
+/* OneDark Pro - Sleek Island Theme */
+@define-color bg        #282c34;
+@define-color bg-dark   #21252b;
+@define-color bg-darker #1b1f23;
 
-@define-color text     #abb2bf;
-@define-color subtext0 #848b98;
-@define-color subtext1 #9da5b4;
+@define-color fg        #abb2bf;
+@define-color fg-dim    #5c6370;
+@define-color fg-dimmer #4b5263;
 
-@define-color surface0 #323842;
-@define-color surface1 #3e4451;
-@define-color surface2 #4b5263;
+@define-color surface   #323842;
+@define-color surface-l #3e4451;
+@define-color border    #3e4451;
 
-@define-color overlay0 #5c6370;
-@define-color overlay1 #636d83;
-@define-color overlay2 #7f848e;
-
-@define-color blue      #61afef;
-@define-color lavender  #c678dd;
-@define-color sapphire  #56b6c2;
-@define-color sky       #56b6c2;
-@define-color teal      #56b6c2;
+@define-color accent    #61afef;
+@define-color accent-2  #56b6c2;
 @define-color green     #98c379;
 @define-color yellow    #e5c07b;
-@define-color peach     #d19a66;
-@define-color maroon    #be5046;
+@define-color orange    #d19a66;
 @define-color red       #e06c75;
-@define-color mauve     #c678dd;
-@define-color pink      #c678dd;
-@define-color flamingo  #e06c75;
-@define-color rosewater #e5c07b;
+@define-color magenta   #c678dd;
 
 * {
-  font-family: "CaskaydiaCove Nerd Font Mono", monospace;
-  font-size: 16px;
-  font-weight: 700;
+  font-family: "CaskaydiaCove Nerd Font", "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
   min-height: 0;
+  padding: 0;
+  margin: 0;
 }
 
 window#waybar {
-  background: alpha(@base, 0.0);
-  color: @blue;
-  border-radius: 20px;
-}
-
-/* Workspaces */
-#workspaces {
-  background: @surface0;
-  border-radius: 20px;
-  padding: 4px 8px;
-  font-size: 22px;
-}
-
-#workspaces button {
-  padding: 2px 8px;
-  color: @overlay0;
   background: transparent;
-  border: none;
-  border-radius: 20px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  font-size: 22px;
+  color: @fg;
 }
 
-#workspaces button label {
-  font-size: 22px;
+/* ══════════════════════════════════════════════════════
+   CENTER BOX - Creates the island effect
+   ══════════════════════════════════════════════════════ */
+.modules-center {
+  background: @bg;
+  border: 1px solid @border;
+  border-radius: 14px;
+  padding: 4px 8px;
+  margin: 0;
 }
 
-#workspaces button image {
-  -gtk-icon-transform: scale(1.4);
-}
-
-#workspaces button.active {
-  background: linear-gradient(135deg, alpha(@blue, 0.3), alpha(@blue, 0.2));
-  background: @surface1;
-  color: @blue;
-  box-shadow: 0 0 10px alpha(@blue, 0.3), 0 0 15px alpha(@blue, 0.2);
-  text-shadow: 0 0 8px alpha(@blue, 0.5);
-  border: 1px solid alpha(@blue, 0.3);
-}
-
-#workspaces button:hover {
-  background: @surface2;
-  color: @blue;
-}
-
-#workspaces button.urgent {
-  color: @red;
-}
-
-
-
-/* Window title */
+/* ══════════════════════════════════════════════════════
+   LEFT SECTION - Window & Language
+   ══════════════════════════════════════════════════════ */
 #window {
-  background: @surface0;
-  border-radius: 20px;
-  padding: 6px 8px;
-  color: @blue;
-  font-weight: 500;
+  color: @fg;
+  padding: 4px 12px;
+  margin-right: 2px;
+  border-radius: 10px;
+  background: transparent;
 }
 
 #window.empty {
   background: transparent;
   padding: 0;
+  margin: 0;
+  min-width: 0;
 }
 
-/* Clock */
-#clock {
-  background: @surface0;
-  border-radius: 20px;
-  padding: 4px 20px;
-  color: @blue;
-  font-weight: 700;
-  font-size: 16px;
-}
-
-/* System monitors */
-#cpu,
-#memory,
-#temperature {
-  background: @surface0;
-  border-radius: 20px;
-  padding: 6px 14px;
-}
-
-#cpu {
-  color: @blue;
-}
-
-#memory {
-  color: @blue;
-}
-
-#temperature {
-  color: @blue;
-}
-
-#temperature.critical {
-  color: @red;
-}
-
-/* Cava visualizer */
-#custom-cava {
-  background: @surface0;
-  border-radius: 20px;
-  padding: 6px 12px;
-  color: @blue;
-  font-size: 18px;
-  letter-spacing: -3px;
-  min-width: 180px;
-}
-
-/* Language */
 #language {
-  background: @surface0;
-  border-radius: 20px;
-  padding: 6px 14px;
-  color: @blue;
+  color: @fg;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  margin-right: 6px;
+  border-radius: 8px;
+  background: @surface;
 }
 
-/* Audio */
-#pulseaudio {
-  background: @surface0;
-  border-radius: 20px;
-  padding: 6px 14px;
-  color: @blue;
+/* ══════════════════════════════════════════════════════
+   CENTER SECTION - Workspaces (Main Focus)
+   ══════════════════════════════════════════════════════ */
+#workspaces {
+  background: @surface;
+  border-radius: 10px;
+  padding: 2px 4px;
+  margin: 0 6px;
 }
 
-#pulseaudio.muted {
-  color: @overlay0;
+#workspaces button {
+  padding: 0 8px;
+  margin: 2px 2px;
+  color: @fg-dimmer;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  min-width: 26px;
+  min-height: 26px;
 }
 
-/* Network */
-#network {
-  background: @surface0;
-  border-radius: 20px;
-  padding: 6px 14px;
-  color: @blue;
-  font-size: 22px;
+#workspaces button.active {
+  color: @accent;
+  background: alpha(@accent, 0.15);
 }
 
-#network.disconnected {
+#workspaces button:hover {
+  color: @fg;
+  background: @surface-l;
+}
+
+#workspaces button.urgent {
   color: @red;
+  background: alpha(@red, 0.15);
 }
 
-/* Tray */
+/* ══════════════════════════════════════════════════════
+   RIGHT SECTION - Tray, Clock, Power
+   ══════════════════════════════════════════════════════ */
 #tray {
-  background: @surface0;
-  border-radius: 20px;
-  padding: 4px 12px;
+  padding: 4px 14px;
+  margin-left: 6px;
+  border-radius: 8px;
+  background: transparent;
 }
 
 #tray > .passive {
@@ -197,52 +126,91 @@ window#waybar {
   -gtk-icon-effect: highlight;
 }
 
-/* Power button */
+#tray menu {
+  background: @bg;
+  border: 1px solid @border;
+  border-radius: 8px;
+}
+
+#clock {
+  color: @fg;
+  font-weight: 600;
+  padding: 4px 12px;
+  margin-left: 2px;
+  border-radius: 8px;
+  background: transparent;
+}
+
+#clock:hover {
+  background: @surface;
+}
+
 #custom-power {
-  background: @surface0;
-  border-radius: 20px;
-  padding: 6px 14px;
-  color: @red;
-  font-size: 22px;
+  color: @fg-dim;
+  font-size: 14px;
+  padding: 4px 10px;
+  margin-left: 2px;
+  border-radius: 8px;
+  background: transparent;
 }
 
 #custom-power:hover {
-  background: @red;
-  color: @base;
+  color: @red;
+  background: alpha(@red, 0.15);
 }
 
-/* Notifications */
-#custom-notifications {
-  background: @surface0;
-  border-radius: 20px;
-  padding: 6px 14px;
-  color: @blue;
-  font-size: 22px;
+/* ══════════════════════════════════════════════════════
+   PULSEAUDIO
+   ══════════════════════════════════════════════════════ */
+#pulseaudio {
+  color: @fg;
+  font-size: 16px;
+  padding: 4px 10px;
+  margin-left: 2px;
+  border-radius: 8px;
+  background: transparent;
 }
 
-#custom-notifications.empty {
-  color: @overlay0;
+#pulseaudio.muted {
+  color: @fg-dim;
 }
 
-#custom-notifications.active {
-  color: @blue;
-  font-weight: 700;
+#pulseaudio:hover {
+  color: @accent;
+  background: @surface;
 }
 
-#custom-notifications:hover {
-  background: @surface1;
-  color: @blue;
+/* ══════════════════════════════════════════════════════
+   NETWORK
+   ══════════════════════════════════════════════════════ */
+#network {
+  color: @fg;
+  font-size: 16px;
+  padding: 4px 10px;
+  margin-left: 2px;
+  border-radius: 8px;
+  background: transparent;
 }
 
-/* Tooltips */
+#network.disconnected {
+  color: @red;
+}
+
+#network:hover {
+  color: @accent;
+  background: @surface;
+}
+
+/* ══════════════════════════════════════════════════════
+   TOOLTIPS
+   ══════════════════════════════════════════════════════ */
 tooltip {
-  background: @base;
-  border: 2px solid @surface0;
-  border-radius: 20px;
-  padding: 10px 14px;
+  background: @bg;
+  border: 1px solid @border;
+  border-radius: 8px;
+  padding: 8px 12px;
 }
 
 tooltip label {
-  color: @blue;
-  font-weight: 500;
+  color: @fg;
 }

@@ -1,117 +1,82 @@
 {
   "reload_style_on_change": true,
-  "layer": "bottom",
+  "layer": "top",
   "position": "top",
-  "spacing": 10,
-  "height": 40,
+  "height": 36,
   "margin-top": 8,
-  "margin-left": 12,
-  "margin-right": 12,
 
-  "modules-left": ["hyprland/workspaces", "hyprland/window"],
-  "modules-center": ["clock"],
-  "modules-right": ["custom/cava", "cpu", "memory", "temperature", "pulseaudio", "network", "tray", "custom/power"],
+  // All modules in center to create island effect
+  "modules-left": [],
+  "modules-center": ["hyprland/window", "hyprland/language", "hyprland/workspaces", "tray", "clock", "pulseaudio", "network", "custom/power"],
+  "modules-right": [],
 
   "hyprland/workspaces": {
     "on-click": "activate",
-    "format": "{icon}",
-    "format-icons": {
-      "active": " ",
-      "default": "{name}"
-    },
-    "all-outputs": true
-  },
+    "format": "{name}",
     "all-outputs": true
   },
 
   "hyprland/window": {
-    "format": "{}",
-    "max-length": 60,
+    "format": "{title}",
+    "max-length": 25,
     "icon": true,
-    "icon-size": 16,
+    "icon-size": 14,
     "separate-outputs": true
   },
 
+  "hyprland/language": {
+    "format": "{short}",
+    "tooltip": true,
+    "tooltip-format": "{long}"
+  },
+
   "clock": {
-    "format": " {:%H:%M}",
-    "format-alt": "  {:%a %d %b %Y}",
+    "format": "{:%H:%M}",
+    "format-alt": "{:%a %d %b}",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
       "mode": "month",
       "format": {
-        "months": "<span color='#cdd6f4'><b>{}</b></span>",
-        "days": "<span color='#cdd6f4'>{}</span>",
-        "weekdays": "<span color='#89b4fa'><b>{}</b></span>",
-        "today": "<span color='#f38ba8'><b><u>{}</u></b></span>"
+        "months": "<span color='#abb2bf'><b>{}</b></span>",
+        "days": "<span color='#abb2bf'>{}</span>",
+        "weekdays": "<span color='#61afef'><b>{}</b></span>",
+        "today": "<span color='#e06c75'><b><u>{}</u></b></span>"
       }
     }
   },
 
-  "cpu": {
-    "interval": 2,
-    "format": "󰻠 {usage}%",
-    "tooltip": true,
-    "on-click": "kitty -e btop"
-  },
-
-  "memory": {
-    "interval": 5,
-    "format": "󰍛 {percentage}%",
-    "tooltip-format": "RAM: {used:0.1f}G / {total:0.1f}G\nSwap: {swapUsed:0.1f}G / {swapTotal:0.1f}G",
-    "on-click": "kitty -e btop"
-  },
-
-  "temperature": {
-    "interval": 5,
-    "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-    "critical-threshold": 80,
-    "format": "{icon} {temperatureC}°C",
-    "format-icons": ["󱃃", "󰔏", "󱃂", "󰸁", "󰸂"],
-    "tooltip": true
-  },
-
-  "network": {
-    "interval": 3,
-    "format-ethernet": "󰈀 ",
-    "format-wifi": "󰖩 {essid}",
-    "format-disconnected": "󰖪 Disconnected",
-    "tooltip-format-ethernet": "󰈀 {ipaddr}/{cidr}\n󰕒 {bandwidthUpBytes} 󰇚 {bandwidthDownBytes}",
-    "tooltip-format-wifi": "󰖩 {essid} ({signalStrength}%)\n󰩟 {ipaddr}/{cidr}\n󰕒 {bandwidthUpBytes} 󰇚 {bandwidthDownBytes}",
-    "on-click": "nm-connection-editor"
-  },
-
-  "pulseaudio": {
-    "format": "{icon} {volume}%",
-    "format-muted": "󰖁 Muted",
-    "format-icons": {
-      "headphone": "󰋋",
-      "hands-free": "󰋎",
-      "headset": "󰋎",
-      "phone": "󰏲",
-      "portable": "󰏲",
-      "car": "󰄋",
-      "default": ["󰕿", "󰖀", "󰕾"]
-    },
-    "scroll-step": 2,
-    "on-click": "pavucontrol",
-    "tooltip-format": "{desc}\nVolume: {volume}%"
-  },
-
   "tray": {
     "icon-size": 18,
-    "spacing": 12,
+    "spacing": 14,
     "show-passive-items": true
   },
 
-  "custom/cava": {
-    "exec": "~/.config/waybar/scripts/cava.sh",
-    "format": "{}",
-    "tooltip": false
-  },
-
   "custom/power": {
-    "format": "󰐥",
+    "format": "⏻",
     "tooltip": false,
     "on-click": "wlogout"
+  },
+
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-muted": "󰖁",
+    "format-icons": {
+      "headphone": "󰋋",
+      "headset": "󰋎",
+      "default": ["󰕿", "󰖀", "󰕾", "󱄠"]
+    },
+    "scroll-step": 5,
+    "on-click": "pavucontrol",
+    "tooltip-format": "{desc}\n{volume}%"
+  },
+
+  "network": {
+    "format-ethernet": "󰈀",
+    "format-wifi": "󰖩",
+    "format-disconnected": "󰖪",
+    "tooltip-format-ethernet": "󰈀 {ipaddr}/{cidr}\n󰕒 {bandwidthUpBytes} 󰇚 {bandwidthDownBytes}",
+    "tooltip-format-wifi": "󰖩 {essid} ({signalStrength}%)\n{ipaddr}/{cidr}",
+    "tooltip-format-disconnected": "Disconnected",
+    "interval": 5
   }
 }
