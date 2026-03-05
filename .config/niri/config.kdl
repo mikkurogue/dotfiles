@@ -275,7 +275,8 @@ spawn-at-startup "kunai" "daemon"
 spawn-at-startup "vicinae" "server"
 spawn-at-startup "waybar" "-c" "/home/mikku/.config/waybar/config-niri.jsonc"
 spawn-at-startup "awww-daemon"
-spawn-at-startup "dunst"
+// spawn-at-startup "dunst"
+spawn-at-startup = "snappy-switcher" "--daemon"
 spawn-at-startup "swayosd-server"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-at-startup "systemctl" "--user" "set-environment" "WINE_FULLSCREEN_INTEGER_SCALING=1"
@@ -408,6 +409,7 @@ binds {
     Mod+S hotkey-overlay-title="Screenshot section" { spawn-sh "grim -g \"$(slurp -d)\" - | wl-copy"; }
     // Mod+Space hotkey-overlay-title="Application selector" { spawn-sh "wofi --show drun"; }
     Mod+Space hotkey-overlay-title="Vicinae launcher" { spawn "vicinae" "toggle"; }
+    Mod+N hotkey-overlay-title="Notification center" { spawn "swaync-client" "-t" "-sw"; }
 
     Ctrl+Alt+W hotkey-overlay-title="Restart waybar" { spawn-sh "killall waybar || waybar -c ~/.config/waybar/config-niri.jsonc"; }
     

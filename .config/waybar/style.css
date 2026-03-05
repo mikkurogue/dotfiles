@@ -77,15 +77,15 @@ window#waybar {
    ══════════════════════════════════════════════════════ */
 #workspaces {
   background: @surface;
-  border-radius: 10px;
-  padding: 2px 4px;
-  margin: 0 6px;
+  border-radius: 12px;
+  padding: 2px 2px;
+  margin: 0 8px;
 }
 
 #workspaces button {
-  padding: 0 8px;
-  margin: 2px 2px;
-  color: @fg-dimmer;
+  padding: 0 4px;
+  margin: 0;
+  color: @fg-dim;
   background: transparent;
   border: none;
   border-radius: 8px;
@@ -95,7 +95,7 @@ window#waybar {
 
 #workspaces button.active {
   color: @accent;
-  background: alpha(@accent, 0.15);
+  background: alpha(@accent-2, 0.25);
 }
 
 #workspaces button:hover {
