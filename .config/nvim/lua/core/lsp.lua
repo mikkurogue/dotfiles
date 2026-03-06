@@ -39,6 +39,7 @@ local lsps = {
   'biome',
   'zls',
   'tailwindcss',
+  'svelte',
 }
 
 v.lsp.enable(lsps, {
@@ -55,14 +56,15 @@ function _G.LspStatus()
   end
 
   local icons = {
-    rust_analyzer = '',
-    go = '',
-    vtsls = '',
-    ts_ls = '',
-    lua_ls = '',
+    rust_analyzer = '󱘗',
+    go = '󰟓',
+    vtsls = '',
+    ts_ls = '',
+    lua_ls = '󰢱',
     biome = '󰐅',
-    zls = '',
+    zls = '',
     tailwindcss = '󱏿',
+    svelte = '',
   }
 
   local names = {}

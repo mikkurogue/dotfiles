@@ -29,6 +29,14 @@ v.o.foldcolumn = "0"
 v.o.foldmethod = "expr"                          -- folding, set to "expr" for treesitter based folding
 v.o.foldlevel = 99
 
+-- Enable treesitter highlighting for all supported filetypes
+v.api.nvim_create_autocmd("FileType", {
+  callback = function(args)
+    -- Try to start treesitter highlighting if a parser exists
+    pcall(v.treesitter.start, args.buf)
+  end,
+})
+
 v.o.ignorecase = true
 v.o.incsearch = true
 v.o.hlsearch = true
