@@ -33,8 +33,9 @@
   "script-fail-notify": true,
 
   "widgets": [
-    "inhibitors",
+    "title",
     "dnd",
+    "inhibitors",
     "mpris",
     "notifications"
   ],
@@ -49,8 +50,8 @@
     },
     "title": {
       "text": "Notifications",
-      "clear-all-button": false,
-      "button-text": "Clear All"
+      "clear-all-button": true,
+      "button-text": "Clear"
     },
     "dnd": {
       "text": "Do Not Disturb"

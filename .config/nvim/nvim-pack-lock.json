@@ -21,11 +21,11 @@
       "src": "https://github.com/saghen/blink.cmp"
     },
     "blink.pairs": {
-      "rev": "c7986efb702d995fa8d937c23a0bd03c9d3e92b3",
+      "rev": "1b752e4d26f58a616d9394778975b6d93f9b44b7",
       "src": "https://github.com/saghen/blink.pairs"
     },
     "catppuccin": {
-      "rev": "c4d475e4b5684747cde9b3f849186af7837d4397",
+      "rev": "12c004cde3f36cb1d57242f1e6aac46b09a0e5b4",
       "src": "https://github.com/catppuccin/nvim"
     },
     "conform.nvim": {
@@ -33,7 +33,7 @@
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "copilot.lua": {
-      "rev": "437b18f7db78a0ec2bea05dde37791019913e547",
+      "rev": "575646d22e4a80758935e92f7be7e210c1ceb5bc",
       "src": "https://github.com/zbirenbaum/copilot.lua"
     },
     "cord.nvim": {
@@ -49,7 +49,7 @@
       "src": "https://github.com/sindrets/diffview.nvim"
     },
     "fff.nvim": {
-      "rev": "10a27f96784d81fa4d7fdddc18efe501c3968cbf",
+      "rev": "ac8df4c9e4926d23f196f30be052518454dfe251",
       "src": "https://github.com/dmtrKovalenko/fff.nvim"
     },
     "fidget.nvim": {
@@ -61,7 +61,7 @@
       "src": "https://github.com/bjarneo/firesky.nvim"
     },
     "gitsigns.nvim": {
-      "rev": "9f3c6dd7868bcc116e9c1c1929ce063b978fa519",
+      "rev": "7c4faa3540d0781a28588cafbd4dd187a28ac6e3",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "gruvbox.nvim": {
@@ -157,7 +157,7 @@
       "src": "https://github.com/MunifTanjim/nui.nvim"
     },
     "nvim-dap": {
-      "rev": "b516f20b487b0ac6a281e376dfac1d16b5040041",
+      "rev": "a9d8cb68ee7184111dc66156c4a2ebabfbe01bc5",
       "src": "https://github.com/mfussenegger/nvim-dap"
     },
     "nvim-dap-ui": {
@@ -169,7 +169,7 @@
       "src": "https://github.com/theHamsta/nvim-dap-virtual-text"
     },
     "nvim-lspconfig": {
-      "rev": "2b87d107942b9eebef768512f5849330335a9493",
+      "rev": "2163c54bb6cfec53e3e555665ada945b8c8331b9",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -181,7 +181,7 @@
       "src": "https://github.com/rcarriga/nvim-notify"
     },
     "nvim-treesitter": {
-      "rev": "972f378653c794b0ff82282a844732695064b70f",
+      "rev": "5cb05e1b0fa3c469958a2b26f36b3fe930af221c",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-web-devicons": {

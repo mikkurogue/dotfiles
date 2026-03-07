@@ -35,6 +35,8 @@ keybind = ctrl+shift+,=reload_config
 keybind = performable:ctrl+c=copy_to_clipboard
 keybind = performable:ctrl+v=paste_from_clipboard
 
+mouse-scroll-multiplier = 3
+
 # SSH session terminfo
 shell-integration-features = ssh-env
 
