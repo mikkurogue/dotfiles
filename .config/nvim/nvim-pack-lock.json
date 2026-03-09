@@ -92,10 +92,6 @@
       "rev": "bba66a1351ff1f1bd078c8a1b00b8d12b3ed0017",
       "src": "https://github.com/swaits/lazyjj.nvim"
     },
-    "lsp-lens.nvim": {
-      "rev": "48bb1a7e271424c15f3d588d54adc9b7c319d977",
-      "src": "https://github.com/VidocqH/lsp-lens.nvim"
-    },
     "lspsaga.nvim": {
       "rev": "562d9724e3869ffd1801c572dd149cc9f8d0cc36",
       "src": "https://github.com/nvimdev/lspsaga.nvim"
@@ -103,14 +99,6 @@
     "lualine.nvim": {
       "rev": "47f91c416daef12db467145e16bed5bbfe00add8",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
-    },
-    "mason-lspconfig.nvim": {
-      "rev": "a324581a3c83fdacdb9804b79de1cbe00ce18550",
-      "src": "https://github.com/williamboman/mason-lspconfig.nvim"
-    },
-    "mason.nvim": {
-      "rev": "44d1e90e1f66e077268191e3ee9d2ac97cc18e65",
-      "src": "https://github.com/williamboman/mason.nvim"
     },
     "matteblack.nvim": {
       "rev": "a8a039f5d6189b28d76fa0221e64965efec7e996",
