@@ -1,6 +1,6 @@
 {
   "reload_style_on_change": true,
-  "layer": "top",
+  "layer": "bottom",
   "position": "top",
   "height": 36,
   "margin-top": 8,
@@ -10,12 +10,24 @@
   "modules-center": ["niri/window", "niri/language", "niri/workspaces", "tray", "clock", "pulseaudio", "network", "custom/power"],
   "modules-right": [],
 
-  "niri/workspaces": {
+    "niri/workspaces": {
+    "on-click": "activate",
     "format": "{icon}",
     "format-icons": {
-      "active": "●",
+      "active": "",
       "default": "○"
-    }
+      // "1": "",
+      // "2": " ",
+      // "3": "○",
+      // "4": "○",
+      // "5": "○",
+      // "6": " ",
+      // "7": "○",
+      // "8": "○",
+      // "9": "○",
+      // "10": "○"
+    },
+    "all-outputs":false 
   },
 
   "niri/window": {

@@ -58,7 +58,7 @@ input {
 }
 
 output "DP-2" {
-    mode "2560x1440@155"
+    mode "2560x1440@144"
     scale 1
     transform "normal"
     position x=0 y=0
@@ -276,7 +276,7 @@ spawn-at-startup "vicinae" "server"
 spawn-at-startup "waybar" "-c" "/home/mikku/.config/waybar/config-niri.jsonc"
 spawn-at-startup "awww-daemon"
 // spawn-at-startup "dunst"
-spawn-at-startup = "snappy-switcher" "--daemon"
+spawn-at-startup  "snappy-switcher" "--daemon"
 spawn-at-startup "swayosd-server"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-at-startup "systemctl" "--user" "set-environment" "WINE_FULLSCREEN_INTEGER_SCALING=1"
