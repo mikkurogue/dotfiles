@@ -19,6 +19,7 @@ alias cat="bat --paging=never"
 alias ff="fd"
 alias sudo="sudo-rs"
 alias c="clear"
+alias x="exit"
 alias vim="nvim"
 alias fucking='sudo'
 alias fuck='sudo (history | tail -n1)'
