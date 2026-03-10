@@ -58,7 +58,7 @@ input {
 }
 
 output "DP-2" {
-    mode "2560x1440@144"
+    mode "2560x1440@143.912"
     scale 1
     transform "normal"
     position x=0 y=0

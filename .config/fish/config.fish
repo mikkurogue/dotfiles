@@ -1,28 +1,86 @@
 set fish_greeting
+# PATH configuration
+set -gx PATH $PATH /usr/local/go/bin
+set -gx PATH $HOME/.cargo/bin $PATH
+
 # Starship prompt
 starship init fish | source
 
 # Zoxide initialization
 zoxide init fish | source
 
-# Aliases
-alias rev="/home/mikku/.cargo/bin/rev"
-alias git-purge="git fetch -p && git branch --merged | grep -v '*' | grep -v 'master' | xargs git branch -d"
-
 # Directory navigation aliases
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
-# PATH configuration
-set -gx PATH $PATH /usr/local/go/bin
-set -gx PATH $HOME/.cargo/bin $PATH
-
 alias ls="eza -l --no-permissions --icons --color=always --sort=created --group-directories-first"
 alias cat="bat --paging=never"
-
+alias ff="fd"
 alias sudo="sudo-rs"
+alias c="clear"
+alias vim="nvim"
+alias fucking='sudo'
+alias fuck='sudo (history | tail -n1)'
+alias grep='rg --color=always'
 
+function h
+  history | fzf
+end
+
+function fzf_history
+    history | fzf --tac | read -l command
+    commandline $command
+end
+
+bind \cr fzf_history
+
+function fzf_file
+    fd --type f | fzf | read -l file
+    and nvim $file
+end
+
+bind \ct fzf_file
+
+function fzf_dir
+    fd --type d | fzf | read -l dir
+    and cd $dir
+end
+
+bind \ec fzf_dir
+
+
+function jjf
+    set limit 100
+    set rev "@"
+
+    if test (count $argv) -ge 1
+        set rev $argv[1]
+    end
+
+    if test (count $argv) -ge 2
+        set limit $argv[2]
+    end
+
+    set logcmd "jj log -r '$rev' -n $limit --no-graph -T '
+        separate(\" \",
+            bookmarks,
+            change_id.short(),
+            description.first_line()
+        )
+    '"
+
+    eval $logcmd |
+    fzf --ansi \
+        --preview 'jj diff -r (echo {} | awk "{print \$2}")' \
+        --preview-window=right:70% |
+    awk '{print $2}' |
+    read -l change
+
+    if test -n "$change"
+        jj new $change
+    end
+end
 
 # BEGIN opam configuration
 # This is useful if you're using opam as it adds:
