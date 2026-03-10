@@ -49,39 +49,6 @@ end
 
 bind \ec fzf_dir
 
-
-function jjf
-    set limit 100
-    set rev "@"
-
-    if test (count $argv) -ge 1
-        set rev $argv[1]
-    end
-
-    if test (count $argv) -ge 2
-        set limit $argv[2]
-    end
-
-    set logcmd "jj log -r '$rev' -n $limit --no-graph -T '
-        separate(\" \",
-            bookmarks,
-            change_id.short(),
-            description.first_line()
-        )
-    '"
-
-    eval $logcmd |
-    fzf --ansi \
-        --preview 'jj diff -r (echo {} | awk "{print \$2}")' \
-        --preview-window=right:70% |
-    awk '{print $2}' |
-    read -l change
-
-    if test -n "$change"
-        jj new $change
-    end
-end
-
 # BEGIN opam configuration
 # This is useful if you're using opam as it adds:
 #   - the correct directories to the PATH
