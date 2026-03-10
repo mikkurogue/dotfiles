@@ -6,6 +6,7 @@ $hostname\
 $directory\
 ${custom.jj}\
 $all\
+$cmd_duration\
 $line_break\
 [  ]()$character"""
 
@@ -29,6 +30,26 @@ disabled = false
 [character]
 error_symbol = "[󱞩 ](bold red)"
 success_symbol = "[󱞩 ](bold green)"
+
+[cmd_duration]
+min_time = 500
+show_milliseconds = true
+format = "took [$duration]($style) "
+style = "blue"
+
+[container]
+format = "[$symbol]($style) "
+symbol = "󰡨"
+style = "purple"
+
+[shell]
+disabled = false
+bash_indicator = ""
+zsh_indicator = "󰰶"
+fish_indicator = "󰈺"
+nu_indicator = "󱆃"
+format = "[$indicator]($style) "
+style = "cyan"
 
 [line_break]
 disabled = false
