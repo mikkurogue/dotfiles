@@ -42,15 +42,6 @@ format = "[$symbol]($style) "
 symbol = "󰡨"
 style = "purple"
 
-[shell]
-disabled = false
-bash_indicator = ""
-zsh_indicator = "󰰶"
-fish_indicator = "󰈺"
-nu_indicator = "󱆃"
-format = "[$indicator]($style) "
-style = "cyan"
-
 [line_break]
 disabled = false
 
