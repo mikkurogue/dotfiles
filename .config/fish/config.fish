@@ -17,13 +17,14 @@ alias ....='cd ../../..'
 alias ls="eza -l --no-permissions --icons --color=always --sort=created --group-directories-first"
 alias cat="bat --paging=never"
 alias ff="fd"
-alias sudo="sudo-rs"
+# alias sudo="sudo-rs"
 alias c="clear"
 alias x="exit"
 alias vim="nvim"
 alias fucking='sudo'
 alias fuck='sudo (history | tail -n1)'
 alias grep='rg --color=always'
+alias rmv='rmv -l "spinner"'
 
 function h
   history | fzf

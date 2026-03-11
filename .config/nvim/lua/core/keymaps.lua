@@ -1,5 +1,11 @@
 local v = vim
 
+-- remap hjkl to neio for colemak dh layout
+-- vim.keymap.set("n", "n", "h")
+-- vim.keymap.set("n", "e", "j")
+-- vim.keymap.set("n", "i", "k")
+-- vim.keymap.set("n", "o", "l")
+
 -- Basic keymaps vim specific
 v.g.mapleader = " "
 v.keymap.set('n', '<leader>o', ':update<CR> :source<CR>')
