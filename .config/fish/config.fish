@@ -59,3 +59,6 @@ bind \ec fzf_dir
 # This section can be safely removed at any time if needed.
 test -r "$HOME/.opam/opam-init/init.fish" && source "$HOME/.opam/opam-init/init.fish" > /dev/null 2> /dev/null; or true
 # END opam configuration
+
+# Vite+ bin (https://viteplus.dev)
+source "$HOME/.vite-plus/env.fish"
