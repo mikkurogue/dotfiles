@@ -1,6 +1,6 @@
 local util = require("conform.util")
-local biome_root = util.root_file({ "biome.json", "biome.jsonc" })
-local prettier_root = util.root_file({
+local biome_root_files = { "biome.json", "biome.jsonc" }
+local prettier_root_files = {
   ".prettierrc",
   ".prettierrc.json",
   ".prettierrc.json5",
@@ -10,14 +10,23 @@ local prettier_root = util.root_file({
   ".prettierrc.cjs",
   "prettier.config.js",
   "prettier.config.cjs",
-})
+}
+
+local biome_root = util.root_file(biome_root_files)
+local prettier_root = util.root_file(prettier_root_files)
+
+local function has_root_file(bufnr, files)
+  local filename = vim.api.nvim_buf_get_name(bufnr)
+  local dirname = filename ~= "" and vim.fs.dirname(filename) or vim.uv.cwd()
+  return vim.fs.root(dirname, files) ~= nil
+end
 
 local function formatters_for(bufnr)
-  if biome_root(bufnr) then
+  if has_root_file(bufnr, biome_root_files) then
     return { "biome_fix", "biome" }
   end
 
-  if prettier_root(bufnr) then
+  if has_root_file(bufnr, prettier_root_files) then
     return { "prettier" }
   end
 
