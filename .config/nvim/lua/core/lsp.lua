@@ -1,7 +1,6 @@
 local v = vim
 
 -- LSP configurations
-local capabilities = require("blink.cmp").get_lsp_capabilities(v.lsp.protocol.make_client_capabilities())
 
 local function on_lsp_exit(code, signal, client_id)
   local client = v.lsp.get_client_by_id(client_id)
@@ -29,7 +28,11 @@ local function on_lsp_exit(code, signal, client_id)
   end
 end
 
-
+-- Shared config for all LSP servers
+-- Note: capabilities are already set by blink.cmp's plugin file via vim.lsp.config('*')
+v.lsp.config('*', {
+  on_exit = on_lsp_exit,
+})
 
 local lsps = {
   'rust_analyzer',
@@ -40,12 +43,11 @@ local lsps = {
   'zls',
   'tailwindcss',
   'svelte',
+  'oxfmt',
+  'oxlint',
 }
 
-v.lsp.enable(lsps, {
-  capabilities = capabilities,
-  on_exit = on_lsp_exit,
-})
+v.lsp.enable(lsps)
 
 -- show lsp that is attached to buffer
 function _G.LspStatus()

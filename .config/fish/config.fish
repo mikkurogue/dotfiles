@@ -2,7 +2,7 @@ set fish_greeting
 # PATH configuration
 set -gx PATH $PATH /usr/local/go/bin
 set -gx PATH $HOME/.cargo/bin $PATH
-
+# set -gx VITE_PLUS_NODE_VERSION 25.8.1
 # Starship prompt
 starship init fish | source
 
