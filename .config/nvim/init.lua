@@ -1,14 +1,9 @@
 -- Basic vim settings
 require("core.opts")
-
--- Add local ts-analyzer plugins to runtimepath
--- vim.opt.runtimepath:append("/home/mikku/work/ts-analyzer")
-
 local v = vim
-
 -- Plugins with native package manager
 v.pack.add({
-    { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
+  { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
   { src = "https://github.com/nvim-lualine/lualine.nvim" },
   { src = "https://github.com/nvim-tree/nvim-web-devicons" },
   { src = "https://github.com/neovim/nvim-lspconfig" },
@@ -33,20 +28,16 @@ v.pack.add({
   { src = "https://github.com/sindrets/diffview.nvim" },
   { src = "https://github.com/j-hui/fidget.nvim",                     name = "fidget.nvim" },
   { src = "https://github.com/folke/persistence.nvim",                event = "BufReadPre" },
-  { src = "https://github.com/ziglang/zig.vim" },
   { src = "https://github.com/folke/todo-comments.nvim" },
   { src = "https://github.com/folke/noice.nvim" },
   { src = "https://github.com/MunifTanjim/nui.nvim" },
   { src = "https://github.com/rcarriga/nvim-notify" },
   { src = "https://github.com/doums/suit.nvim" },
   { src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
-  { src = "https://github.com/dmmulroy/ts-error-translator.nvim" },
   { src = "https://github.com/vyfor/cord.nvim" },
   { src = "https://github.com/saghen/blink.pairs" },
   { src = "https://github.com/vuki656/package-info.nvim" },
   { src = "https://github.com/goolord/alpha-nvim" },
-  -- { src = "https://github.com/mikkurogue/ts-analyzer"}
-
   -- Debugging (DAP)
   { src = "https://github.com/mfussenegger/nvim-dap" },
   { src = "https://github.com/rcarriga/nvim-dap-ui" },
@@ -63,21 +54,8 @@ require("notify").setup({
 
 -- Add colorschemes
 v.pack.add({
-  { src = "https://github.com/ellisonleao/gruvbox.nvim" },
-  { src = "https://github.com/catppuccin/nvim",              name = "catppuccin" },
-  { src = "https://github.com/rose-pine/neovim",             name = "rose-pine" },
-  { src = "https://github.com/rebelot/kanagawa.nvim" },
-  { src = "https://github.com/folke/tokyonight.nvim" },
-  { src = "https://github.com/AlexvZyl/nordic.nvim" },
-  { src = "https://github.com/EdenEast/nightfox.nvim" },
-  { src = "https://github.com/tahayvr/matteblack.nvim" },
-  { src = "https://github.com/stevedylandev/darkmatter-nvim" },
-  { src = "https://github.com/bjarneo/firesky.nvim" },
-  { src = "https://github.com/vyrx-dev/void.nvim" },
   { src = "https://github.com/IroncladDev/osmium" },
   { src = "https://github.com/olimorris/onedarkpro.nvim" },
-  { src = "https://github.com/Mofiqul/adwaita.nvim" },
-  { src = "https://github.com/nasccped/rustheme.nvim" }
 })
 
 require("configuration.fff")
@@ -89,38 +67,8 @@ v.api.nvim_create_autocmd("PackChanged", {
     local spec = ev.data.spec
 
     if spec and spec.name == "fff.nvim" and ev.data.kind == "install" or ev.data.kind == "update" then
-      reuire('fff.download').download_or_build_binary()
-      -- local fff_path = v.fn.stdpath("data") .. "/site/pack/core/opt/fff.nvim"
-      -- v.fn.jobstart({ "cargo", "build", "--release" }, {
-      --   cwd = fff_path,
-      --   on_exit = function(_, code)
-      --     if code == 0 then
-      --       v.notify("[fff] Cargo build finished successfully in " .. fff_path,
-      --         v.log.levels.INFO)
-      --     else
-      --       v.notify("[fff] Cargo build failed with exit code " .. code, v.log.levels
-      --         .ERROR)
-      --     end
-      --   end,
-      -- })
+      require('fff.download').download_or_build_binary()
     end
-
-    -- Build ts-analyzer when installed from GitHub
-    -- if spec and spec.name == "ts-analyzer" and ev.data.kind == "install" or ev.data.kind == "update" then
-    --   local ts_analyzer_path = v.fn.stdpath("data") .. "/site/pack/core/opt/ts-analyzer"
-    --   v.fn.jobstart({ "cargo", "build", "--release" }, {
-    --     cwd = ts_analyzer_path,
-    --     on_exit = function(_, code)
-    --       if code == 0 then
-    --         v.notify("[ts-analyzer] Cargo build finished successfully in " .. ts_analyzer_path,
-    --           v.log.levels.INFO)
-    --       else
-    --         v.notify("[ts-analyzer] Cargo build failed with exit code " .. code, v.log.levels
-    --           .ERROR)
-    --       end
-    --     end,
-    --   })
-    -- end
 
     if spec and spec.name == "blink.cmp" and ev.data.kind == "install" or ev.data.kind == "update" then
       local blink_cmp_path = v.fn.stdpath("data") .. "/site/pack/core/opt/blink.cmp"
@@ -162,55 +110,20 @@ require("cord").setup({
   
 })
 
--- require("blink.pairs").setup()
-
-
 require("ibl").setup()
 
 require("onedarkpro").setup({
   theme = "onedark",
 })
 
-require("catppuccin").setup({
-  flavour = "mocha",
-  integrations = {
-    diffview = true,
-    fidget = true,
-    harpoon = true,
-    mason = true,
-    native_lsp = { enabled = true },
-    dap = true,
-    dap_ui = true,
-    noice = true,
-    notify = true,
-    symbols_outline = true,
-    snacks = {
-      enabled = true,
-      indent_scope_color = "mauve",
-    },
-    render_markdown = true,
-    telescope = true,
-    treesitter = true,
-    treesitter_context = true,
-    ufo = true,
-    which_key = true,
-  },
-})
-
 local schemes = {
-  "catppuccin",
-  "tokyonight",
   "onedark",
-  "kanagawa",
-  "nordic",
-  "gruvbox",
   "osmium",
-  "rustheme",
 }
 
 
 -- set colorscheme
-v.cmd("colorscheme " .. schemes[3])
+v.cmd("colorscheme " .. schemes[1])
 
 require("configuration.todo-comments")
 require("configuration.mini")
@@ -232,7 +145,6 @@ require("osmium").setup({
     telescope = true,
     indent_blankline = true,
     fff = true,
-    -- oil = true,
   },
   transparent_bg = true,     -- whether to use a transparent background
   show_end_of_buffer = false, -- whether to show the end of buffer
@@ -242,14 +154,6 @@ require("osmium").setup({
 require("configuration.telescope")
 require("configuration.tiny-inline-diagnostic")
 
--- Use ts-analyzer-virt instead of ts-analyzer for virtual text diagnostics
--- require("ts-analyzer-virt").setup({
---   attach = true,
---   servers = {
---     "ts_ls",
---     "vtsls"
---   }
--- })
 require("configuration.noice")
 require("configuration.suit")
 require("configuration.alpha")
@@ -297,6 +201,5 @@ v.api.nvim_create_autocmd("BufEnter", {
   end,
 })
 
-
-
 require("core.keymaps")
+
