@@ -13,7 +13,7 @@
       "src": "https://github.com/braxtons12/blame_line.nvim"
     },
     "blink.cmp": {
-      "rev": "f22f66eb7c4d037ed523a78b27ee235b7bc9a1f4",
+      "rev": "4fefa9ad0c706ade49eaa3b241df406adb7dce38",
       "src": "https://github.com/saghen/blink.cmp"
     },
     "blink.pairs": {
@@ -49,7 +49,7 @@
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "hunk.nvim": {
-      "rev": "b053714d39148f02c78132c74cb0672a18c2d657",
+      "rev": "478d0efcf373b274ec5c952c1459981536c0f773",
       "src": "https://github.com/julienvincent/hunk.nvim"
     },
     "indent-blankline.nvim": {
@@ -117,7 +117,7 @@
       "src": "https://github.com/theHamsta/nvim-dap-virtual-text"
     },
     "nvim-lspconfig": {
-      "rev": "0203a9608d63eda57679b01e69f33a7b4c34b0d1",
+      "rev": "1d13d2b0df9a0a02904c76d7ad6810f71d404406",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -129,7 +129,7 @@
       "src": "https://github.com/rcarriga/nvim-notify"
     },
     "nvim-treesitter": {
-      "rev": "493890b87a81dfe6a7e577dbc364ae33fa482da9",
+      "rev": "b9f9d692f1c7f0427502a3b84fa25d4bedb29ec1",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-web-devicons": {
