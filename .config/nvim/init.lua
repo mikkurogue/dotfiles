@@ -38,12 +38,12 @@ v.pack.add({
   { src = "https://github.com/saghen/blink.pairs" },
   { src = "https://github.com/vuki656/package-info.nvim" },
   { src = "https://github.com/goolord/alpha-nvim" },
+  { src = "https://github.com/mvllow/modes.nvim" },
   -- Debugging (DAP)
   { src = "https://github.com/mfussenegger/nvim-dap" },
   { src = "https://github.com/rcarriga/nvim-dap-ui" },
   { src = "https://github.com/theHamsta/nvim-dap-virtual-text" },
   { src = "https://github.com/nvim-neotest/nvim-nio" }, -- required by nvim-dap-ui
-
   -- Which-key for keybind helper
   { src = "https://github.com/folke/which-key.nvim" },
 })
@@ -138,6 +138,8 @@ require("configuration.diffview")
 require("configuration.toggleterm")
 require("configuration.fidget")
 require("configuration.lualine")
+require("modes").setup({})
+
 
 require("osmium").setup({
   integrations = {
