@@ -34,6 +34,28 @@ v.lsp.config('*', {
   on_exit = on_lsp_exit,
 })
 
+local vue_ls_path = v.uv.fs_realpath(v.fn.exepath('vue-language-server')) or v.fn.exepath('vue-language-server')
+
+local vue_plugin = {
+  name = '@vue/typescript-plugin',
+  location = v.fn.fnamemodify(vue_ls_path, ':p:h:h'),
+  languages = { 'vue' },
+  configNamespace = 'typescript',
+}
+
+v.lsp.config('vtsls', {
+  settings = {
+    vtsls = {
+      tsserver = {
+        globalPlugins = {
+          vue_plugin,
+        },
+      },
+    },
+  },
+  filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue' },
+})
+
 local lsps = {
   'rust_analyzer',
   'gopls',
@@ -45,6 +67,7 @@ local lsps = {
   'svelte',
   'oxfmt',
   'oxlint',
+  'vue_ls'
 }
 
 v.lsp.enable(lsps)
