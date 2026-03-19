@@ -13,7 +13,7 @@
       "src": "https://github.com/braxtons12/blame_line.nvim"
     },
     "blink.cmp": {
-      "rev": "d1c0d6a65dc33ff4f3e31bd93f5c0d23bd55ce8a",
+      "rev": "612f4bd2bc29d9e7dc7be1dde960908951bedad1",
       "src": "https://github.com/saghen/blink.cmp"
     },
     "blink.pairs": {
@@ -25,7 +25,7 @@
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "copilot.lua": {
-      "rev": "575646d22e4a80758935e92f7be7e210c1ceb5bc",
+      "rev": "0552b44fceedf0c4cba2cd4953d3976633b2509a",
       "src": "https://github.com/zbirenbaum/copilot.lua"
     },
     "cord.nvim": {
@@ -37,7 +37,7 @@
       "src": "https://github.com/sindrets/diffview.nvim"
     },
     "fff.nvim": {
-      "rev": "4b83987ea121dbdd0c6e1065b9bc480bdf954931",
+      "rev": "b005c0a790216bb19bbf7c051d0ecc4572181000",
       "src": "https://github.com/dmtrKovalenko/fff.nvim"
     },
     "fidget.nvim": {
@@ -89,7 +89,7 @@
       "src": "https://github.com/echasnovski/mini.pairs"
     },
     "mini.pick": {
-      "rev": "96b968dc293729b6ee8770ec1a0e7f7d87ca4cfc",
+      "rev": "d78d3ca4c3830b9fa0f185f296eeb88f6c422c4e",
       "src": "https://github.com/echasnovski/mini.pick"
     },
     "mini.tabline": {

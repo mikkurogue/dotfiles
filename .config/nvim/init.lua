@@ -12,15 +12,12 @@ v.pack.add({
   { src = "https://github.com/kdheepak/lazygit.nvim" },
   { src = "https://github.com/nvim-telescope/telescope.nvim" },
   { src = "https://github.com/nvim-lua/plenary.nvim" },
-  { src = "https://github.com/echasnovski/mini.pairs" },
-  { src = "https://github.com/echasnovski/mini.files" },
   { src = "https://github.com/folke/trouble.nvim" },
   { src = "https://github.com/stevearc/conform.nvim" },
   { src = "https://github.com/rachartier/tiny-inline-diagnostic.nvim" },
   { src = "https://github.com/dmtrKovalenko/fff.nvim" },
   { src = "https://github.com/nvim-mini/mini.icons" },
   { src = "https://github.com/stevearc/oil.nvim" },
-  { src = "https://github.com/nvim-mini/mini.tabline" },
   { src = "https://github.com/akinsho/toggleterm.nvim" },
   { src = "https://github.com/algmyr/vclib.nvim" },
   { src = "https://github.com/algmyr/vcsigns.nvim" },
@@ -38,7 +35,6 @@ v.pack.add({
   { src = "https://github.com/saghen/blink.pairs" },
   { src = "https://github.com/vuki656/package-info.nvim" },
   { src = "https://github.com/goolord/alpha-nvim" },
-  { src = "https://github.com/mvllow/modes.nvim" },
   -- Debugging (DAP)
   { src = "https://github.com/mfussenegger/nvim-dap" },
   { src = "https://github.com/rcarriga/nvim-dap-ui" },
@@ -138,8 +134,6 @@ require("configuration.diffview")
 require("configuration.toggleterm")
 require("configuration.fidget")
 require("configuration.lualine")
-require("modes").setup({})
-
 
 require("osmium").setup({
   integrations = {
