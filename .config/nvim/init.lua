@@ -1,5 +1,6 @@
 -- Basic vim settings
 require("core.opts")
+
 local v = vim
 -- Plugins with native package manager
 v.pack.add({
@@ -8,6 +9,7 @@ v.pack.add({
   { src = "https://github.com/nvim-tree/nvim-web-devicons" },
   { src = "https://github.com/neovim/nvim-lspconfig" },
   { src = "https://github.com/saghen/blink.cmp", },
+  { src = "https://github.com/akinsho/bufferline.nvim", },
   { src = "https://github.com/zbirenbaum/copilot.lua" },
   { src = "https://github.com/kdheepak/lazygit.nvim" },
   { src = "https://github.com/nvim-telescope/telescope.nvim" },
@@ -32,6 +34,7 @@ v.pack.add({
   { src = "https://github.com/doums/suit.nvim" },
   { src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
   { src = "https://github.com/vyfor/cord.nvim" },
+  { src = "https://github.com/saghen/blink.download" },
   { src = "https://github.com/saghen/blink.pairs" },
   { src = "https://github.com/vuki656/package-info.nvim" },
   { src = "https://github.com/goolord/alpha-nvim" },
@@ -62,11 +65,11 @@ v.api.nvim_create_autocmd("PackChanged", {
   callback = function(ev)
     local spec = ev.data.spec
 
-    if spec and spec.name == "fff.nvim" and ev.data.kind == "install" or ev.data.kind == "update" then
+    if spec and spec.name == "fff.nvim" and (ev.data.kind == "install" or ev.data.kind == "update") then
       require('fff.download').download_or_build_binary()
     end
 
-    if spec and spec.name == "blink.cmp" and ev.data.kind == "install" or ev.data.kind == "update" then
+    if spec and spec.name == "blink.cmp" and (ev.data.kind == "install" or ev.data.kind == "update") then
       local blink_cmp_path = v.fn.stdpath("data") .. "/site/pack/core/opt/blink.cmp"
       v.fn.jobstart({ "cargo", "build", "--release" }, {
         cwd = blink_cmp_path,
@@ -77,6 +80,21 @@ v.api.nvim_create_autocmd("PackChanged", {
           else
             v.notify("[blink.cmp] Cargo build failed with exit code " .. code, v.log.levels
               .ERROR)
+          end
+        end,
+      })
+    end
+
+    if spec and spec.name == "blink.pairs" and (ev.data.kind == "install" or ev.data.kind == "update") then
+      local blink_pairs_path = v.fn.stdpath("data") .. "/site/pack/core/opt/blink.pairs"
+      v.fn.jobstart({ "cargo", "build", "--release" }, {
+        cwd = blink_pairs_path,
+        on_exit = function(_, code)
+          if code == 0 then
+            v.notify("[blink.pairs] Cargo build finished successfully in " .. blink_pairs_path,
+              v.log.levels.INFO)
+          else
+            v.notify("[blink.pairs] Cargo build failed with exit code " .. code, v.log.levels.ERROR)
           end
         end,
       })
@@ -127,6 +145,15 @@ require("configuration.persistence")
 require("configuration.oil")
 require("core.lsp")
 require("configuration.blink-cmp")
+require("configuration.blink-pairs")
+require("bufferline").setup({
+  options = {
+    indicator = {
+      style = "underline",
+    },
+    separator_style = "slant",
+  }
+})
 require("configuration.conform")
 require("configuration.vcsigns")
 require("configuration.hunk")
@@ -198,4 +225,3 @@ v.api.nvim_create_autocmd("BufEnter", {
 })
 
 require("core.keymaps")
-

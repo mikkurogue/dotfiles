@@ -16,9 +16,17 @@
       "rev": "612f4bd2bc29d9e7dc7be1dde960908951bedad1",
       "src": "https://github.com/saghen/blink.cmp"
     },
+    "blink.download": {
+      "rev": "8417652c1d1ec773a68b270a2ee94d606a0e35aa",
+      "src": "https://github.com/saghen/blink.download"
+    },
     "blink.pairs": {
       "rev": "262b03d52d2763557a5261a421a639a7edba4bab",
       "src": "https://github.com/saghen/blink.pairs"
+    },
+    "bufferline.nvim": {
+      "rev": "655133c3b4c3e5e05ec549b9f8cc2894ac6f51b3",
+      "src": "https://github.com/akinsho/bufferline.nvim"
     },
     "conform.nvim": {
       "rev": "086a40dc7ed8242c03be9f47fbcee68699cc2395",
