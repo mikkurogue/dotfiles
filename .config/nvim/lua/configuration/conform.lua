@@ -25,6 +25,7 @@ local prettier_root_files = {
 }
 
 local biome_root = util.root_file(biome_root_files)
+local oxfmt_root = util.root_file({ ".oxfmtrc.json", ".oxfmtrc.jsonc", "package.json" })
 local prettier_root = util.root_file(prettier_root_files)
 
 local function has_root_file(bufnr, files)
@@ -86,9 +87,10 @@ local function formatters_for(bufnr)
 
   if has_root_file(bufnr, oxfmt_root_files) or has_root_file(bufnr, oxlint_root_files) or has_oxc_package(bufnr) then
     local formatters = {}
-    if conform.get_formatter_info("oxlint", bufnr).available then
-      table.insert(formatters, "oxlint")
-    end
+    -- Temporarily disabled for Vite+ projects where oxlint CLI is an LSP-only wrapper.
+    -- if conform.get_formatter_info("oxlint", bufnr).available then
+    --   table.insert(formatters, "oxlint")
+    -- end
     if conform.get_formatter_info("oxfmt", bufnr).available then
       table.insert(formatters, "oxfmt")
     end
@@ -110,8 +112,17 @@ require("conform").setup({
     typescript = formatters_for,
     javascriptreact = formatters_for,
     typescriptreact = formatters_for,
+    json = formatters_for,
+    vue = formatters_for,
   },
   formatters = {
+    oxfmt = {
+      command = "vp",
+      args = { "fmt", "--write", "$FILENAME" },
+      stdin = false,
+      cwd = oxfmt_root,
+      require_cwd = true,
+    },
     biome = {
       command = "node_modules/.bin/biome",
       args = { "format", "--stdin-file-path", "$FILENAME" },
@@ -135,7 +146,7 @@ require("conform").setup({
     },
   },
   format_on_save = {
-    pattern = { "*.js", "*.jsx", "*.ts", "*.tsx" },
+    pattern = { "*.js", "*.jsx", "*.ts", "*.tsx", "*.json", "*.vue" },
     timeout_ms = 10000,
     lsp_fallback = false,
   }
