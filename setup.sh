@@ -63,6 +63,11 @@ echo "Setting up ghostty configuration..."
 backup_if_exists "$HOME/.config/ghostty" "$DOTFILES_DIR/.config/ghostty"
 ln -sf "$DOTFILES_DIR/.config/ghostty" "$HOME/.config/ghostty"
 
+# Backup and symlink kitty
+echo "Setting up kitty configuration..."
+backup_if_exists "$HOME/.config/kitty" "$DOTFILES_DIR/.config/kitty"
+ln -sf "$DOTFILES_DIR/.config/kitty" "$HOME/.config/kitty"
+
 # Backup and symlink fish
 echo "Setting up fish configuration..."
 backup_if_exists "$HOME/.config/fish" "$DOTFILES_DIR/.config/fish"
