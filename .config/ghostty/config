@@ -1,5 +1,5 @@
 # theme = osmium 
-theme = Atom One Dark 
+theme = onedark_custom
 
 # Font
 # font-family = "Hack-ZeroSlash"
@@ -41,4 +41,3 @@ shell-integration-features = ssh-env
 
 # Shaders
 custom-shader = shaders/cursor_smear.glsl
-
