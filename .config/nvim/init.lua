@@ -39,7 +39,6 @@ v.pack.add({
   { src = "https://github.com/vuki656/package-info.nvim" },
   { src = "https://github.com/goolord/alpha-nvim" },
   { src = "https://github.com/kevinhwang91/promise-async" },
-  { src = "https://github.com/kevinhwang91/nvim-ufo" },
   { src=  "https://github.com/saecki/crates.nvim" },
   -- Debugging (DAP)
   { src = "https://github.com/mfussenegger/nvim-dap" },
@@ -64,7 +63,6 @@ require("configuration.fff")
 
 require("package-info").setup()
 require("crates").setup()
-require("configuration.ufo")
 
 v.api.nvim_create_autocmd("PackChanged", {
   callback = function(ev)
