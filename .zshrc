@@ -54,3 +54,5 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/fzf-tab/fzf-tab.plugin.zsh
 
 if [ -e /home/mikku/.nix-profile/etc/profile.d/nix.sh ]; then . /home/mikku/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+. "$HOME/.local/bin/env"
