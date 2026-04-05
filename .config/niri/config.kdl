@@ -404,7 +404,7 @@ binds {
     Mod+T hotkey-overlay-title="Terminal Ghostty" { spawn "ghostty"; }
     Mod+G hotkey-overlay-title="Terminal Kitty" { spawn "kitty"; }
     Mod+Z hotkey-overlay-title="Open Zed" { spawn "zeditor"; }
-    Mod+F hotkey-overlay-title="Browser" { spawn "brave"; }
+    Mod+F hotkey-overlay-title="Browser" { spawn "firefox"; }
     Mod+E hotkey-overlay-title="File Manager" { spawn "thunar"; }
     Mod+S hotkey-overlay-title="Screenshot section" { spawn-sh "grim -g \"$(slurp -d)\" - | wl-copy"; }
     // Mod+Space hotkey-overlay-title="Application selector" { spawn-sh "wofi --show drun"; }
