@@ -1,1 +1,0 @@
-/nix/store/sz2zgjky4ha5z4wq0z1192jfgbgli8cf-home-manager-files/.config/fish/functions/fzf_history.fish
