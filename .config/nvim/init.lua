@@ -63,14 +63,20 @@ require("configuration.fff")
 require("package-info").setup()
 require("crates").setup()
 
+
+
+vim.api.nvim_create_autocmd('PackChanged', {
+  callback = function(event)
+    if event.data.updated then
+      require('fff.download').download_or_build_binary()
+    end
+  end,
+})
+
 v.api.nvim_create_autocmd("PackChanged", {
   callback = function(ev)
     local spec = ev.data.spec
-
-    if spec and spec.name == "fff.nvim" and (ev.data.kind == "install" or ev.data.kind == "update") then
-      require('fff.download').download_or_build_binary()
-    end
-
+    
     if spec and spec.name == "blink.cmp" and (ev.data.kind == "install" or ev.data.kind == "update") then
       local blink_cmp_path = v.fn.stdpath("data") .. "/site/pack/core/opt/blink.cmp"
       v.fn.jobstart({ "cargo", "build", "--release" }, {
