@@ -1,15 +1,16 @@
--- COPILOT CORE
-require("copilot").setup({
-  suggestion = {
-    enabled = true,    -- enable ghost text
-    auto_trigger = true, -- show suggestions automatically
-    keymap = {
-      accept = "<C-J>", -- accept suggestion
-      accept_line = false,
-    },
-  },
-  panel = { enabled = false },
-})
+-- -- COPILOT CORE
+-- Disable copilot cause its fucking annoying
+-- require("copilot").setup({
+--   suggestion = {
+--     enabled = true,    -- enable ghost text
+--     auto_trigger = true, -- show suggestions automatically
+--     keymap = {
+--       accept = "<C-J>", -- accept suggestion
+--       accept_line = false,
+--     },
+--   },
+--   panel = { enabled = false },
+-- })
 
 
 -- BLINK CONFIG (load AFTER copilot_cmp.setup)
@@ -30,18 +31,19 @@ require("blink.cmp").setup({
       "snippet_backward",
       "fallback",
     },
-    ["<C-j>"] = {
-      "accept",
-      function() -- Then try copilot if visible
-        local ok, copilot = pcall(require, "copilot.suggestion")
-        if ok and copilot.is_visible() then
-          copilot.accept()
-          return true -- stop the chain
-        end
-      end,
-      "snippet_forward", -- Try snippet forward
-      "fallback",     -- Finally fallback to default behavior
-    },
+    -- Same as above, copilot is fucking annoying
+    -- ["<C-j>"] = {
+    --   "accept",
+    --   function() -- Then try copilot if visible
+    --     local ok, copilot = pcall(require, "copilot.suggestion")
+    --     if ok and copilot.is_visible() then
+    --       copilot.accept()
+    --       return true -- stop the chain
+    --     end
+    --   end,
+    --   "snippet_forward", -- Try snippet forward
+    --   "fallback",     -- Finally fallback to default behavior
+    -- },
     ["<C-.>"] = { "show", "hide" },
   },
   completion = {
@@ -53,6 +55,10 @@ require("blink.cmp").setup({
     },
   },
   appearance = {
-    use_nvim_cmp_as_default = false,
+    use_nvim_cmp_as_default = true,
+  },
+  signature = {
+    enabled = true,
+    window = { border = "rounded" },
   },
 })
