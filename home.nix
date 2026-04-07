@@ -46,7 +46,7 @@
   programs.git = {
     enable = true;
     userName = "mikkurogue";
-    userEmail = "michael.lindemans@outlook.com";
+    userEmail = "me@mikkurogue.dev";
     
     extraConfig = {
       # Add your git config here
