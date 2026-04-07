@@ -4,7 +4,6 @@ require("core.opts")
 local v = vim
 -- Plugins with native package manager
 v.pack.add({
-  { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
   { src = "https://github.com/nvim-lualine/lualine.nvim" },
   { src = "https://github.com/nvim-tree/nvim-web-devicons" },
   { src = "https://github.com/neovim/nvim-lspconfig" },

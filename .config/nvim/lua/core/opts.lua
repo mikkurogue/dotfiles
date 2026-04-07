@@ -23,10 +23,10 @@ v.o.smartindent = true
 v.o.scrolloff = 8
 
 v.o.expandtab = true
-v.o.foldenable = true
-v.o.foldcolumn = "1"  -- show fold indicators in the sign column
-v.o.foldlevel = 99    -- start with all folds open
-v.o.foldlevelstart = 99
+-- v.o.foldenable = true
+-- v.o.foldcolumn = "1"  -- show fold indicators in the sign column
+-- v.o.foldlevel = 99    -- start with all folds open
+-- v.o.foldlevelstart = 99
 
 -- Enable treesitter highlighting for all supported filetypes
 v.api.nvim_create_autocmd("FileType", {
