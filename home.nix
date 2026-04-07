@@ -1,6 +1,13 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ./modules/fish.nix
+  ];
+
+  # Enable fish config from dotfiles
+  dotfiles.fish.enable = true;
+
   # Home Manager needs a bit of information about you and the paths it should manage
   home.username = "mikku";
   home.homeDirectory = "/home/mikku";
@@ -79,27 +86,8 @@
     '';
   };
 
-  programs.fish = {
-    enable = true;
-    
-    shellInit = ''
-      set fish_greeting
-    '';
-    
-    interactiveShellInit = ''
-      starship init fish | source
-      zoxide init fish | source
-    '';
-    
-    shellAliases = {
-      rev = "$HOME/.cargo/bin/rev";
-      git-purge = "git fetch -p && git branch --merged | grep -v '*' | grep -v 'master' | xargs git branch -d";
-      ".." = "cd ..";
-      "..." = "cd ../..";
-      "...." = "cd ../../..";
-      ls = "eza -l --no-permissions --icons --color=always --sort=created --group-directories-first";
-    };
-  };
+  # Fish shell is managed by modules/fish.nix - it symlinks the dotfiles
+  # fish config directly instead of generating one via programs.fish.
 
   programs.neovim = {
     enable = true;
@@ -125,7 +113,6 @@
     "hypr".source = ./.config/hypr;
     "waybar".source = ./.config/waybar;
     "nvim".source = ./.config/nvim;
-    "fish".source = ./.config/fish;
     "ghostty".source = ./.config/ghostty;
     "niri".source = ./.config/niri;
     "noctalia".source = ./.config/noctalia;

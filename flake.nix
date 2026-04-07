@@ -19,6 +19,15 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in
     {
+      # Expose modules for use by other home-manager configurations
+      # Usage on another machine:
+      #   inputs.dotfiles.url = "github:mikkurogue/dotfiles";
+      #   Then in home.nix imports: [ inputs.dotfiles.homeManagerModules.fish ]
+      homeManagerModules = {
+        fish = import ./modules/fish.nix;
+        default = import ./modules/fish.nix;
+      };
+
       # Home Manager configuration
       # Usage: home-manager switch --flake .#mikku
       homeConfigurations."mikku" = home-manager.lib.homeManagerConfiguration {
