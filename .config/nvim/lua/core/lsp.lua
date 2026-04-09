@@ -43,12 +43,20 @@ local vue_plugin = {
   configNamespace = 'typescript',
 }
 
+local effect_plugin = {
+  name = '@effect/language-service',
+  languages = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+  enableForWorkspaceTypeScriptVersions = true,
+}
+
 v.lsp.config('vtsls', {
   settings = {
     vtsls = {
+      autoUseWorkspaceTsdk = true,
       tsserver = {
         globalPlugins = {
           vue_plugin,
+          effect_plugin,
         },
       },
     },
