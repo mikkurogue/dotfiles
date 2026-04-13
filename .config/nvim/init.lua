@@ -187,7 +187,7 @@ require("configuration.tiny-inline-diagnostic")
 
 require("configuration.noice")
 require("configuration.suit")
--- require("configuration.alpha")
+require("configuration.alpha")
 require("configuration.which-key")
 require("configuration.dap")
 
