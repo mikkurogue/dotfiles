@@ -56,3 +56,8 @@ source ~/.zsh/fzf-tab/fzf-tab.plugin.zsh
 if [ -e /home/mikku/.nix-profile/etc/profile.d/nix.sh ]; then . /home/mikku/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 . "$HOME/.local/bin/env"
+command_not_found_handler() {
+  (paplay "/home/mikku/.local/share/fahhh/fahhh.mp3" >/dev/null 2>&1) &
+  echo "zsh: command not found: $1" >&2
+  return 127
+}

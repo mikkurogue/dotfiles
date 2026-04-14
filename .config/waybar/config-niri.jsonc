@@ -7,7 +7,7 @@
 
   // All modules in center to create island effect
   "modules-left": [],
-  "modules-center": ["niri/window", "niri/language", "niri/workspaces", "tray", "clock", "pulseaudio", "network", "custom/power"],
+  "modules-center": ["niri/window", "niri/language", "niri/workspaces", "tray", "clock", "pulseaudio", "network"],
   "modules-right": [],
 
     "niri/workspaces": {
@@ -63,12 +63,6 @@
     "icon-size": 18,
     "spacing": 14,
     "show-passive-items": true
-  },
-
-  "custom/power": {
-    "format": "⏻",
-    "tooltip": false,
-    "on-click": "wlogout"
   },
 
   "pulseaudio": {
