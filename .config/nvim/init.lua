@@ -46,6 +46,8 @@ v.pack.add({
   { src = "https://github.com/nvim-neotest/nvim-nio" }, -- required by nvim-dap-ui
   -- Which-key for keybind helper
   { src = "https://github.com/folke/which-key.nvim" },
+  -- symbol-usage nvim for cool shit
+  { src = "https://github.com/Wansmer/symbol-usage.nvim" },
 })
 
 require("notify").setup({
@@ -57,13 +59,6 @@ v.pack.add({
   { src = "https://github.com/IroncladDev/osmium" },
   { src = "https://github.com/olimorris/onedarkpro.nvim" },
 })
-
-require("configuration.fff")
-
-require("package-info").setup()
-require("crates").setup()
-
-
 
 vim.api.nvim_create_autocmd('PackChanged', {
   callback = function(event)
@@ -131,9 +126,10 @@ require("cord").setup({
   }
   
 })
-
+require("configuration.fff")
+require("package-info").setup()
+require("crates").setup()
 require("ibl").setup()
-
 require("onedarkpro").setup({
   theme = "onedark",
 })
@@ -169,7 +165,6 @@ require("configuration.diffview")
 require("configuration.toggleterm")
 require("configuration.fidget")
 require("configuration.lualine")
-
 require("osmium").setup({
   integrations = {
     gitsigns = true,
@@ -184,12 +179,12 @@ require("osmium").setup({
 
 require("configuration.telescope")
 require("configuration.tiny-inline-diagnostic")
-
 require("configuration.noice")
 require("configuration.suit")
 require("configuration.alpha")
 require("configuration.which-key")
 require("configuration.dap")
+require("configuration.symbol-usage")
 
 -- get current git branch
 function _G.GitBranch()
