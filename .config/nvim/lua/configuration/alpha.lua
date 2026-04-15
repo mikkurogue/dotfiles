@@ -38,6 +38,15 @@ dashboard.config.layout = {
   dashboard.section.footer,
 }
 
-dashboard.section.footer.val = os.date("%Y-%m-%d %H:%M:%S")
+local function footer()
+  local total_plugins = #vim.pack.get() 
+  local datetime = os.date(" %d-%m-%Y   %H:%M:%S")
+  local version = vim.version()
+  local nvim_version_info = "   v" .. version.major .. "." .. version.minor .. "." .. version.patch
+
+  return datetime .. "   " .. total_plugins .. " plugins" .. nvim_version_info
+end
+
+dashboard.section.footer.val = footer()
 
 alpha.setup(dashboard.config)
