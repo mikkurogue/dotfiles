@@ -28,11 +28,24 @@ v.o.expandtab = true
 -- v.o.foldlevel = 99    -- start with all folds open
 -- v.o.foldlevelstart = 99
 
--- Enable treesitter highlighting for all supported filetypes
+-- Increase redrawtime so async treesitter parsing can finish after large jumps
+v.o.redrawtime = 10000
+
+-- Disable treesitter for very large files, fall back to regex syntax
+local large_file_bytes = 5 * 1024 * 1024 -- 5MB
+local large_file_lines = 50000
+
 v.api.nvim_create_autocmd("FileType", {
   callback = function(args)
-    -- Try to start treesitter highlighting if a parser exists
-    pcall(v.treesitter.start, args.buf)
+    local buf = args.buf
+    local ok, stats = pcall(v.uv.fs_stat, v.api.nvim_buf_get_name(buf))
+    local filesize = ok and stats and stats.size or 0
+    local linecount = v.api.nvim_buf_line_count(buf)
+
+    if filesize > large_file_bytes or linecount > large_file_lines then
+      v.treesitter.stop(buf)
+      v.bo[buf].syntax = "ON"
+    end
   end,
 })
 

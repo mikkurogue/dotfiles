@@ -48,6 +48,8 @@ v.pack.add({
   { src = "https://github.com/folke/which-key.nvim" },
   -- symbol-usage nvim for cool shit
   { src = "https://github.com/Wansmer/symbol-usage.nvim" },
+  -- Treesitter parser manager (replaces archived nvim-treesitter)
+  { src = "https://github.com/romus204/tree-sitter-manager.nvim" },
 })
 
 require("notify").setup({
@@ -185,6 +187,7 @@ require("configuration.alpha")
 require("configuration.which-key")
 require("configuration.dap")
 require("configuration.symbol-usage")
+require("configuration.treesitter")
 
 -- get current git branch
 function _G.GitBranch()
