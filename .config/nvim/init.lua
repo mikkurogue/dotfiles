@@ -37,7 +37,7 @@ v.pack.add({
   { src = "https://github.com/saghen/blink.pairs" },
   { src = "https://github.com/vuki656/package-info.nvim" },
   { src = "https://github.com/goolord/alpha-nvim" },
-  { src = "https://github.com/kevinhwang91/promise-async" },
+  { src = "https://github.com/lewis6991/async.nvim" },
   { src=  "https://github.com/saecki/crates.nvim" },
   -- Debugging (DAP)
   { src = "https://github.com/mfussenegger/nvim-dap" },

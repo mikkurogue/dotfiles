@@ -4,8 +4,12 @@
       "rev": "7563da4a861ee6b3ed674d0ee5c5c0bd19383a38",
       "src": "https://github.com/goolord/alpha-nvim"
     },
+    "async.nvim": {
+      "rev": "5d893a30e21b5cd72bd8dd9ef351f351f90f5b8d",
+      "src": "https://github.com/lewis6991/async.nvim"
+    },
     "blink.cmp": {
-      "rev": "456d38d1cd3743926f329204c2340f3e7840aad6",
+      "rev": "c573a15a62bd0bfd4006ee0849b24f5404395500",
       "src": "https://github.com/saghen/blink.cmp"
     },
     "blink.download": {
@@ -41,7 +45,7 @@
       "src": "https://github.com/sindrets/diffview.nvim"
     },
     "fff.nvim": {
-      "rev": "7de55be63d725d94944e5e89206284a67b8baa08",
+      "rev": "77881a1c92928f93e6364c697b9066a66f59f8b6",
       "src": "https://github.com/dmtrKovalenko/fff.nvim"
     },
     "fidget.nvim": {
@@ -89,7 +93,7 @@
       "src": "https://github.com/theHamsta/nvim-dap-virtual-text"
     },
     "nvim-lspconfig": {
-      "rev": "d10ce09e42bb0ca8600fd610c3bb58676e61208d",
+      "rev": "4b7fbaa239c5db6b36f424a4521ca9f1a401be33",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -117,7 +121,7 @@
       "src": "https://github.com/IroncladDev/osmium"
     },
     "package-info.nvim": {
-      "rev": "52e407af634cd5d3add0dc916c517865850113a4",
+      "rev": "9725099fb118bab8360e560c1219bff60763b7e1",
       "src": "https://github.com/vuki656/package-info.nvim"
     },
     "persistence.nvim": {
@@ -127,10 +131,6 @@
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
       "src": "https://github.com/nvim-lua/plenary.nvim"
-    },
-    "promise-async": {
-      "rev": "119e8961014c9bfaf1487bf3c2a393d254f337e2",
-      "src": "https://github.com/kevinhwang91/promise-async"
     },
     "suit.nvim": {
       "rev": "81ce4cc32a5f793b87e979935b1f8d4a74496a95",
