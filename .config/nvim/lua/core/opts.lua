@@ -20,6 +20,8 @@ v.o.undofile = true
 v.o.termguicolors = true
 v.o.smartindent = true
 
+v.o.guicursor = "n-v-c:block-blinkwait700-blinkon400-blinkoff250,i-ci-ve:ver25-blinkwait700-blinkon400-blinkoff250,r-cr-o:hor20-blinkwait700-blinkon400-blinkoff250"
+
 v.o.scrolloff = 8
 
 v.o.expandtab = true
