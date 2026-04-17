@@ -6,9 +6,11 @@ $hostname\
 $directory\
 ${custom.jj}\
 $all\
-$cmd_duration\
+$sudo\
 $line_break\
 [  ]()$character"""
+
+right_format = """$cmd_duration$memory_usage$battery"""
 
 palette = 'onedark'
 
@@ -99,7 +101,6 @@ when = "jj-starship detect"
 shell = ["jj-starship"]
 format = "$output "
 
-# ── Toolchains: icon + major.minor only ────────────────────────────────
 
 [nodejs]
 symbol = " "
@@ -137,6 +138,30 @@ format = "[$symbol]($style)"
 
 [package]
 disabled = true
+
+
+[battery]
+format = "[$symbol$percentage]($style) "
+full_symbol = "󰁹 "
+charging_symbol = "󰂄 "
+discharging_symbol = "󰂃 "
+
+[[battery.display]]
+threshold = 100
+style = "green"
+
+[memory_usage]
+disabled = false
+threshold = 75
+symbol = "󰍛 "
+format = "[$symbol$ram_pct]($style) "
+style = "yellow"
+
+[sudo]
+disabled = false
+symbol = "󰞀 "
+format = "[$symbol]($style)"
+style = "red bold"
 
 [palettes.onedark]
 # OneDark Pro theme
