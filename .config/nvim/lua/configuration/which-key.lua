@@ -76,9 +76,8 @@ wk.add({
 
   -- LSP navigation (g prefix)
   { "g", group = "Go to" },
-  { "gd", desc = "Go to definition" },
-  { "gD", desc = "Go to declaration" },
-  { "gr", desc = "Go to references" },
-  { "gi", desc = "Go to implementation" },
+  { "gd", desc = "Peekr: Definitions" },
+  { "gD", desc = "Peekr: Definitions" },
+  { "gR", desc = "Peekr: References" },
   { "K", desc = "Hover documentation" },
 })

@@ -55,11 +55,7 @@ v.keymap.set("n", "<leader>xx", function()
 
 v.keymap.set("n", "<leader>gb", ":Gitsigns blame_line<CR>", { desc = "Show git blame line" })
 
--- lsp keymaps
-v.keymap.set("n", "gd", v.lsp.buf.definition)
-v.keymap.set("n", "gD", v.lsp.buf.declaration)
-v.keymap.set("n", "gr", v.lsp.buf.references)
-v.keymap.set("n", "gi", v.lsp.buf.implementation)
+-- lsp keymaps (gd, gD, gr, gi handled by Peekr — see configuration/peekr.lua)
 v.keymap.set("n", "K", v.lsp.buf.hover)
 v.keymap.set("n", "<C-k>", v.lsp.buf.signature_help)
 v.keymap.set("n", "<leader>rn", v.lsp.buf.rename)

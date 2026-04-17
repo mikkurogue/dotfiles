@@ -124,6 +124,10 @@
       "rev": "9725099fb118bab8360e560c1219bff60763b7e1",
       "src": "https://github.com/vuki656/package-info.nvim"
     },
+    "peekr": {
+      "rev": "77f3e34197705d6b408af60adf16a13d919de3c6",
+      "src": "https://github.com/mikkurogue/peekr"
+    },
     "persistence.nvim": {
       "rev": "b20b2a7887bd39c1a356980b45e03250f3dce49c",
       "src": "https://github.com/folke/persistence.nvim"
