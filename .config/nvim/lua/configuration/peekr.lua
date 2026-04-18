@@ -14,7 +14,6 @@ peekr.setup({
 })
 
 -- Keymaps
-vim.keymap.set("n", "gd", "<CMD>Peekr definitions<CR>", { desc = "Peekr: Definitions" })
 vim.keymap.set("n", "gD", "<CMD>Peekr definitions<CR>", { desc = "Peekr: Definitions" })
 vim.keymap.set("n", "gR", "<CMD>Peekr references<CR>", { desc = "Peekr: References" })
 vim.keymap.set("n", "gY", "<CMD>Peekr type_definitions<CR>", { desc = "Peekr: Type Definitions" })

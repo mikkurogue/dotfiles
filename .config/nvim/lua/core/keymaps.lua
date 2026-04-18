@@ -16,10 +16,6 @@ v.keymap.set("n", "<Esc>", ":noh<CR>", {
   silent = true
 })
 
--- v.keymap.set("n", "<leader>fw", function()
--- 	require('telescope.builtin').live_grep()
--- end)
-
 -- trigger lazygit
 v.keymap.set("n", "<leader>gg", ":LazyGit<CR>")
 
@@ -82,7 +78,12 @@ local function close_all_but_current()
   end
 end
 
--- 🧠 Keymaps
+-- lsp keymaps
+v.keymap.set("n", "gd", v.lsp.buf.definition)
+v.keymap.set("n", "gr", v.lsp.buf.references)
+v.keymap.set("n", "gi", v.lsp.buf.implementation)
+
+-- Keymaps
 v.keymap.set("n", "bc", "<cmd>bd<CR>", { desc = "Close current buffer" })
 v.keymap.set("n", "bcc", close_all_buffers, { desc = "Close all buffers" })
 v.keymap.set("n", "bc1", close_all_but_current, { desc = "Close all but current buffer" })
