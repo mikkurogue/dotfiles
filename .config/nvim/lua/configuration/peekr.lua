@@ -4,12 +4,13 @@ peekr.setup({
   height = 20,
   width = 0.75,
   border = "rounded",
+  use_trouble_qf = true,
   treesitter = {
     enable = true,
   },
   list = {
     position = "left",
-    width = 0.30,
+    width = 0.10,
   },
 })
 

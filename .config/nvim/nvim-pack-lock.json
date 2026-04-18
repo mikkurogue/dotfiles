@@ -1,7 +1,7 @@
 {
   "plugins": {
     "alpha-nvim": {
-      "rev": "7563da4a861ee6b3ed674d0ee5c5c0bd19383a38",
+      "rev": "6c6a89d5b068b5251c8bdf0dd57bb921bcfeeb09",
       "src": "https://github.com/goolord/alpha-nvim"
     },
     "async.nvim": {
@@ -45,7 +45,7 @@
       "src": "https://github.com/sindrets/diffview.nvim"
     },
     "fff.nvim": {
-      "rev": "77881a1c92928f93e6364c697b9066a66f59f8b6",
+      "rev": "689e31284ae1d1836f808b1eaf7fcc74f5e4a236",
       "src": "https://github.com/dmtrKovalenko/fff.nvim"
     },
     "fidget.nvim": {
@@ -125,7 +125,7 @@
       "src": "https://github.com/vuki656/package-info.nvim"
     },
     "peekr": {
-      "rev": "77f3e34197705d6b408af60adf16a13d919de3c6",
+      "rev": "04fd819a6280d345792276918543b0c65cfec925",
       "src": "https://github.com/mikkurogue/peekr"
     },
     "persistence.nvim": {
@@ -149,7 +149,7 @@
       "src": "https://github.com/nvim-telescope/telescope.nvim"
     },
     "tiny-inline-diagnostic.nvim": {
-      "rev": "57a0eb84b2008c76e77930639890d9874195b1e1",
+      "rev": "b3b91e086795c036ecfe70429b72b26bcb302c91",
       "src": "https://github.com/rachartier/tiny-inline-diagnostic.nvim"
     },
     "todo-comments.nvim": {
