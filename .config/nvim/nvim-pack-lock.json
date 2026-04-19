@@ -5,7 +5,7 @@
       "src": "https://github.com/goolord/alpha-nvim"
     },
     "async.nvim": {
-      "rev": "5d893a30e21b5cd72bd8dd9ef351f351f90f5b8d",
+      "rev": "7a1d7d49933fbe902b84b55f352a3b10fd587331",
       "src": "https://github.com/lewis6991/async.nvim"
     },
     "blink.cmp": {
@@ -45,7 +45,7 @@
       "src": "https://github.com/sindrets/diffview.nvim"
     },
     "fff.nvim": {
-      "rev": "689e31284ae1d1836f808b1eaf7fcc74f5e4a236",
+      "rev": "cebacb3c35645a5036adda093d4332f6098865bd",
       "src": "https://github.com/dmtrKovalenko/fff.nvim"
     },
     "fidget.nvim": {
@@ -124,9 +124,9 @@
       "rev": "9725099fb118bab8360e560c1219bff60763b7e1",
       "src": "https://github.com/vuki656/package-info.nvim"
     },
-    "peekr": {
-      "rev": "04fd819a6280d345792276918543b0c65cfec925",
-      "src": "https://github.com/mikkurogue/peekr"
+    "peekr.nvim": {
+      "rev": "ababc129820e79060d88b79272205dcc0c2f7169",
+      "src": "https://github.com/mikkurogue/peekr.nvim"
     },
     "persistence.nvim": {
       "rev": "b20b2a7887bd39c1a356980b45e03250f3dce49c",
