@@ -79,9 +79,9 @@ local function close_all_but_current()
 end
 
 -- lsp keymaps
-v.keymap.set("n", "gd", v.lsp.buf.definition)
-v.keymap.set("n", "gr", v.lsp.buf.references)
-v.keymap.set("n", "gi", v.lsp.buf.implementation)
+-- v.keymap.set("n", "gd", v.lsp.buf.definition)
+-- v.keymap.set("n", "gr", v.lsp.buf.references)
+-- v.keymap.set("n", "gi", v.lsp.buf.implementation)
 
 -- Keymaps
 v.keymap.set("n", "bc", "<cmd>bd<CR>", { desc = "Close current buffer" })
