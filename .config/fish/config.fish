@@ -66,6 +66,3 @@ test -r "$HOME/.opam/opam-init/init.fish" && source "$HOME/.opam/opam-init/init.
 # Vite+ bin (https://viteplus.dev)
 source "$HOME/.vite-plus/env.fish"
 
-if status is-interactive
-    atuin init fish | source
-end
