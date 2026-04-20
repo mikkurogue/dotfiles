@@ -9,7 +9,7 @@
       "src": "https://github.com/lewis6991/async.nvim"
     },
     "blink.cmp": {
-      "rev": "c573a15a62bd0bfd4006ee0849b24f5404395500",
+      "rev": "90d14caca4ae557665ab105080c27d5f289a2e30",
       "src": "https://github.com/saghen/blink.cmp"
     },
     "blink.download": {
@@ -29,7 +29,7 @@
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "copilot.lua": {
-      "rev": "ad7e729e9a6348f7da482be0271d452dbc4c8e2c",
+      "rev": "aeca454727486d488a6ecbcde30db72e741e3524",
       "src": "https://github.com/zbirenbaum/copilot.lua"
     },
     "cord.nvim": {
@@ -45,7 +45,7 @@
       "src": "https://github.com/sindrets/diffview.nvim"
     },
     "fff.nvim": {
-      "rev": "cebacb3c35645a5036adda093d4332f6098865bd",
+      "rev": "91545f832c3aa3b36e58088e44461a071a709699",
       "src": "https://github.com/dmtrKovalenko/fff.nvim"
     },
     "fidget.nvim": {
@@ -93,7 +93,7 @@
       "src": "https://github.com/theHamsta/nvim-dap-virtual-text"
     },
     "nvim-lspconfig": {
-      "rev": "4b7fbaa239c5db6b36f424a4521ca9f1a401be33",
+      "rev": "e05fb8c3bd61d909dacff24f77f23beb644daf54",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -125,7 +125,7 @@
       "src": "https://github.com/vuki656/package-info.nvim"
     },
     "peekr.nvim": {
-      "rev": "ababc129820e79060d88b79272205dcc0c2f7169",
+      "rev": "0397f886e5ded7f453438de32d17c9b5e1a7fc40",
       "src": "https://github.com/mikkurogue/peekr.nvim"
     },
     "persistence.nvim": {
@@ -145,7 +145,7 @@
       "src": "https://github.com/Wansmer/symbol-usage.nvim"
     },
     "telescope.nvim": {
-      "rev": "471eebb1037899fd942cc0f52c012f8773505da1",
+      "rev": "028d9a0695a0cc4cfa893889f8c408ed7ccc8adc",
       "src": "https://github.com/nvim-telescope/telescope.nvim"
     },
     "tiny-inline-diagnostic.nvim": {
