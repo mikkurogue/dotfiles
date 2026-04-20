@@ -34,21 +34,45 @@ local function has_root_file(bufnr, files)
   return vim.fs.root(dirname, files) ~= nil
 end
 
-local function has_oxc_package(bufnr)
+local function read_package_json(bufnr)
   local filename = vim.api.nvim_buf_get_name(bufnr)
   local dirname = filename ~= "" and vim.fs.dirname(filename) or vim.uv.cwd()
   local package_file = vim.fs.find("package.json", { path = dirname, upward = true })[1]
   if not package_file then
-    return false
+    return nil
   end
 
   local lines = vim.fn.readfile(package_file)
   if vim.tbl_isempty(lines) then
-    return false
+    return nil
   end
 
   local ok, package = pcall(vim.json.decode, table.concat(lines, "\n"))
   if not ok or type(package) ~= "table" then
+    return nil
+  end
+
+  return package
+end
+
+local function has_vite_plus(bufnr)
+  local package = read_package_json(bufnr)
+  if not package then
+    return false
+  end
+
+  for _, key in ipairs({ "dependencies", "devDependencies", "peerDependencies", "optionalDependencies" }) do
+    if type(package[key]) == "table" and package[key]["vite-plus"] then
+      return true
+    end
+  end
+
+  return false
+end
+
+local function has_oxc_package(bufnr)
+  local package = read_package_json(bufnr)
+  if not package then
     return false
   end
 
@@ -87,12 +111,14 @@ local function formatters_for(bufnr)
 
   if has_root_file(bufnr, oxfmt_root_files) or has_root_file(bufnr, oxlint_root_files) or has_oxc_package(bufnr) then
     local formatters = {}
-    -- Temporarily disabled for Vite+ projects where oxlint CLI is an LSP-only wrapper.
-    -- if conform.get_formatter_info("oxlint", bufnr).available then
-    --   table.insert(formatters, "oxlint")
-    -- end
-    if conform.get_formatter_info("oxfmt", bufnr).available then
-      table.insert(formatters, "oxfmt")
+    if has_vite_plus(bufnr) then
+      if conform.get_formatter_info("oxfmt_vp", bufnr).available then
+        table.insert(formatters, "oxfmt_vp")
+      end
+    else
+      if conform.get_formatter_info("oxfmt", bufnr).available then
+        table.insert(formatters, "oxfmt")
+      end
     end
     if not vim.tbl_isempty(formatters) then
       return formatters
@@ -117,9 +143,16 @@ require("conform").setup({
   },
   formatters = {
     oxfmt = {
+      command = "node_modules/.bin/oxfmt",
+      args = { "--stdin-filepath", "$FILENAME" },
+      stdin = true,
+      cwd = oxfmt_root,
+      require_cwd = true,
+    },
+    oxfmt_vp = {
       command = "vp",
-      args = { "fmt", "--write", "$FILENAME" },
-      stdin = false,
+      args = { "fmt", "--stdin-filepath", "$FILENAME" },
+      stdin = true,
       cwd = oxfmt_root,
       require_cwd = true,
     },
