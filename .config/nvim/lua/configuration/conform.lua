@@ -1,30 +1,11 @@
 local util = require("conform.util")
-local biome_root_files = { "biome.json", "biome.jsonc" }
 local oxfmt_root_files = { ".oxfmtrc.json", ".oxfmtrc.jsonc" }
 local oxlint_root_files = {
   "oxlintrc.json",
   ".oxlintrc.json",
   ".oxlintrc",
-  "oxlint.config.js",
-  "oxlint.config.cjs",
-  "oxlint.config.mjs",
-  "oxlint.config.ts",
-  "oxlint.config.cts",
-  "oxlint.config.mts",
-}
-local prettier_root_files = {
-  ".prettierrc",
-  ".prettierrc.json",
-  ".prettierrc.json5",
-  ".prettierrc.yml",
-  ".prettierrc.yaml",
-  ".prettierrc.js",
-  ".prettierrc.cjs",
-  "prettier.config.js",
-  "prettier.config.cjs",
 }
 
-local biome_root = util.root_file(biome_root_files)
 local oxfmt_root = util.root_file({ ".oxfmtrc.json", ".oxfmtrc.jsonc", "package.json" })
 local prettier_root = util.root_file(prettier_root_files)
 
@@ -105,10 +86,6 @@ end
 local function formatters_for(bufnr)
   local conform = require("conform")
 
-  if has_root_file(bufnr, biome_root_files) and conform.get_formatter_info("biome_fix", bufnr).available then
-    return { "biome_fix", "biome" }
-  end
-
   if has_root_file(bufnr, oxfmt_root_files) or has_root_file(bufnr, oxlint_root_files) or has_oxc_package(bufnr) then
     local formatters = {}
     if has_vite_plus(bufnr) then
@@ -145,7 +122,7 @@ require("conform").setup({
   },
   formatters = {
     oxfmt = {
-      command = "node_modules/.bin/oxfmt",
+      command = "oxfmt",
       args = { "--stdin-filepath", "$FILENAME" },
       stdin = true,
       cwd = oxfmt_root,
@@ -156,27 +133,6 @@ require("conform").setup({
       args = { "fmt", "--stdin-filepath", "$FILENAME" },
       stdin = true,
       cwd = oxfmt_root,
-      require_cwd = true,
-    },
-    biome = {
-      command = "node_modules/.bin/biome",
-      args = { "format", "--stdin-file-path", "$FILENAME" },
-      stdin = true,
-      cwd = biome_root,
-      require_cwd = true,
-    },
-    biome_fix = {
-      command = "node_modules/.bin/biome",
-      args = { "check", "--write", "--stdin-file-path", "$FILENAME" },
-      stdin = true,
-      cwd = biome_root,
-      require_cwd = true,
-    },
-    prettier = {
-      command = "node_modules/.bin/prettier",
-      args = { "--stdin-filepath", "$FILENAME" },
-      stdin = true,
-      cwd = prettier_root,
       require_cwd = true,
     },
   },
