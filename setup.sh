@@ -73,6 +73,17 @@ echo "Setting up fish configuration..."
 backup_if_exists "$HOME/.config/fish" "$DOTFILES_DIR/.config/fish"
 ln -sf "$DOTFILES_DIR/.config/fish" "$HOME/.config/fish"
 
+# Backup and symlink nushell
+echo "Setting up nushell configuration..."
+backup_if_exists "$HOME/.config/nushell" "$DOTFILES_DIR/.config/nushell"
+ln -sf "$DOTFILES_DIR/.config/nushell" "$HOME/.config/nushell"
+# Generate zoxide init for nushell
+mkdir -p "$HOME/.cache/zoxide"
+if command -v zoxide &> /dev/null; then
+    zoxide init nushell > "$HOME/.cache/zoxide/init.nu"
+    echo "✓ Zoxide init generated for nushell"
+fi
+
 # Backup and symlink noctalia
 echo "Setting up noctalia configuration..."
 backup_if_exists "$HOME/.config/noctalia" "$DOTFILES_DIR/.config/noctalia"

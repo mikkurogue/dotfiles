@@ -3,6 +3,7 @@ format = """
 $os\
 $username\
 $hostname\
+${custom.shell}\
 $directory\
 ${custom.jj}\
 $all\
@@ -94,6 +95,21 @@ disabled = true
 
 [git_commit]
 disabled = true
+
+[custom.shell]
+command = """
+case "$STARSHIP_SHELL" in
+  nu)   echo " nu";;
+  fish) echo " ><>";;
+  zsh)  echo " zsh";;
+  bash) echo " bash";;
+  *)    echo " $STARSHIP_SHELL";;
+esac
+"""
+when = "true"
+shell = ["bash"]
+format = "[$output]($style) "
+style = "purple"
 
 [custom.jj]
 # command = "jj-starship --truncate-name 20 --bookmarks-display-limit 10"
