@@ -66,3 +66,4 @@ test -r "$HOME/.opam/opam-init/init.fish" && source "$HOME/.opam/opam-init/init.
 # Vite+ bin (https://viteplus.dev)
 source "$HOME/.vite-plus/env.fish"
 
+source ~/.safe-chain/scripts/init-fish.fish # Safe-chain Fish initialization script

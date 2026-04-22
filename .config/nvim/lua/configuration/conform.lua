@@ -140,6 +140,8 @@ require("conform").setup({
     typescriptreact = formatters_for,
     json = formatters_for,
     vue = formatters_for,
+    yaml = formatters_for,
+    yml = formatters_for
   },
   formatters = {
     oxfmt = {
@@ -179,7 +181,7 @@ require("conform").setup({
     },
   },
   format_on_save = {
-    pattern = { "*.js", "*.jsx", "*.ts", "*.tsx", "*.json", "*.vue" },
+    pattern = { "*.js", "*.jsx", "*.ts", "*.tsx", "*.json", "*.vue", "*.yml", "*.yaml"},
     timeout_ms = 10000,
     lsp_fallback = false,
   }
