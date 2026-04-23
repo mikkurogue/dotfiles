@@ -118,7 +118,8 @@ require("conform").setup({
     json = formatters_for,
     vue = formatters_for,
     yaml = formatters_for,
-    yml = formatters_for
+    yml = formatters_for,
+    rust = { lsp_format = "prefer" },
   },
   formatters = {
     oxfmt = {
@@ -137,7 +138,7 @@ require("conform").setup({
     },
   },
   format_on_save = {
-    pattern = { "*.js", "*.jsx", "*.ts", "*.tsx", "*.json", "*.vue", "*.yml", "*.yaml"},
+    pattern = { "*.js", "*.jsx", "*.ts", "*.tsx", "*.json", "*.vue", "*.yml", "*.yaml", "*.rs" },
     timeout_ms = 10000,
     lsp_fallback = false,
   }

@@ -56,7 +56,7 @@ alias grep = ^rg --color=always
 # ── Zoxide ────────────────────────────────────────────────────────
 # Regenerate with: zoxide init nushell | save -f ~/.cache/zoxide/init.nu
 source ~/.cache/zoxide/init.nu
-
+alias cd = z
 # ── Custom Commands ───────────────────────────────────────────────
 
 # cd with zoxide integration and visual feedback (like fish version)

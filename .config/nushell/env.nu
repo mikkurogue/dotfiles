@@ -5,6 +5,7 @@
 use std/util "path add"
 
 # Rust / Cargo
+path add "/usr/local/bin"
 path add ($env.HOME | path join ".cargo" "bin")
 
 # Go
