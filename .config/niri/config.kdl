@@ -2,7 +2,7 @@ input {
     keyboard {
         xkb {
             layout "us,fi"
-            options "compose:caps"
+            // options "compose:caps"
         }
 
         repeat-delay 600
