@@ -67,3 +67,6 @@ test -r "$HOME/.opam/opam-init/init.fish" && source "$HOME/.opam/opam-init/init.
 source "$HOME/.vite-plus/env.fish"
 
 source ~/.safe-chain/scripts/init-fish.fish # Safe-chain Fish initialization script
+
+# Added by Radicle.
+export PATH="$PATH:/home/mikku/.radicle/bin"
