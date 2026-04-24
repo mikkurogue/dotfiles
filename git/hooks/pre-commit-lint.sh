@@ -11,7 +11,7 @@ if [ -n "$JS_TS_FILES" ]; then
 fi
 
 if [ -n "$ALL_FILES" ]; then
-  echo "$ALL_FILES" | xargs oxfmt --check || EXIT=1
+  echo "$ALL_FILES" | xargs oxfmt --fix || EXIT=1
 fi
 
 exit $EXIT
