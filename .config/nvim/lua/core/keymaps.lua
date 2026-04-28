@@ -7,7 +7,7 @@ local v = vim
 -- vim.keymap.set("n", "o", "l")
 
 -- Basic keymaps vim specific
-v.g.mapleader = " "
+-- mapleader is set in init.lua (must be set before any keymaps)
 v.keymap.set('n', '<leader>o', ':update<CR> :source<CR>')
 v.keymap.set('n', '<leader>w', ':write<CR>')
 v.keymap.set('n', '<leader>q', ':quit<CR>')

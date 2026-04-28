@@ -2,6 +2,7 @@
 require("core.opts")
 
 local v = vim
+v.g.mapleader = " "
 
 -- Plugins
 v.pack.add({
@@ -42,6 +43,7 @@ v.pack.add({
   { src = "https://github.com/kdheepak/lazygit.nvim" },
   { src = "https://github.com/algmyr/vclib.nvim" },
   { src = "https://github.com/algmyr/vcsigns.nvim" },
+  { src = "https://github.com/vieitesss/minifugit.nvim" },
 
   -- UI & Appearance
   { src = "https://github.com/nvim-lualine/lualine.nvim" },
@@ -158,6 +160,7 @@ require("configuration.oil")
 
 -- Git & VCS
 require("configuration.vcsigns")
+require("configuration.minifugit")
 
 -- UI & Appearance
 require("notify").setup({ background_colour = "#000000" })
