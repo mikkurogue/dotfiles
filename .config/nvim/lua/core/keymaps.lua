@@ -19,11 +19,6 @@ v.keymap.set("n", "<Esc>", ":noh<CR>", {
 -- trigger lazygit
 v.keymap.set("n", "<leader>gg", ":LazyGit<CR>")
 
--- Telescope keymaps
-v.keymap.set("n", "<leader>fb", function()
-  require("telescope.builtin").buffers()
-end, { desc = "Find buffers" })
-
 v.keymap.set("n", "<leader>fw", function()
   require("fff").live_grep({
     grep = { 'fuzzy'}

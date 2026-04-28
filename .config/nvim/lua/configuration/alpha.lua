@@ -1,23 +1,8 @@
 local alpha = require("alpha")
 local dashboard = require("alpha.themes.dashboard")
 
--- ASCII header
--- dashboard.section.header.val = {
---   [[                                                                   ]],
---   [[ ███▄▄▄▄      ▄████████  ▄██████▄   ▄█    █▄   ▄█    ▄▄▄▄███▄▄▄▄   ]],
---   [[ ███▀▀▀██▄   ███    ███ ███    ███ ███    ███ ███  ▄██▀▀▀███▀▀▀██▄ ]],
---   [[ ███   ███   ███    █▀  ███    ███ ███    ███ ███▌ ███   ███   ███ ]],
---   [[ ███   ███  ▄███▄▄▄     ███    ███ ███    ███ ███▌ ███   ███   ███ ]],
---   [[ ███   ███ ▀▀███▀▀▀     ███    ███ ███    ███ ███▌ ███   ███   ███ ]],
---   [[ ███   ███   ███    █▄  ███    ███ ███    ███ ███  ███   ███   ███ ]],
---   [[ ███   ███   ███    ███ ███    ███ ███    ███ ███  ███   ███   ███ ]],
---   [[  ▀█   █▀    ██████████  ▀██████▀   ▀██████▀  █▀    ▀█   ███   █▀  ]],
---   [[                                                                   ]],
--- }
-
 dashboard.section.header = require("configuration.nvim-logo")
 -- dashboard.section.header = require("configuration.rinnegan").header
--- dashboard.section.header = require("configuration.mangekyo").header
 
 -- Action buttons
 dashboard.section.buttons.val = {
