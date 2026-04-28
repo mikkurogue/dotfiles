@@ -91,6 +91,12 @@ v.api.nvim_create_autocmd("PackChanged", {
         cwd = path,
         on_exit = function(_, code)
           if code == 0 then
+            local lib_dir = path .. "/lib"
+            vim.fn.mkdir(lib_dir, "p")
+            vim.uv.fs_copyfile(
+              path .. "/target/release/lib" .. spec.name:gsub("%.", "_") .. "_fuzzy.dylib",
+              lib_dir .. "/lib" .. spec.name:gsub("%.", "_") .. "_fuzzy.dylib"
+            )
             v.notify("[" .. spec.name .. "] Cargo build finished successfully", v.log.levels.INFO)
           else
             v.notify("[" .. spec.name .. "] Cargo build failed with exit code " .. code, v.log.levels.ERROR)

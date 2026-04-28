@@ -19,7 +19,6 @@ require("tree-sitter-manager").setup({
     "javascript",
     "jsdoc",
     "json",
-    "jsonc",
     "lua",
     "make",
     "markdown",
