@@ -9,7 +9,7 @@
       "src": "https://github.com/lewis6991/async.nvim"
     },
     "blink.cmp": {
-      "rev": "147c96b976fb5f6f04801fabad83920d5c8817dd",
+      "rev": "1617522ae80ca2436813da8afe2fc4b1280e975d",
       "src": "https://github.com/saghen/blink.cmp"
     },
     "blink.download": {
@@ -97,7 +97,7 @@
       "src": "https://github.com/theHamsta/nvim-dap-virtual-text"
     },
     "nvim-lspconfig": {
-      "rev": "6419b36f50c42420cbbf1d3ffba573094cf414c8",
+      "rev": "0e25d7445ba0d7cc0ad02a39aa843cc8b9d2525e",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -147,10 +147,6 @@
     "symbol-usage.nvim": {
       "rev": "6a449e6b37be61a110606e9a67a7a308774f120f",
       "src": "https://github.com/Wansmer/symbol-usage.nvim"
-    },
-    "telescope.nvim": {
-      "rev": "506338434fec5ad19cb1f8d45bf92d66c4917393",
-      "src": "https://github.com/nvim-telescope/telescope.nvim"
     },
     "tiny-inline-diagnostic.nvim": {
       "rev": "147af4e49f51dd48f41972de26552872b8ba7b25",

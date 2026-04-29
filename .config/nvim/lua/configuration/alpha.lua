@@ -9,7 +9,6 @@ dashboard.section.buttons.val = {
   dashboard.button("f", "  Find File", ":lua require('fff').find_files()<CR>"),
   dashboard.button("g", "  Live grep", ":lua require('fff').live_grep()<CR>"),
   dashboard.button("e", "  Open oil", ":lua require('oil').open_float()<CR>"),
-  dashboard.button("r", "  Recent Files", ":Telescope oldfiles<CR>"),
   dashboard.button("q", "  Quit", ":qa<CR>"),
 }
 

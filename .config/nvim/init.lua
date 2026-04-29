@@ -85,26 +85,11 @@ v.api.nvim_create_autocmd("PackChanged", {
     local spec = ev.data.spec
     if not spec then return end
 
-    -- Cargo build for blink plugins
+    -- Build blink plugins using V2 build system
     local blink_plugins = { ["blink.cmp"] = true, ["blink.pairs"] = true }
     if blink_plugins[spec.name] and (ev.data.kind == "install" or ev.data.kind == "update") then
-      local path = v.fn.stdpath("data") .. "/site/pack/core/opt/" .. spec.name
-      v.fn.jobstart({ "cargo", "build", "--release" }, {
-        cwd = path,
-        on_exit = function(_, code)
-          if code == 0 then
-            local lib_dir = path .. "/lib"
-            vim.fn.mkdir(lib_dir, "p")
-            vim.uv.fs_copyfile(
-              path .. "/target/release/lib" .. spec.name:gsub("%.", "_") .. "_fuzzy.dylib",
-              lib_dir .. "/lib" .. spec.name:gsub("%.", "_") .. "_fuzzy.dylib"
-            )
-            v.notify("[" .. spec.name .. "] Cargo build finished successfully", v.log.levels.INFO)
-          else
-            v.notify("[" .. spec.name .. "] Cargo build failed with exit code " .. code, v.log.levels.ERROR)
-          end
-        end,
-      })
+      require(spec.name).build():wait(60000)
+      v.notify("[" .. spec.name .. "] Build finished successfully", v.log.levels.INFO)
     end
 
     -- Cord update hook
@@ -119,7 +104,6 @@ require("onedarkpro").setup()
 require("osmium").setup({
   integrations = {
     gitsigns = true,
-    telescope = false,
     indent_blankline = true,
     fff = true,
   },
