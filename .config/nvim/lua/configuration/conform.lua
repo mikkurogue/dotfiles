@@ -7,7 +7,6 @@ local oxlint_root_files = {
 }
 
 local oxfmt_root = util.root_file({ ".oxfmtrc.json", ".oxfmtrc.jsonc", "package.json" })
-local prettier_root = util.root_file(prettier_root_files)
 
 local function has_root_file(bufnr, files)
   local filename = vim.api.nvim_buf_get_name(bufnr)
@@ -36,20 +35,6 @@ local function read_package_json(bufnr)
   return package
 end
 
-local function has_vite_plus(bufnr)
-  local package = read_package_json(bufnr)
-  if not package then
-    return false
-  end
-
-  for _, key in ipairs({ "dependencies", "devDependencies", "peerDependencies", "optionalDependencies" }) do
-    if type(package[key]) == "table" and package[key]["vite-plus"] then
-      return true
-    end
-  end
-
-  return false
-end
 
 local function has_oxc_package(bufnr)
   local package = read_package_json(bufnr)
@@ -88,23 +73,14 @@ local function formatters_for(bufnr)
 
   if has_root_file(bufnr, oxfmt_root_files) or has_root_file(bufnr, oxlint_root_files) or has_oxc_package(bufnr) then
     local formatters = {}
-    if has_vite_plus(bufnr) then
-      if conform.get_formatter_info("oxfmt_vp", bufnr).available then
-        table.insert(formatters, "oxfmt_vp")
-      end
-    else
-      if conform.get_formatter_info("oxfmt", bufnr).available then
+    if conform.get_formatter_info("oxfmt", bufnr).available then
         table.insert(formatters, "oxfmt")
       end
-    end
     if not vim.tbl_isempty(formatters) then
       return formatters
     end
   end
 
-  if has_root_file(bufnr, prettier_root_files) and conform.get_formatter_info("prettier", bufnr).available then
-    return { "prettier" }
-  end
 
   return {}
 end
@@ -125,13 +101,6 @@ require("conform").setup({
     oxfmt = {
       command = "oxfmt",
       args = { "--stdin-filepath", "$FILENAME" },
-      stdin = true,
-      cwd = oxfmt_root,
-      require_cwd = true,
-    },
-    oxfmt_vp = {
-      command = "vp",
-      args = { "fmt", "--stdin-filepath", "$FILENAME" },
       stdin = true,
       cwd = oxfmt_root,
       require_cwd = true,

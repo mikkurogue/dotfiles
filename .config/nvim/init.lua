@@ -36,6 +36,7 @@ v.pack.add({
 
   -- Fuzzy Finding & Navigation
   { src = "https://github.com/dmtrKovalenko/fff.nvim" },
+  { src = "https://github.com/leath-dub/snipe.nvim" },
 
   -- File Explorer
   { src = "https://github.com/stevearc/oil.nvim" },
@@ -139,6 +140,7 @@ require("configuration.dap")
 
 -- Fuzzy Finding & Navigation
 require("configuration.fff")
+require("configuration.snipe")
 
 -- File Explorer
 require("configuration.oil")
