@@ -13,8 +13,11 @@
 -- })
 
 
+local cmp = require('blink.cmp')
+cmp.build():wait(60000)
+
 -- BLINK CONFIG (load AFTER copilot_cmp.setup)
-require("blink.cmp").setup({
+cmp.setup({
   sources = {
     default = {
       'lsp', 'path', 'buffer', 'snippets'

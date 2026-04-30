@@ -16,6 +16,10 @@
       "rev": "dda2666685a5ac3598166577d2e34f1fff6b1637",
       "src": "https://github.com/saghen/blink.download"
     },
+    "blink.lib": {
+      "rev": "dda2666685a5ac3598166577d2e34f1fff6b1637",
+      "src": "https://github.com/saghen/blink.lib"
+    },
     "blink.pairs": {
       "rev": "2da33da164fbbf5cf52214fb9e7db1096d55e0dc",
       "src": "https://github.com/saghen/blink.pairs"
@@ -40,21 +44,13 @@
       "rev": "694357861ec9ebf12475ddcdd04ea45a0923c32d",
       "src": "https://github.com/saecki/crates.nvim"
     },
-    "diffview.nvim": {
-      "rev": "4516612fe98ff56ae0415a259ff6361a89419b0a",
-      "src": "https://github.com/sindrets/diffview.nvim"
-    },
     "fff.nvim": {
-      "rev": "0f5ead1ab5355ea83be1171c54d8d44a65c5f7b4",
+      "rev": "37bda06c0cb1da0a32877f30b182683b2d0728d8",
       "src": "https://github.com/dmtrKovalenko/fff.nvim"
     },
     "fidget.nvim": {
       "rev": "889e2e96edef4e144965571d46f7a77bcc4d0ddf",
       "src": "https://github.com/j-hui/fidget.nvim"
-    },
-    "hunk.nvim": {
-      "rev": "a73c34934e87af4f2e615fea3a57ee28b2dceec8",
-      "src": "https://github.com/julienvincent/hunk.nvim"
     },
     "indent-blankline.nvim": {
       "rev": "d28a3f70721c79e3c5f6693057ae929f3d9c0a03",
@@ -97,7 +93,7 @@
       "src": "https://github.com/theHamsta/nvim-dap-virtual-text"
     },
     "nvim-lspconfig": {
-      "rev": "0e25d7445ba0d7cc0ad02a39aa843cc8b9d2525e",
+      "rev": "f7e89f3d19fb436e1fbeff3bf4291eef35da94e3",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -107,10 +103,6 @@
     "nvim-notify": {
       "rev": "8701bece920b38ea289b457f902e2ad184131a5d",
       "src": "https://github.com/rcarriga/nvim-notify"
-    },
-    "nvim-web-devicons": {
-      "rev": "4fc505ac7bd7692824a142e96e5f529c133862f8",
-      "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
     "oil.nvim": {
       "rev": "0fcc83805ad11cf714a949c98c605ed717e0b83e",
@@ -136,17 +128,9 @@
       "rev": "b20b2a7887bd39c1a356980b45e03250f3dce49c",
       "src": "https://github.com/folke/persistence.nvim"
     },
-    "plenary.nvim": {
-      "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
-      "src": "https://github.com/nvim-lua/plenary.nvim"
-    },
     "suit.nvim": {
       "rev": "81ce4cc32a5f793b87e979935b1f8d4a74496a95",
       "src": "https://github.com/doums/suit.nvim"
-    },
-    "symbol-usage.nvim": {
-      "rev": "6a449e6b37be61a110606e9a67a7a308774f120f",
-      "src": "https://github.com/Wansmer/symbol-usage.nvim"
     },
     "tiny-inline-diagnostic.nvim": {
       "rev": "147af4e49f51dd48f41972de26552872b8ba7b25",

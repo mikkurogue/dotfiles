@@ -19,6 +19,7 @@ v.pack.add({
   { src = "https://github.com/mikkurogue/peekr.nvim" },
 
   -- Completion & Pairs (blink)
+  {src = "https://github.com/saghen/blink.lib"},
   { src = "https://github.com/saghen/blink.cmp" },
   { src = "https://github.com/saghen/blink.pairs" },
   { src = "https://github.com/saghen/blink.download" },
@@ -86,11 +87,11 @@ v.api.nvim_create_autocmd("PackChanged", {
     if not spec then return end
 
     -- Build blink plugins using V2 build system
-    local blink_plugins = { ["blink.cmp"] = true, ["blink.pairs"] = true }
-    if blink_plugins[spec.name] and (ev.data.kind == "install" or ev.data.kind == "update") then
-      require(spec.name).build():wait(60000)
-      v.notify("[" .. spec.name .. "] Build finished successfully", v.log.levels.INFO)
-    end
+    -- local blink_plugins = { ["blink.cmp"] = true, ["blink.pairs"] = true }
+    -- if blink_plugins[spec.name] and (ev.data.kind == "install" or ev.data.kind == "update") then
+    --   require(spec.name).build():wait(60000)
+    --   v.notify("[" .. spec.name .. "] Build finished successfully", v.log.levels.INFO)
+    -- end
 
     -- Cord update hook
     if spec.name == "cord.nvim" and ev.data.kind == "update" then
