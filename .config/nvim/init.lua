@@ -13,6 +13,7 @@ v.pack.add({
   -- LSP, Diagnostics & Formatting
   { src = "https://github.com/neovim/nvim-lspconfig" },
   { src = "https://github.com/stevearc/conform.nvim" },
+  { src = "https://github.com/mfussenegger/nvim-lint" },
   { src = "https://github.com/rachartier/tiny-inline-diagnostic.nvim" },
   { src = "https://github.com/j-hui/fidget.nvim",                     name = "fidget.nvim" },
   { src = "https://github.com/folke/trouble.nvim" },
@@ -125,6 +126,7 @@ v.cmd("colorscheme " .. schemes[1])
 -- LSP, Diagnostics & Formatting
 require("core.lsp")
 require("configuration.conform")
+require("configuration.nvim-lint")
 require("configuration.tiny-inline-diagnostic")
 require("configuration.fidget")
 require("configuration.peekr")
