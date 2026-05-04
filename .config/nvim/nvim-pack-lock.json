@@ -45,7 +45,7 @@
       "src": "https://github.com/saecki/crates.nvim"
     },
     "fff.nvim": {
-      "rev": "e8dd50ce5a6857f2dc7f827746163a4b1040ba9c",
+      "rev": "8cb1f4768b4badab5edcb0c5f45184e236fa3f8a",
       "src": "https://github.com/dmtrKovalenko/fff.nvim"
     },
     "fidget.nvim": {
@@ -69,7 +69,7 @@
       "src": "https://github.com/nvim-mini/mini.icons"
     },
     "minifugit.nvim": {
-      "rev": "99df38043f4b8c10cf8da36420ae20850e64d6ea",
+      "rev": "11f89b45de01f2ebfe0cf8d151179e9389408c5a",
       "src": "https://github.com/vieitesss/minifugit.nvim"
     },
     "noice.nvim": {
@@ -93,7 +93,7 @@
       "src": "https://github.com/theHamsta/nvim-dap-virtual-text"
     },
     "nvim-lspconfig": {
-      "rev": "31026a13eefb20681124706a79fc1df6bf11ab27",
+      "rev": "451d4ef9abd4f0f08e379ef0d55d1c391b6125a7",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -149,7 +149,7 @@
       "src": "https://github.com/akinsho/toggleterm.nvim"
     },
     "tree-sitter-manager.nvim": {
-      "rev": "69c48bff61d763280e472a3fe989338f949583e3",
+      "rev": "59e1ba49e33e1b73bef655fd34b5e65e1465053f",
       "src": "https://github.com/romus204/tree-sitter-manager.nvim"
     },
     "trouble.nvim": {
