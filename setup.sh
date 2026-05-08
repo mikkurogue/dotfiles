@@ -84,10 +84,10 @@ if command -v zoxide &> /dev/null; then
     echo "✓ Zoxide init generated for nushell"
 fi
 
-# Backup and symlink noctalia
-echo "Setting up noctalia configuration..."
-backup_if_exists "$HOME/.config/noctalia" "$DOTFILES_DIR/.config/noctalia"
-ln -sf "$DOTFILES_DIR/.config/noctalia" "$HOME/.config/noctalia"
+# Backup and symlink swaync
+echo "Setting up swaync configuration..."
+backup_if_exists "$HOME/.config/swaync" "$DOTFILES_DIR/.config/swaync"
+ln -sf "$DOTFILES_DIR/.config/swaync" "$HOME/.config/swaync"
 
 # Backup and symlink niri
 echo "Setting up niri configuration..."

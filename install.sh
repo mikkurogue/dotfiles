@@ -36,11 +36,10 @@ echo "========================================"
 yay -S --needed --noconfirm \
     awww \
     niri \
-    wofi \
+    vicinae \
     wlsunset \
     xdg-desktop-portal-hyprland \
     xdg-desktop-portal-gtk
-    # noctalia-shell \
     # hyprland \
     # hypridle \
     # hyprlock \
@@ -57,6 +56,7 @@ yay -S --needed --noconfirm \
     fish \
     starship \
     ghostty-git \
+    kitty \
     zsh-autosuggestions \
     zsh-syntax-highlighting \
 
@@ -94,7 +94,7 @@ echo "========================================"
 yay -S --needed --noconfirm \
     brightnessctl \
     polkit-gnome \
-    dunst \
+    swaync \
     dolphin \
     thunar \
     jq \
@@ -120,8 +120,6 @@ yay -S --needed --noconfirm \
     git \
     github-cli \
     jujutsu \
-    nodejs \
-    npm \
     lazygit \
     tmux
 
@@ -251,6 +249,24 @@ echo "Installing Cargo Packages"
 echo "========================================"
 source "$HOME/.cargo/env" 2>/dev/null || true
 cargo install jj-starship
+
+# === Kunai (input device configuration) ===
+echo ""
+echo "========================================"
+echo "Installing Kunai"
+echo "========================================"
+echo "Kunai is not available on the AUR or nixpkgs."
+echo "Cloning from github.com/mikkurogue/kunai.git..."
+if [ ! -d "$HOME/kunai" ]; then
+    git clone https://github.com/mikkurogue/kunai.git "$HOME/kunai"
+    cd "$HOME/kunai"
+    cargo install --path .
+    cd -
+    echo "✓ Kunai installed"
+else
+    echo "✓ Kunai directory already exists at ~/kunai"
+    echo "  To rebuild: cd ~/kunai && cargo install --path ."
+fi
 
 # === Setup udev rules for Vial keyboard ===
 echo ""
