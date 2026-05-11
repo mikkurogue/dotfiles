@@ -9,7 +9,7 @@
       "src": "https://github.com/lewis6991/async.nvim"
     },
     "blink.cmp": {
-      "rev": "d3874d2a13aa19b095bdd10d37a82a8f0aa7cad3",
+      "rev": "2ef3db111181c5eef22a462aa0122349a6027f28",
       "src": "https://github.com/saghen/blink.cmp"
     },
     "blink.download": {
@@ -33,7 +33,7 @@
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "copilot.lua": {
-      "rev": "61784cb7a1a109d72b9cb107ee70d11bc7d095ff",
+      "rev": "9ffee9894623f8f83ad1b914c12ce9977bf916b7",
       "src": "https://github.com/zbirenbaum/copilot.lua"
     },
     "cord.nvim": {
@@ -45,7 +45,7 @@
       "src": "https://github.com/saecki/crates.nvim"
     },
     "fff.nvim": {
-      "rev": "8cb1f4768b4badab5edcb0c5f45184e236fa3f8a",
+      "rev": "39f67c0cf97c22a71408fc6de2f2888c5c4a700e",
       "src": "https://github.com/dmtrKovalenko/fff.nvim"
     },
     "fidget.nvim": {
@@ -69,7 +69,7 @@
       "src": "https://github.com/nvim-mini/mini.icons"
     },
     "minifugit.nvim": {
-      "rev": "11f89b45de01f2ebfe0cf8d151179e9389408c5a",
+      "rev": "7f5cc37399d7417c0f3737dddb6f578a34138578",
       "src": "https://github.com/vieitesss/minifugit.nvim"
     },
     "noice.nvim": {

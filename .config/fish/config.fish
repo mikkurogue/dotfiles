@@ -1,4 +1,11 @@
 set fish_greeting
+# Nix
+if test -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
+    source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
+end
+fish_add_path --prepend /nix/var/nix/profiles/default/bin
+fish_add_path --prepend $HOME/.nix-profile/bin
+
 # PATH configuration
 set -gx PATH $HOME/.cargo/bin $PATH
 set -gx PATH $PATH /usr/local/go/bin
@@ -20,6 +27,7 @@ if test (uname) = Darwin
     # activate mise
     /opt/zerobrew/bin/mise activate fish | source
 end
+
 set -gx  NX_TUI false
 
 # export NX_TUI=false
