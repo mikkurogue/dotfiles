@@ -46,6 +46,7 @@ v.pack.add({
   { src = "https://github.com/algmyr/vclib.nvim" },
   { src = "https://github.com/algmyr/vcsigns.nvim" },
   { src = "https://github.com/vieitesss/minifugit.nvim" },
+  { src = "https://github.com/trixnz/sops.nvim" },
 
   -- UI & Appearance
   { src = "https://github.com/nvim-lualine/lualine.nvim" },

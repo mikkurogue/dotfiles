@@ -1,7 +1,25 @@
 set fish_greeting
 # PATH configuration
-set -gx PATH $PATH /usr/local/go/bin
 set -gx PATH $HOME/.cargo/bin $PATH
+set -gx PATH $PATH /usr/local/go/bin
+
+# macOS-specific paths
+if test (uname) = Darwin
+    # Docker Desktop
+    test -d /Applications/Docker.app/Contents/Resources/bin
+    and fish_add_path /Applications/Docker.app/Contents/Resources/bin
+
+    # Zerobrew
+    test -d /opt/zerobrew/bin
+    and fish_add_path /opt/zerobrew/bin
+    test -d /opt/zerobrew/prefix/bin
+    and fish_add_path /opt/zerobrew/prefix/bin
+    test -d $HOME/.zerobrew/bin
+    and fish_add_path $HOME/.zerobrew/bin
+
+    # activate mise
+    /opt/zerobrew/bin/mise activate fish | source
+end
 set -gx  NX_TUI false
 
 # export NX_TUI=false
@@ -70,3 +88,4 @@ source ~/.safe-chain/scripts/init-fish.fish # Safe-chain Fish initialization scr
 
 # Added by Radicle.
 export PATH="$PATH:/home/mikku/.radicle/bin"
+

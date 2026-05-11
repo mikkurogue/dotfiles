@@ -132,6 +132,10 @@
       "rev": "d2d196c335919767803f905d573ce66340e33ee6",
       "src": "https://github.com/leath-dub/snipe.nvim"
     },
+    "sops.nvim": {
+      "rev": "5946285744ffef26b792839d9130135365bfa8ea",
+      "src": "https://github.com/trixnz/sops.nvim"
+    },
     "suit.nvim": {
       "rev": "81ce4cc32a5f793b87e979935b1f8d4a74496a95",
       "src": "https://github.com/doums/suit.nvim"
