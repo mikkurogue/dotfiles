@@ -1,9 +1,5 @@
 {
   "plugins": {
-    "alpha-nvim": {
-      "rev": "6c6a89d5b068b5251c8bdf0dd57bb921bcfeeb09",
-      "src": "https://github.com/goolord/alpha-nvim"
-    },
     "async.nvim": {
       "rev": "7a1d7d49933fbe902b84b55f352a3b10fd587331",
       "src": "https://github.com/lewis6991/async.nvim"
@@ -35,10 +31,6 @@
     "copilot.lua": {
       "rev": "9ffee9894623f8f83ad1b914c12ce9977bf916b7",
       "src": "https://github.com/zbirenbaum/copilot.lua"
-    },
-    "cord.nvim": {
-      "rev": "0be090969e978f7442870ef227e09eff7bf3480d",
-      "src": "https://github.com/vyfor/cord.nvim"
     },
     "crates.nvim": {
       "rev": "694357861ec9ebf12475ddcdd04ea45a0923c32d",

@@ -53,7 +53,7 @@ v.pack.add({
   { src = "https://github.com/akinsho/bufferline.nvim" },
   { src = "https://github.com/nvim-mini/mini.icons" },
   { src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
-  { src = "https://github.com/goolord/alpha-nvim" },
+
   { src = "https://github.com/folke/noice.nvim" },
   { src = "https://github.com/MunifTanjim/nui.nvim" },
   { src = "https://github.com/rcarriga/nvim-notify" },
@@ -70,8 +70,7 @@ v.pack.add({
   { src = "https://github.com/saecki/crates.nvim" },
   { src = "https://github.com/lewis6991/async.nvim" },
 
-  -- Misc
-  { src = "https://github.com/vyfor/cord.nvim" },
+
 })
 
 -- PackChanged hooks
@@ -83,24 +82,6 @@ v.api.nvim_create_autocmd("PackChanged", {
   end,
 })
 
-v.api.nvim_create_autocmd("PackChanged", {
-  callback = function(ev)
-    local spec = ev.data.spec
-    if not spec then return end
-
-    -- Build blink plugins using V2 build system
-    -- local blink_plugins = { ["blink.cmp"] = true, ["blink.pairs"] = true }
-    -- if blink_plugins[spec.name] and (ev.data.kind == "install" or ev.data.kind == "update") then
-    --   require(spec.name).build():wait(60000)
-    --   v.notify("[" .. spec.name .. "] Build finished successfully", v.log.levels.INFO)
-    -- end
-
-    -- Cord update hook
-    if spec.name == "cord.nvim" and ev.data.kind == "update" then
-      v.cmd("Cord update")
-    end
-  end,
-})
 
 -- Colorscheme
 require("onedarkpro").setup()
@@ -136,8 +117,39 @@ require("configuration.blink")
 -- Treesitter
 require("configuration.treesitter")
 
--- Debugging (DAP)
-require("configuration.dap")
+-- Debugging (DAP) - deferred to first use
+v.api.nvim_create_autocmd("User", {
+  pattern = "DapLoad",
+  once = true,
+  callback = function()
+    require("configuration.dap")
+  end,
+})
+-- Create lazy-loading commands for DAP
+for _, cmd in ipairs({ "DapContinue", "DapToggleBreakpoint" }) do
+  v.api.nvim_create_user_command(cmd, function()
+    v.api.nvim_del_user_command(cmd)
+    v.api.nvim_exec_autocmds("User", { pattern = "DapLoad" })
+    if cmd == "DapContinue" then
+      require("dap").continue()
+    else
+      require("dap").toggle_breakpoint()
+    end
+  end, { desc = "Lazy-load DAP and run " .. cmd })
+end
+-- Defer <leader>d keymaps until DAP loads
+v.keymap.set("n", "<leader>dc", function()
+  v.api.nvim_exec_autocmds("User", { pattern = "DapLoad" })
+  require("dap").continue()
+end, { desc = "Continue/Start (loads DAP)" })
+v.keymap.set("n", "<leader>db", function()
+  v.api.nvim_exec_autocmds("User", { pattern = "DapLoad" })
+  require("dap").toggle_breakpoint()
+end, { desc = "Toggle breakpoint (loads DAP)" })
+v.keymap.set("n", "<F5>", function()
+  v.api.nvim_exec_autocmds("User", { pattern = "DapLoad" })
+  require("dap").continue()
+end, { desc = "Debug: Continue (loads DAP)" })
 
 -- Fuzzy Finding & Navigation
 require("configuration.fff")
@@ -161,7 +173,6 @@ require("bufferline").setup({
 })
 require("configuration.mini")
 require("ibl").setup()
-require("configuration.alpha")
 require("configuration.noice")
 require("configuration.suit")
 require("configuration.which-key")
@@ -171,21 +182,24 @@ require("configuration.persistence")
 require("configuration.todo-comments")
 require("configuration.toggleterm")
 
--- Language-specific
-require("package-info").setup()
-require("crates").setup()
-
--- Misc
-require("cord").setup({
-  display = {
-    theme = "atom",
-    flavor = "dark",
-  },
-  idle = { enabled = false },
-  text = { workspace = "Neovim btw" },
+-- Language-specific (deferred to relevant filetypes)
+v.api.nvim_create_autocmd("BufRead", {
+  pattern = "package.json",
+  once = true,
+  callback = function()
+    require("package-info").setup()
+  end,
+})
+v.api.nvim_create_autocmd("BufRead", {
+  pattern = "Cargo.toml",
+  once = true,
+  callback = function()
+    require("crates").setup()
+  end,
 })
 
--- Utilities
+
+require("core.keymaps")
 function _G.GitBranch()
   if v.b.gitsigns_head then
     return " " .. v.b.gitsigns_head
@@ -217,5 +231,3 @@ v.api.nvim_create_autocmd("BufEnter", {
     end
   end,
 })
-
-require("core.keymaps")
