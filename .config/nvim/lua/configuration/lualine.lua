@@ -98,25 +98,36 @@ local function get_cursor_position()
   return string.format('%d:%d %s %d%%%%', line, col, get_scrollbar(), percent)
 end
 
--- Mode config with labels and dynamic colors
+-- Mode config with labels and dynamic colors from colorscheme
+local mode_colors = {
+  n = 'blue', i = 'green', v = 'purple', V = 'purple', ['\22'] = 'purple',
+  c = 'yellow', t = 'cyan', R = 'red', s = 'orange', S = 'orange', ['\19'] = 'orange',
+}
+
 local mode_config = {
-  ['n']     = { icon = '', label = 'NORMAL', color = { bg = '#61afef', fg = '#282c34', gui = 'italic' } },
-  ['i']     = { icon = '', label = 'INSERT', color = { bg = '#98c379', fg = '#282c34', gui = 'italic' } },
-  ['v']     = { icon = ' ', label = 'VISUAL', color = { bg = '#c678dd', fg = '#282c34', gui = 'italic' } },
-  ['V']     = { icon = ' ', label = 'V-LINE', color = { bg = '#c678dd', fg = '#282c34', gui = 'italic' } },
-  ['\22']   = { icon = ' ', label = 'V-BLOCK', color = { bg = '#c678dd', fg = '#282c34', gui = 'italic' } },
-  ['c']     = { icon = ' ', label = 'COMMAND', color = { bg = '#e5c07b', fg = '#282c34', gui = 'italic' } },
-  ['t']     = { icon = ' ', label = 'TERMINAL', color = { bg = '#56b6c2', fg = '#282c34', gui = 'italic' } },
-  ['R']     = { icon = '󰛔', label = 'REPLACE', color = { bg = '#e06c75', fg = '#282c34', gui = 'italic' } },
-  ['s']     = { icon = '', label = 'SELECT', color = { bg = '#d19a66', fg = '#282c34', gui = 'italic' } },
-  ['S']     = { icon = '', label = 'S-LINE', color = { bg = '#d19a66', fg = '#282c34', gui = 'italic' } },
-  ['\19']   = { icon = '', label = 'S-BLOCK', color = { bg = '#d19a66', fg = '#282c34', gui = 'italic' } },
+  ['n']     = { icon = '', label = 'NORMAL' },
+  ['i']     = { icon = '', label = 'INSERT' },
+  ['v']     = { icon = ' ', label = 'VISUAL' },
+  ['V']     = { icon = ' ', label = 'V-LINE' },
+  ['\22']   = { icon = ' ', label = 'V-BLOCK' },
+  ['c']     = { icon = ' ', label = 'COMMAND' },
+  ['t']     = { icon = ' ', label = 'TERMINAL' },
+  ['R']     = { icon = '󰛔', label = 'REPLACE' },
+  ['s']     = { icon = '', label = 'SELECT' },
+  ['S']     = { icon = '', label = 'S-LINE' },
+  ['\19']   = { icon = '', label = 'S-BLOCK' },
 }
 
 local function get_mode_icon()
   local mode = vim.fn.mode()
-  local cfg = mode_config[mode] or { icon = '', label = mode, color = { bg = '#5c6370', fg = '#282c34', gui = 'bold' } }
+  local cfg = mode_config[mode] or { icon = '', label = mode }
   return cfg.icon .. ' ' .. cfg.label
+end
+
+local function get_mode_color()
+  local mode = vim.fn.mode()
+  local key = mode_colors[mode] or 'gray'
+  return { bg = colors[key], fg = colors.good_fg, gui = 'italic' }
 end
 
 local function get_mode_color()
@@ -129,23 +140,50 @@ end
 local pill_left = '' 
 local pill_right = ''
 
--- Colors for OneDark theme
-local colors = {
-  good_blue = '#61afef',
-  bg = '#282c34',
-  bg_dark = '#21252b',
-  bg_light = '#2c323c',
-  fg = '#abb2bf',
-  good_fg = '#282c34',
-  red = '#e06c75',
-  green = '#98c379',
-  yellow = '#e5c07b',
-  blue = '#61afef',
-  purple = '#c678dd',
-  cyan = '#56b6c2',
-  orange = '#d19a66',
-  gray = '#5c6370',
-}
+-- Extract colors from the active colorscheme highlight groups
+local function get_hl_fg(name, fallback)
+  local ok, hl = pcall(vim.api.nvim_get_hl, 0, { name = name, link = false })
+  if ok and hl.fg then
+    return string.format('#%06x', hl.fg)
+  end
+  return fallback
+end
+
+local function get_hl_bg(name, fallback)
+  local ok, hl = pcall(vim.api.nvim_get_hl, 0, { name = name, link = false })
+  if ok and hl.bg then
+    return string.format('#%06x', hl.bg)
+  end
+  return fallback
+end
+
+local function load_colors()
+  return {
+    good_blue = get_hl_fg('Function', '#61afef'),
+    bg        = get_hl_bg('Normal', '#282c34'),
+    bg_dark   = get_hl_bg('StatusLine', '#21252b'),
+    bg_light  = get_hl_bg('CursorLine', '#2c323c'),
+    fg        = get_hl_fg('Normal', '#abb2bf'),
+    good_fg   = get_hl_bg('Normal', '#282c34'),
+    red       = get_hl_fg('DiagnosticError', '#e06c75'),
+    green     = get_hl_fg('String', '#98c379'),
+    yellow    = get_hl_fg('DiagnosticWarn', '#e5c07b'),
+    blue      = get_hl_fg('Function', '#61afef'),
+    purple    = get_hl_fg('Statement', '#c678dd'),
+    cyan      = get_hl_fg('DiagnosticInfo', '#56b6c2'),
+    orange    = get_hl_fg('Constant', '#d19a66'),
+    gray      = get_hl_fg('Comment', '#5c6370'),
+  }
+end
+
+local colors = load_colors()
+
+-- Refresh colors when colorscheme changes
+vim.api.nvim_create_autocmd('ColorScheme', {
+  callback = function()
+    colors = load_colors()
+  end,
+})
 
 require('lualine').setup {
   options = {
