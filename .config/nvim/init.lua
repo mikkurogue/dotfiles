@@ -9,6 +9,8 @@ v.pack.add({
   -- Colorschemes
   { src = "https://github.com/olimorris/onedarkpro.nvim" },
   { src = "https://github.com/IroncladDev/osmium" },
+  { src = "https://github.com/aejkatappaja/sora" },
+  { src = "https://github.com/rebelot/kanagawa.nvim" },
 
   -- LSP, Diagnostics & Formatting
   { src = "https://github.com/neovim/nvim-lspconfig" },
@@ -91,9 +93,21 @@ require("osmium").setup({
     gitsigns = true,
     indent_blankline = true,
     fff = true,
+    lualine = true,
   },
   transparent_bg = true,
   show_end_of_buffer = false,
+})
+require("sora").setup({
+  transparent = true,
+  italic = true,
+  italic_comments = true,
+})
+require('kanagawa').setup({
+  theme = "dragon",
+  background = {
+    dark = "dragon"
+  }
 })
 
 local schemes = {
@@ -102,8 +116,10 @@ local schemes = {
   "onedark_dark",
   "onedark_vivid",
   "osmium",
+  "sora",
+  "kanagawa"
 }
-v.cmd("colorscheme " .. schemes[1])
+v.cmd("colorscheme " .. schemes[7])
 
 -- LSP, Diagnostics & Formatting
 require("core.lsp")
