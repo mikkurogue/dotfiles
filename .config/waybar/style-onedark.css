@@ -1,23 +1,23 @@
-/* Kanagawa Dragon - Sleek Island Theme */
-@define-color bg        #181616;
-@define-color bg-dark   #0d0c0c;
-@define-color bg-darker #070606;
+/* OneDark Pro - Sleek Island Theme */
+@define-color bg        #282c34;
+@define-color bg-dark   #21252b;
+@define-color bg-darker #1b1f23;
 
-@define-color fg        #c5c9c5;
-@define-color fg-dim    #737c73;
-@define-color fg-dimmer #625e5a;
+@define-color fg        #abb2bf;
+@define-color fg-dim    #5c6370;
+@define-color fg-dimmer #4b5263;
 
-@define-color surface   #1d1c19;
-@define-color surface-l #282727;
-@define-color border    #282727;
+@define-color surface   #323842;
+@define-color surface-l #3e4451;
+@define-color border    #3e4451;
 
-@define-color accent    #8ba4b0;
-@define-color accent-2  #7aa89f;
-@define-color green     #87a987;
-@define-color yellow    #c4b28a;
-@define-color orange    #b6927b;
-@define-color red       #c4746e;
-@define-color magenta   #a292a3;
+@define-color accent    #61afef;
+@define-color accent-2  #56b6c2;
+@define-color green     #98c379;
+@define-color yellow    #e5c07b;
+@define-color orange    #d19a66;
+@define-color red       #e06c75;
+@define-color magenta   #c678dd;
 
 * {
   font-family: "CaskaydiaCove Nerd Font", "Inter", sans-serif;

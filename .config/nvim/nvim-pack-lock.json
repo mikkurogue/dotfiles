@@ -32,6 +32,10 @@
       "rev": "9ffee9894623f8f83ad1b914c12ce9977bf916b7",
       "src": "https://github.com/zbirenbaum/copilot.lua"
     },
+    "cord.nvim": {
+      "rev": "0be090969e978f7442870ef227e09eff7bf3480d",
+      "src": "https://github.com/vyfor/cord.nvim"
+    },
     "crates.nvim": {
       "rev": "694357861ec9ebf12475ddcdd04ea45a0923c32d",
       "src": "https://github.com/saecki/crates.nvim"
@@ -51,10 +55,6 @@
     "kanagawa.nvim": {
       "rev": "bb85e4bfc8d89b0e62c8fa53ccdd13d12e2f77b3",
       "src": "https://github.com/rebelot/kanagawa.nvim"
-    },
-    "kulala.nvim": {
-      "rev": "6656c9d332735ca6a27725e0fb45a1715c4372d9",
-      "src": "https://github.com/mistweaverco/kulala.nvim"
     },
     "lazygit.nvim": {
       "rev": "a04ad0dbc725134edbee3a5eea29290976695357",

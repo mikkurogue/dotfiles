@@ -10,7 +10,7 @@
 
   "modules-left": ["hyprland/workspaces", "niri/workspaces"],
   "modules-center": ["hyprland/window", "niri/window"],
-  "modules-right": ["pulseaudio", "network", "hyprland/language", "niri/language", "tray", "clock"],
+  "modules-right": ["custom/theme", "pulseaudio", "network", "hyprland/language", "niri/language", "tray", "clock"],
 
   "hyprland/window": {
     "format": "{title}",
@@ -69,6 +69,15 @@
     "icon-size": 16,
     "spacing": 10,
     "show-passive-items": true,
+  },
+
+  "custom/theme": {
+    "format": "{}",
+    "return-type": "json",
+    "exec": "~/.config/waybar/scripts/theme-switcher.sh",
+    "on-click": "~/.config/waybar/scripts/theme-switcher.sh --next && pkill -SIGRTMIN+10 waybar",
+    "signal": 10,
+    "interval": "once"
   },
 
   "pulseaudio": {

@@ -66,7 +66,6 @@ v.pack.add({
   { src = "https://github.com/folke/persistence.nvim",                 event = "BufReadPre" },
   { src = "https://github.com/folke/todo-comments.nvim" },
   { src = "https://github.com/akinsho/toggleterm.nvim" },
-  { src = "https://github.com/mistweaverco/kulala.nvim" },
 
   -- Language-specific
   { src = "https://github.com/vuki656/package-info.nvim" },
@@ -198,7 +197,6 @@ require("configuration.which-key")
 require("configuration.persistence")
 require("configuration.todo-comments")
 require("configuration.toggleterm")
-require("configuration.kulala")
 
 -- Language-specific (deferred to relevant filetypes)
 v.api.nvim_create_autocmd("BufRead", {

@@ -7,7 +7,7 @@
 
   // All modules in center to create island effect
   "modules-left": [],
-  "modules-center": ["niri/window", "niri/language", "niri/workspaces", "tray", "clock", "pulseaudio", "network"],
+  "modules-center": ["niri/window", "niri/language", "niri/workspaces", "tray", "clock", "pulseaudio", "network", "custom/theme"],
   "modules-right": [],
 
     "niri/workspaces": {
@@ -86,5 +86,14 @@
     "tooltip-format-wifi": "󰖩 {essid} ({signalStrength}%)\n{ipaddr}/{cidr}",
     "tooltip-format-disconnected": "Disconnected",
     "interval": 5
+  },
+
+  "custom/theme": {
+    "format": "{}",
+    "return-type": "json",
+    "exec": "~/.config/waybar/scripts/theme-switcher.sh",
+    "on-click": "~/.config/waybar/scripts/theme-switcher.sh --next && pkill -SIGRTMIN+10 waybar",
+    "signal": 10,
+    "interval": "once"
   }
 }
