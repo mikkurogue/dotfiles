@@ -1,4 +1,9 @@
 local snipe = require("snipe")
-snipe.setup()
+snipe.setup({
+    ui = {
+      position = "center"
+    }
+  }
+)
 
-vim.keymap.set("n", "<leader>m", snipe.open_buffer_menu)
+vim.keymap.set("n", "<leader>fb", snipe.open_buffer_menu)

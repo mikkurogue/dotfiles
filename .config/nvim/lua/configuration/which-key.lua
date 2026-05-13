@@ -49,7 +49,7 @@ wk.add({
   -- Find/Files (existing)
   { "<leader>ff", desc = "Find files" },
   { "<leader>fw", desc = "Live grep" },
-  { "<leader>fb", desc = "Find buffers" },
+  { "<leader>fb", group = "Snipe buffers" },
 
   -- Git (existing)
   { "<leader>gg", desc = "LazyGit" },
