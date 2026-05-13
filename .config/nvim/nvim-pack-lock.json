@@ -25,11 +25,11 @@
       "src": "https://github.com/akinsho/bufferline.nvim"
     },
     "conform.nvim": {
-      "rev": "dca1a190aa85f9065979ef35802fb77131911106",
+      "rev": "18aeab3d63d350dcf44d64c462cc489a3412af40",
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "copilot.lua": {
-      "rev": "9ffee9894623f8f83ad1b914c12ce9977bf916b7",
+      "rev": "7e9c269bf40dea86b44e64bd746f1808e991e419",
       "src": "https://github.com/zbirenbaum/copilot.lua"
     },
     "crates.nvim": {
@@ -37,7 +37,7 @@
       "src": "https://github.com/saecki/crates.nvim"
     },
     "fff.nvim": {
-      "rev": "39f67c0cf97c22a71408fc6de2f2888c5c4a700e",
+      "rev": "d56006d26f88658102adc46617381bf4a02b165f",
       "src": "https://github.com/dmtrKovalenko/fff.nvim"
     },
     "fidget.nvim": {
@@ -61,11 +61,11 @@
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
     "mini.icons": {
-      "rev": "bac6317300e205335df425296570d84322730067",
+      "rev": "9c7b1b90b15bdd69c52f6e31889dbc9987c30ec4",
       "src": "https://github.com/nvim-mini/mini.icons"
     },
     "minifugit.nvim": {
-      "rev": "7f5cc37399d7417c0f3737dddb6f578a34138578",
+      "rev": "d8f194402383c3cc935228a9d01a79ef05210eea",
       "src": "https://github.com/vieitesss/minifugit.nvim"
     },
     "noice.nvim": {
@@ -89,7 +89,7 @@
       "src": "https://github.com/theHamsta/nvim-dap-virtual-text"
     },
     "nvim-lspconfig": {
-      "rev": "451d4ef9abd4f0f08e379ef0d55d1c391b6125a7",
+      "rev": "8f7e64066e2641d5e7d494962a9c7051e3d38dd5",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -115,6 +115,10 @@
     "package-info.nvim": {
       "rev": "9725099fb118bab8360e560c1219bff60763b7e1",
       "src": "https://github.com/vuki656/package-info.nvim"
+    },
+    "palette.nvim": {
+      "rev": "d501f5196af27da2a362b8dc3e5fcf72e0205d9c",
+      "src": "/Users/michaellindemans/code/palette.nvim"
     },
     "peekr.nvim": {
       "rev": "0397f886e5ded7f453438de32d17c9b5e1a7fc40",
@@ -153,7 +157,7 @@
       "src": "https://github.com/akinsho/toggleterm.nvim"
     },
     "tree-sitter-manager.nvim": {
-      "rev": "59e1ba49e33e1b73bef655fd34b5e65e1465053f",
+      "rev": "ae287204a4fe9174e82bad17c102e721e5aa8520",
       "src": "https://github.com/romus204/tree-sitter-manager.nvim"
     },
     "trouble.nvim": {
