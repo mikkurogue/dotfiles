@@ -3,3 +3,8 @@
 [revset-aliases]
 "trunk()" = "develop@origin"
 
+[aliases]
+d = ["util", "exec", "--", "sh", "-c", "$JJ_WORKSPACE_ROOT/.hooks/jj-pre-commit.sh && jj describe \"$@\"", ""]
+c = ["util", "exec", "--", "sh", "-c", "$JJ_WORKSPACE_ROOT/.hooks/jj-pre-commit.sh && jj commit \"$@\"", ""]
+n = ["util", "exec", "--", "sh", "-c", "$JJ_WORKSPACE_ROOT/.hooks/jj-pre-commit.sh && jj new \"$@\"", ""]
+

@@ -76,7 +76,8 @@ local lsps = {
   'oxfmt',
   'oxlint',
   'vue_ls',
-  'bash-language-server'
+  'bash-language-server',
+  'emmet_language_server'
 }
 
 v.lsp.enable(lsps)
