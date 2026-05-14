@@ -4,218 +4,360 @@ require("core.opts")
 local v = vim
 v.g.mapleader = " "
 
--- Plugins
-v.pack.add({
-  -- Colorschemes
-  { src = "https://github.com/olimorris/onedarkpro.nvim" },
-  { src = "https://github.com/IroncladDev/osmium" },
-  { src = "https://github.com/aejkatappaja/sora" },
-  { src = "https://github.com/rebelot/kanagawa.nvim" },
+-- Bootstrap lazy.nvim
+local lazypath = v.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not v.uv.fs_stat(lazypath) then
+  v.fn.system({
+    "git", "clone", "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+  })
+end
+v.opt.rtp:prepend(lazypath)
+
+require("lazy").setup({
+  -- Colorschemes (load eagerly since we need them at startup)
+  {
+    "olimorris/onedarkpro.nvim",
+    lazy = false,
+    config = function()
+      require("onedarkpro").setup()
+    end,
+  },
+  {
+    "IroncladDev/osmium",
+    lazy = false,
+    config = function()
+      require("osmium").setup({
+        integrations = {
+          gitsigns = true,
+          indent_blankline = true,
+          fff = true,
+          lualine = true,
+        },
+        transparent_bg = true,
+        show_end_of_buffer = false,
+      })
+    end,
+  },
+  {
+    "aejkatappaja/sora",
+    lazy = false,
+    config = function()
+      require("sora").setup({
+        transparent = true,
+        italic = true,
+        italic_comments = true,
+      })
+    end,
+  },
+  {
+    "rebelot/kanagawa.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("kanagawa").setup({
+        theme = "dragon",
+        background = { dark = "dragon" },
+      })
+      v.cmd("colorscheme kanagawa")
+    end,
+  },
 
   -- LSP, Diagnostics & Formatting
-  { src = "https://github.com/neovim/nvim-lspconfig" },
-  { src = "https://github.com/stevearc/conform.nvim" },
-  { src = "https://github.com/rachartier/tiny-inline-diagnostic.nvim" },
-  { src = "https://github.com/j-hui/fidget.nvim",                     name = "fidget.nvim" },
-  { src = "https://github.com/folke/trouble.nvim" },
-  { src = "https://github.com/mikkurogue/peekr.nvim" },
+  {
+    "neovim/nvim-lspconfig",
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      require("core.lsp")
+    end,
+  },
+  {
+    "stevearc/conform.nvim",
+    event = "BufWritePre",
+    cmd = "ConformInfo",
+    config = function()
+      require("configuration.conform")
+    end,
+  },
+  {
+    "rachartier/tiny-inline-diagnostic.nvim",
+    event = "LspAttach",
+    config = function()
+      require("configuration.tiny-inline-diagnostic")
+    end,
+  },
+  {
+    "j-hui/fidget.nvim",
+    event = "LspAttach",
+    config = function()
+      require("configuration.fidget")
+    end,
+  },
+  {
+    "folke/trouble.nvim",
+    cmd = "Trouble",
+    keys = {
+      { "<leader>xx", function() require("trouble").toggle("diagnostics") end, desc = "Toggle Trouble diagnostics" },
+    },
+  },
+  {
+    "mikkurogue/peekr.nvim",
+    event = "LspAttach",
+    config = function()
+      require("configuration.peekr")
+    end,
+  },
 
   -- Completion & Pairs (blink)
-  {src = "https://github.com/saghen/blink.lib"},
-  { src = "https://github.com/saghen/blink.cmp" },
-  { src = "https://github.com/saghen/blink.pairs" },
-  { src = "https://github.com/saghen/blink.download" },
-  { src = "https://github.com/zbirenbaum/copilot.lua" },
+  { "saghen/blink.lib", version = "*", lazy = true },
+  {
+    "saghen/blink.cmp",
+    version = "*",
+    event = "InsertEnter",
+    dependencies = {
+      "saghen/blink.lib",
+      "saghen/blink.pairs",
+      "saghen/blink.download",
+    },
+    config = function()
+      require("configuration.blink")
+    end,
+  },
+  { "saghen/blink.pairs", version = "*", lazy = true },
+  { "saghen/blink.download", version = "*", lazy = true },
+  { "zbirenbaum/copilot.lua", lazy = true },
 
   -- Treesitter
-  { src = "https://github.com/romus204/tree-sitter-manager.nvim" },
+  {
+    "romus204/tree-sitter-manager.nvim",
+    event = { "BufReadPost", "BufNewFile" },
+    config = function()
+      require("configuration.treesitter")
+    end,
+  },
 
-  -- Debugging (DAP)
-  { src = "https://github.com/mfussenegger/nvim-dap" },
-  { src = "https://github.com/rcarriga/nvim-dap-ui" },
-  { src = "https://github.com/theHamsta/nvim-dap-virtual-text" },
-  { src = "https://github.com/nvim-neotest/nvim-nio" },
+  -- Debugging (DAP) - lazy loaded on commands/keys
+  {
+    "mfussenegger/nvim-dap",
+    dependencies = {
+      "rcarriga/nvim-dap-ui",
+      "theHamsta/nvim-dap-virtual-text",
+      "nvim-neotest/nvim-nio",
+    },
+    cmd = { "DapContinue", "DapToggleBreakpoint", "DapInstallAdapters", "DapHealthCheck" },
+    keys = {
+      { "<leader>dc", function() require("dap").continue() end, desc = "Continue/Start" },
+      { "<leader>db", function() require("dap").toggle_breakpoint() end, desc = "Toggle breakpoint" },
+      { "<F5>", function() require("dap").continue() end, desc = "Debug: Continue" },
+    },
+    config = function()
+      require("configuration.dap")
+    end,
+  },
+  { "rcarriga/nvim-dap-ui", lazy = true },
+  { "theHamsta/nvim-dap-virtual-text", lazy = true },
+  { "nvim-neotest/nvim-nio", lazy = true },
 
   -- Fuzzy Finding & Navigation
-  { src = "https://github.com/dmtrKovalenko/fff.nvim" },
-  { src = "https://github.com/leath-dub/snipe.nvim" },
+  {
+    "dmtrKovalenko/fff.nvim",
+    keys = {
+      { "<leader>ff", function() require("fff").find_files() end, desc = "Find files" },
+      { "<leader>fw", function() require("fff").live_grep({ grep = { "fuzzy" } }) end, desc = "Live grep with fff" },
+    },
+    config = function()
+      require("configuration.fff")
+    end,
+    build = function()
+      require("fff.download").download_or_build_binary()
+    end,
+  },
+  {
+    "leath-dub/snipe.nvim",
+    keys = {
+      { "<leader>m", desc = "Open buffer menu" },
+    },
+    config = function()
+      require("configuration.snipe")
+    end,
+  },
 
   -- File Explorer
-  { src = "https://github.com/stevearc/oil.nvim" },
+  {
+    "stevearc/oil.nvim",
+    keys = {
+      { "<leader>e", function() require("oil").open_float() end, desc = "Open Oil file explorer" },
+    },
+    cmd = "Oil",
+    config = function()
+      require("configuration.oil")
+    end,
+  },
 
   -- Git & VCS
-  { src = "https://github.com/kdheepak/lazygit.nvim" },
-  { src = "https://github.com/algmyr/vclib.nvim" },
-  { src = "https://github.com/algmyr/vcsigns.nvim" },
-  { src = "https://github.com/vieitesss/minifugit.nvim" },
-  { src = "https://github.com/trixnz/sops.nvim" },
+  {
+    "kdheepak/lazygit.nvim",
+    cmd = "LazyGit",
+    keys = {
+      { "<leader>gg", ":LazyGit<CR>", desc = "Open LazyGit" },
+    },
+  },
+  {
+    "algmyr/vclib.nvim",
+    lazy = true,
+  },
+  {
+    "algmyr/vcsigns.nvim",
+    event = { "BufReadPost", "BufNewFile" },
+    dependencies = { "algmyr/vclib.nvim" },
+    config = function()
+      require("configuration.vcsigns")
+    end,
+  },
+  {
+    "vieitesss/minifugit.nvim",
+    keys = {
+      { "<leader>gs", desc = "Toggle git status" },
+    },
+    config = function()
+      require("configuration.minifugit")
+    end,
+  },
+  {
+    "trixnz/sops.nvim",
+    event = "BufReadPre",
+    config = true,
+  },
 
   -- UI & Appearance
-  { src = "https://github.com/nvim-lualine/lualine.nvim" },
-  { src = "https://github.com/akinsho/bufferline.nvim" },
-  { src = "https://github.com/nvim-mini/mini.icons" },
-  { src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
-
-  { src = "https://github.com/folke/noice.nvim" },
-  { src = "https://github.com/MunifTanjim/nui.nvim" },
-  { src = "https://github.com/rcarriga/nvim-notify" },
-  { src = "https://github.com/doums/suit.nvim" },
-  { src = "https://github.com/folke/which-key.nvim" },
+  {
+    "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("configuration.lualine")
+    end,
+  },
+  {
+    "akinsho/bufferline.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("bufferline").setup({
+        options = {
+          indicator = { style = "underline" },
+          separator_style = "slant",
+        },
+      })
+    end,
+  },
+  {
+    "nvim-mini/mini.icons",
+    lazy = true,
+    init = function()
+      -- Make mini.icons the default icon provider before it loads
+      package.preload["nvim-web-devicons"] = function()
+        require("mini.icons").mock_nvim_web_devicons()
+        return package.loaded["nvim-web-devicons"]
+      end
+    end,
+    config = function()
+      require("configuration.mini")
+    end,
+  },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    event = { "BufReadPost", "BufNewFile" },
+    main = "ibl",
+    opts = {},
+  },
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
+    config = function()
+      require("configuration.noice")
+    end,
+  },
+  { "MunifTanjim/nui.nvim", lazy = true },
+  {
+    "rcarriga/nvim-notify",
+    lazy = true,
+    opts = { background_colour = "#000000" },
+  },
+  {
+    "doums/suit.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("configuration.suit")
+    end,
+  },
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("configuration.which-key")
+    end,
+  },
 
   -- Session & Workflow
-  { src = "https://github.com/folke/persistence.nvim",                 event = "BufReadPre" },
-  { src = "https://github.com/folke/todo-comments.nvim" },
-  { src = "https://github.com/akinsho/toggleterm.nvim" },
+  {
+    "folke/persistence.nvim",
+    event = "BufReadPre",
+    config = function()
+      require("configuration.persistence")
+    end,
+  },
+  {
+    "folke/todo-comments.nvim",
+    event = { "BufReadPost", "BufNewFile" },
+    config = function()
+      require("configuration.todo-comments")
+    end,
+  },
+  {
+    "akinsho/toggleterm.nvim",
+    cmd = "ToggleTerm",
+    keys = {
+      { "<leader>tf", ":ToggleTerm<CR>", desc = "Toggle terminal" },
+    },
+    config = function()
+      require("configuration.toggleterm")
+    end,
+  },
 
   -- Language-specific
-  { src = "https://github.com/vuki656/package-info.nvim" },
-  { src = "https://github.com/saecki/crates.nvim" },
-  { src = "https://github.com/lewis6991/async.nvim" },
-
-
-})
-
--- PackChanged hooks
-v.api.nvim_create_autocmd("PackChanged", {
-  callback = function(event)
-    if event.data.updated then
-      require("fff.download").download_or_build_binary()
-    end
-  end,
-})
-
-
--- Colorscheme
-require("onedarkpro").setup()
-require("osmium").setup({
-  integrations = {
-    gitsigns = true,
-    indent_blankline = true,
-    fff = true,
-    lualine = true,
+  {
+    "vuki656/package-info.nvim",
+    event = "BufRead package.json",
+    config = function()
+      require("package-info").setup()
+    end,
   },
-  transparent_bg = true,
-  show_end_of_buffer = false,
-})
-require("sora").setup({
-  transparent = true,
-  italic = true,
-  italic_comments = true,
-})
-require('kanagawa').setup({
-  theme = "dragon",
-  background = {
-    dark = "dragon"
-  }
-})
-
-local schemes = {
-  "onedark",
-  "onelight",
-  "onedark_dark",
-  "onedark_vivid",
-  "osmium",
-  "sora",
-  "kanagawa"
-}
-v.cmd("colorscheme " .. schemes[7])
-
--- LSP, Diagnostics & Formatting
-require("core.lsp")
-require("configuration.conform")
-require("configuration.tiny-inline-diagnostic")
-require("configuration.fidget")
-require("configuration.peekr")
-
--- Completion & Pairs (blink)
-require("configuration.blink")
-
--- Treesitter
-require("configuration.treesitter")
-
--- Debugging (DAP) - deferred to first use
-v.api.nvim_create_autocmd("User", {
-  pattern = "DapLoad",
-  once = true,
-  callback = function()
-    require("configuration.dap")
-  end,
-})
--- Create lazy-loading commands for DAP
-for _, cmd in ipairs({ "DapContinue", "DapToggleBreakpoint" }) do
-  v.api.nvim_create_user_command(cmd, function()
-    v.api.nvim_del_user_command(cmd)
-    v.api.nvim_exec_autocmds("User", { pattern = "DapLoad" })
-    if cmd == "DapContinue" then
-      require("dap").continue()
-    else
-      require("dap").toggle_breakpoint()
-    end
-  end, { desc = "Lazy-load DAP and run " .. cmd })
-end
--- Defer <leader>d keymaps until DAP loads
-v.keymap.set("n", "<leader>dc", function()
-  v.api.nvim_exec_autocmds("User", { pattern = "DapLoad" })
-  require("dap").continue()
-end, { desc = "Continue/Start (loads DAP)" })
-v.keymap.set("n", "<leader>db", function()
-  v.api.nvim_exec_autocmds("User", { pattern = "DapLoad" })
-  require("dap").toggle_breakpoint()
-end, { desc = "Toggle breakpoint (loads DAP)" })
-v.keymap.set("n", "<F5>", function()
-  v.api.nvim_exec_autocmds("User", { pattern = "DapLoad" })
-  require("dap").continue()
-end, { desc = "Debug: Continue (loads DAP)" })
-
--- Fuzzy Finding & Navigation
-require("configuration.fff")
-require("configuration.snipe")
-
--- File Explorer
-require("configuration.oil")
-
--- Git & VCS
-require("configuration.vcsigns")
-require("configuration.minifugit")
-
--- UI & Appearance
-require("notify").setup({ background_colour = "#000000" })
-require("configuration.lualine")
-require("bufferline").setup({
-  options = {
-    indicator = { style = "underline" },
-    separator_style = "slant",
+  {
+    "saecki/crates.nvim",
+    event = "BufRead Cargo.toml",
+    config = function()
+      require("crates").setup()
+    end,
+  },
+  { "lewis6991/async.nvim", lazy = true },
+}, {
+  -- lazy.nvim options
+  checker = {
+    enabled = false,  -- don't auto-check for updates (handled by GH workflow)
+  },
+  change_detection = {
+    notify = false,
   },
 })
-require("configuration.mini")
-require("ibl").setup()
-require("configuration.noice")
-require("configuration.suit")
-require("configuration.which-key")
 
--- Session & Workflow
-require("configuration.persistence")
-require("configuration.todo-comments")
-require("configuration.toggleterm")
-
--- Language-specific (deferred to relevant filetypes)
-v.api.nvim_create_autocmd("BufRead", {
-  pattern = "package.json",
-  once = true,
-  callback = function()
-    require("package-info").setup()
-  end,
-})
-v.api.nvim_create_autocmd("BufRead", {
-  pattern = "Cargo.toml",
-  once = true,
-  callback = function()
-    require("crates").setup()
-  end,
-})
-
-
+-- Keymaps (non-plugin keymaps that aren't handled by lazy keys)
 require("core.keymaps")
+
 function _G.GitBranch()
   if v.b.gitsigns_head then
     return " " .. v.b.gitsigns_head

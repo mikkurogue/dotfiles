@@ -16,35 +16,9 @@ v.keymap.set("n", "<Esc>", ":noh<CR>", {
   silent = true
 })
 
--- trigger lazygit
-v.keymap.set("n", "<leader>gg", ":LazyGit<CR>")
-
-v.keymap.set("n", "<leader>fw", function()
-  require("fff").live_grep({
-    grep = { 'fuzzy'}
-  })
-end, { desc = "Live grep with fff" })
-
-v.keymap.set("n", "<leader>ff", function()
-  require('fff').find_files()
-end, { desc = "Find files" })
-
 -- format current buffer
 v.keymap.set("n", "<leader>lf", v.lsp.buf.format)
-v.keymap.set("n", "<leader>e", function()
-  require("oil").open_float()
-end)
 
-v.keymap.set("n", "<leader>tf", ":ToggleTerm<CR>")
-
-
-v.keymap.set("n", "<leader>xx", function()
-    require("trouble").toggle("diagnostics")
-  end,
-  { desc = "Toggle Trouble diagnostics" }
-)
-
-v.keymap.set("n", "<leader>gb", ":Gitsigns blame_line<CR>", { desc = "Show git blame line" })
 
 -- lsp keymaps (gd, gD, gr, gi handled by Peekr — see configuration/peekr.lua)
 v.keymap.set("n", "K", v.lsp.buf.hover)

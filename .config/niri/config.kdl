@@ -1,3 +1,4 @@
+
 input {
     keyboard {
         xkb {
@@ -681,7 +682,7 @@ binds {
 
     // Print { screenshot; }
     // Ctrl+Print { screenshot-screen; }
-    // Alt+Print { screenshot-window; }
+    Alt+Print { screenshot-window; }
 
 
     // Applications such as remote-desktop clients and software KVM switches may
