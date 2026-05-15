@@ -116,10 +116,6 @@
       "rev": "9725099fb118bab8360e560c1219bff60763b7e1",
       "src": "https://github.com/vuki656/package-info.nvim"
     },
-    "palette.nvim": {
-      "rev": "d501f5196af27da2a362b8dc3e5fcf72e0205d9c",
-      "src": "/Users/michaellindemans/code/palette.nvim"
-    },
     "peekr.nvim": {
       "rev": "0397f886e5ded7f453438de32d17c9b5e1a7fc40",
       "src": "https://github.com/mikkurogue/peekr.nvim"
