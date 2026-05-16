@@ -1,5 +1,6 @@
 return {
-  "folke/todo-comments.nvim",
+  "lukas-reineke/indent-blankline.nvim",
   event = { "BufReadPost", "BufNewFile" },
+  main = "ibl",
   opts = {},
 }

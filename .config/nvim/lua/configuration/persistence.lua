@@ -1,1 +1,5 @@
-require('persistence').setup()
+return {
+  "folke/persistence.nvim",
+  event = "BufReadPre",
+  opts = {},
+}
