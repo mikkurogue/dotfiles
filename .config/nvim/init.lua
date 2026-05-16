@@ -3,6 +3,7 @@ require("core.opts")
 
 local v = vim
 v.g.mapleader = " "
+v.g.maplocalleader = " "
 
 -- Bootstrap lazy.nvim
 local lazypath = v.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -44,6 +45,18 @@ function _G.GitBranch()
   end
   return ""
 end
+
+-- Colorscheme
+-- Change the index to switch colorscheme, or use a builtin like "vim"
+local schemes = {
+  "vim",          -- 1: nvim dark (builtin, no plugin needed)
+  "onedark",      -- 2: onedarkpro
+  "osmium",       -- 3: osmium
+  "sora",         -- 4: sora
+  "kanagawa",     -- 5: kanagawa dragon
+}
+v.o.background = "dark"
+v.cmd("colorscheme " .. schemes[5])
 
 v.api.nvim_create_autocmd("BufEnter", {
   callback = function()

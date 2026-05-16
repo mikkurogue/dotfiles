@@ -8,3 +8,6 @@ d = ["util", "exec", "--", "sh", "-c", "$JJ_WORKSPACE_ROOT/.hooks/jj-pre-commit.
 c = ["util", "exec", "--", "sh", "-c", "$JJ_WORKSPACE_ROOT/.hooks/jj-pre-commit.sh && jj commit \"$@\"", ""]
 n = ["util", "exec", "--", "sh", "-c", "$JJ_WORKSPACE_ROOT/.hooks/jj-pre-commit.sh && jj new \"$@\"", ""]
 
+[snapshot]
+max-new-file-size = 1143410
+

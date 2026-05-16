@@ -1,14 +1,15 @@
 return {
+  -- All colorschemes lazy-loaded, only loaded when selected below or via :colorscheme
   {
     "olimorris/onedarkpro.nvim",
-    lazy = false,
+    lazy = true,
     config = function()
       require("onedarkpro").setup()
     end,
   },
   {
     "IroncladDev/osmium",
-    lazy = false,
+    lazy = true,
     config = function()
       require("osmium").setup({
         integrations = {
@@ -24,7 +25,7 @@ return {
   },
   {
     "aejkatappaja/sora",
-    lazy = false,
+    lazy = true,
     config = function()
       require("sora").setup({
         transparent = true,
@@ -35,14 +36,12 @@ return {
   },
   {
     "rebelot/kanagawa.nvim",
-    lazy = false,
-    priority = 1000,
+    lazy = true,
     config = function()
       require("kanagawa").setup({
         theme = "dragon",
         background = { dark = "dragon" },
       })
-      vim.cmd("colorscheme kanagawa")
     end,
   },
 }
