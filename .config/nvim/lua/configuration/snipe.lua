@@ -1,9 +1,11 @@
-local snipe = require("snipe")
-snipe.setup({
+return {
+  "leath-dub/snipe.nvim",
+  keys = {
+    { "<leader>fb", function() require("snipe").open_buffer_menu() end, desc = "Open buffer menu" },
+  },
+  opts = {
     ui = {
-      position = "center"
-    }
-  }
-)
-
-vim.keymap.set("n", "<leader>fb", snipe.open_buffer_menu)
+      position = "center",
+    },
+  },
+}

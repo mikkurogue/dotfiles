@@ -1,3 +1,7 @@
-require("tiny-inline-diagnostic").setup({
-  preset = "ghost"
-})
+return {
+  "rachartier/tiny-inline-diagnostic.nvim",
+  event = "LspAttach",
+  opts = {
+    preset = "ghost",
+  },
+}
