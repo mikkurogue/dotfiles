@@ -1,0 +1,3 @@
+
+-- basic configuration
+require("monitors")
