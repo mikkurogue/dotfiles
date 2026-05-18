@@ -1,6 +1,5 @@
 # theme = osmium 
-# theme = onedark_custom
-theme = Kanagawa Dragon
+ theme = onedark_custom
 
 # Font
 # font-family = "Hack-ZeroSlash"

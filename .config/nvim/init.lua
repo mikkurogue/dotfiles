@@ -54,9 +54,10 @@ local schemes = {
   "osmium",       -- 3: osmium
   "sora",         -- 4: sora
   "kanagawa",     -- 5: kanagawa dragon
+  "kanso",        -- 6: kanso
 }
 v.o.background = "dark"
-v.cmd("colorscheme " .. schemes[5])
+v.cmd("colorscheme " .. schemes[2])
 
 v.api.nvim_create_autocmd("BufEnter", {
   callback = function()

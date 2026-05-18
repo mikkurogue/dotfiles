@@ -1,6 +1,11 @@
 return {
   -- All colorschemes lazy-loaded, only loaded when selected below or via :colorscheme
   {
+    "webhooked/kanso.nvim",
+    lazy = false,
+    priority = 1000,
+  },
+  {
     "olimorris/onedarkpro.nvim",
     lazy = true,
     config = function()
