@@ -132,40 +132,40 @@ return {
       end,
       static = {
         mode_config = {
-          n = { icon = "", label = "NORMAL", color = "blue" },
-          no = { icon = "", label = "N-OP", color = "blue" },
-          nov = { icon = "", label = "N-OP", color = "blue" },
-          noV = { icon = "", label = "N-OP", color = "blue" },
-          ["no\22"] = { icon = "", label = "N-OP", color = "blue" },
-          niI = { icon = "", label = "NORMAL", color = "blue" },
-          niR = { icon = "", label = "NORMAL", color = "blue" },
-          niV = { icon = "", label = "NORMAL", color = "blue" },
-          nt = { icon = "", label = "NORMAL", color = "blue" },
-          v = { icon = " ", label = "VISUAL", color = "purple" },
-          vs = { icon = " ", label = "VISUAL", color = "purple" },
-          V = { icon = " ", label = "V-LINE", color = "purple" },
-          Vs = { icon = " ", label = "V-LINE", color = "purple" },
-          ["\22"] = { icon = " ", label = "V-BLOCK", color = "purple" },
-          ["\22s"] = { icon = " ", label = "V-BLOCK", color = "purple" },
-          s = { icon = "", label = "SELECT", color = "orange" },
-          S = { icon = "", label = "S-LINE", color = "orange" },
-          ["\19"] = { icon = "", label = "S-BLOCK", color = "orange" },
-          i = { icon = "", label = "INSERT", color = "green" },
-          ic = { icon = "", label = "INSERT", color = "green" },
-          ix = { icon = "", label = "INSERT", color = "green" },
+          n = { icon = "", label = "NORMAL", color = "blue" },
+          no = { icon = "", label = "N-OP", color = "blue" },
+          nov = { icon = "", label = "N-OP", color = "blue" },
+          noV = { icon = "", label = "N-OP", color = "blue" },
+          ["no\22"] = { icon = "", label = "N-OP", color = "blue" },
+          niI = { icon = "", label = "NORMAL", color = "blue" },
+          niR = { icon = "", label = "NORMAL", color = "blue" },
+          niV = { icon = "", label = "NORMAL", color = "blue" },
+          nt = { icon = "", label = "NORMAL", color = "blue" },
+          v = { icon = "", label = "VISUAL", color = "purple" },
+          vs = { icon = "", label = "VISUAL", color = "purple" },
+          V = { icon = "", label = "V-LINE", color = "purple" },
+          Vs = { icon = "", label = "V-LINE", color = "purple" },
+          ["\22"] = { icon = "", label = "V-BLOCK", color = "purple" },
+          ["\22s"] = { icon = "", label = "V-BLOCK", color = "purple" },
+          s = { icon = "", label = "SELECT", color = "orange" },
+          S = { icon = "", label = "S-LINE", color = "orange" },
+          ["\19"] = { icon = "", label = "S-BLOCK", color = "orange" },
+          i = { icon = "", label = "INSERT", color = "green" },
+          ic = { icon = "", label = "INSERT", color = "green" },
+          ix = { icon = "", label = "INSERT", color = "green" },
           R = { icon = "󰛔", label = "REPLACE", color = "red" },
           Rc = { icon = "󰛔", label = "REPLACE", color = "red" },
           Rx = { icon = "󰛔", label = "REPLACE", color = "red" },
           Rv = { icon = "󰛔", label = "REPLACE", color = "red" },
           Rvc = { icon = "󰛔", label = "REPLACE", color = "red" },
           Rvx = { icon = "󰛔", label = "REPLACE", color = "red" },
-          c = { icon = " ", label = "COMMAND", color = "yellow" },
-          cv = { icon = " ", label = "EX", color = "yellow" },
-          r = { icon = "", label = "...", color = "cyan" },
-          rm = { icon = "", label = "MORE", color = "cyan" },
-          ["r?"] = { icon = "", label = "CONFIRM", color = "cyan" },
-          ["!"] = { icon = "", label = "SHELL", color = "red" },
-          t = { icon = " ", label = "TERMINAL", color = "cyan" },
+          c = { icon = "", label = "COMMAND", color = "yellow" },
+          cv = { icon = "", label = "EX", color = "yellow" },
+          r = { icon = "", label = "...", color = "cyan" },
+          rm = { icon = "", label = "MORE", color = "cyan" },
+          ["r?"] = { icon = "", label = "CONFIRM", color = "cyan" },
+          ["!"] = { icon = "", label = "SHELL", color = "red" },
+          t = { icon = "", label = "TERMINAL", color = "cyan" },
         },
       },
       provider = function(self)
@@ -218,12 +218,12 @@ return {
     local FileFlags = {
       {
         condition = function() return vim.bo.modified end,
-        provider = "  ",
+        provider = "",
         hl = { fg = "green" },
       },
       {
         condition = function() return not vim.bo.modifiable or vim.bo.readonly end,
-        provider = "  ",
+        provider = "",
         hl = { fg = "orange" },
       },
     }
@@ -311,25 +311,25 @@ return {
       update = { "DiagnosticChanged", "BufEnter" },
       {
         provider = function(self)
-          return self.errors > 0 and (" " .. self.errors .. " ")
+          return self.errors > 0 and (" " .. self.errors .. " ")
         end,
         hl = { fg = "diag_error" },
       },
       {
         provider = function(self)
-          return self.warnings > 0 and (" " .. self.warnings .. " ")
+          return self.warnings > 0 and (" " .. self.warnings .. " ")
         end,
         hl = { fg = "diag_warn" },
       },
       {
         provider = function(self)
-          return self.info > 0 and (" " .. self.info .. " ")
+          return self.info > 0 and (" " .. self.info .. " ")
         end,
         hl = { fg = "diag_info" },
       },
       {
         provider = function(self)
-          return self.hints > 0 and (" " .. self.hints)
+          return self.hints > 0 and (" " .. self.hints)
         end,
         hl = { fg = "diag_hint" },
       },
@@ -341,7 +341,7 @@ return {
     local LSPActive = {
       condition = conditions.lsp_attached,
       update = { "LspAttach", "LspDetach" },
-      { provider = " ", hl = { fg = "orange" } },
+      { provider = "  [", hl = { fg = "orange" } },
       {
         provider = function()
           local names = {}
@@ -352,6 +352,7 @@ return {
         end,
         hl = { fg = "green", bold = true },
       },
+      { provider = "]", hl = { fg = "orange" } },
     }
 
     ---------------------------------------------------------------------------
@@ -362,7 +363,7 @@ return {
         local b = vim.api.nvim_get_current_buf()
         return vim.treesitter.highlighter.active[b] ~= nil
       end,
-      provider = "  ",
+      provider = "  ",
       hl = { fg = "green" },
     }
 
