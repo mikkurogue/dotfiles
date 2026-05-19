@@ -45,56 +45,83 @@ return {
       return branch
     end
 
-    -- VCS cache to avoid shelling out on every statusline redraw
-    local vcs_cache = { result = nil, cwd = nil }
+    -- VCS info: fetched async, never blocks the UI
+    local vcs_cache = { result = nil, cwd = nil, pending = false }
 
-    local function invalidate_vcs_cache()
-      vcs_cache = { result = nil, cwd = nil }
+    local function fetch_vcs_info_async()
+      local cwd = vim.fn.getcwd()
+      if vcs_cache.pending then return end
+      vcs_cache.pending = true
+
+      -- Single jj command that gets both change_id and bookmarks in one shot
+      vim.system(
+        { "jj", "--ignore-working-copy", "log", "-r", "@", "--no-graph", "-T",
+          "change_id.shortest(8) ++ \"\\n\" ++ bookmarks" },
+        { cwd = cwd },
+        vim.schedule_wrap(function(jj_out)
+          vcs_cache.pending = false
+          if jj_out.code == 0 and jj_out.stdout then
+            local lines = vim.split(vim.trim(jj_out.stdout), "\n")
+            local change_id = lines[1] or ""
+            local bookmark = lines[2] or ""
+            local first_bookmark = bookmark:match("^(%S+)")
+            if first_bookmark and first_bookmark ~= "" then
+              vcs_cache = {
+                result = { vcs = "jj", branch = truncate_branch(first_bookmark), change_id = change_id, bookmark = first_bookmark },
+                cwd = cwd, pending = false,
+              }
+            else
+              vcs_cache = {
+                result = { vcs = "jj", branch = change_id, change_id = change_id, bookmark = nil },
+                cwd = cwd, pending = false,
+              }
+            end
+            vim.cmd("redrawstatus")
+            return
+          end
+
+          -- Fallback: git
+          vim.system(
+            { "git", "branch", "--show-current" },
+            { cwd = cwd },
+            vim.schedule_wrap(function(git_out)
+              if git_out.code == 0 and git_out.stdout then
+                local branch = vim.trim(git_out.stdout)
+                if branch ~= "" then
+                  vcs_cache = {
+                    result = { vcs = "git", branch = truncate_branch(branch), change_id = nil, bookmark = nil },
+                    cwd = cwd, pending = false,
+                  }
+                  vim.cmd("redrawstatus")
+                  return
+                end
+              end
+              vcs_cache = { result = nil, cwd = cwd, pending = false }
+              vim.cmd("redrawstatus")
+            end)
+          )
+        end)
+      )
     end
-
-    vim.api.nvim_create_autocmd({ "DirChanged", "BufEnter", "FocusGained" }, {
-      callback = invalidate_vcs_cache,
-    })
 
     local function get_vcs_info()
       local cwd = vim.fn.getcwd()
-      if vcs_cache.cwd == cwd and vcs_cache.result then
-        return vcs_cache.result
+      if vcs_cache.cwd ~= cwd then
+        -- Cache miss: return stale/nil and fetch in background
+        vcs_cache.cwd = cwd
+        vcs_cache.result = nil
+        fetch_vcs_info_async()
       end
-
-      -- Check jj first (priority for colocated repos)
-      vim.fn.system("jj root 2>/dev/null")
-      if vim.v.shell_error == 0 then
-        local bookmark = vim.fn.system("jj log -r @ --no-graph -T 'bookmarks'"):gsub("%s+$", "")
-        local change_id = vim.fn.system("jj log -r @ --no-graph -T 'change_id.shortest(8)'"):gsub("%s+$", "")
-        local first_bookmark = bookmark:match("^(%S+)")
-        if first_bookmark and first_bookmark ~= "" then
-          vcs_cache = {
-            result = { vcs = "jj", branch = truncate_branch(first_bookmark), change_id = change_id, bookmark = first_bookmark },
-            cwd = cwd,
-          }
-        else
-          vcs_cache = {
-            result = { vcs = "jj", branch = change_id, change_id = change_id, bookmark = nil },
-            cwd = cwd,
-          }
-        end
-        return vcs_cache.result
-      end
-
-      -- Fallback: git
-      local branch = vim.fn.system("git branch --show-current 2>/dev/null"):gsub("%s+$", "")
-      if vim.v.shell_error == 0 and branch ~= "" then
-        vcs_cache = {
-          result = { vcs = "git", branch = truncate_branch(branch), change_id = nil, bookmark = nil },
-          cwd = cwd,
-        }
-        return vcs_cache.result
-      end
-
-      vcs_cache = { result = nil, cwd = cwd }
-      return nil
+      return vcs_cache.result
     end
+
+    -- Refresh on directory change and periodically on focus/buffer changes
+    vim.api.nvim_create_autocmd({ "DirChanged", "FocusGained" }, {
+      callback = function()
+        vcs_cache = { result = nil, cwd = nil, pending = false }
+        fetch_vcs_info_async()
+      end,
+    })
 
     ---------------------------------------------------------------------------
     -- ViMode (with icons + labels like the old lualine)
