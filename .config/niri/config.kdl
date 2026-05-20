@@ -361,11 +361,26 @@ window-rule {
     default-column-width { proportion 1.0; }
 }
 
-// World of Warcraft - fullscreen
+// World of Warcraft - force compositor fullscreen on open
 window-rule {
     match title=r#"^World of Warcraft$"#
     open-fullscreen true
     open-on-output "DP-2"
+}
+
+// Enable compositor blur for selected apps.
+window-rule {
+    match app-id=r#"^com\.mitchellh\.ghostty$"#
+    background-effect {
+        blur true
+    }
+}
+
+window-rule {
+    match app-id=r#"^discord$"#
+    background-effect {
+        blur true
+    }
 }
 
 // Prevent file managers from opening maximized

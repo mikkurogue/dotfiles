@@ -30,7 +30,7 @@
   "onedarkpro.nvim": { "branch": "main", "commit": "f5fddfd5122fe00421e199151ae4fe8571a02898" },
   "osmium": { "branch": "master", "commit": "ac55489a2d86c8cadf87fc062f10992b3ed286eb" },
   "package-info.nvim": { "branch": "master", "commit": "9725099fb118bab8360e560c1219bff60763b7e1" },
-  "peekr.nvim": { "branch": "master", "commit": "0397f886e5ded7f453438de32d17c9b5e1a7fc40" },
+  "peekr.nvim": { "branch": "master", "commit": "129dc902c7088949be83e5276e1b73aac21cb143" },
   "persistence.nvim": { "branch": "main", "commit": "b20b2a7887bd39c1a356980b45e03250f3dce49c" },
   "snipe.nvim": { "branch": "main", "commit": "d2d196c335919767803f905d573ce66340e33ee6" },
   "sops.nvim": { "branch": "main", "commit": "5946285744ffef26b792839d9130135365bfa8ea" },
