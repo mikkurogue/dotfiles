@@ -69,6 +69,8 @@
 
 .notification-content {
   padding: 12px;
+  max-height: 300px;
+  overflow: hidden;
 }
 
 .notification-default-action {
