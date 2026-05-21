@@ -11,8 +11,9 @@ return {
     vim.api.nvim_set_hl(0, "FFFCursor", { link = "Visual" })
 
     require("fff").setup({
+      title = "Fast Fucking File Finder",
       lazy_sync = true,
-      prompt = "  ",
+      prompt = "   ",
       layout = { prompt_position = "top" },
       hl = { cursor = "FFFCursor" },
       git = { status_text_color = true },
