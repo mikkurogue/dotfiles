@@ -66,6 +66,7 @@ v.lsp.config('vtsls', {
 
 local lsps = {
   'rust_analyzer',
+  'clangd',
   'gopls',
   'vtsls',
   'lua_ls',
