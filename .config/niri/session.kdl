@@ -1,0 +1,54 @@
+// Set dark theme preference for GTK and Qt apps
+environment {
+    GTK_THEME "Breeze-Dark:dark"
+    QT_STYLE_OVERRIDE "kvantum"
+    GTK_APPLICATION_PREFER_DARK_THEME "1"
+    QT_QPA_PLATFORMTHEME "qt6ct"
+    COLOR_SCHEME "prefer-dark"
+
+    // Cursor
+    XCURSOR_SIZE "24"
+    HYPRCURSOR_SIZE "28"
+    HYPRCURSOR_THEME "rose-pine-hyprcursor"
+
+    // Force Wayland
+    GDK_BACKEND "wayland,x11,*"
+    QT_QPA_PLATFORM "wayland;xcb"
+    SDL_VIDEODRIVER "wayland"
+    MOZ_ENABLE_WAYLAND "1"
+    ELECTRON_OZONE_PLATFORM_HINT "wayland"
+    OZONE_PLATFORM "wayland"
+    XDG_SESSION_TYPE "wayland"
+    WINE_FULLSCREEN_INTEGER_SCALING "1"
+
+    // Desktop session
+    XDG_CURRENT_DESKTOP "niri"
+    XDG_SESSION_DESKTOP "niri"
+
+    // XCompose
+    XCOMPOSEFILE "~/.XCompose"
+
+    // XWayland keyboard
+    XKB_DEFAULT_LAYOUT "fi"
+    XKB_DEFAULT_MODEL "pc105"
+    XKB_DEFAULT_OPTIONS "compose:caps"
+
+    GDK_SCALE "1"
+}
+
+spawn-at-startup "kunai" "daemon"
+spawn-at-startup "vicinae" "server"
+spawn-at-startup "waybar" "-c" "/home/mikku/.config/waybar/config-niri.jsonc"
+spawn-at-startup "awww-daemon"
+// spawn-at-startup "dunst"
+spawn-at-startup "snappy-switcher" "--daemon"
+spawn-at-startup "swayosd-server"
+spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+spawn-at-startup "systemctl" "--user" "set-environment" "WINE_FULLSCREEN_INTEGER_SCALING=1"
+spawn-at-startup "xembedsniproxy"
+spawn-at-startup "discord"
+// spawn-sh-at-startup "steam -silent"
+spawn-sh-at-startup "faugus-launcher -silent"
+
+// To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
+// spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"

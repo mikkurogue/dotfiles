@@ -1,0 +1,98 @@
+// Window rules let you adjust behavior for individual windows.
+// Find more information on the wiki:
+// https://yalter.github.io/niri/Configuration:-Window-Rules
+
+// Open the Firefox picture-in-picture player as floating by default.
+window-rule {
+    // This app-id regular expression will work for both:
+    // - host Firefox (app-id is "firefox")
+    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+// Open Discord on DP-3 monitor, full width tiled
+window-rule {
+    match app-id=r#"discord$"#
+    open-on-output "DP-3"
+    default-column-width { proportion 1.0; }
+}
+
+// Open Steam silently
+window-rule {
+    match app-id=r#"^[Ss]team$"#
+    open-on-output "DP-2"
+}
+
+// Steam games (Proton) - open fullscreen (except Battle.net launcher which is steam_app_0)
+window-rule {
+    match app-id=r#"^steam_app_"#
+    exclude app-id=r#"^steam_app_0$"#
+    open-fullscreen true
+}
+
+// Forza Horizon 5 - force fullscreen with no border
+window-rule {
+    match app-id=r#"^steam_app_1551360$"#
+    open-fullscreen true
+    draw-border-with-background false
+}
+
+// Battle.net - tiled full width
+window-rule {
+    match app-id=r#"^steam_app_0$"#
+    open-fullscreen false
+    default-column-width { proportion 1.0; }
+}
+
+// World of Warcraft - force compositor fullscreen on open
+window-rule {
+    match title=r#"^World of Warcraft$"#
+    open-fullscreen true
+    open-on-output "DP-2"
+}
+
+// Enable compositor blur for all windows.
+window-rule {
+    opacity 0.83
+    draw-border-with-background false
+    background-effect {
+        blur true
+    }
+}
+
+// Disable compositor blur for Steam.
+window-rule {
+    match app-id=r#"^[Ss]team$"#
+    opacity 1.0
+    background-effect {
+        blur false
+    }
+}
+
+// Disable compositor blur for Steam-launched games.
+window-rule {
+    match app-id=r#"^steam_app_"#
+    opacity 1.0
+    background-effect {
+        blur false
+    }
+}
+
+// Prevent file managers from opening maximized
+window-rule {
+    match app-id=r#"^thunar$"#
+    open-maximized false
+    default-column-width { proportion 0.5; }
+}
+
+window-rule {
+    match app-id=r#"^org\.kde\.dolphin$"#
+    open-maximized false
+    default-column-width { proportion 0.5; }
+}
+
+window-rule {
+    geometry-corner-radius 16
+    clip-to-geometry true
+}

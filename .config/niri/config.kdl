@@ -126,7 +126,7 @@ layout {
         off
 
         // How many logical pixels the ring extends out from the windows.
-        width 2
+        width 1
 
         // Colors can be set in a variety of ways:
         // - CSS named colors: "red"
@@ -134,7 +134,7 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#61afef"
+        active-color "#7f8b99"
 
         // Color of the ring on inactive monitors.
         //
@@ -234,61 +234,7 @@ layout {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 
-// Set dark theme preference for GTK and Qt apps
-environment {
-    GTK_THEME "Breeze-Dark:dark"
-    QT_STYLE_OVERRIDE "kvantum"
-    GTK_APPLICATION_PREFER_DARK_THEME "1"
-    QT_QPA_PLATFORMTHEME "qt6ct"
-    COLOR_SCHEME "prefer-dark"
-    
-    // Cursor
-    XCURSOR_SIZE "24"
-    HYPRCURSOR_SIZE "28"
-    HYPRCURSOR_THEME "rose-pine-hyprcursor"
-    
-    // Force Wayland
-    GDK_BACKEND "wayland,x11,*"
-    QT_QPA_PLATFORM "wayland;xcb"
-    SDL_VIDEODRIVER "wayland"
-    MOZ_ENABLE_WAYLAND "1"
-    ELECTRON_OZONE_PLATFORM_HINT "wayland"
-    OZONE_PLATFORM "wayland"
-    XDG_SESSION_TYPE "wayland"
-    WINE_FULLSCREEN_INTEGER_SCALING "1"
-    
-    // Desktop session
-    XDG_CURRENT_DESKTOP "niri"
-    XDG_SESSION_DESKTOP "niri"
-
-    
-    // XCompose
-    XCOMPOSEFILE "~/.XCompose"
-    
-    // XWayland keyboard
-    XKB_DEFAULT_LAYOUT "fi"
-    XKB_DEFAULT_MODEL "pc105"
-    XKB_DEFAULT_OPTIONS "compose:caps"
-    
-    GDK_SCALE "1"
-}
-
-spawn-at-startup "kunai" "daemon"
-spawn-at-startup "vicinae" "server"
-spawn-at-startup "waybar" "-c" "/home/mikku/.config/waybar/config-niri.jsonc"
-spawn-at-startup "awww-daemon"
-// spawn-at-startup "dunst"
-spawn-at-startup  "snappy-switcher" "--daemon"
-spawn-at-startup "swayosd-server"
-spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
-spawn-at-startup "systemctl" "--user" "set-environment" "WINE_FULLSCREEN_INTEGER_SCALING=1"
-spawn-at-startup "xembedsniproxy"
-spawn-at-startup "discord"
-// spawn-sh-at-startup "steam -silent"
-spawn-sh-at-startup "faugus-launcher -silent"
-
-// To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
-// spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
+include "./session.kdl"
 
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
@@ -321,93 +267,14 @@ animations {
     // slowdown 3.0
 }
 
-// Window rules let you adjust behavior for individual windows.
-// Find more information on the wiki:
-// https://yalter.github.io/niri/Configuration:-Window-Rules
-
-
-// Open the Firefox picture-in-picture player as floating by default.
-window-rule {
-    // This app-id regular expression will work for both:
-    // - host Firefox (app-id is "firefox")
-    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
-    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
-    open-floating true
+blur {
+    passes 3
+    offset 3.0
+    noise 0.02
+    saturation 1.0
 }
 
-// Open Discord on DP-3 monitor, full width tiled
-window-rule {
-    match app-id=r#"discord$"#
-    open-on-output "DP-3"
-    default-column-width { proportion 1.0; }
-}
-
-// Open Steam silently
-window-rule {
-    match app-id=r#"^[Ss]team$"#
-    open-on-output "DP-2"
-}
-
-// Steam games (Proton) - open fullscreen (except Battle.net launcher which is steam_app_0)
-window-rule {
-    match app-id=r#"^steam_app_"#
-    exclude app-id=r#"^steam_app_0$"#
-    open-fullscreen true
-}
-
-// Forza Horizon 5 - force fullscreen with no border
-window-rule {
-    match app-id=r#"^steam_app_1551360$"#
-    open-fullscreen true
-    draw-border-with-background false
-}
-
-// Battle.net - tiled full width
-window-rule {
-    match app-id=r#"^steam_app_0$"#
-    open-fullscreen false
-    default-column-width { proportion 1.0; }
-}
-
-// World of Warcraft - force compositor fullscreen on open
-window-rule {
-    match title=r#"^World of Warcraft$"#
-    open-fullscreen true
-    open-on-output "DP-2"
-}
-
-// Enable compositor blur for selected apps.
-window-rule {
-    match title=r#"kitty$"#
-    background-effect {
-        blur true
-    }
-}
-
-window-rule {
-    match app-id=r#"^discord$"#
-    background-effect {
-        blur true
-    }
-}
-
-// Prevent file managers from opening maximized
-window-rule {
-    match app-id=r#"^thunar$"#
-    open-maximized false
-    default-column-width { proportion 0.5; }
-}
-
-window-rule {
-    match app-id=r#"^org\.kde\.dolphin$"#
-    open-maximized false
-    default-column-width { proportion 0.5; }
-}
-
-window-rule {
-    geometry-corner-radius 2
-    clip-to-geometry true
-}
+include "./window-rules.kdl"
 
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
