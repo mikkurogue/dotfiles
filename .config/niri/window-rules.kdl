@@ -96,3 +96,17 @@ window-rule {
     geometry-corner-radius 16
     clip-to-geometry true
 }
+
+// Apply compositor blur to Waybar and its popups.
+layer-rule {
+    match namespace=r#"^waybar$"#
+    background-effect {
+        blur true
+    }
+
+    popups {
+        background-effect {
+            blur true
+        }
+    }
+}

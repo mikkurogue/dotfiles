@@ -37,7 +37,7 @@ window#waybar {
    CENTER BOX - Creates the island effect
    ══════════════════════════════════════════════════════ */
 .modules-center {
-  background: @bg;
+  background: alpha(@bg, 0.78);
   border: 1px solid @border;
   border-radius: 14px;
   padding: 4px 8px;
@@ -69,14 +69,14 @@ window#waybar {
   padding: 4px 10px;
   margin-right: 6px;
   border-radius: 8px;
-  background: @surface;
+  background: alpha(@surface, 0.72);
 }
 
 /* ══════════════════════════════════════════════════════
    CENTER SECTION - Workspaces (Main Focus)
    ══════════════════════════════════════════════════════ */
 #workspaces {
-  background: @surface;
+  background: alpha(@surface, 0.72);
   border-radius: 12px;
   padding: 2px 2px;
   margin: 0 8px;
@@ -100,7 +100,7 @@ window#waybar {
 
 #workspaces button:hover {
   color: @fg;
-  background: @surface-l;
+  background: alpha(@surface-l, 0.65);
 }
 
 #workspaces button.urgent {
@@ -127,7 +127,7 @@ window#waybar {
 }
 
 #tray menu {
-  background: @bg;
+  background: alpha(@bg, 0.9);
   border: 1px solid @border;
   border-radius: 8px;
 }
@@ -142,7 +142,7 @@ window#waybar {
 }
 
 #clock:hover {
-  background: @surface;
+  background: alpha(@surface, 0.72);
 }
 
 #custom-power {
@@ -177,7 +177,7 @@ window#waybar {
 
 #pulseaudio:hover {
   color: @accent;
-  background: @surface;
+  background: alpha(@surface, 0.72);
 }
 
 /* ══════════════════════════════════════════════════════
@@ -198,7 +198,7 @@ window#waybar {
 
 #network:hover {
   color: @accent;
-  background: @surface;
+  background: alpha(@surface, 0.72);
 }
 
 /* ══════════════════════════════════════════════════════
@@ -215,14 +215,14 @@ window#waybar {
 
 #custom-theme:hover {
   color: @accent;
-  background: @surface;
+  background: alpha(@surface, 0.72);
 }
 
 /* ══════════════════════════════════════════════════════
    TOOLTIPS
    ══════════════════════════════════════════════════════ */
 tooltip {
-  background: @bg;
+  background: alpha(@bg, 0.9);
   border: 1px solid @border;
   border-radius: 8px;
   padding: 8px 12px;
