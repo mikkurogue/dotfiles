@@ -53,7 +53,7 @@ alias vim="nvim"
 alias fucking='sudo'
 alias fuck='sudo (history | tail -n1)'
 alias grep='rg --color=always'
-alias rmv='rmv -l "spinner"'
+alias rmv='rmv'
 
 function h
   history | fzf

@@ -70,6 +70,14 @@ window-rule {
     }
 }
 
+window-rule {
+    match app-id=r#"^firefox$"#
+    opacity 1.0
+    background-effect {
+        blur false
+    }
+}
+
 // Disable compositor blur for Steam-launched games.
 window-rule {
     match app-id=r#"^steam_app_"#
