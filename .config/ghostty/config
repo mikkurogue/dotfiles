@@ -34,6 +34,21 @@ keybind = ctrl+shift+,=reload_config
 # keybind = performable:ctrl+c=copy_to_clipboard
 # keybind = performable:ctrl+v=paste_from_clipboard
 
+
+# make new splits 
+keybind = ctrl+shift+u=new_split:up
+keybind = ctrl+shift+d=new_split:down
+keybind = ctrl+shift+l=new_split:left
+keybind = ctrl+shift+r=new_split:right
+
+# focus and navigate splits
+keybind = ctrl+shift+n=goto_split:next
+keybind = ctrl+shift+p=goto_split:previous
+
+# zoom into current split (temporary maximized until move/focus other split)
+keybind = ctrl+shift+z=toggle_split_zoom
+
+
 mouse-scroll-multiplier = 3
 
 # SSH session terminfo
