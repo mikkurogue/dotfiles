@@ -8,7 +8,7 @@
   "conform.nvim": { "branch": "master", "commit": "619363c30309d29ffa631e67c8183f2a72caa373" },
   "copilot.lua": { "branch": "master", "commit": "e8b9be2e51c393bedc893cef3bd1c5555a4d45f5" },
   "crates.nvim": { "branch": "main", "commit": "694357861ec9ebf12475ddcdd04ea45a0923c32d" },
-  "fff.nvim": { "branch": "main", "commit": "030a583b37802416ce9108295b209d2e6b9d0079" },
+  "fff.nvim": { "branch": "main", "commit": "2853edf3f241ab35609923a4e94996275e492da1" },
   "fidget.nvim": { "branch": "main", "commit": "82404b196e73a00b1727a91903beef5ddc319d22" },
   "heirline.nvim": { "branch": "master", "commit": "fae936abb5e0345b85c3a03ecf38525b0828b992" },
   "indent-blankline.nvim": { "branch": "master", "commit": "d28a3f70721c79e3c5f6693057ae929f3d9c0a03" },
