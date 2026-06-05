@@ -23,6 +23,11 @@ if test (uname) = Darwin
     and fish_add_path /opt/zerobrew/prefix/bin
     test -d $HOME/.zerobrew/bin
     and fish_add_path $HOME/.zerobrew/bin
+    
+    # homebrew (disgusting)
+    test -d /opt/homebrew/bin/brew
+    and eval "$(/opt/homebrew/bin/brew shellenv fish)"
+
 
     # activate mise
     /opt/zerobrew/bin/mise activate fish | source
@@ -101,3 +106,4 @@ export PATH="$PATH:/home/mikku/.radicle/bin"
 
 # Pi
 fish_add_path "/home/mikku/.vite-plus/js_runtime/node/26.0.0/bin"
+
