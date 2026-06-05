@@ -97,3 +97,5 @@ source "$HOME/.vite-plus/env.fish"
 export PATH="$PATH:/home/mikku/.radicle/bin"
 
 source /Users/michaellindemans/.safe-chain/scripts/init-fish.fish # Safe-chain Fish initialization script
+# Pi
+fish_add_path "/home/mikku/.vite-plus/js_runtime/node/26.0.0/bin"
