@@ -99,6 +99,11 @@ echo "Setting up jujutsu configuration..."
 backup_if_exists "$HOME/.config/jj" "$DOTFILES_DIR/.config/jj"
 ln -sf "$DOTFILES_DIR/.config/jj" "$HOME/.config/jj"
 
+# Backup and symlink jjui
+echo "Setting up jjui configuration..."
+backup_if_exists "$HOME/.config/jjui" "$DOTFILES_DIR/.config/jjui"
+ln -sf "$DOTFILES_DIR/.config/jjui" "$HOME/.config/jjui"
+
 # Backup and symlink fastfetch
 echo "Setting up fastfetch configuration..."
 backup_if_exists "$HOME/.config/fastfetch" "$DOTFILES_DIR/.config/fastfetch"
