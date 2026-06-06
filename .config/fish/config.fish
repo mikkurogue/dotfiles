@@ -26,6 +26,9 @@ if test (uname) = Darwin
 
     # activate mise
     /opt/zerobrew/bin/mise activate fish | source
+
+
+    source /Users/michaellindemans/.safe-chain/scripts/init-fish.fish # Safe-chain Fish initialization script
 end
 
 set -gx  NX_TUI false
@@ -96,6 +99,5 @@ source "$HOME/.vite-plus/env.fish"
 # Added by Radicle.
 export PATH="$PATH:/home/mikku/.radicle/bin"
 
-source /Users/michaellindemans/.safe-chain/scripts/init-fish.fish # Safe-chain Fish initialization script
 # Pi
 fish_add_path "/home/mikku/.vite-plus/js_runtime/node/26.0.0/bin"

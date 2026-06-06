@@ -52,6 +52,13 @@ window-rule {
     open-on-output "DP-2"
 }
 
+// diablo - force compositor fullscreen on open
+window-rule {
+    match title=r#"^Diablo IV$"#
+    open-fullscreen true
+    open-on-output "DP-2"
+}
+
 // Enable compositor blur for all windows.
 window-rule {
     opacity 0.83
