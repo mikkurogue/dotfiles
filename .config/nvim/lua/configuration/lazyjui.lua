@@ -6,7 +6,7 @@ return {
   opts = {},
   keys = {
     {
-      "<leader>gj",
+      "<leader>jj",
       function ()
         require("lazyjui").open()
       end
