@@ -1,1 +1,2 @@
 (C) 2026-06-09 merge pr for lazy lock update on +github @mikkurogue due:2026-06-11
+x 2026-06-09 2026-06-09 add tuxedo keybind for nvim config +nvim

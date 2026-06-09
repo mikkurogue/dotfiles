@@ -44,6 +44,7 @@
   "toggleterm.nvim": { "branch": "main", "commit": "9a88eae817ef395952e08650b3283726786fb5fb" },
   "tree-sitter-manager.nvim": { "branch": "main", "commit": "f448f54ece0cdba82a31e41186720f902c91c090" },
   "trouble.nvim": { "branch": "main", "commit": "bd67efe408d4816e25e8491cc5ad4088e708a69a" },
+  "tuxedo.nvim": { "branch": "main", "commit": "847aa130ad1ccd22722c1e8ee3084ec70764270e" },
   "vclib.nvim": { "branch": "main", "commit": "e682b8284da31a5791ad308f4ff5350b8db93fbb" },
   "vcsigns.nvim": { "branch": "main", "commit": "0263f3b1f6db93778289a8d2ae5bf96da8e08183" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" }
