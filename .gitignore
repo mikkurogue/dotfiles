@@ -24,4 +24,4 @@ Thumbs.db
 # zsh syntax highligher let people do it themselves
 zsh/
 
-./config/jj/repos/
+./config/jj/repos/*
