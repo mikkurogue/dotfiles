@@ -52,6 +52,7 @@ return {
       { "<leader>fb", desc = "Find buffers" },
 
       { "<leader>gg", desc = "LazyGit" },
+      { "<leader>jj", desc = "Jujui" },
       { "<leader>gd", desc = "Diff view" },
 
       { "<leader>lf", desc = "Format buffer" },

@@ -5,7 +5,10 @@ return {
     { "<leader>tf", ":ToggleTerm<CR>", desc = "Toggle terminal" },
   },
   opts = {
-    direction = "horizontal",
+    direction = "float",
+    float_opts = {
+      border = "rounded",
+    },
     winbar = {
       enabled = true,
       name_formatter = function(term)
