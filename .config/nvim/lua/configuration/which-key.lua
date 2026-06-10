@@ -41,6 +41,7 @@ return {
       { "<leader>l", group = "LSP" },
       { "<leader>s", group = "Session" },
       { "<leader>t", group = "Terminal/Toggle" },
+      { "<leader>hh", group = "Dashboard" },
       { "<leader>tt", group = "Tuxedo todo manager" },
       { "<leader>x", group = "Diagnostics" },
 
