@@ -57,8 +57,8 @@ v.keymap.set("n", "bc", "<cmd>bd<CR>", { desc = "Close current buffer" })
 v.keymap.set("n", "bcc", close_all_buffers, { desc = "Close all buffers" })
 v.keymap.set("n", "bc1", close_all_but_current, { desc = "Close all but current buffer" })
 
-v.keymap.set("n", "tt", ":Tuxedo<CR>", { desc = "Open tuxedo todo manager" })
-v.keymap.set("n", "hh", ":Alpha<CR>", { desc = "Open dashboard" })
+v.keymap.set("n", "<leader>tt", ":Tuxedo<CR>", { desc = "Open tuxedo todo manager" })
+v.keymap.set("n", "<leader>hh", ":Alpha<CR>", { desc = "Open dashboard" })
 
 -- load the session for the current directory
 v.keymap.set("n", "<leader>ss", function() require("persistence").load() end)
