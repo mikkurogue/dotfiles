@@ -27,7 +27,7 @@ window-rule {
 // Steam games (Proton) - open fullscreen (except Battle.net launcher which is steam_app_0)
 window-rule {
     match app-id=r#"^steam_app_"#
-    exclude app-id=r#"^steam_app_0$"#
+    exclude app-id=r#"^steam_app_default$"#
     open-fullscreen true
 }
 
