@@ -29,6 +29,7 @@
   "nvim-nio": { "branch": "master", "commit": "21f5324bfac14e22ba26553caf69ec76ae8a7662" },
   "nvim-notify": { "branch": "master", "commit": "8701bece920b38ea289b457f902e2ad184131a5d" },
   "nvim-web-devicons": { "branch": "master", "commit": "dfbfaa967a6f7ec50789bead7ef87e336c1fa63c" },
+  "oil-git-status.nvim": { "branch": "main", "commit": "a3e2ccb00cb8822115e28a9a1791eda051d940c9" },
   "oil.nvim": { "branch": "master", "commit": "b73018b75affd13fa38e2fc94ef753b465f770d7" },
   "onedarkpro.nvim": { "branch": "main", "commit": "f5fddfd5122fe00421e199151ae4fe8571a02898" },
   "osmium": { "branch": "master", "commit": "ac55489a2d86c8cadf87fc062f10992b3ed286eb" },

@@ -107,3 +107,5 @@ export PATH="$PATH:/home/mikku/.radicle/bin"
 # Pi
 fish_add_path "/home/mikku/.vite-plus/js_runtime/node/26.0.0/bin"
 
+
+set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin /home/mikku/.ghcup/bin $PATH # ghcup-env

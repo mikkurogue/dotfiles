@@ -5,7 +5,7 @@ v.o.ruler = false
 
 v.o.number = true
 v.o.relativenumber = true
-v.o.signcolumn = "yes"
+v.o.signcolumn = "yes:2"
 v.o.wrap = true
 v.o.linebreak = true
 v.o.tabstop = 2
@@ -20,6 +20,7 @@ v.o.incsearch = true
 v.o.undofile = true
 v.o.termguicolors = true
 v.o.smartindent = true
+v.o.backspace = "indent,eol,start"
 
 v.o.guicursor = "n-v-c:block-blinkwait700-blinkon400-blinkoff250,i-ci-ve:ver25-blinkwait700-blinkon400-blinkoff250,r-cr-o:hor20-blinkwait700-blinkon400-blinkoff250"
 
