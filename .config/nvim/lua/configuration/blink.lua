@@ -1,4 +1,27 @@
 return {
+  -- blink.pairs
+  {
+    "saghen/blink.pairs",
+    version = "*",
+    dependencies = { "saghen/blink.lib" },
+    build = function() require('blink.pairs').build():pwait(60000) end,
+    opts = {
+      mappings = {
+        enabled = true,
+        cmdline = true,
+      },
+      highlights = {
+        enabled = true,
+        cmdline = false,
+        matchparen = {
+          enabled = true,
+          cmdline = false,
+          include_surrounding = false,
+        },
+      },
+    },
+  },
+
   -- blink.cmp
   {
     "saghen/blink.cmp",
@@ -6,7 +29,6 @@ return {
     event = "InsertEnter",
     dependencies = {
       { "saghen/blink.lib", version = "*" },
-      { "saghen/blink.pairs", version = "*" },
       { "saghen/blink.download", version = "*" },
     },
     config = function()
@@ -36,22 +58,6 @@ return {
         signature = {
           enabled = true,
           window = { border = "rounded" },
-        },
-      })
-
-      require("blink.pairs").setup({
-        mappings = {
-          enabled = true,
-          cmdline = true,
-        },
-        highlights = {
-          enabled = true,
-          cmdline = false,
-          matchparen = {
-            enabled = true,
-            cmdline = false,
-            include_surrounding = false,
-          },
         },
       })
     end,
