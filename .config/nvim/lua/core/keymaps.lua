@@ -1,29 +1,10 @@
 local v = vim
 
-
-local left = "n"
-local down = "e"
-local up = "i"
-local right = "o"
-
--- set l to insert mode
-vim.keymap.set("n", "l", "i")
-
--- Move up and down through wrapped lines in normal/terminal/visual mode
-v.keymap.set({ "n", "v" }, down, "<DOWN>", { noremap = true })
-v.keymap.set({ "n", "v" }, up, "<UP>", { noremap = true })
-v.keymap.set({ "n", "v" }, left, "<LEFT>", { noremap = true })
-v.keymap.set({ "n", "v" }, right, "<RIGHT>", { noremap = true })
-
-v.keymap.set({ "n", "v" }, "k", "n", { noremap = true })
-v.keymap.set({ "n", "v" }, "j", "e", { noremap = true })
-v.keymap.set({ "n", "v" }, "h", "o", { noremap = true })
-v.keymap.set({ "n", "v" }, "l", "i", { noremap = true })
-
-v.keymap.set({ "n", "v" }, "K", "N", { noremap = true })
-v.keymap.set({ "n", "v" }, "H", "O", { noremap = true })
-
-
+-- remap hjkl to neio for colemak dh layout
+-- vim.keymap.set("n", "n", "h")
+-- vim.keymap.set("n", "e", "j")
+-- vim.keymap.set("n", "i", "k")
+-- vim.keymap.set("n", "o", "l")
 
 -- Basic keymaps vim specific
 -- mapleader is set in init.lua (must be set before any keymaps)
