@@ -57,7 +57,7 @@ local schemes = {
   "kanso",        -- 6: kanso
 }
 v.o.background = "dark"
-v.cmd("colorscheme " .. schemes[3])
+v.cmd("colorscheme " .. schemes[2])
 
 v.api.nvim_create_autocmd("BufEnter", {
   callback = function()
