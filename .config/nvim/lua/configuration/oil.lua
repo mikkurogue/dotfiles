@@ -8,10 +8,7 @@ return {
     config = function()
       require("oil").setup({
         default_file_explorer = true,
-        win_options = {
-          signcolumn = "yes:2",
-        },
-        keymaps = {
+       keymaps = {
           ["q"] = "actions.close",
           ["esc"] = "actions.close",
           ["<leader>e"] = "actions.close",
@@ -55,39 +52,4 @@ return {
     end,
 
   },
-  {
-    "refractalize/oil-git-status.nvim",
-
-    config = function()
-      require("oil-git-status").setup({
-        show_ignored = true,
-        symbols = {
-          index = {
-            ["M"] = "",
-            ["A"] = "",
-            ["D"] = "",
-            ["R"] = "",
-            ["C"] = "",
-            ["T"] = "",
-            ["U"] = "",
-            ["?"] = "",
-            ["!"] = "",
-            [" "] = " ",
-          },
-          working_tree = {
-            ["M"] = "",
-            ["A"] = "",
-            ["D"] = "",
-            ["R"] = "",
-            ["C"] = "",
-            ["T"] = "",
-            ["U"] = "",
-            ["?"] = "",
-            ["!"] = "",
-            [" "] = " ",
-          },
-        },
-      })
-    end,
-  }
 }

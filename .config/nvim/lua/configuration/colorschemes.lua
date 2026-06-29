@@ -22,6 +22,7 @@ return {
           indent_blankline = true,
           fff = true,
           lualine = true,
+          oil = true
         },
         transparent_bg = true,
         show_end_of_buffer = false,
