@@ -22,6 +22,7 @@ return {
           indent_blankline = true,
           fff = true,
           lualine = true,
+          mini_icons = true,
           oil = true
         },
         transparent_bg = true,
