@@ -3,29 +3,30 @@ local v = vim
 -- LSP configurations
 
 local function on_lsp_exit(code, signal, client_id)
-  local client = v.lsp.get_client_by_id(client_id)
-  if not client then return end
+  -- on_exit runs in a fast event context; schedule UI work
+  v.schedule(function()
+    if code == 0 and signal == 0 then
+      return
+    end
 
-  -- Don't show message on normal exit
-  if code == 0 and signal == 0 then
-    return
-  end
+    local client = v.lsp.get_client_by_id(client_id)
+    if not client then return end
 
-  v.notify(
-    string.format("LSP client '%s' crashed. (code: %s, signal: %s)", client.name, tostring(code), tostring(signal)),
-    v.log.levels.WARN
-  )
+    v.notify(
+      string.format("LSP client '%s' crashed. (code: %s, signal: %s)", client.name, tostring(code), tostring(signal)),
+      v.log.levels.WARN
+    )
 
-  v.notify(string.format("Attempting to restart LSP client: %s", client.name), v.log.levels.INFO)
+    v.notify(string.format("Attempting to restart LSP client: %s", client.name), v.log.levels.INFO)
 
-  local new_client_id = v.lsp.start_client(client.config)
-  if new_client_id then
-    v.notify(string.format("LSP client '%s' has been restored.", client.name), v.log.levels.INFO)
-    -- Re-attach to the current buffer
-    v.lsp.buf_attach_client(0, new_client_id)
-  else
-    v.notify(string.format("Failed to restart LSP client: %s", client.name), v.log.levels.ERROR)
-  end
+    local new_client_id = v.lsp.start_client(client.config)
+    if new_client_id then
+      v.notify(string.format("LSP client '%s' has been restored.", client.name), v.log.levels.INFO)
+      v.lsp.buf_attach_client(0, new_client_id)
+    else
+      v.notify(string.format("Failed to restart LSP client: %s", client.name), v.log.levels.ERROR)
+    end
+  end)
 end
 
 -- Shared config for all LSP servers
@@ -83,7 +84,6 @@ local lsps = {
   -- 'vtsls',
   'lua_ls',
   'biome',
-  'zls',
   'tailwindcss',
   'svelte',
   'oxfmt',
@@ -112,6 +112,7 @@ function _G.LspStatus()
     lua_ls = '󰢱',
     biome = '󰐅',
     zls = '',
+    zzls = '',
     tailwindcss = '󱏿',
     svelte = '',
   }

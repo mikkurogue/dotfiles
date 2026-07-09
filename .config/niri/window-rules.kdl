@@ -16,6 +16,9 @@ window-rule {
     match app-id=r#"discord$"#
     open-on-output "DP-3"
     default-column-width { proportion 1.0; }
+    background-effect {
+        blur false
+    }
 }
 
 // Open Steam silently
