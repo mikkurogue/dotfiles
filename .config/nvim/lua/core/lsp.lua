@@ -50,6 +50,7 @@ local effect_plugin = {
 }
 
 v.lsp.config('vtsls', {
+  -- Keep vtsls only for Vue until TS 7 supports Vue/embedded-language plugins.
   settings = {
     vtsls = {
       autoUseWorkspaceTsdk = true,
@@ -61,14 +62,25 @@ v.lsp.config('vtsls', {
       },
     },
   },
-  filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue' },
+  filetypes = { 'vue' },
 })
+
+v.lsp.config('tsc', {
+  -- NOTE: tsc --lsp only accepts -stdio/-pipe/-socket/-pprofDir.
+  -- --checkers and --plugins are CLI compiler flags, not LSP flags.
+  cmd = { 'tsc', '--lsp', '--stdio' },
+  filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+  root_markers = { 'tsconfig.json', 'jsconfig.json', 'package.json', '.git' },
+})
+
 
 local lsps = {
   'rust_analyzer',
   'clangd',
   'gopls',
+  'tsc',
   'vtsls',
+  -- 'vtsls',
   'lua_ls',
   'biome',
   'zls',
@@ -94,6 +106,7 @@ function _G.LspStatus()
   local icons = {
     rust_analyzer = '󱘗',
     go = '󰟓',
+    tsc = '',
     vtsls = '',
     ts_ls = '',
     lua_ls = '󰢱',
