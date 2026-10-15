@@ -31,48 +31,21 @@ require("lazy").setup("configuration", {
 -- Non-plugin keymaps
 require("core.keymaps")
 
--- Global helpers
-function _G.GitBranch()
-  if v.b.gitsigns_head then
-    return " " .. v.b.gitsigns_head
-  end
-  local handle = io.popen("git rev-parse --abbrev-ref HEAD 2>/dev/null")
-  if not handle then return "" end
-  local branch = handle:read("*l")
-  handle:close()
-  if branch and branch ~= "" then
-    return " " .. branch
-  end
-  return ""
-end
-
--- Colorscheme
--- Change the index to switch colorscheme, or use a builtin like "vim"
-local schemes = {
-  "vim",          -- 1: nvim dark (builtin, no plugin needed)
-  "onedark",      -- 2: onedarkpro
-  "osmium",       -- 3: osmium
-  "sora",         -- 4: sora
-  "kanagawa",     -- 5: kanagawa dragon
-  "kanso",        -- 6: kanso
-}
+-- Colorscheme (see configuration/theme.lua for options)
 v.o.background = "dark"
-v.cmd("colorscheme " .. schemes[2])
+v.cmd("colorscheme gruvbox")
 
-v.api.nvim_create_autocmd("BufEnter", {
+-- Hide the initial empty [No Name] buffer from the buffer list.
+-- One-shot: the old implementation re-ran a full buffer sweep on every
+-- BufEnter, which was pure overhead (and a likely contributor to oil's
+-- double-buffer weirdness). Unlisting is non-destructive - the buffer stays
+-- usable, it just doesn't clutter :ls.
+v.api.nvim_create_autocmd("VimEnter", {
+  once = true,
   callback = function()
-    local bufnr = v.api.nvim_get_current_buf()
-    local bufname = v.api.nvim_buf_get_name(bufnr)
-    local buftype = v.api.nvim_buf_get_option(bufnr, "buftype")
-    if bufname ~= "" and buftype == "" then
-      for _, b in ipairs(v.api.nvim_list_bufs()) do
-        if v.api.nvim_buf_is_loaded(b)
-            and v.bo[b].buflisted
-            and b ~= bufnr
-            and v.api.nvim_buf_get_name(b) == "" then
-          v.cmd("bd " .. b)
-        end
-      end
+    local buf = v.api.nvim_get_current_buf()
+    if v.api.nvim_buf_get_name(buf) == "" and v.bo[buf].buftype == "" then
+      v.bo[buf].buflisted = false
     end
   end,
 })

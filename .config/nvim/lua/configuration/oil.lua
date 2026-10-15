@@ -5,6 +5,7 @@ return {
       { "<leader>e", function() require("oil").open_float() end, desc = "Open Oil file explorer" },
     },
     cmd = "Oil",
+    dependencies = { "nvim-mini/mini.icons" }, -- icon provider for `columns = { "icon" }`
     config = function()
       require("oil").setup({
         default_file_explorer = true,
