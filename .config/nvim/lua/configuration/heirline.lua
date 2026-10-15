@@ -17,114 +17,21 @@ return {
 
     local colors = {
       bright_bg = hl_bg("Folded", "#3b4261"),
-      bright_fg = hl_fg("Folded", "#a9b1d6"),
       red = hl_fg("DiagnosticError", "#e06c75"),
-      green = hl_fg("String", "#98c379"),
       blue = hl_fg("Function", "#61afef"),
       gray = hl_fg("NonText", "#5c6370"),
-      orange = hl_fg("Constant", "#d19a66"),
       purple = hl_fg("Statement", "#c678dd"),
-      cyan = hl_fg("Special", "#56b6c2"),
-      yellow = hl_fg("DiagnosticWarn", "#e5c07b"),
       diag_warn = hl_fg("DiagnosticWarn", "#e5c07b"),
       diag_error = hl_fg("DiagnosticError", "#e06c75"),
       diag_hint = hl_fg("DiagnosticHint", "#56b6c2"),
       diag_info = hl_fg("DiagnosticInfo", "#61afef"),
-      git_del = hl_fg("diffDeleted", nil) or hl_fg("DiffDelete", nil) or hl_fg("DiagnosticError", "#e06c75"),
-      git_add = hl_fg("diffAdded", nil) or hl_fg("DiffAdd", nil) or hl_fg("String", "#98c379"),
-      git_change = hl_fg("diffChanged", nil) or hl_fg("DiffChange", nil) or hl_fg("DiagnosticWarn", "#e5c07b"),
+      git_del = hl_fg("DiffDelete", nil) or hl_fg("DiagnosticError", "#e06c75"),
+      git_add = hl_fg("DiffAdd", nil) or hl_fg("String", "#98c379"),
+      git_change = hl_fg("DiffChange", nil) or hl_fg("DiagnosticWarn", "#e5c07b"),
     }
 
-    -- Helper: truncate branch names like "user/TEAM-1234-some-description" -> "user/TEAM-1234"
-    local function truncate_branch(branch)
-      if not branch or branch == "" then return "" end
-      local user, team, ticket = branch:match("^(%w+)/(%w+)%-(%d+)")
-      if ticket then
-        return user .. "/" .. team .. "-" .. ticket
-      end
-      return branch
-    end
-
-    -- VCS info: fetched async, never blocks the UI
-    local vcs_cache = { result = nil, cwd = nil, pending = false }
-
-    local function fetch_vcs_info_async()
-      local cwd = vim.fn.getcwd()
-      if vcs_cache.pending then return end
-      vcs_cache.pending = true
-
-      -- Single jj command that gets both change_id and bookmarks in one shot
-      vim.system(
-        { "jj", "--ignore-working-copy", "log", "-r", "@", "--no-graph", "-T",
-          "change_id.shortest(8) ++ \"\\n\" ++ bookmarks" },
-        { cwd = cwd },
-        vim.schedule_wrap(function(jj_out)
-          vcs_cache.pending = false
-          if jj_out.code == 0 and jj_out.stdout then
-            local lines = vim.split(vim.trim(jj_out.stdout), "\n")
-            local change_id = lines[1] or ""
-            local bookmark = lines[2] or ""
-            local first_bookmark = bookmark:match("^(%S+)")
-            if first_bookmark and first_bookmark ~= "" then
-              vcs_cache = {
-                result = { vcs = "jj", branch = truncate_branch(first_bookmark), change_id = change_id, bookmark = first_bookmark },
-                cwd = cwd, pending = false,
-              }
-            else
-              vcs_cache = {
-                result = { vcs = "jj", branch = change_id, change_id = change_id, bookmark = nil },
-                cwd = cwd, pending = false,
-              }
-            end
-            vim.cmd("redrawstatus")
-            return
-          end
-
-          -- Fallback: git
-          vim.system(
-            { "git", "branch", "--show-current" },
-            { cwd = cwd },
-            vim.schedule_wrap(function(git_out)
-              if git_out.code == 0 and git_out.stdout then
-                local branch = vim.trim(git_out.stdout)
-                if branch ~= "" then
-                  vcs_cache = {
-                    result = { vcs = "git", branch = truncate_branch(branch), change_id = nil, bookmark = nil },
-                    cwd = cwd, pending = false,
-                  }
-                  vim.cmd("redrawstatus")
-                  return
-                end
-              end
-              vcs_cache = { result = nil, cwd = cwd, pending = false }
-              vim.cmd("redrawstatus")
-            end)
-          )
-        end)
-      )
-    end
-
-    local function get_vcs_info()
-      local cwd = vim.fn.getcwd()
-      if vcs_cache.cwd ~= cwd then
-        -- Cache miss: return stale/nil and fetch in background
-        vcs_cache.cwd = cwd
-        vcs_cache.result = nil
-        fetch_vcs_info_async()
-      end
-      return vcs_cache.result
-    end
-
-    -- Refresh on directory change and periodically on focus/buffer changes
-    vim.api.nvim_create_autocmd({ "DirChanged", "FocusGained" }, {
-      callback = function()
-        vcs_cache = { result = nil, cwd = nil, pending = false }
-        fetch_vcs_info_async()
-      end,
-    })
-
     ---------------------------------------------------------------------------
-    -- ViMode (with icons + labels like the old lualine)
+    -- ViMode (with icons + labels)
     ---------------------------------------------------------------------------
     local ViMode = {
       init = function(self)
@@ -132,40 +39,40 @@ return {
       end,
       static = {
         mode_config = {
-          n = { icon = "", label = "NORMAL", color = "blue" },
-          no = { icon = "", label = "N-OP", color = "blue" },
-          nov = { icon = "", label = "N-OP", color = "blue" },
-          noV = { icon = "", label = "N-OP", color = "blue" },
-          ["no\22"] = { icon = "", label = "N-OP", color = "blue" },
-          niI = { icon = "", label = "NORMAL", color = "blue" },
-          niR = { icon = "", label = "NORMAL", color = "blue" },
-          niV = { icon = "", label = "NORMAL", color = "blue" },
-          nt = { icon = "", label = "NORMAL", color = "blue" },
-          v = { icon = "", label = "VISUAL", color = "purple" },
-          vs = { icon = "", label = "VISUAL", color = "purple" },
-          V = { icon = "", label = "V-LINE", color = "purple" },
-          Vs = { icon = "", label = "V-LINE", color = "purple" },
-          ["\22"] = { icon = "", label = "V-BLOCK", color = "purple" },
-          ["\22s"] = { icon = "", label = "V-BLOCK", color = "purple" },
-          s = { icon = "", label = "SELECT", color = "orange" },
-          S = { icon = "", label = "S-LINE", color = "orange" },
-          ["\19"] = { icon = "", label = "S-BLOCK", color = "orange" },
-          i = { icon = "", label = "INSERT", color = "green" },
-          ic = { icon = "", label = "INSERT", color = "green" },
-          ix = { icon = "", label = "INSERT", color = "green" },
+          n = { icon = "", label = "NORMAL", color = "blue" },
+          no = { icon = "", label = "N-OP", color = "blue" },
+          nov = { icon = "", label = "N-OP", color = "blue" },
+          noV = { icon = "", label = "N-OP", color = "blue" },
+          ["no\22"] = { icon = "", label = "N-OP", color = "blue" },
+          niI = { icon = "", label = "NORMAL", color = "blue" },
+          niR = { icon = "", label = "NORMAL", color = "blue" },
+          niV = { icon = "", label = "NORMAL", color = "blue" },
+          nt = { icon = "", label = "NORMAL", color = "blue" },
+          v = { icon = "", label = "VISUAL", color = "purple" },
+          vs = { icon = "", label = "VISUAL", color = "purple" },
+          V = { icon = "", label = "V-LINE", color = "purple" },
+          Vs = { icon = "", label = "V-LINE", color = "purple" },
+          ["\22"] = { icon = "", label = "V-BLOCK", color = "purple" },
+          ["\22s"] = { icon = "", label = "V-BLOCK", color = "purple" },
+          s = { icon = "", label = "SELECT", color = "orange" },
+          S = { icon = "", label = "S-LINE", color = "orange" },
+          ["\19"] = { icon = "", label = "S-BLOCK", color = "orange" },
+          i = { icon = "", label = "INSERT", color = "green" },
+          ic = { icon = "", label = "INSERT", color = "green" },
+          ix = { icon = "", label = "INSERT", color = "green" },
           R = { icon = "󰛔", label = "REPLACE", color = "red" },
           Rc = { icon = "󰛔", label = "REPLACE", color = "red" },
           Rx = { icon = "󰛔", label = "REPLACE", color = "red" },
           Rv = { icon = "󰛔", label = "REPLACE", color = "red" },
           Rvc = { icon = "󰛔", label = "REPLACE", color = "red" },
           Rvx = { icon = "󰛔", label = "REPLACE", color = "red" },
-          c = { icon = "", label = "COMMAND", color = "yellow" },
-          cv = { icon = "", label = "EX", color = "yellow" },
-          r = { icon = "", label = "...", color = "cyan" },
-          rm = { icon = "", label = "MORE", color = "cyan" },
-          ["r?"] = { icon = "", label = "CONFIRM", color = "cyan" },
-          ["!"] = { icon = "", label = "SHELL", color = "red" },
-          t = { icon = "", label = "TERMINAL", color = "cyan" },
+          c = { icon = "", label = "COMMAND", color = "yellow" },
+          cv = { icon = "", label = "EX", color = "yellow" },
+          r = { icon = "", label = "...", color = "cyan" },
+          rm = { icon = "", label = "MORE", color = "cyan" },
+          ["r?"] = { icon = "", label = "CONFIRM", color = "cyan" },
+          ["!"] = { icon = "", label = "SHELL", color = "red" },
+          t = { icon = "", label = "TERMINAL", color = "cyan" },
         },
       },
       provider = function(self)
@@ -192,14 +99,18 @@ return {
       init = function(self)
         local filename = self.filename
         local extension = vim.fn.fnamemodify(filename, ":e")
-        self.icon, self.icon_color =
-          require("nvim-web-devicons").get_icon_color(filename, extension, { default = true })
+        local icon, hl = require("mini.icons").get("file", filename)
+        if not icon or hl == "MiniIconsAzure" then
+          icon, hl = require("mini.icons").get("extension", extension)
+        end
+        self.icon, self.icon_color = icon, hl
       end,
       provider = function(self)
         return self.icon and (self.icon .. " ")
       end,
       hl = function(self)
-        return { fg = self.icon_color }
+        local ok, hl_def = pcall(vim.api.nvim_get_hl, 0, { name = self.icon_color, link = false })
+        return { fg = (ok and hl_def.fg) and string.format("#%06x", hl_def.fg) or nil }
       end,
     }
 
@@ -218,12 +129,12 @@ return {
     local FileFlags = {
       {
         condition = function() return vim.bo.modified end,
-        provider = "",
+        provider = "",
         hl = { fg = "green" },
       },
       {
         condition = function() return not vim.bo.modifiable or vim.bo.readonly end,
-        provider = "",
+        provider = "",
         hl = { fg = "orange" },
       },
     }
@@ -236,44 +147,13 @@ return {
     FileNameBlock = utils.insert(FileNameBlock, FileIcon, FileName, FileFlags, { provider = "%<" })
 
     ---------------------------------------------------------------------------
-    -- VCS: Git / Jujutsu (cached, with diff stats from vcsigns)
+    -- VCS diff stats (from vcsigns, free - no process spawning)
     ---------------------------------------------------------------------------
-    local VCS = {
-      condition = function()
-        return get_vcs_info() ~= nil
-      end,
+    local VCSStats = {
       init = function(self)
-        self.vcs_info = get_vcs_info()
         self.stats = vim.b.vcsigns_stats or {}
       end,
       hl = { fg = "orange" },
-      -- VCS icon
-      {
-        provider = function(self)
-          if self.vcs_info.vcs == "jj" then return "󰜛 " end
-          return " "
-        end,
-        hl = { bold = true },
-      },
-      -- Branch / change id
-      {
-        provider = function(self)
-          return self.vcs_info.branch or ""
-        end,
-        hl = { bold = true },
-      },
-      -- Bookmark indicator (jj: when on a bookmark, show it separately from the change id)
-      {
-        condition = function(self)
-          return self.vcs_info.vcs == "jj" and self.vcs_info.bookmark and self.vcs_info.change_id
-            and self.vcs_info.branch ~= self.vcs_info.change_id
-        end,
-        provider = function(self)
-          return " 󰃀 " .. self.vcs_info.change_id
-        end,
-        hl = { fg = "purple" },
-      },
-      -- Diff stats
       {
         provider = function(self)
           local count = self.stats.added or 0
@@ -311,37 +191,37 @@ return {
       update = { "DiagnosticChanged", "BufEnter" },
       {
         provider = function(self)
-          return self.errors > 0 and (" " .. self.errors .. " ")
+          return self.errors > 0 and (" " .. self.errors .. " ")
         end,
         hl = { fg = "diag_error" },
       },
       {
         provider = function(self)
-          return self.warnings > 0 and (" " .. self.warnings .. " ")
+          return self.warnings > 0 and (" " .. self.warnings .. " ")
         end,
         hl = { fg = "diag_warn" },
       },
       {
         provider = function(self)
-          return self.info > 0 and (" " .. self.info .. " ")
+          return self.info > 0 and (" " .. self.info .. " ")
         end,
         hl = { fg = "diag_info" },
       },
       {
         provider = function(self)
-          return self.hints > 0 and (" " .. self.hints)
+          return self.hints > 0 and (" " .. self.hints)
         end,
         hl = { fg = "diag_hint" },
       },
     }
 
     ---------------------------------------------------------------------------
-    -- LSP (cogwheel + server names)
+    -- LSP (server names)
     ---------------------------------------------------------------------------
     local LSPActive = {
       condition = conditions.lsp_attached,
       update = { "LspAttach", "LspDetach" },
-      { provider = "  [", hl = { fg = "orange" } },
+      { provider = "  [", hl = { fg = "orange" } },
       {
         provider = function()
           local names = {}
@@ -363,7 +243,7 @@ return {
         local b = vim.api.nvim_get_current_buf()
         return vim.treesitter.highlighter.active[b] ~= nil
       end,
-      provider = "  ",
+      provider = "  ",
       hl = { fg = "green" },
     }
 
@@ -428,12 +308,10 @@ return {
       end,
       init = function(self)
         local ft = vim.bo.filetype
-        local icons = require("mini.icons")
-        local icon, hl, is_default = icons.get("filetype", ft)
+        local icon, hl, is_default = require("mini.icons").get("filetype", ft)
         if icon and not is_default then
           self.ft_icon = icon
           self.ft_name = nil
-          -- Resolve the highlight group color for the icon
           local ok, hl_def = pcall(vim.api.nvim_get_hl, 0, { name = hl, link = false })
           self.ft_color = (ok and hl_def.fg) and string.format("#%06x", hl_def.fg) or nil
         else
@@ -465,7 +343,7 @@ return {
     local StatusLine = {
       ViMode, Space,
       FileNameBlock, Space,
-      VCS,
+      VCSStats,
       Align,
       MacroRec, Space,
       SearchCount, Space,

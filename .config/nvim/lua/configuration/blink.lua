@@ -1,10 +1,18 @@
 return {
   -- blink.pairs
+  -- v0.6+ needs a native library. Prefer downloading the prebuilt binary over a
+  -- full `cargo build --release` (much faster, no toolchain needed at update
+  -- time), and fall back to building only if the download fails.
   {
     "saghen/blink.pairs",
     version = "*",
     dependencies = { "saghen/blink.lib" },
-    build = function() require('blink.pairs').build():pwait(60000) end,
+    build = function()
+      local ok = pcall(function() require("blink.pairs").download():pwait(60000) end)
+      if not ok then
+        require("blink.pairs").build():pwait(300000)
+      end
+    end,
     opts = {
       mappings = {
         enabled = true,
@@ -65,7 +73,4 @@ return {
       })
     end,
   },
-
-  -- copilot (disabled, kept for future use)
-  { "zbirenbaum/copilot.lua", lazy = true },
 }

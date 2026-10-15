@@ -1,5 +1,6 @@
 return {
   "dmtrKovalenko/fff.nvim",
+  dependencies = { "nvim-mini/mini.icons" }, -- filetype icons
   keys = {
     { "<leader>ff", function() require("fff").find_files() end, desc = "Find files" },
     { "<leader>fw", function() require("fff").live_grep({ grep = { "fuzzy" } }) end, desc = "Live grep with fff" },

@@ -32,8 +32,9 @@ v.o.expandtab = true
 -- v.o.foldlevel = 99    -- start with all folds open
 -- v.o.foldlevelstart = 99
 
--- Increase redrawtime so async treesitter parsing can finish after large jumps
-v.o.redrawtime = 10000
+-- Give async treesitter parsing a chance to finish after large jumps, without
+-- making redraws feel sluggish
+v.o.redrawtime = 2000
 
 -- Disable treesitter for very large files, fall back to regex syntax
 local large_file_bytes = 5 * 1024 * 1024 -- 5MB
@@ -58,13 +59,15 @@ v.o.incsearch = true
 v.o.hlsearch = true
 
 -- highlight on yank
+-- NB: nvim 0.13 deprecated both vim.highlight.on_yank and vim.hl.on_yank
+-- (removal in 0.14). The current API is vim.hl.hl_op.
 v.api.nvim_create_autocmd("TextYankPost", {
   group = v.api.nvim_create_augroup("HighlightYank", {
     clear = true
   }),
   pattern = "*",
   callback = function()
-    v.highlight.on_yank({
+    v.hl.hl_op({
       higroup = "IncSearch",
       timeout = 200
     })
