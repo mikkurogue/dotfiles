@@ -13,6 +13,21 @@ return {
         require("blink.pairs").build():pwait(300000)
       end
     end,
+    config = function(_, opts)
+      -- `build` only runs when a checkout actually changes the commit (lazy
+      -- sets `_.dirty` then). Pulling a bumped lazy-lock.json from git/jj can
+      -- move blink.pairs without ever tripping that, leaving the commit-hashed
+      -- library (`lib/libblink_pairs_parser.dylib.<commit7>`) missing and pairs
+      -- dead. Cheap no-op in the healthy case.
+      if not require("blink.pairs").library_available() then
+        local ok, err = pcall(function() require("blink.pairs").download():pwait(120000) end)
+        if not ok then
+          vim.notify("blink.pairs: native library unavailable: " .. tostring(err), vim.log.levels.ERROR)
+        end
+      end
+
+      require("blink.pairs").setup(opts)
+    end,
     opts = {
       mappings = {
         enabled = true,
