@@ -5,6 +5,16 @@ local v = vim
 v.g.mapleader = " "
 v.g.maplocalleader = " "
 
+-- vite-plus ships the TypeScript 7 toolchain. The shells source
+-- ~/.vite-plus/env.fish, but a GUI-launched nvim inherits the launchd PATH
+-- instead, where another tsc (e.g. ~/.nix-profile/bin/tsc) can win. Prepend it
+-- so `cmd = { "tsc", ... }` in core/lsp.lua always resolves to vite-plus.
+local vite_plus_bin = v.fn.expand("~/.vite-plus/bin")
+local cur_path = v.env.PATH or ""
+if v.fn.isdirectory(vite_plus_bin) == 1 and cur_path:sub(1, #vite_plus_bin + 1) ~= vite_plus_bin .. ":" then
+  v.env.PATH = vite_plus_bin .. ":" .. cur_path
+end
+
 -- Bootstrap lazy.nvim
 local lazypath = v.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not v.uv.fs_stat(lazypath) then

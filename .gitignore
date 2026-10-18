@@ -21,6 +21,10 @@ Thumbs.db
 *.bak
 *.backup
 
+# Generated shell completions. Regenerate with:
+#   copilot completion fish > .config/fish/completions/copilot.fish
+.config/fish/completions/copilot.fish
+
 # zsh syntax highligher let people do it themselves
 zsh/
 
