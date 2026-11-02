@@ -43,7 +43,8 @@ require("core.keymaps")
 
 -- Colorscheme (see configuration/theme.lua for options)
 v.o.background = "dark"
-v.cmd("colorscheme gruvbox")
+v.cmd("colorscheme kanagawa")
+-- v.cmd("colorscheme gruvbox")
 
 -- Hide the initial empty [No Name] buffer from the buffer list.
 -- One-shot: the old implementation re-ran a full buffer sweep on every

@@ -1,7 +1,8 @@
 -- Gruvbox, hard contrast (darkest background).
 -- NB: this port uses `contrast = "hard"`, not `flavour = "hard"` (that's other ports).
 -- Must be loaded before `:colorscheme gruvbox`, hence priority + config = true.
-return {
+return  {
+  {
   "ellisonleao/gruvbox.nvim",
   lazy = false,
   priority = 1000,
@@ -20,4 +21,9 @@ return {
     inverse = true,
     transparent_mode = false,
   },
+},
+{
+  "rebelot/kanagawa.nvim",
+  theme = "wave"
+}
 }
