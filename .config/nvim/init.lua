@@ -46,6 +46,8 @@ v.o.background = "dark"
 v.cmd("colorscheme kanagawa")
 -- v.cmd("colorscheme gruvbox")
 
+require("bufferline").setup{}
+
 -- Hide the initial empty [No Name] buffer from the buffer list.
 -- One-shot: the old implementation re-ran a full buffer sweep on every
 -- BufEnter, which was pure overhead (and a likely contributor to oil's

@@ -5,7 +5,7 @@ v.o.ruler = false
 
 v.o.number = true
 v.o.relativenumber = true
-v.o.signcolumn = "yes:2"
+v.o.signcolumn = "yes"
 v.o.wrap = true
 v.o.linebreak = true
 v.o.tabstop = 2
@@ -14,7 +14,7 @@ v.o.swapfile = false
 v.o.winborder = "rounded"
 v.o.laststatus = 3
 v.o.clipboard = "unnamedplus"
-v.o.updatetime = 50 -- milliseconds
+-- v.o.updatetime = 50 -- milliseconds
 v.diagnostic.config({ virtual_text = false })
 v.o.incsearch = true
 v.o.undofile = true
