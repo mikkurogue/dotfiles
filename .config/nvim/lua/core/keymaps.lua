@@ -12,9 +12,18 @@ v.keymap.set('n', '<leader>o', ':update<CR> :source<CR>')
 v.keymap.set('n', '<leader>w', ':write<CR>')
 v.keymap.set('n', '<leader>q', ':quit<CR>')
 
-v.keymap.set("n", "<Esc>", ":noh<CR>", {
-  silent = true
-})
+-- clear mutli cursors on esc
+local clear_mc = v.api.nvim_create_namespace("nvim.multicursor")
+
+v.keymap.set("n", "<Esc>", function()
+  v.cmd("noh") -- preserve default behaviour
+  v.api.nvim_buf_clear_namespace(0, clear_mc, 0, -1) -- remove every cursror in the ns from current buffer (O) lines 0 to -1 (start to end)
+  return "<Esc>"
+end, {expr = true, desc = "Esc+: clear hlsearch and multicursors"})
+--
+-- v.keymap.set("n", "<Esc>", ":noh<CR>", {
+--   silent = true
+-- })
 
 -- format current buffer
 v.keymap.set("n", "<leader>lf", v.lsp.buf.format)
