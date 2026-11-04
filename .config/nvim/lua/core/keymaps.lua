@@ -1,12 +1,6 @@
 local v = vim
 
--- remap hjkl to neio for colemak dh layout
--- vim.keymap.set("n", "n", "h")
--- vim.keymap.set("n", "e", "j")
--- vim.keymap.set("n", "i", "k")
--- vim.keymap.set("n", "o", "l")
-
--- Basic keymaps vim specific
+-- Basic keymaps v specific
 -- mapleader is set in init.lua (must be set before any keymaps)
 v.keymap.set('n', '<leader>o', ':update<CR> :source<CR>')
 v.keymap.set('n', '<leader>w', ':write<CR>')
@@ -14,20 +8,18 @@ v.keymap.set('n', '<leader>q', ':quit<CR>')
 
 -- clear mutli cursors on esc
 local clear_mc = v.api.nvim_create_namespace("nvim.multicursor")
-
 v.keymap.set("n", "<Esc>", function()
   v.cmd("noh") -- preserve default behaviour
   v.api.nvim_buf_clear_namespace(0, clear_mc, 0, -1) -- remove every cursror in the ns from current buffer (O) lines 0 to -1 (start to end)
   return "<Esc>"
 end, {expr = true, desc = "Esc+: clear hlsearch and multicursors"})
---
--- v.keymap.set("n", "<Esc>", ":noh<CR>", {
---   silent = true
--- })
+
+-- Fast access to new cursors based on current position
+v.keymap.set("n", "<leader>j", 'Qj', {remap = false, desc = "Add a cursor below current cursor"})
+v.keymap.set("n", "<leader>k", 'Qk', {remap = false, desc = "Add a cursor above current cursor"})
 
 -- format current buffer
 v.keymap.set("n", "<leader>lf", v.lsp.buf.format)
-
 
 -- lsp keymaps (gd, gD, gr, gi handled by Peekr — see configuration/peekr.lua)
 v.keymap.set("n", "K", v.lsp.buf.hover)
@@ -35,7 +27,6 @@ v.keymap.set("n", "<C-k>", v.lsp.buf.signature_help)
 v.keymap.set("n", "<leader>rn", v.lsp.buf.rename)
 -- both leader ca and la for code action cause i use la but i should use ca
 v.keymap.set("n", "<leader>la", v.lsp.buf.code_action)
-
 
 -- Helper function to close all listed buffers
 local function close_all_buffers()
@@ -55,11 +46,6 @@ local function close_all_but_current()
     end
   end
 end
-
--- lsp keymaps
--- v.keymap.set("n", "gd", v.lsp.buf.definition)
--- v.keymap.set("n", "gr", v.lsp.buf.references)
--- v.keymap.set("n", "gi", v.lsp.buf.implementation)
 
 -- Keymaps
 v.keymap.set("n", "bc", "<cmd>bd<CR>", { desc = "Close current buffer" })
