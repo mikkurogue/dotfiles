@@ -48,7 +48,7 @@ spawn-at-startup "systemctl" "--user" "set-environment" "WINE_FULLSCREEN_INTEGER
 spawn-at-startup "xembedsniproxy"
 spawn-at-startup "discord"
 // spawn-sh-at-startup "steam -silent"
-spawn-sh-at-startup "faugus-launcher -silent"
+// spawn-sh-at-startup "faugus-launcher -silent"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
