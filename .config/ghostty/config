@@ -17,7 +17,9 @@ font-size = 16
 # Window
 window-padding-y = 10
 window-padding-x = 10
-window-decoration = none
+# auto: KDE gets a normal server-side titlebar (close/min/max buttons).
+# Under niri, prefer-no-csd means the titlebar is omitted while tiling.
+window-decoration = auto
 confirm-close-surface=false
 resize-overlay = never
 # gtk-toolbar-style = flat
