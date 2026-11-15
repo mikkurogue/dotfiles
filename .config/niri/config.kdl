@@ -166,8 +166,8 @@ layout {
         // If you enable the border, you probably want to disable the focus ring.
         on
 
-        width 2
-        active-color "#61afef"
+        width 1
+        active-color "#D4C0B8"
         inactive-color "#3e4451"
 
         // Color of the border around windows that request your attention.
