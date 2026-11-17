@@ -4,6 +4,7 @@ return {
   keys = {
     { "<leader>ff", function() require("fff").find_files() end, desc = "Find files" },
     { "<leader>fw", function() require("fff").live_grep({ grep = { "fuzzy" } }) end, desc = "Live grep with fff" },
+    { "<leader>fb", function() require("core.fff_buffers").find_buffers() end, desc = "Switch between open buffers" },
   },
   build = function()
     require("fff.download").download_or_build_binary()
@@ -20,5 +21,7 @@ return {
       git = { status_text_color = true },
       debug = { enabled = false, show_scores = false },
     })
+
+    require("core.fff_buffers").setup()
   end,
 }

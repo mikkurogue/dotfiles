@@ -29,6 +29,12 @@ v.keymap.set("n", "<leader>rn", v.lsp.buf.rename)
 -- v.keymap.set("n", "<leader>la", v.lsp.buf.code_action)
 v.keymap.set({ 'n', 'x' }, '<leader>la', vim.lsp.buf.code_action, { desc = "Display code actions" })
 
+-- select a session
+v.keymap.set("n", "<leader>sl", function() require("persistence").select() end);
+-- load the last session
+v.keymap.set("n", "<leader>ss", function() require("persistence").load({last = true}) end);
+
+
 -- Helper function to close all listed buffers
 local function close_all_buffers()
   for _, bufnr in ipairs(v.api.nvim_list_bufs()) do
