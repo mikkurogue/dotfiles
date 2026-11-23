@@ -95,32 +95,5 @@ local lsps = {
 
 v.lsp.enable(lsps)
 
--- show lsp that is attached to buffer
-function _G.LspStatus()
-  local bufnr = v.api.nvim_get_current_buf()
-  local clients = v.lsp.get_clients({ bufnr = bufnr })
-  if #clients == 0 then
-    return ''
-  end
-
-  local icons = {
-    rust_analyzer = '󱘗',
-    go = '󰟓',
-    tsc = '',
-    vtsls = '',
-    ts_ls = '',
-    lua_ls = '󰢱',
-    biome = '󰐅',
-    zls = '',
-    zzls = '',
-    tailwindcss = '󱏿',
-    svelte = '',
-  }
-
-  local names = {}
-  for _, c in ipairs(clients) do
-    local icon = icons[c.name] or ''
-    table.insert(names, icon .. ' ' .. c.name)
-  end
-  return table.concat(names, ', ')
-end
+-- LSP client display (glyphs + rust-analyzer spinner status) lives in
+-- the statusline now: see lua/configuration/lualine.lua.
