@@ -11,8 +11,7 @@
 -- Glyph hygiene: Nerd Font glyphs in the 3-byte private-use area (U+E000-)
 -- are built via nr2char() below -- literal PUA glyphs in dotfiles tend to get
 -- mangled by shell pipes, formatters and git tooling; codepoints don't. All
--- codepoints are verified against the Nerd Fonts catalog. 4-byte glyphs
--- (material-design supplement, emoji) are written literally.
+-- codepoints are verified against the Nerd Fonts catalog.
 
 return {
   "nvim-lualine/lualine.nvim",
@@ -53,7 +52,7 @@ return {
 
     ---------------------------------------------------------------------------
     -- File info: lualine's filetype (icon) + filename components.
-    -- The devicons mock serves our glyphs (incl. the crab for Rust); the
+    -- The devicons mock serves our glyphs (incl. the Rust gear); the
     -- colored icon is derived from a fg-only table, so its background stays
     -- the theme's section color (fg-only is the contract: lualine fills the
     -- bg itself, mode-aware -- string colors like color = "String" bypass

@@ -12,14 +12,14 @@ return {
       return package.loaded["nvim-web-devicons"]
     end
   end,
-  -- mini.icons opts: route Rust through the crab. Both 'extension' and
-  -- 'filetype' are overridden because 'file' resolution can reach either
-  -- (extension for unknown-ftype files, filetype first for known ones).
-  -- Glyphs are spelled as codepoints via nr2char: emoji/PUA literals in
+  -- mini.icons opts: use nerd-font's Rust gear for all Rust files. Both
+  -- 'extension' and 'filetype' are overridden because 'file' resolution can
+  -- reach either (extension for unknown-ftype files, filetype first for known
+  -- ones). Glyphs are spelled as codepoints via nr2char: PUA literals in
   -- dotfiles tend to get eaten by shell/pipes/formatters (this file is proof).
   opts = {
-    extension = { rs = { glyph = vim.fn.nr2char(0x1f980), hl = "MiniIconsOrange" } },
-    filetype = { rust = { glyph = vim.fn.nr2char(0x1f980), hl = "MiniIconsOrange" } },
+    extension = { rs = { glyph = vim.fn.nr2char(0xf1617), hl = "MiniIconsOrange" } },
+    filetype = { rust = { glyph = vim.fn.nr2char(0xf1617), hl = "MiniIconsOrange" } },
     file = { ["Cargo.toml"] = { glyph = vim.fn.nr2char(0xf1617), hl = "MiniIconsOrange" } },
   },
 }
