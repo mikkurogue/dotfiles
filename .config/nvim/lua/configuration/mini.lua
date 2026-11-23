@@ -1,5 +1,5 @@
 -- Icon provider for oil (`columns = { "icon" }`), fff (filetype icons) and
--- heirline. Keep this: without it, oil's icon column and fff's file icons break.
+-- lualine. Keep this: without it, oil's icon column and fff's file icons break.
 return {
   "nvim-mini/mini.icons",
   lazy = true,
@@ -12,5 +12,14 @@ return {
       return package.loaded["nvim-web-devicons"]
     end
   end,
-  opts = {},
+  -- mini.icons opts: route Rust through the crab. Both 'extension' and
+  -- 'filetype' are overridden because 'file' resolution can reach either
+  -- (extension for unknown-ftype files, filetype first for known ones).
+  -- Glyphs are spelled as codepoints via nr2char: emoji/PUA literals in
+  -- dotfiles tend to get eaten by shell/pipes/formatters (this file is proof).
+  opts = {
+    extension = { rs = { glyph = vim.fn.nr2char(0x1f980), hl = "MiniIconsOrange" } },
+    filetype = { rust = { glyph = vim.fn.nr2char(0x1f980), hl = "MiniIconsOrange" } },
+    file = { ["Cargo.toml"] = { glyph = vim.fn.nr2char(0xf1617), hl = "MiniIconsOrange" } },
+  },
 }
