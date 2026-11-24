@@ -62,10 +62,16 @@ return {
       return vim.bo.buftype == ""
     end
 
+    -- Spacing contract: lualine's default component padding already puts one
+    -- space around a component, and its icon handling adds the space between
+    -- an icon and its label. Only the spots where a glyph is glued straight
+    -- onto a count/name (diff + diagnostics symbols, custom status strings)
+    -- need an explicit space of their own.
     local FileTypeIcon = {
       "filetype",
       icon_only = true,
       colored = true,
+      -- the filetype component already appends a space after its icon
       padding = { left = 0, right = 0 },
       cond = normal_buffer,
     }
@@ -74,8 +80,8 @@ return {
       "filename",
       path = 1, -- cwd-relative; lualine shortens against the window width
       file_status = false, -- flags are their own components, so they get colors
-      symbols = { modified = "", readonly = "", unnamed = "[No Name]" },
-      padding = { left = 0, right = 0 },
+      symbols = { modified = "*", readonly = "[R]", unnamed = "[No Name]" },
+      padding = { left = 1, right = 0 },
       cond = normal_buffer,
     }
 
@@ -84,7 +90,7 @@ return {
         return vim.bo.modified
       end,
       function()
-        return " ●" -- plain U+25CF: renders in every font that matters
+        return " ● " -- plain U+25CF: renders in every font that matters
       end,
       color = fg_of("String", "#98c379"),
       padding = { left = 0, right = 0 },
@@ -95,7 +101,7 @@ return {
         return vim.bo.readonly or not vim.bo.modifiable
       end,
       function()
-        return " " .. glyphs.lock
+        return " " .. glyphs.lock .. " "
       end,
       color = fg_of("DiagnosticWarn", "#e5c07b"),
       padding = { left = 0, right = 0 },
@@ -109,10 +115,12 @@ return {
       sources = { "nvim_diagnostic" },
       sections = { "error", "warn", "info", "hint" },
       symbols = {
-        error = glyphs.diag_error,
-        warn = glyphs.diag_warn,
-        info = glyphs.diag_info,
-        hint = glyphs.diag_hint,
+        -- lualine glues the symbol straight onto the count; keep a space
+        -- between them (this is how lualine's own icon symbols are written)
+        error = glyphs.diag_error .. " ",
+        warn = glyphs.diag_warn .. " ",
+        info = glyphs.diag_info .. " ",
+        hint = glyphs.diag_hint .. " ",
       },
       colored = true,
       update_in_insert = false,
@@ -124,7 +132,7 @@ return {
     ---------------------------------------------------------------------------
     local TreeSprout = {
       function()
-        return glyphs.treesitter
+        return glyphs.treesitter .. " "
       end,
       cond = function()
         return vim.treesitter.highlighter.active[vim.api.nvim_get_current_buf()] ~= nil
@@ -182,7 +190,7 @@ return {
           local name = (self.options.show_name ~= false)
             and (" " .. (server_names[client.name] or client.name))
             or ""
-          parts[#parts + 1] = glyph .. name .. state
+          parts[#parts + 1] = glyph .. name .. state .. " "
         end
       end
       return table.concat(parts, ", ")
@@ -209,14 +217,17 @@ return {
         return glyphs.record .. " @" .. vim.fn.reg_recording()
       end,
       color = fg_of("DiagnosticError", "#e06c75"),
-      padding = { left = 0, right = 1 },
+      padding = { left = 1, right = 1 },
     }
 
     local function lualine_config()
       require("lualine").setup({
         options = {
-          -- powerline look: hard section separators ( and ) and soft
-          -- component separators ( and ) are lualine's own defaults
+          -- Powerline angles: same glyphs as lualine's defaults, but with the
+          -- breathing room spelled out -- left angles carry a trailing space,
+          -- right angles a leading one.
+          section_separators = { left = nf("e0b0") .. " ", right = " " .. nf("e0b2") },
+          component_separators = { left = nf("e0b1") .. " ", right = " " .. nf("e0b3") },
           theme = "auto",
           globalstatus = true, -- matches `laststatus = 3` in core/opts.lua
           -- keep the rust-analyzer spinner spinning even when idle
@@ -230,15 +241,20 @@ return {
               "diff",
               colored = true,
               symbols = {
-                added = glyphs.diff_add,
-                modified = glyphs.diff_mod,
-                removed = glyphs.diff_del,
+                added = glyphs.diff_add .. " ",
+                modified = glyphs.diff_mod .. " ",
+                removed = glyphs.diff_del .. " ",
               },
             },
             { "selectioncount" }, -- only shows while selecting
           },
           lualine_c = { FileTypeIcon, FileName, FileModified, FileReadonly, Diagnostics },
-          lualine_x = { TreeSprout, { LspStatus, color = fg_of("Special", "#61afef") }, SearchCount },
+          lualine_x = {
+            TreeSprout,
+            -- each server bit already carries its own trailing space
+            { LspStatus, color = fg_of("Special", "#61afef"), padding = { left = 1, right = 0 } },
+            SearchCount,
+          },
           lualine_y = { "fileformat", "encoding" },
           lualine_z = { "progress", "location" },
         },
